@@ -25,7 +25,7 @@ str(ds_afluentes)
 ### 0. Preprocesamiento Obligatorio ###
 #######################################
 
-### Reestructuración
+### Reestructuración✅
 
 # Cambiar "hydro_node_name" a "nodo"
 ds_afluentes <- rename(ds_afluentes, nodo=hydro_node_name)
