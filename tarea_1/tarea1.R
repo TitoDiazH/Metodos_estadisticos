@@ -109,7 +109,7 @@ caudal_final <- summarize(
 )
 head(caudal_final)
 
-# d = 100 * ( C*(2016-2018) - C*(2008-2010) ) / C*(2008-2010)⚠️
+# d = 100 * ( C*(2016-2018) - C*(2008-2010) ) / C*(2008-2010)✅
 cambio_porcentual <- 100 * (caudal_final$caudal_anual - caudal_inicial$caudal_anual) / caudal_inicial$caudal_anual
 cambio_porcentual_por_nodo <- data.frame(
   nodo = caudal_inicial$nodo,
@@ -117,23 +117,23 @@ cambio_porcentual_por_nodo <- data.frame(
 )
 head(cambio_porcentual_por_nodo)
 
-### Plantear H_0 y H_1
-# H_0: El cambio porcentual medio es igual a 0
-# H_1: El cambio porcentual medio es distinto a 0
-# Como es de igualdad, es de dos colas
+### Plantear H_0 y H_1✅
+# H_0: El cambio porcentual medio >= 0
+# H_1: El cambio porcentual medio < 0
 
 ### Verificar supuestos
 
-# Histograma
+## Histograma✅
 hist(
   cambio_porcentual_por_nodo$cambio_porcentual,
   xlab = "Cambio Porcentual", ylab = "Frecuencia",
   col = "green"
 )
+# Se ve una tendencia de que bajan, hay más nodos con cambio porcentual negativo
 
-# *Un gráfico de barra porque se ve una tendencia a la baja
+# *Un gráfico de barra porque se ve una tendencia a la baja✅
 cambio_porcentual_por_nodo <- cambio_porcentual_por_nodo[
-  order(cambio_porcentual_por_nodo$cambio_porcentual)
+  order(cambio_porcentual_por_nodo$cambio_porcentual),
 ]
 barplot(
   cambio_porcentual_por_nodo$cambio_porcentual,
@@ -142,46 +142,182 @@ barplot(
   col = "blue"
 )
 
-# Grafico cuantil cuantil
+## Grafico cuantil cuantil✅
 qqnorm(
   cambio_porcentual_por_nodo$cambio_porcentual,
-  main = "Q-Q Plot del cambio porcentual"
+  main = "Q-Q Plot del cambio porcentual",
 )
 qqline(cambio_porcentual_por_nodo$cambio_porcentual, col = "red")
+# Se ve que los datos están cerca a la linea, se asume normalidad
 
-# Evidencia numerica
-
+## Evidencia numerica✅?
+describe(cambio_porcentual_por_nodo$cambio_porcentual, IQR = TRUE)
+# media -6.63% - desviacion 17.07 - Rango intercuartil 18.38 - kurtosis -0.33
+# n = 30 justo el limite
 
 ### Aplicar el test de hipotesis. Reportar estadistico,
 ### grados de libertad, p-valor e intervalo de confianza,
 ### e interpretar la desicion en terminos hidrológicos.
 
+# Una población
+# desviación poblacional desconocida
+# intervalo de confianza del 95% (alpha = 0.05)
+# unilateral (una cola)
+# grados de libertad = n - 1 = 29
+# ==> test T Student✅
+t.test(
+  cambio_porcentual_por_nodo$cambio_porcentual,
+  alternative = "less",
+  mu = 0,
+  conf.level = 0.95
+)
+# p-value = 0.021 => rechazo H_0 (p-value < alpha=0.05)
+# => hay evidencia para afirmar que ha bajado el caudal
 
 ### PREGUNTA OBLIGATORIA: Se hizo con cambio porcentual,
 ### hacerlo con diferencia absoluta, comparar e indicar
-### cuál hay que usar y por qué
+### cuál hay que usar y por qué✅
+
+cambio_absoluto <- caudal_final$caudal_anual - caudal_inicial$caudal_anual
+cambio_absoluto_por_nodo <- data.frame(
+  nodo = caudal_inicial$nodo,
+  cambio_absoluto = cambio_absoluto
+)
+head(cambio_absoluto_por_nodo)
+
+hist(
+  cambio_absoluto_por_nodo$cambio_absoluto,
+  xlab = "Cambio Absoluto", ylab = "Frecuencia",
+  col = "green"
+)
+# También se ve más cargado para los negativos, pero más centrado
+
+barplot(
+  cambio_absoluto_por_nodo$cambio_absoluto,
+  names = cambio_absoluto_por_nodo$nodo,
+  xlab = "Nodo", ylab = "Cambio Absoluto",
+  col = "blue"
+)
+# Se ve que hay un nodo con un cambio muy grande,
+# porque ese nodo suele tener más caudal
+
+qqnorm(
+  cambio_absoluto_por_nodo$cambio_absoluto,
+  main = "Q-Q Plot del cambio absoluto",
+)
+qqline(cambio_absoluto_por_nodo$cambio_absoluto, col = "red")
+# Aquí los nodos no siguen una linea recta, no hay normalidad
+
+describe(cambio_absoluto_por_nodo$cambio_absoluto, IQR = TRUE)
+# media -2 - desviacion 5.36 - Rango intercuartil 1.41 - kurtosis 0.98
+
+t.test(
+  cambio_absoluto_por_nodo$cambio_absoluto,
+  alternative = "less",
+  mu = 0,
+  conf.level = 0.95
+)
+# p-value = 0.025 => También rechaza H_0
+
+# Aunque el p-valor igualmente permite rechazar H_0,
+# el cambio porcentual es más adecuado porque permite comparar
+# entre nodos con caudales muy distintos, manteniendo la misma magnitud relativa
 
 ##############################################
 ### 2. Análisis de correlación y factorial ###
 ##############################################
 
-### a) Matriz de correlación
+# Ordenar los 151 nodos segun su caudal medio del periodo 2008-2018✅
+caudal_medio_periodo_completo <- group_by(ds_anual_util, nodo)
+caudal_medio_periodo_completo <- summarize(
+  caudal_medio_periodo_completo,
+  caudal_medio = mean(caudal_anual), .groups = "drop"
+)
+caudal_medio_periodo_completo <- arrange(
+  caudal_medio_periodo_completo, desc(caudal_medio)
+)
+head(caudal_medio_periodo_completo)
 
-# Matriz entre las 20 centrales, comentar pares de mayor y menor asociacion
+# Tomar los 20 primeros✅
+caudal_medio_periodo_completo <- caudal_medio_periodo_completo[1:20, ]
+caudal_medio_periodo_completo
 
-# Evaluar si la matris es adecuada para análisis factorial (KMO y test de esfericidad de Bartlett)
+# Construir matriz con columnas las 20 centrales y filas los 132 meses✅
+caudal_mensual_20_centrales <- filter(
+  ds_mensual, nodo %in% caudal_medio_periodo_completo$nodo
+)
+head(caudal_mensual_20_centrales)
+matriz_caudal_20_centrales <- pivot_wider(
+  caudal_mensual_20_centrales,
+  names_from = nodo, values_from = caudal
+)
+head(matriz_caudal_20_centrales)
 
-# Disctutir limitación de test de Bartlett
+# Estandarizar valores de cada nodo✅
+matriz_caudal_20_centrales <- scale(
+  select(matriz_caudal_20_centrales, -ano, -mes)
+)
+head(matriz_caudal_20_centrales)
+
+### a) Matriz de correlación de cada nodo con los otros 19
+
+## Matriz entre las 20 centrales✅
+matriz_correlacion <- cor(matriz_caudal_20_centrales)
+# Se ve bien feo pero al menos se ve que todo va entre -1 y 1 asique está estandardizado
+
+# ver las mayores y menores correlaciones
+correlaciones <- data.frame(
+  nodo1 = character(),
+  nodo2 = character(),
+  correlacion = numeric()
+)
+for (i in 1:20) {
+  for (j in i:20) {
+    if (i != j) {
+      correlaciones <- rbind(correlaciones, data.frame(
+        nodo1 = colnames(matriz_correlacion)[i],
+        nodo2 = colnames(matriz_correlacion)[j],
+        correlacion = matriz_correlacion[i, j]
+      ))
+    }
+  }
+}
+# mayores
+correlaciones_mayores <- correlaciones[order(-correlaciones$correlacion), ]
+head(correlaciones_mayores, 5)
+# La laguna del Laja y Ralco están cerca geográficamente
+# ambas en zona cordilleral en la región del Biobío
+# es el par de mayor correlación
+# en general, muchos de los pares más correlacionados son del sur y cordillera
+
+# menores
+correlaciones_menores <- correlaciones[order(correlaciones$correlacion), ]
+head(correlaciones_menores, 5)
+# Angostura y Las Lajas tienen una correlación de -0.68,
+# No hemos podido encontrar alguna explicación que nos haga
+# sentido porque están en zonas, aunque no tan alejadas, pero
+# sin haber algo claro.
+
+## Evaluar si la matriz es adecuada para análisis factorial (KMO y test de esfericidad de Bartlett)
+# KMO
+KMO(matriz_caudal_20_centrales)
+# MSA = 0.88
+
+# Test Bartlett
+bartlett.test(matriz_caudal_20_centrales)
+
+## Disctutir limitación de test de Bartlett
 
 ### b) Análisis de componentes principales
 
-# El porcentaje de varianza explicada por cada componente y la acumulada
+## El porcentaje de varianza explicada por cada componente y la acumulada
 
-# Scree Plot
 
-# Loadings de primeros componentes y scores
+## Scree Plot
 
-# representación de las centrales en el plano de los dos primeros componentes
+## Loadings de primeros componentes y scores
+
+## representación de las centrales en el plano de los dos primeros componentes
 
 ### c) Análisis factorial
 
