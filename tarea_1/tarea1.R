@@ -10,7 +10,7 @@ library(MVN)
 # =====================================================================================================
 
 # == Variables de entorno =======================================================================================
-PATH_TO_DATASET <- "C:/Users/famil/Downloads/AfluentesHistoricosChile-1.xlsx"   # Cambiar por donde esté en su pc
+PATH_TO_DATASET <- "tarea_1/AfluentesHistoricosChile-1.xlsx"   # Cambiar por donde esté en su pc
 GROUP <- 24   # Somos el grupo 24 en canvas
 # ===============================================================================================================
 
@@ -56,7 +56,7 @@ ds_mensual$mes <- as.integer(format(ds_mensual$fecha, "%m"))
 ds_mensual <- select(ds_mensual, nodo, ano, mes, caudal)
 head(ds_mensual)
 
-### Ordenar columnas temporalmente (Lo hicimos antes que era más fácil)
+### Ordenar columnas temporalmente (Lo hicimos antes que era más fácil)✅
 
 ### Caudal anual medio
 ds_anual <- group_by(ds_mensual, nodo, ano)
@@ -65,10 +65,14 @@ head(ds_anual)
 
 ### Encontrar fallas (rios sin cambios de caudal en los meses)
 ds_varianza_anual_por_nodo <- group_by(ds_anual, nodo)
-ds_varianza_anual_por_nodo <- summarize(ds_varianza_anual_por_nodo, varianza_anual=var(caudal_anual), .groups="drop")
+ds_varianza_anual_por_nodo <- summarize(
+  ds_varianza_anual_por_nodo,
+  varianza_anual = var(caudal_anual),
+  .groups = "drop"
+)
 head(ds_varianza_anual_por_nodo)
 
-nodos_inutiles <- filter(ds_varianza_anual_por_nodo, varianza_anual<0.000001)
+nodos_inutiles <- filter(ds_varianza_anual_por_nodo, varianza_anual < 0.000001)
 head(nodos_inutiles)
 
 ds_mensual_util <- filter(ds_mensual, !(nodo %in% nodos_inutiles$nodo))
@@ -84,44 +88,69 @@ head(ds_anual_util)
 
 ### Tomar muestra aleatoria de 30 nodos. Para cada nodo,
 ### calcular el cambio porcentual del medio anual entre
-### el trienio inicial y el final del periodo.
+### el trienio inicial y el final del periodo.✅
 
-ds_30_nodos <- sample(unique(ds_anual_util$nodo), 30, replace=FALSE)
+ds_30_nodos <- sample(unique(ds_anual_util$nodo), 30, replace = FALSE)
 head(ds_30_nodos)
 
 caudal_inicial <- filter(ds_anual_util, ano %in% c(2008, 2009, 2010))
 caudal_inicial <- group_by(caudal_inicial, nodo)
 caudal_inicial <- filter(caudal_inicial, nodo %in% ds_30_nodos)
-caudal_inicial <- summarize(caudal_inicial, caudal_anual=mean(caudal_anual), .groups="drop")
+caudal_inicial <- summarize(
+  caudal_inicial, caudal_anual = mean(caudal_anual), .groups = "drop"
+)
 head(caudal_inicial)
 
 caudal_final <- filter(ds_anual_util, ano %in% c(2016, 2017, 2018))
 caudal_final <- group_by(caudal_final, nodo)
 caudal_final <- filter(caudal_final, nodo %in% ds_30_nodos)
-caudal_final <- summarize(caudal_final, caudal_anual=mean(caudal_anual), .groups="drop")
+caudal_final <- summarize(
+  caudal_final, caudal_anual = mean(caudal_anual), .groups = "drop"
+)
 head(caudal_final)
 
-# d = 100 * ( C*(2016-2018) - C*(2008-2010) ) / C*(2008-2010)
+# d = 100 * ( C*(2016-2018) - C*(2008-2010) ) / C*(2008-2010)⚠️
 cambio_porcentual <- 100 * (caudal_final$caudal_anual - caudal_inicial$caudal_anual) / caudal_inicial$caudal_anual
-cambio_porcentual_por_nodo <- data.frame(nodo=caudal_inicial$nodo, cambio_porcentual=cambio_porcentual)
+cambio_porcentual_por_nodo <- data.frame(
+  nodo = caudal_inicial$nodo,
+  cambio_porcentual = cambio_porcentual
+)
 head(cambio_porcentual_por_nodo)
 
 ### Plantear H_0 y H_1
-# H_0: El cambio porcentual medio es distinto a 0
-# H_1: El cambio porcentual medio es igual a 0
+# H_0: El cambio porcentual medio es igual a 0
+# H_1: El cambio porcentual medio es distinto a 0
 # Como es de igualdad, es de dos colas
 
 ### Verificar supuestos
 
 # Histograma
-hist(cambio_porcentual_por_nodo$cambio_porcentual, main="Histograma del Cambio Porcentual", xlab="Cambio Porcentual", ylab="Frecuencia", col="lightblue", border="black")
+hist(
+  cambio_porcentual_por_nodo$cambio_porcentual,
+  xlab = "Cambio Porcentual", ylab = "Frecuencia",
+  col = "green"
+)
+
+# *Un gráfico de barra porque se ve una tendencia a la baja
+cambio_porcentual_por_nodo <- cambio_porcentual_por_nodo[
+  order(cambio_porcentual_por_nodo$cambio_porcentual)
+]
+barplot(
+  cambio_porcentual_por_nodo$cambio_porcentual,
+  names = cambio_porcentual_por_nodo$nodo,
+  xlab = "Nodo", ylab = "Cambio Porcentual",
+  col = "blue"
+)
 
 # Grafico cuantil cuantil
-qqnorm(cambio_porcentual_por_nodo$cambio_porcentual, main="Q-Q Plot del Cambio Porcentual")
-qqline(cambio_porcentual_por_nodo$cambio_porcentual, col="red", lty=2)
+qqnorm(
+  cambio_porcentual_por_nodo$cambio_porcentual,
+  main = "Q-Q Plot del cambio porcentual"
+)
+qqline(cambio_porcentual_por_nodo$cambio_porcentual, col = "red")
 
-# Evidencia numerica (MVN)
-psych::mardia(cambio_porcentual_por_nodo$cambio_porcentual)
+# Evidencia numerica
+
 
 ### Aplicar el test de hipotesis. Reportar estadistico,
 ### grados de libertad, p-valor e intervalo de confianza,
@@ -138,9 +167,30 @@ psych::mardia(cambio_porcentual_por_nodo$cambio_porcentual)
 
 ### a) Matriz de correlación
 
-# Matriz entre las 20 centrales
+# Matriz entre las 20 centrales, comentar pares de mayor y menor asociacion
+
+# Evaluar si la matris es adecuada para análisis factorial (KMO y test de esfericidad de Bartlett)
+
+# Disctutir limitación de test de Bartlett
 
 ### b) Análisis de componentes principales
 
+# El porcentaje de varianza explicada por cada componente y la acumulada
+
+# Scree Plot
+
+# Loadings de primeros componentes y scores
+
+# representación de las centrales en el plano de los dos primeros componentes
+
 ### c) Análisis factorial
 
+# Realizar analisis factorial mediante componentes principales
+
+# Determinar cuántos factores conviene retener (usar todos los criterio)
+
+# Interpretar y asignar nombre a cada uno
+
+### Validación de la interpretación
+
+# Calcular el mes en que alcanza su máximo caudal cada central
