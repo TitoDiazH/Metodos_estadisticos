@@ -304,20 +304,34 @@ KMO(matriz_caudal_20_centrales)
 # MSA = 0.88
 
 # Test Bartlett
-bartlett.test(matriz_caudal_20_centrales)
+cortest.bartlett(matriz_correlacion, n = nrow(matriz_caudal_20_centrales))
+# p-value = 0 => no es la matriz identidad => se puede hacer AF
 
 ## Disctutir limitación de test de Bartlett
+# Como en todos los nodos, las estaciones del año afectan casi igual
+# (invierno llueve más, verano las nieves se derriten, etc), entonces
+# salen patrones que afectan a todos los nodos y hacen que el
+# estadistico esté inflado. Aunque KMO sigue sirviendo
 
 ### b) Análisis de componentes principales
 
-## El porcentaje de varianza explicada por cada componente y la acumulada
+# Realizar análisis de componentes principales (PCA) sobre la matriz de correlación
 
+PCA <- prcomp(matriz_caudal_20_centrales, scale = TRUE)
+
+## El porcentaje de varianza explicada por cada componente y la acumulada
+summary(PCA)
 
 ## Scree Plot
+screeplot(PCA, type = "line")
+# El codo se ve entre 3 y 4
 
 ## Loadings de primeros componentes y scores
+round(PCA$rotation[, 1:4], 3)
 
-## representación de las centrales en el plano de los dos primeros componentes
+## representación de las 20 centrales en el plano de los dos primeros componentes, con sus nombres
+plot(PCA$rotation[, 1], PCA$rotation[, 2], xlab = "Componente 1", ylab = "Componente 2")
+text(PCA$rotation[, 1], PCA$rotation[, 2], labels = rownames(PCA$rotation), pos = 4, cex = 0.7)
 
 ### c) Análisis factorial
 
