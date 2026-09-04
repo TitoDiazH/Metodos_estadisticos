@@ -18,7 +18,6 @@ GROUP <- 24   # Somos el grupo 24 en canvas
 set.seed(GROUP)
 ds_afluentes <- read_excel(PATH_TO_DATASET)
 head(ds_afluentes)
-str(ds_afluentes)
 # =========================================
 
 #######################################
@@ -192,6 +191,9 @@ hist(
 )
 # También se ve más cargado para los negativos, pero más centrado
 
+cambio_absoluto_por_nodo <- cambio_absoluto_por_nodo[
+  order(cambio_absoluto_por_nodo$cambio_absoluto),
+]
 barplot(
   cambio_absoluto_por_nodo$cambio_absoluto,
   names = cambio_absoluto_por_nodo$nodo,
@@ -217,9 +219,9 @@ t.test(
   mu = 0,
   conf.level = 0.95
 )
-# p-value = 0.025 => También rechaza H_0
+# p-value = 0.03 => También rechaza H_0
 
-# Aunque el p-valor igualmente permite rechazar H_0,
+# Aunque el p-valor igualmente permite rechazar H_0 (0.03 < 0.05),
 # el cambio porcentual es más adecuado porque permite comparar
 # entre nodos con caudales muy distintos, manteniendo la misma magnitud relativa
 
@@ -263,6 +265,7 @@ head(matriz_caudal_20_centrales)
 
 ## Matriz entre las 20 centrales✅
 matriz_correlacion <- cor(matriz_caudal_20_centrales)
+matriz_correlacion
 # Se ve bien feo pero al menos se ve que todo va entre -1 y 1 asique está estandardizado
 
 # ver las mayores y menores correlaciones
@@ -271,6 +274,7 @@ correlaciones <- data.frame(
   nodo2 = character(),
   correlacion = numeric()
 )
+# Probablemente haya un metodo mejor en R pero fue lo que se nos ocurrió nomas
 for (i in 1:20) {
   for (j in i:20) {
     if (i != j) {
@@ -301,17 +305,19 @@ head(correlaciones_menores, 5)
 ## Evaluar si la matriz es adecuada para análisis factorial (KMO y test de esfericidad de Bartlett)
 # KMO
 KMO(matriz_caudal_20_centrales)
-# MSA = 0.88
+# MSA = 0.88 > 0.6 => Esta perfecto
 
 # Test Bartlett
 cortest.bartlett(matriz_correlacion, n = nrow(matriz_caudal_20_centrales))
-# p-value = 0 => no es la matriz identidad => se puede hacer AF
+# p-value = 0 => no es (Ni de cerca) la matriz identidad => se puede hacer AF
 
 ## Disctutir limitación de test de Bartlett
-# Como en todos los nodos, las estaciones del año afectan casi igual
+# Un valor 0 es poco probable porque si, algo raro debe haber. 
+# Nuestra teoría es que el problema tiene asociada una correlación inevitable.
+# Como todos los nodos son de un país, las estaciones del año afectan casi igual
 # (invierno llueve más, verano las nieves se derriten, etc), entonces
 # salen patrones que afectan a todos los nodos y hacen que el
-# estadistico esté inflado. Aunque KMO sigue sirviendo
+# estadistico esté muy inflado. Aunque KMO sigue sirviendo
 
 ### b) Análisis de componentes principales
 
@@ -324,10 +330,10 @@ summary(PCA)
 
 ## Scree Plot
 screeplot(PCA, type = "line")
-# El codo se ve entre 3 y 4
+# El codo se ve entre 2 y 3
 
 ## Loadings de primeros componentes y scores
-round(PCA$rotation[, 1:4], 3)
+round(PCA$rotation[, 1:3], 3)
 
 ## representación de las 20 centrales en el plano de los dos primeros componentes, con sus nombres
 plot(PCA$rotation[, 1], PCA$rotation[, 2], xlab = "Componente 1", ylab = "Componente 2")
@@ -335,12 +341,34 @@ text(PCA$rotation[, 1], PCA$rotation[, 2], labels = rownames(PCA$rotation), pos 
 
 ### c) Análisis factorial
 
-# Realizar analisis factorial mediante componentes principales
+## Realizar analisis factorial mediante componentes principales
+af <- fa(
+  matriz_caudal_20_centrales,
+  fm = "pa",
+  nfactors = 4
+)
+af <- principal(matriz_caudal_20_centrales)
+# No se bien como hacerlo aca en vdd
 
-# Determinar cuántos factores conviene retener (usar todos los criterio)
+## Determinar cuántos factores conviene retener (usar todos los criterio)
+# Determinación a priori:
+# Son rios (o similares), creemos que probablemente haya que tomar 2 o 3:
+# 1. Norte/Sur
+# 2. Cordillera/Costa
+# 3. Tamaño: Si es un gran embalse o un pequeño canal
 
-# Interpretar y asignar nombre a cada uno
+# Regla de Kaiser
+
+
+# % de varianza explicada
+
+# Scree plot
+
+## Retener 2 factores y aplicar varimax,
+## reportar matriz de carga rotada y comunalidades de cada nodo
+
+## Interpretar y asignar nombre a cada uno
 
 ### Validación de la interpretación
 
-# Calcular el mes en que alcanza su máximo caudal cada central
+## Calcular el mes en que alcanza su máximo caudal cada central
