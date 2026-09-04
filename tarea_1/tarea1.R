@@ -342,13 +342,7 @@ text(PCA$rotation[, 1], PCA$rotation[, 2], labels = rownames(PCA$rotation), pos 
 ### c) Análisis factorial
 
 ## Realizar analisis factorial mediante componentes principales
-af <- fa(
-  matriz_caudal_20_centrales,
-  fm = "pa",
-  nfactors = 4
-)
-af <- principal(matriz_caudal_20_centrales)
-# No se bien como hacerlo aca en vdd
+# (se va a hacer abajo para seguir el orden del enunciado)
 
 ## Determinar cuántos factores conviene retener (usar todos los criterio)
 # Determinación a priori:
@@ -358,14 +352,32 @@ af <- principal(matriz_caudal_20_centrales)
 # 3. Tamaño: Si es un gran embalse o un pequeño canal
 
 # Regla de Kaiser
-
+autovalores <- PCA$sdev^2
+autovalores
+# Habría que quedarse con 3 que son los que tienen > 1
 
 # % de varianza explicada
+prop_var <- autovalores / sum(autovalores)
+cumsum(prop_var)
+# Con esto habría que dejar 4 que es ahí donde se llega al 80% (83%)
 
 # Scree plot
+screeplot(PCA, type = "lines")
+abline(h = 1)
+# De nuevo son 2-3 los que hay que dejar,
+# básicamente es el mismo gráfico que el de pca
 
 ## Retener 2 factores y aplicar varimax,
 ## reportar matriz de carga rotada y comunalidades de cada nodo
+factores <- principal(
+  matriz_caudal_20_centrales,
+  nfactors = 2,
+  rotate = "varimax"
+)
+
+factores$loadings
+
+factores$communality
 
 ## Interpretar y asignar nombre a cada uno
 
