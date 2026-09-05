@@ -211,7 +211,7 @@ qqline(cambio_absoluto_por_nodo$cambio_absoluto, col = "red")
 # Aquí los nodos no siguen una linea recta, no hay normalidad
 
 describe(cambio_absoluto_por_nodo$cambio_absoluto, IQR = TRUE)
-# media -2 - desviacion 5.36 - Rango intercuartil 1.41 - kurtosis 0.98
+# media -3.9 - desviacion 10.98 - Rango intercuartil 3.22 - kurtosis 15.41
 
 t.test(
   cambio_absoluto_por_nodo$cambio_absoluto,
@@ -266,7 +266,8 @@ head(matriz_caudal_20_centrales)
 ## Matriz entre las 20 centrales✅
 matriz_correlacion <- cor(matriz_caudal_20_centrales)
 matriz_correlacion
-# Se ve bien feo pero al menos se ve que todo va entre -1 y 1 asique está estandardizado
+# Se ve bien feo pero al menos se ve que todo va entre -1 y 1,
+# y la diagonal es 1, asique está estandardizado
 
 # ver las mayores y menores correlaciones
 correlaciones <- data.frame(
@@ -297,7 +298,7 @@ head(correlaciones_mayores, 5)
 # menores
 correlaciones_menores <- correlaciones[order(correlaciones$correlacion), ]
 head(correlaciones_menores, 5)
-# Angostura y Las Lajas tienen una correlación de -0.68,
+# Las Lajas y San Pedro tienen una correlación de -0.68,
 # No hemos podido encontrar alguna explicación que nos haga
 # sentido porque están en zonas, aunque no tan alejadas, pero
 # sin haber algo claro.
@@ -312,7 +313,7 @@ cortest.bartlett(matriz_correlacion, n = nrow(matriz_caudal_20_centrales))
 # p-value = 0 => no es (Ni de cerca) la matriz identidad => se puede hacer AF
 
 ## Disctutir limitación de test de Bartlett
-# Un valor 0 es poco probable porque si, algo raro debe haber. 
+# Un valor 0 es poco probable porque si, algo raro debe haber.
 # Nuestra teoría es que el problema tiene asociada una correlación inevitable.
 # Como todos los nodos son de un país, las estaciones del año afectan casi igual
 # (invierno llueve más, verano las nieves se derriten, etc), entonces
@@ -367,6 +368,10 @@ abline(h = 1)
 # De nuevo son 2-3 los que hay que dejar,
 # básicamente es el mismo gráfico que el de pca
 
+# Análisis paralelo
+fa.parallel(matriz_caudal_20_centrales, fm = "pa")
+# Parallel analysis suggests that the number of factors = 3
+
 ## Retener 2 factores y aplicar varimax,
 ## reportar matriz de carga rotada y comunalidades de cada nodo
 factores <- principal(
@@ -376,8 +381,11 @@ factores <- principal(
 )
 
 factores$loadings
+# RC1: 0.94 lago laja, 0.94 ñuble, 0.95 ralco, -0.4 las lajas
+# RC2: 0.81 La invernada, 0.85 Sauzal, 0.76 Queltehues, -0.6 Canutillar
 
 factores$communality
+# 0.9 Ralco, 0.88 Lago Laja, 0.88 Peuchen, 0.3 Tucapel/Rapel
 
 ## Interpretar y asignar nombre a cada uno
 
