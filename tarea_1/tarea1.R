@@ -381,14 +381,55 @@ factores <- principal(
 )
 
 factores$loadings
-# RC1: 0.94 lago laja, 0.94 ñuble, 0.95 ralco, -0.4 las lajas
-# RC2: 0.81 La invernada, 0.85 Sauzal, 0.76 Queltehues, -0.6 Canutillar
+# RC1: 0.94 lago laja, 0.94 ñuble, 0.95 ralco, 0.93 peuchen
+#      -0.4 las lajas, -0.2 queltehues
+# RC2: 0.81 La invernada, 0.85 Sauzal, 0.76 Queltehues, 0.69 Las lajas
+#      -0.7 Canutillar, -0.5 San pedro, -0.47 Angostura
 
 factores$communality
 # 0.9 Ralco, 0.88 Lago Laja, 0.88 Peuchen, 0.3 Tucapel/Rapel
 
 ## Interpretar y asignar nombre a cada uno
+# Esto se va a hacer al final, porque quizas si es cordillera
+# tenga más caudal en verano y en otro caso sería invierno.
+# (porque Verano: deshielos | Invierno: Lluvias)
+# Esto se valida en el paso siguiente asíque ahí se hace la interpretación
 
 ### Validación de la interpretación
 
 ## Calcular el mes en que alcanza su máximo caudal cada central
+caudal_medio_mensual <- filter(
+  ds_mensual, nodo %in% colnames(matriz_caudal_20_centrales)
+)
+caudal_medio_mensual <- group_by(caudal_medio_mensual, nodo, mes)
+caudal_medio_mensual <- summarize(
+  caudal_medio_mensual, caudal_medio = mean(caudal), .groups = "drop"
+)
+
+mes_maximo <- group_by(caudal_medio_mensual, nodo)
+mes_maximo <- summarize(
+  mes_maximo, mes_max = mes[which.max(caudal_medio)], .groups = "drop"
+)
+mes_maximo
+# Se ve que si hay un patrón donde hay algunos entre 6-8,
+# y otros entre 10-12 (obviamente algunos intermedios)
+# Para el informe: hay que buscar donde queda cada uno
+# y verificar que se cumpla que los factores son
+# Norte/Sur, o Este(o mucha altitud)/Oeste(o poca altitud)
+
+## Contrastar con la agrupación obtenida en la rotación
+# CLAUDE: no entendí bien que se refería con contrastar
+# la agrupación. Este tramo lo hizo claude y básicamente hace algo
+# similar al analisis de antes pero más ordenado y muestra mejor el patrón
+cargas <- unclass(factores$loadings)
+comparacion <- data.frame(
+  nodo = rownames(cargas),
+  RC1  = round(cargas[, 1], 3),
+  RC2  = round(cargas[, 2], 3)
+)
+comparacion <- merge(comparacion, mes_maximo, by = "nodo")
+comparacion
+# En RC2 si se ve una tendencia (no se cumple en todos pero si se ve)
+# de que si el numero es positivo y grande, suele estar asociado a verano
+# y si es negativo y grande suele estar asociado a invierno. Hace sentido
+# creer que RC2 es altitud/cordillera
