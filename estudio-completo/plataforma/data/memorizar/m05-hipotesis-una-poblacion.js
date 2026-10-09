@@ -1,0 +1,27 @@
+/* Memorizar · M05 Pruebas de hipótesis: una población (P1) */
+PLATAFORMA.registrar("memorizar", [
+  { id: "m05-mem-01", modulo: "m05-hipotesis-una-poblacion", categoria: "decision", titulo: "Regla de decisión",
+    contenido: "p-valor ≤ α ⇒ se rechaza H0 (clase). p-valor &gt; α ⇒ no se rechaza. No rechazar no prueba que H0 sea verdadera; α es la probabilidad de error tipo I y no depende de n.",
+    fuente: [{ id: "C2", loc: "slides 2–4, 14" }, { id: "PR-P1-Q1", loc: "afirmaciones 4 y 6" }] },
+  { id: "m05-mem-02", modulo: "m05-hipotesis-una-poblacion", categoria: "formula", titulo: "Media: t y Z",
+    contenido: String.raw`σ desconocida: $t=\dfrac{\bar x-\mu_0}{s/\sqrt n}$, $n-1$ gl. σ conocida: $z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}$.`,
+    fuente: [{ id: "C2", loc: "slides 5–6 y 10–11" }] },
+  { id: "m05-mem-03", modulo: "m05-hipotesis-una-poblacion", categoria: "formula", titulo: "Proporción",
+    contenido: String.raw`$Z=\dfrac{\hat p-p_0}{\sqrt{p_0(1-p_0)/n}}$ · requisito $np_0\ge5$ y $n(1-p_0)\ge5$ · bilateral: $2P(Z>|z|)$.`,
+    fuente: [{ id: "C2", loc: "slides 12–14, 39" }] },
+  { id: "m05-mem-04", modulo: "m05-hipotesis-una-poblacion", categoria: "formula", titulo: "Varianza",
+    contenido: String.raw`$\chi^2=\dfrac{(n-1)s^2}{\sigma_0^2}$ con $n-1$ gl. Una desviación $\sigma\le2$ se plantea como $\sigma^2\le4$.`,
+    fuente: [{ id: "C2", loc: "slides 17–18" }] },
+  { id: "m05-mem-05", modulo: "m05-hipotesis-una-poblacion", categoria: "funcion-R", titulo: "<code>t.test(x, mu = mu0, alternative = …)</code>",
+    contenido: "<code>\"two.sided\"</code> (≠), <code>\"greater\"</code> (&gt;), <code>\"less\"</code> (&lt;). Entrega t, gl, p-valor, IC y media. Si el IC contiene mu0, no se rechaza (bilateral).",
+    fuente: [{ id: "C2", loc: "slides 7–9" }] },
+  { id: "m05-mem-06", modulo: "m05-hipotesis-una-poblacion", categoria: "funcion-R", titulo: "<code>BSDA::z.test(x, mu, sigma.x)</code>",
+    contenido: "Prueba Z para la media con σ conocida; hay que pasar <code>sigma.x</code>.",
+    fuente: [{ id: "C2", loc: "slide 11" }] },
+  { id: "m05-mem-07", modulo: "m05-hipotesis-una-poblacion", categoria: "funcion-R", titulo: "<code>prop.test(x, n, p0, alternative, correct = FALSE)</code>",
+    contenido: "Prueba de proporción; la salida X-squared es z². Para varianzas no hay función: <code>qchisq()</code> y <code>pchisq()</code>.",
+    fuente: [{ id: "C2", loc: "slides 16 y 19" }] },
+  { id: "m05-mem-08", modulo: "m05-hipotesis-una-poblacion", categoria: "flashcard", frente: "¿Cuándo t y cuándo Z para una media?",
+    reverso: "σ desconocida ⇒ t (colas más anchas). σ conocida ⇒ Z (normal estándar).",
+    fuente: [{ id: "C2", loc: "slides 5 y 10" }] }
+]);

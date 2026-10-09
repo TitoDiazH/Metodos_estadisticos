@@ -1,0 +1,85 @@
+/* ============================================================================
+   layout.css — Armazón: barra superior, menú lateral, área de contenido, pie.
+   Escritorio: menú fijo a la izquierda. Móvil: menú deslizable con ☰.
+   ========================================================================== */
+.saltar { position: absolute; left: -999px; top: 0; background: var(--acento); color: var(--acento-tinta); padding: .5em 1em; z-index: 100; }
+.saltar:focus { left: 8px; top: 8px; }
+
+.barra-superior {
+  position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 14px;
+  padding: 8px 18px; min-height: 58px;
+  background: var(--superficie); border-bottom: 1px solid var(--borde);
+}
+.marca { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tinta); flex: none; }
+.marca-logo { width: 34px; height: 34px; flex: none; }
+.marca-logo rect { fill: var(--acento); }
+.marca-logo path { fill: none; stroke: var(--acento-tinta); stroke-width: 2.6; stroke-linecap: round; }
+.marca-txt { display: flex; flex-direction: column; line-height: 1.15; }
+.marca-txt small { color: var(--tenue); font-size: .74rem; }
+
+.selector-prueba { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.sel-rotulo { font-size: .8rem; color: var(--tenue); white-space: nowrap; }
+.segmentos { display: inline-flex; border: 1px solid var(--borde); border-radius: 999px; padding: 2px; background: var(--superficie-2); }
+.segmentos button {
+  border: 0; background: transparent; color: var(--tinta); font: inherit; font-size: .86rem; font-weight: 600;
+  padding: .28em .85em; border-radius: 999px; cursor: pointer; min-height: 32px;
+}
+.segmentos button.activo { background: var(--acento); color: var(--acento-tinta); }
+
+.buscador input {
+  font: inherit; font-size: .9rem; width: 230px; max-width: 100%; padding: .4em .8em;
+  border: 1px solid var(--borde); border-radius: 999px; background: var(--fondo); color: var(--tinta);
+}
+.btn-icono {
+  border: 1px solid var(--borde); background: var(--superficie); color: var(--tinta); border-radius: 8px;
+  width: 38px; height: 38px; font-size: 1.05rem; cursor: pointer; flex: none;
+}
+.solo-movil { display: none; }
+
+.cuerpo { display: flex; align-items: flex-start; }
+.menu {
+  position: sticky; top: 58px; flex: none; width: var(--ancho-menu); height: calc(100vh - 58px); overflow-y: auto;
+  padding: 14px 10px; border-right: 1px solid var(--borde); background: var(--superficie);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.menu a {
+  display: flex; gap: 10px; align-items: center; padding: .52em .8em; border-radius: 8px;
+  color: var(--tinta); text-decoration: none; font-size: .95rem; border-left: 3px solid transparent;
+}
+.menu a:hover { background: var(--superficie-2); }
+.menu a.activo { background: var(--acento-suave); border-left-color: var(--acento); font-weight: 650; }
+
+.contenido { flex: 1; min-width: 0; padding: 22px clamp(14px, 3.2vw, 44px) 0; }
+#app { max-width: 1040px; margin: 0 auto; min-height: 60vh; }
+#avisosGlobales { max-width: 1040px; margin: 0 auto; }
+.pie {
+  max-width: 1040px; margin: 48px auto 0; padding: 16px 0 26px; border-top: 1px solid var(--borde);
+  color: var(--tenue); font-size: .82rem;
+}
+.velo { display: none; }
+.cargando { color: var(--tenue); padding: 3em 0; text-align: center; }
+
+/* ── Móvil y pantallas angostas ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .solo-movil { display: inline-block; }
+  .barra-superior { flex-wrap: wrap; gap: 8px 10px; padding: 8px 12px; }
+  .marca-txt small { display: none; }
+  /* Fila 1: ☰ · marca · tema.  Fila 2: selector de prueba · buscador. */
+  #btnTema { margin-left: auto; }
+  .selector-prueba { order: 5; margin-left: 0; }
+  .sel-rotulo { display: none; }
+  .buscador { order: 6; flex: 1; min-width: 120px; }
+  .buscador input { width: 100%; }
+  .menu {
+    position: fixed; top: 0; left: 0; height: 100%; z-index: 60; width: min(82vw, 290px);
+    transform: translateX(-102%); transition: transform .18s ease; box-shadow: var(--sombra); padding-top: 18px;
+  }
+  .menu-abierto .menu { transform: none; }
+  .menu-abierto .velo { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, .45); z-index: 50; }
+  .contenido { padding-top: 16px; }
+  h1 { font-size: 1.42rem; }
+}
+@media (max-width: 420px) {
+  .marca-txt strong { font-size: .92rem; }
+  .segmentos button { padding: .28em .62em; }
+}

@@ -1,0 +1,27 @@
+/* Memorizar · M18 ANOVA de un factor (P2, por confirmar) */
+PLATAFORMA.registrar("memorizar", [
+  { id: "m18-mem-01", modulo: "m18-anova-un-factor", categoria: "formula", titulo: "Modelo e hipótesis",
+    contenido: String.raw`$H_0:\mu_1=\dots=\mu_k$ · $y_{ij}=\mu+\tau_i+\varepsilon_{ij}$, $\varepsilon\sim N(0,\sigma^2)$, $\tau_i=\mu_i-\mu$ · efectos fijos / aleatorios / mixtos.`,
+    fuente: [{ id: "C7.1", loc: "páginas 26–34" }] },
+  { id: "m18-mem-02", modulo: "m18-anova-un-factor", categoria: "formula", titulo: "Tabla ANOVA",
+    contenido: String.raw`$SC_T=SC_{TRAT}+SC_E$ · gl: $k-1,\ N-k,\ N-1$ · $CM=SC/gl$ · $F_0=CM_{TRAT}/CM_E\sim F(k-1,N-k)$ · rechazar si $F_0>F_\alpha$ o $p<\alpha$.`,
+    fuente: [{ id: "C7.1", loc: "páginas 36–41" }] },
+  { id: "m18-mem-03", modulo: "m18-anova-un-factor", categoria: "salida", titulo: "Ejemplos numéricos",
+    contenido: "3 métodos: medias 81,5 / 46,5 / 71,5 · media general 66,5 · SCT 3007 · SCTrat 2600 · SCE 407 · F = 28,75. 4 métodos de ensamble: SC 69,5 / 29,5 / 99 · gl 3, 12, 15 · F = 9,42 · p = 0,00177.",
+    fuente: [{ id: "C7.1", loc: "páginas 43–51" }, { id: "C7.2", loc: "slide 7" }] },
+  { id: "m18-mem-04", modulo: "m18-anova-un-factor", categoria: "umbral", titulo: "Supuestos",
+    contenido: "Independencia · homogeneidad de varianzas (Levene) · normalidad. Se verifican con residuos: Q-Q (normalidad), vs. predichos (varianza constante), vs. orden (independencia).",
+    fuente: [{ id: "C7.2", loc: "slides 22–24" }] },
+  { id: "m18-mem-05", modulo: "m18-anova-un-factor", categoria: "formula", titulo: "LSD de Fisher",
+    contenido: String.raw`$\text{LSD}=t_{\alpha/2,N-k}\sqrt{2CM_E/n}$ · se declara diferente un par si $|\bar y_i-\bar y_j|>\text{LSD}$ · $k(k-1)/2$ pares · confianza individual · muy potente/sensible. Ensamble: LSD = 2,42.`,
+    fuente: [{ id: "C7.2", loc: "slides 10, 13 y 16" }] },
+  { id: "m18-mem-06", modulo: "m18-anova-un-factor", categoria: "decision", titulo: "Tukey vs LSD",
+    contenido: "Tukey: rango estudentizado, confianza grupal (tasa de error por experimento), menos potente que LSD. Si la diferencia es clara, coinciden. <code>TukeyHSD(modelo)</code>.",
+    fuente: [{ id: "C7.2", loc: "slides 10, 18 y 19" }] },
+  { id: "m18-mem-07", modulo: "m18-anova-un-factor", categoria: "formula", titulo: "Tamaño de muestra",
+    contenido: String.raw`$n=\dfrac{2t^2\sigma^2}{d_T^2}$ (σ=1,5; $d_T$=2 ⇒ 5,1 ⇒ $n=5$) · recomendación: 5–30 por tratamiento.`,
+    fuente: [{ id: "C7.2", loc: "slides 20–21" }, { id: "C7.1", loc: "página 31" }] },
+  { id: "m18-mem-08", modulo: "m18-anova-un-factor", categoria: "funcion-R", titulo: "<code>aov</code> · <code>summary</code> · <code>TukeyHSD</code>",
+    contenido: "<code>modelo &lt;- aov(y ~ factor, data)</code> · <code>summary(modelo)</code> (Df, Sum Sq, Mean Sq, F, Pr(&gt;F)) · <code>TukeyHSD(modelo)</code> · <code>resid(modelo)</code>.",
+    fuente: [{ id: "C7.2", loc: "slides 9 y 19" }] }
+]);

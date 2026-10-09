@@ -1,0 +1,45 @@
+name: Publicar plataforma de estudio en GitHub Pages
+
+# Del repo completo, solo se publica estudio-completo/plataforma/.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "estudio-completo/plataforma/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # La app es HTML/JS estático sin build. Se copia sin tools/ (scripts de Node) ni LEEME.
+      - name: Preparar sitio
+        run: |
+          mkdir _site
+          rsync -a --exclude 'tools/' --exclude 'LEEME.md' --exclude '.gitignore' \
+            estudio-completo/plataforma/ _site/
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
