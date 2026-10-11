@@ -1,0 +1,157 @@
+# QDA, Naive Bayes y validación
+
+## LDA contra QDA y el test M de Box
+
+Ahora toca el módulo dieciséis: cu de a, Naive Bayes y validación de clasificadores.
+
+En simple. Ele de a supone que todos los grupos tienen la misma matriz de covarianza, y por eso su frontera es una recta. Cu de a, el discriminante cuadrático, permite una matriz distinta para cada grupo, y su frontera es una curva. El costo es que hay que estimar más parámetros.
+
+Con detalle. Ele de a tiene menos parámetros: es más estable y sirve con pocos datos. Cu de a tiene más: es más flexible, pero necesita más datos por grupo.
+
+Para decidir entre los dos se usa el test eme de Box. Su hipótesis nula dice que las matrices de covarianza de los grupos son iguales. Si el pe valor es mayor que cero coma cero cinco, no se rechaza, las covarianzas se consideran iguales, y se usa ele de a. Si el pe valor es menor o igual, se rechaza, y se usa cu de a.
+
+Hay una regla práctica importante. Con muestras pequeñas, se prefiere ele de a, aunque el test de Box sugiera covarianzas distintas. Porque cu de a con pocos datos estima mal.
+
+Los grados de libertad del test son: pe, por pe más uno, por ca menos uno, dividido por dos. Pe es el número de variables y ca el número de grupos.
+
+Ejemplo. En el Banco de Ademuz hay dos variables y dos grupos. ¿Cuántos grados de libertad tiene el test?
+
+[pausa 4]
+
+Tres. Dos por tres por uno, dividido por dos. El estadístico da cero coma ochenta y el pe valor, cero coma ochenta y cinco. Mucho mayor que cero coma cero cinco. No se rechaza, y corresponde ele de a. De hecho, al ajustar cu de a en esos datos, la matriz de confusión sale idéntica.
+
+En erre, el test es la función box eme del paquete biotools, y el modelo es la función cu de a del paquete MASS.
+
+En simple. Covarianzas iguales, recta, ele de a. Covarianzas distintas y datos suficientes, curva, cu de a. Y decide el test eme de Box.
+
+## Naive Bayes
+
+En simple. Naive Bayes se pregunta: ¿a qué grupo se parece más este caso?, y responde con probabilidades. Se llama ingenuo porque supone que, dentro de cada grupo, las variables son independientes entre sí. Eso permite algo muy cómodo: multiplicar las probabilidades de cada variable por separado.
+
+Con detalle. Para cada grupo se calcula un puntaje, multiplicando tres tipos de ingredientes. Primero, la probabilidad a priori del grupo, que es su proporción en los datos. Después, por cada variable, la verosimilitud: qué tan probable es el valor observado dentro de ese grupo.
+
+Si la variable es continua, se supone normal dentro del grupo, con la media y la desviación de esa variable en ese grupo, y se evalúa la densidad normal. En erre, con de norm. Si la variable es categórica, la verosimilitud es simplemente la frecuencia relativa de esa categoría dentro del grupo.
+
+Se clasifica en el grupo de mayor puntaje. Y para obtener la probabilidad posterior, se normaliza: el puntaje del grupo, dividido por la suma de los puntajes.
+
+Volvamos al cliente nuevo de Ademuz, que ele de a dejaba en la frontera. Para fallido, el puntaje es la densidad del patrimonio por la densidad de la deuda por el a priori de cero coma cinco. Da cero coma cero uno doce. Para cumplidor, da cero coma cero uno quince. ¿Cómo se clasifica?
+
+[pausa 3]
+
+Como cumplidor, por muy poco. Naive Bayes sí se decide.
+
+Ejemplo de la ayudantía seis, con variables categóricas. Catorce clientes de una empresa de telecomunicaciones, cinco abandonaron y nueve no. Para un cliente nuevo, los puntajes son cero coma cero cuarenta y seis para sí abandona, y cero coma cero treinta y siete para no abandona. ¿Cuál es la probabilidad posterior de que abandone?
+
+[pausa 4]
+
+Cero coma cincuenta y cinco. Cero coma cero cuarenta y seis, dividido por la suma de los dos. Se clasifica como abandono, pero no de forma muy contundente.
+
+En erre: la función naive bayes, del paquete e mil setenta y uno.
+
+En simple. A priori, por la probabilidad de cada variable, todo multiplicado. Gana el puntaje más alto. Y la posterior es el puntaje sobre la suma.
+
+## El a priori y la frecuencia cero
+
+Dos detalles de Naive Bayes que vienen de la ayudantía seis.
+
+Primero, el a priori pesa en la decisión. Si un grupo es mucho más frecuente, se necesita mucha más evidencia en contra para clasificar en el otro.
+
+Ejemplo. Una pyme, con dos grupos: fracaso y éxito. Con a prioris iguales, el puntaje de fracaso es cero coma noventa y uno y el de éxito cero coma treinta y siete. Se clasifica como fracaso. Pero si los a prioris son cero coma dos para fracaso y cero coma ocho para éxito, los puntajes pasan a cero coma treinta y seis y cero coma cincuenta y nueve. Ahora se clasifica como éxito. Los datos son los mismos. El a priori cambió la decisión.
+
+Un detalle de ese ejercicio. Las densidades normales daban valores como dos coma cuarenta y dos. ¿Es un error que sea mayor que uno?
+
+[pausa 3]
+
+No. De norm entrega una densidad, no una probabilidad. Y una densidad puede ser mayor que uno cuando la desviación estándar es pequeña.
+
+Segundo detalle: la frecuencia cero. Supón que, en los datos, ningún cliente que abandonó tenía plan premium. Entonces la probabilidad de premium dado abandono es cero. Y como todo se multiplica, ese cero anula el puntaje completo, sin importar las demás variables. Un cliente premium jamás se clasificaría como abandono.
+
+La solución es el suavizado de Laplace. Se suma uno al conteo en el numerador, y en el denominador se suma el número de categorías de esa variable. En el ejemplo: cero más uno, dividido por cinco más dos. Un séptimo, en vez de cero. En erre, es el argumento laplace igual a uno.
+
+En simple. El a priori empuja hacia el grupo más frecuente. Y un cero anula todo el producto, así que se suaviza con Laplace.
+
+## Comparación de los tres métodos
+
+En simple. Los tres son parientes. Ele de a es un caso particular de cu de a, cuando las covarianzas son iguales. Y Naive Bayes es como cu de a, pero con covarianzas diagonales, es decir, sin correlación entre variables dentro de cada grupo.
+
+En parámetros y datos necesarios: Naive Bayes es el que menos necesita, ele de a queda al medio, y cu de a es el que más.
+
+¿Cuándo usar cada uno? Pocos datos y covarianzas similares: ele de a. Covarianzas distintas: cu de a. Muchas variables: Naive Bayes.
+
+Ventajas de Naive Bayes: es fácil, funciona con pocas observaciones, es escalable e interpretable, es robusto al ruido y a variables irrelevantes, y maneja variables categóricas de forma natural. Desventajas: el supuesto de independencia es fuerte, no capta correlaciones, y sus probabilidades quedan mal calibradas.
+
+Pregunta. Naive Bayes equivale a cu de a con matrices de covarianza, ¿de qué tipo?
+
+[pausa 3]
+
+Diagonales.
+
+## Matriz de confusión y métricas
+
+En simple. La matriz de confusión cuenta los aciertos y los errores del clasificador. De ella salen cinco métricas, y cada una responde una pregunta distinta.
+
+Primero hay que decir cuál clase es la positiva. Con eso hay cuatro conteos: verdaderos positivos, falsos negativos, falsos positivos y verdaderos negativos.
+
+La exactitud es la proporción total de aciertos. La sensibilidad responde: de los positivos reales, ¿cuántos detecté? Es verdaderos positivos sobre todos los positivos reales. La especificidad responde: de los negativos reales, ¿cuántos detecté? La precisión responde: de los que predije como positivos, ¿cuántos lo eran? Y el valor predictivo negativo: de los que predije como negativos, ¿cuántos lo eran?
+
+Para recordarlas: sensibilidad y especificidad dividen por los reales. Precisión y valor predictivo negativo dividen por los predichos.
+
+Ejemplo de Ademuz, con cumplidor como clase positiva. Siete verdaderos positivos, un falso negativo, cero falsos positivos y ocho verdaderos negativos. ¿Cuánto es la sensibilidad?
+
+[pausa 4]
+
+Siete octavos, ochenta y siete coma cinco por ciento. La especificidad es ocho de ocho, cien por ciento. La precisión, siete de siete, cien por ciento. El valor predictivo negativo, ocho de nueve, ochenta y nueve por ciento. Y la exactitud, quince de dieciséis.
+
+Un cuidado. La exactitud engaña cuando las clases están desbalanceadas. Si el noventa y cinco por ciento de los casos es de una clase, un modelo que siempre predice esa clase tiene noventa y cinco por ciento de exactitud, y no sirve para nada.
+
+## Sobreajuste y validación
+
+En simple. Evaluar un modelo con los mismos datos con que se entrenó es como estudiar con las respuestas del examen: la nota sale demasiado buena. El sobreajuste es justamente eso: memorizar los datos de entrenamiento, y fallar con datos nuevos.
+
+Con detalle, hay tres formas de validar. La primera es separar entrenamiento y prueba: entrenar con el setenta u ochenta por ciento, y probar con el resto. Con pocos datos, esa partición es poco fiable. La segunda es la validación cruzada de ca partes: se dividen los datos en ca partes, se entrena con todas menos una, se evalúa en la que quedó fuera, se rota, y se promedian los resultados. La tercera es dejar uno fuera, liv guan aut: cada observación es el conjunto de prueba una vez. Es validación cruzada con ca igual a ene, e ideal para muestras pequeñas.
+
+En erre, para ele de a, basta agregar el argumento ce ve igual a tru.
+
+En Ademuz, la exactitud de entrenamiento era quince de dieciséis, cero coma noventa y cuatro. Dejando uno fuera, ¿sube o baja?
+
+[pausa 3]
+
+Baja, a catorce de dieciséis, cero coma ochenta y ocho. La exactitud de entrenamiento siempre sobreestima el rendimiento real.
+
+En simple. No me evalúo con lo mismo que estudié. Y con pocos datos, dejo uno fuera cada vez.
+
+## Repaso
+
+Repaso rápido.
+
+El test eme de Box da pe valor de cero coma ochenta y cinco. ¿Ele de a o cu de a?
+
+[pausa 2]
+
+Ele de a. No se rechaza la igualdad de covarianzas.
+
+¿Por qué Naive Bayes es ingenuo?
+
+[pausa 3]
+
+Porque supone que las variables son independientes dentro de cada grupo.
+
+¿Qué problema resuelve Laplace?
+
+[pausa 2]
+
+La frecuencia cero, que anula todo el puntaje.
+
+¿Cómo se calcula la sensibilidad?
+
+[pausa 3]
+
+Verdaderos positivos, sobre verdaderos positivos más falsos negativos.
+
+¿Qué validación conviene con dieciséis observaciones?
+
+[pausa 2]
+
+Dejar uno fuera.
+
+Eso fue el módulo dieciséis.

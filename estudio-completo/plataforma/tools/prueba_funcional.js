@@ -40,7 +40,7 @@ function buscarChrome() {
 /* ── Cliente DevTools mínimo ────────────────────────────────────────── */
 async function abrirChrome(bin) {
   const perfil = fs.mkdtempSync(path.join(os.tmpdir(), "me-chrome-"));
-  const proc = spawn(bin, ["--headless=new", "--remote-debugging-port=0", "--no-sandbox", "--disable-gpu", "--user-data-dir=" + perfil, "about:blank"], { stdio: ["ignore", "ignore", "pipe"] });
+  const proc = spawn(bin, ["--headless=new", "--remote-debugging-port=0", "--no-sandbox", "--disable-gpu", "--autoplay-policy=no-user-gesture-required", "--user-data-dir=" + perfil, "about:blank"], { stdio: ["ignore", "ignore", "pipe"] });
   const wsUrl = await new Promise((ok, mal) => {
     let buf = "";
     const t = setTimeout(() => mal(new Error("Chrome no respondió")), 20000);
@@ -143,7 +143,7 @@ const hashJs = () => {
     await cdp("Emulation.setDeviceMetricsOverride", { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false });
     ok(await cargar(), "la app arranca desde file://");
     await js("localStorage.clear()"); await cargar();
-    ok((await js("document.querySelectorAll('#menu a').length")) === 10, "menú con 10 secciones");
+    ok((await js("document.querySelectorAll('#menu a').length")) === 11, "menú con 11 secciones");
     ok((await js("Array.from(document.querySelectorAll('#selectorPrueba button')).map(b=>b.textContent).join(',')")) === "P1,P2,P3,Todo", "selector P1 · P2 · P3 · Todo (derivado de los datos)");
     ok((await js("PLATAFORMA.datos.modulo.length")) >= 2 && (await js("PLATAFORMA.datos.pregunta.length")) > 0, "datos registrados por el cargador");
     ok((await js("document.querySelector('.pie').textContent.indexOf('No reemplaza') > 0")), "pie de advertencia visible");
@@ -154,7 +154,7 @@ const hashJs = () => {
     console.log("\n" + seccion);
     /* Solo módulos con preguntas: los redactados en la Fase 5 aún no tienen banco (Fase 6). */
     const mods = await js("PLATAFORMA.datos.modulo.map(m => m.id).filter(id => PLATAFORMA.preguntasDeModulo(id, false).length > 0)");
-    const rutas = ["inicio", "aprender", "aprender/" + mods[0], "aprender/" + mods[mods.length - 1], "memorizar", "memorizar/tarjetas", "rlab",
+    const rutas = ["inicio", "aprender", "aprender/" + mods[0], "aprender/" + mods[mods.length - 1], "audio", "memorizar", "memorizar/tarjetas", "rlab",
       "rlab/" + (await js("PLATAFORMA.datos.rlab[0].id")), "practicar", "desarrollo", "desarrollo/" + (await js("PLATAFORMA.preguntas({soloDesarrollo:true})[0].id")),
       "examen", "progreso", "fuentes", "fuentes/C1", "diferencias", "buscar/correlaci%C3%B3n", "ruta-que-no-existe"];
     for (const r of rutas) {
@@ -198,6 +198,35 @@ const hashJs = () => {
     ok((await js("document.querySelectorAll('#app .katex').length")) > 3, "KaTeX renderiza en Memorizar");
     await ir("buscar/silueta");
     ok((await js("document.querySelectorAll('.resultados li').length")) > 0, "el buscador encuentra «silueta»");
+
+    /* Clases en audio: marcar, reproducir, saltar de capítulo y recordar la posición. */
+    await ir("audio");
+    const nAudios = await js("PLATAFORMA.datos.audio.length");
+    if (!nAudios) ok((await js("!!document.querySelector('#app .vacio')")), "sin clases en audio, la sección lo dice");
+    else {
+      ok((await js("document.querySelectorAll('.audio-fila input[type=checkbox]').length")) === nAudios, "cada clase en audio se puede marcar");
+      ok((await js("document.querySelector('[data-accion=reproducirSeleccion]').disabled")), "sin clases marcadas no se puede reproducir");
+      await clic("[data-accion=marcarTodas]");
+      await clic("[data-accion=reproducirSeleccion]");
+      ok(await esperar("!!document.querySelector('#audioAhora') && /Pausar/.test(document.querySelector('.audio-play').textContent)"), "reproduce la selección");
+      ok(await esperar("!/^0:00 /.test(document.querySelector('#audioTiempo').textContent)", 6000), "el tiempo avanza mientras suena");
+      const caps = await js("document.querySelectorAll('[data-accion=capitulo]').length");
+      if (caps > 1) {
+        await clic("[data-accion=capitulo][data-capitulo='1']");
+        ok(await esperar("document.querySelector('[data-capitulo=\"1\"]').getAttribute('aria-pressed') === 'true' && document.querySelector('#audioBarra').value > 0"), "salta al capítulo elegido");
+      }
+      await captura("02b-audio");
+      await ir("inicio"); await ir("audio");
+      ok((await js("/Pausar/.test(document.querySelector('.audio-play').textContent)")), "sigue sonando al cambiar de sección");
+      await clic("[data-accion=alternar]");
+      ok(await esperar("/Reproducir/.test(document.querySelector('.audio-play').textContent)"), "pausa");
+      const guardado = await js("PLATAFORMA.store.pref('audioEstado')");
+      ok(guardado && guardado.cola.length === nAudios && guardado.t > 0, "recuerda la cola y la posición", guardado);
+      await cargar(); await ir("audio");
+      ok(await esperar("!!document.querySelector('#audioAhora') && !/^0:00 /.test(document.querySelector('#audioTiempo').textContent)"), "al volver a abrir, retoma donde quedó");
+      await js("PLATAFORMA.store.pref('audioEstado', null); PLATAFORMA.store.pref('audioSel', [])");
+      await cargar();
+    }
 
     /* ═══ 3. Selector de prueba ═══ */
     seccion = "Selector de prueba";

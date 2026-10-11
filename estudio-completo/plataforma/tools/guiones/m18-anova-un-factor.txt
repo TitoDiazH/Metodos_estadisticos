@@ -1,0 +1,183 @@
+# ANOVA de un factor, comparaciones múltiples y supuestos
+
+## El diseño completamente al azar
+
+Ahora toca el módulo dieciocho: ANOVA de un factor, comparaciones múltiples y supuestos.
+
+En simple. Cuando comparo más de dos tratamientos, por ejemplo tres métodos de enseñanza o cuatro máquinas, quiero saber si todas las medias son iguales, o si al menos dos difieren. El ANOVA lo responde con una sola prueba.
+
+Con detalle. La hipótesis nula dice que todas las medias son iguales. La alternativa dice que al menos dos son distintas. Ojo: no dice que todas sean distintas entre sí, solo que no son todas iguales.
+
+El modelo dice que cada observación es la media general, más el efecto de su tratamiento, más un error aleatorio. El error se supone normal, con media cero y varianza constante.
+
+El diseño más simple es el completamente al azar. Todas las pruebas se corren en orden aleatorio. Y supone que, aparte del factor estudiado, ningún otro factor influye de forma importante. Solo hay dos fuentes de variabilidad: los tratamientos y el error. Si hubiera otro factor influyente, habría que bloquear.
+
+Pregunta. Si tengo cuatro grupos, ¿por qué no hago simplemente varias pruebas te, de a pares?
+
+[pausa 3]
+
+Porque con más de dos grupos corresponde el ANOVA, que prueba todas las medias a la vez con un solo estadístico. Hacer muchas pruebas te por separado es el error típico.
+
+En simple. Más de dos grupos, una pregunta: ¿son todas las medias iguales? La responde el ANOVA.
+
+## La tabla ANOVA
+
+En simple. El ANOVA separa la variación total de los datos en dos partes. La que se debe a los tratamientos, que es la variación entre grupos. Y la que se debe al error, que es la variación dentro de los grupos. Si la primera predomina claramente sobre la segunda, las medias son distintas.
+
+Con detalle. La suma de cuadrados total es igual a la suma de cuadrados de tratamientos, más la suma de cuadrados del error.
+
+Cada una tiene sus grados de libertad. Llamemos ca al número de tratamientos, y ene mayúscula al total de observaciones. Tratamientos: ca menos uno. Error: ene mayúscula menos ca. Total: ene mayúscula menos uno.
+
+Al dividir cada suma de cuadrados por sus grados de libertad se obtiene el cuadrado medio. Y el estadístico efe es el cuadrado medio de tratamientos, dividido por el cuadrado medio del error. Tratamientos arriba, error abajo. Bajo la hipótesis nula sigue una distribución efe, con ca menos uno, y ene mayúscula menos ca grados de libertad.
+
+Se rechaza la hipótesis nula si el efe calculado es mayor que el efe crítico, o si el pe valor es menor que alfa.
+
+Pregunta. Con cuatro tratamientos y dieciséis observaciones, ¿cuántos grados de libertad tiene el error?
+
+[pausa 3]
+
+Doce. Dieciséis menos cuatro. No confundir con los del total, que son quince.
+
+En simple. Total igual a entre más dentro. Efe es entre sobre dentro, cada uno dividido por sus grados de libertad. Efe grande, rechazo.
+
+## Ejemplo a mano: tres métodos de enseñanza
+
+Hagamos un ANOVA completo. Hay doce notas: cuatro alumnos en cada uno de tres métodos de enseñanza. Conferencia, taller, y en línea.
+
+Paso uno, las medias. Conferencia: ochenta y uno coma cinco. Taller: cuarenta y seis coma cinco. En línea: setenta y uno coma cinco. La media general es sesenta y seis coma cinco.
+
+Paso dos, la suma de cuadrados total. Se toma cada nota, se le resta la media general, se eleva al cuadrado, y se suma todo. Da tres mil siete.
+
+Paso tres, la suma de cuadrados de tratamientos. Se toma la media de cada grupo, se le resta la media general, y se eleva al cuadrado. Quince al cuadrado, doscientos veinticinco. Veinte al cuadrado, cuatrocientos. Cinco al cuadrado, veinticinco. Suman seiscientos cincuenta. Y aquí viene el paso que se olvida: hay que multiplicar por el número de observaciones por grupo, que es cuatro. Da dos mil seiscientos.
+
+Paso cuatro. ¿Cuánto es la suma de cuadrados del error?
+
+[pausa 3]
+
+Cuatrocientos siete. Tres mil siete menos dos mil seiscientos.
+
+Paso cinco, grados de libertad. Dos para tratamientos, nueve para el error, once en total. El cuadrado medio de tratamientos es dos mil seiscientos dividido por dos: mil trescientos. El del error es cuatrocientos siete dividido por nueve: cuarenta y cinco coma dos.
+
+Paso seis. Efe es mil trescientos dividido por cuarenta y cinco coma dos. Da veintiocho coma ocho. El pe valor es cero coma cero cero cero uno. Se rechaza la hipótesis nula: el método de enseñanza influye en el rendimiento.
+
+## Ejemplo en R: cuatro métodos de ensamble
+
+Segundo ejemplo de la clase, ahora en erre. Cuatro métodos de ensamble: a, be, ce y de. Cuatro tiempos por método, dieciséis pruebas en orden aleatorio.
+
+En erre el modelo se ajusta con la función a o ve, escribiendo tiempo, explicado por método. Y la tabla se obtiene con summary.
+
+La salida tiene dos filas, una para el método y otra para los residuales. Y cinco columnas. De efe, los grados de libertad: tres y doce. Sam es cu, las sumas de cuadrados: sesenta y nueve coma cinco, y veintinueve coma cinco. Min es cu, los cuadrados medios: veintitrés coma dos, y dos coma cuarenta y seis. El valor efe: nueve coma cuarenta y dos. Y el pe valor: cero coma cero cero dieciocho.
+
+Con alfa de cinco por ciento, ¿qué se concluye?
+
+[pausa 3]
+
+Se rechaza la hipótesis nula. Hay efecto del método sobre el tiempo promedio. También se puede ver con el valor crítico: nueve coma cuarenta y dos es mayor que tres coma cuarenta y nueve.
+
+Pero atención. El ANOVA solo dice que alguna media difiere. No dice cuáles. Para eso hacen falta las comparaciones múltiples, que vienen después de los supuestos.
+
+## Supuestos y residuos
+
+En simple. La validez del ANOVA depende de tres supuestos: normalidad, varianza constante e independencia. Y los tres se revisan con los residuos.
+
+Con detalle. El residuo de una observación es el dato menos la media de su tratamiento. Si los supuestos se cumplen, los residuos se ven como una muestra aleatoria normal, con media cero y varianza constante.
+
+Normalidad: se revisa con el gráfico cu cu de los residuos, o con el test de Shapiro Wilk.
+
+Varianza constante, también llamada homogeneidad: se revisa con el gráfico de residuos contra valores predichos, o con la prueba de Levene.
+
+Independencia: se revisa con el gráfico de residuos contra el orden en que se hicieron las pruebas.
+
+En el ejemplo de los cuatro métodos, Levene da pe valor de cero coma cuarenta y cinco, y Shapiro Wilk, cero coma veintiocho. ¿Se cumplen los supuestos?
+
+[pausa 3]
+
+Sí. En ambos casos el pe valor es mayor que cero coma cero cinco. No se rechaza la homogeneidad ni la normalidad.
+
+Un error frecuente: revisar la normalidad de los datos crudos. En ANOVA se revisa la normalidad de los residuos.
+
+Y los supuestos se cuidan desde antes, con repetición, aleatorización y bloqueo. Por ejemplo, no aleatorizar el orden puede romper la independencia.
+
+En simple. Normalidad, con cu cu o Shapiro. Varianza constante, con residuos contra predichos o Levene. Independencia, con residuos contra orden.
+
+## Comparaciones múltiples: LSD y Tukey
+
+En simple. El ANOVA rechazó. Ahora quiero saber qué pares de medias son los que difieren. Hay dos métodos en la clase. Ele ese de, de Fisher, que es muy sensible. Y Tukey, que es más conservador.
+
+Con detalle. Primero, ¿cuántos pares hay? Ca por ca menos uno, dividido por dos. Con cuatro tratamientos, seis pares.
+
+El método ele ese de, la diferencia mínima significativa, usa la te de Student. Calcula un umbral: el valor te, con los grados de libertad del error, multiplicado por la raíz de dos veces el cuadrado medio del error, dividido por ene. Y declara distintos a los pares cuya diferencia de medias, en valor absoluto, supera ese umbral. Es fácil de calcular, pero trabaja con confianza individual, par por par, no grupal.
+
+Tukey usa otra distribución, la del rango estudentizado, y trabaja con confianza grupal: controla la tasa de error de todo el experimento. Por eso es más conservador y menos potente que ele ese de. Detecta menos diferencias, pero con evidencia más fuerte. En erre es la función Tukey hache ese de, aplicada al modelo.
+
+Ejemplo, con los cuatro métodos de ensamble. Las medias son: a, siete coma veinticinco. Be, ocho coma cinco. Ce, doce coma setenta y cinco. De, diez coma cinco. El umbral ele ese de da dos coma cuarenta y dos.
+
+Entonces, con ele ese de son significativos tres pares. Ce contra a, con diferencia de cinco coma cinco. Ce contra be, con cuatro coma veinticinco. Y de contra a, con tres coma veinticinco. La diferencia entre ce y de es dos coma veinticinco. ¿Es significativa?
+
+[pausa 3]
+
+No. Es menor que dos coma cuarenta y dos.
+
+Con Tukey, en cambio, solo son significativos dos pares: ce contra a, y ce contra be. El par de contra a tiene pe valor de cero coma cero cincuenta y tres, y deja de ser significativo. Ahí se ve que Tukey es menos potente.
+
+Cuando la diferencia es clara, los dos métodos coinciden. Y un cuidado: estas comparaciones se hacen después de un ANOVA significativo, no antes.
+
+En simple. Ele ese de: individual, sensible, detecta más. Tukey: grupal, conservador, detecta menos.
+
+## Tamaño de muestra
+
+Último tema, breve. ¿Cuántas observaciones tomo por tratamiento?
+
+En simple. Depende de cuánta variabilidad espero, y de qué diferencia mínima quiero ser capaz de detectar. Si las pruebas son caras puedo usar menos, pero solo detectaré diferencias grandes.
+
+Con detalle. La fórmula es: dos, por te al cuadrado, por la varianza, dividido por la diferencia mínima al cuadrado. Como el valor te depende de ene, se itera.
+
+Ejemplo de la clase. Con desviación estándar de uno coma cinco, y una diferencia mínima de dos, resulta ene aproximadamente cinco coma uno. Se usan cinco observaciones por tratamiento.
+
+Y la recomendación general. ¿Entre cuántas mediciones por tratamiento se sugiere?
+
+[pausa 3]
+
+Entre cinco y treinta. Cerca de diez si los datos son consistentes, y cerca de treinta si hay mucha dispersión.
+
+## Repaso
+
+Repaso rápido.
+
+¿Cuál es la hipótesis alternativa del ANOVA?
+
+[pausa 2]
+
+Que al menos dos medias son distintas.
+
+¿Cómo se calcula el estadístico efe?
+
+[pausa 3]
+
+Cuadrado medio de tratamientos, dividido por cuadrado medio del error.
+
+¿Cuáles son los grados de libertad de tratamientos y del error?
+
+[pausa 3]
+
+Ca menos uno, y ene mayúscula menos ca.
+
+¿Sobre qué se revisan los supuestos?
+
+[pausa 2]
+
+Sobre los residuos.
+
+¿Qué test revisa la varianza constante?
+
+[pausa 2]
+
+Levene.
+
+Entre ele ese de y Tukey, ¿cuál es más conservador?
+
+[pausa 2]
+
+Tukey. Trabaja con confianza grupal.
+
+Eso fue el módulo dieciocho.

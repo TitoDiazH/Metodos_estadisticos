@@ -1,0 +1,105 @@
+# Clasificación supervisada: LDA
+
+## Clasificación supervisada y el Banco de Ademuz
+
+Ahora toca el módulo quince: clasificación supervisada y análisis discriminante lineal, que abreviamos ele de a.
+
+En simple. En la clasificación supervisada ya sé a qué grupo pertenece cada observación histórica. Con eso construyo una regla, para clasificar observaciones nuevas. Es lo contrario del clastering, donde no había grupos conocidos.
+
+Con detalle. Tengo ene observaciones, varias variables predictoras, y una respuesta categórica que indica el grupo. Busco una función que, dado un caso nuevo, me diga a qué grupo asignarlo. Los métodos del capítulo son tres: ele de a, cu de a, y Naive Bayes.
+
+El ejemplo de toda la unidad es el Banco de Ademuz. Hay dieciséis clientes. De cada uno se conoce el patrimonio y la deuda. Ocho son fallidos y ocho son cumplidores. La media de los fallidos es patrimonio cinco y deuda cinco. La de los cumplidores es patrimonio nueve y deuda tres. Y llega un cliente nuevo, con patrimonio siete y deuda cuatro. ¿Es fallido o cumplidor?
+
+Primer intento: clasificar con una sola variable, cortando en el promedio de las dos medias. Con el patrimonio, el corte queda en siete: fallido si tiene menos de siete. Eso acierta doce de dieciséis, el setenta y cinco por ciento. Con la deuda, el corte queda en cuatro, y acierta solo nueve de dieciséis, el cincuenta y seis por ciento.
+
+Una sola variable no captura toda la información. La idea de Fisher es combinar las dos.
+
+En simple. Supervisado: grupos conocidos, y una regla para clasificar casos nuevos. Y con una sola variable, el banco acierta a lo más setenta y cinco por ciento.
+
+## La función discriminante de Fisher
+
+En simple. Fisher combina las variables en un solo puntaje. El puntaje es un peso por el patrimonio, más otro peso por la deuda. Y los pesos se eligen para separar los grupos lo mejor posible.
+
+¿Qué significa separar bien? Dos cosas a la vez. Que los puntajes promedio de los grupos queden lo más lejos posible entre sí. Eso es la señal. Y que los puntajes dentro de cada grupo queden lo más juntos posible. Eso es el ruido. Fisher maximiza el cociente entre señal y ruido.
+
+Con detalle. La señal se mide con la dispersión entre grupos, y el ruido con la dispersión dentro de los grupos, que se representa con la matriz doble u. Es la misma lógica del ANOVA, entre contra dentro, pero con matrices. Con dos grupos, los pesos salen de multiplicar la inversa de la matriz doble u por la diferencia de medias de los grupos. La clase dice que no hay que memorizar la fórmula. Sí hay que entender qué hace.
+
+Una vez que tengo el puntaje, la regla es simple. Calculo el puntaje promedio de cada grupo, y el corte es el punto medio entre esos dos promedios.
+
+En el Banco de Ademuz, los pesos resultan ser menos cero coma cero setenta y cuatro para el patrimonio, y más cero coma cero sesenta y siete para la deuda. Tiene sentido: más patrimonio baja el puntaje, más deuda lo sube. El puntaje promedio de los fallidos es menos cero coma cero cuatro, y el de los cumplidores, menos cero coma cuarenta y siete. El corte queda en menos cero coma veinticinco. Si el puntaje es mayor que el corte, fallido. Si es menor, cumplidor.
+
+¿Y el cliente nuevo, con patrimonio siete y deuda cuatro? Su puntaje da menos cero coma veinticinco. ¿Qué significa eso?
+
+[pausa 3]
+
+Que cae justo en la frontera. Ele de a no logra decidirse con este cliente. Lo retomamos en el próximo módulo.
+
+¿Y qué tan bien clasifica a los dieciséis clientes originales? Acierta quince de dieciséis, el noventa y tres coma setenta y cinco por ciento. Contra setenta y cinco usando solo el patrimonio. El único error es el cliente trece, un cumplidor con patrimonio bajo y deuda alta, que queda clasificado como fallido. Ojo: una lámina de la clase dice que el error es el cliente siete, pero su propia tabla muestra que es el trece.
+
+Un último punto. De los pesos, solo importa la dirección. Se pueden multiplicar por cualquier número, incluso negativo, y la clasificación no cambia. Por eso erre entrega otros valores para los mismos datos. Y por eso el signo o el tamaño de un peso no se interpreta como importancia.
+
+Pregunta. ¿Qué maximiza el criterio de Fisher?
+
+[pausa 3]
+
+La separación entre los grupos, relativa a la dispersión dentro de cada grupo. Señal sobre ruido.
+
+En simple. Fisher mezcla las variables en un puntaje que aleja los grupos y aprieta cada grupo. El corte es el punto medio de los puntajes promedio.
+
+## Supuestos y la función lda en R
+
+En simple. Ele de a funciona bien bajo tres supuestos. Y en erre, una función lo calcula todo.
+
+Los supuestos. Uno: normalidad multivariada dentro de cada grupo. Se revisa con gráficos cu cu o con el test de Shapiro. Ele de a es bastante robusto si la desviación es leve. Dos: los grupos tienen la misma matriz de covarianza. Tres: las observaciones son independientes, lo que depende del diseño del estudio y no tiene un test específico.
+
+Pregunta. ¿Con qué test se revisa que las covarianzas de los grupos sean iguales?
+
+[pausa 3]
+
+Con el test eme de Box. Si se rechaza la igualdad, se pasa a cu de a, que es el tema del módulo siguiente. Cuidado con confundirlo con el test de Bartlett de esfericidad, que es otra cosa.
+
+En erre, la función se llama ele de a, en minúsculas, y viene en el paquete MASS. Se le entrega una fórmula: el grupo, explicado por las variables. Después se usa predict, que devuelve tres cosas. Class, con la clasificación. Posterior, con la probabilidad de pertenecer a cada grupo. Y equis, con los puntajes discriminantes.
+
+Para evaluar se arma la matriz de confusión con la función table, cruzando el grupo real con el predicho. La exactitud es la suma de la diagonal dividida por el total. En Ademuz: siete cumplidores bien clasificados y uno mal. Ocho fallidos bien. Quince de dieciséis.
+
+Al imprimir el modelo aparecen tres bloques. Las probabilidades a priori, que son la proporción de cada grupo: aquí cero coma cinco y cero coma cinco. Las medias por grupo. Y los coeficientes del discriminante lineal, que en erre son menos cero coma cuarenta y dos, y cero coma treinta y ocho. Distintos a los calculados a mano, pero con la misma dirección.
+
+Y para el cliente nuevo, erre entrega probabilidad posterior de cero coma cinco para cada grupo. La frontera exacta.
+
+En simple. Tres supuestos: normalidad, covarianzas iguales, independencia. La igualdad de covarianzas se prueba con eme de Box. Y en erre, ele de a más predict.
+
+## Repaso
+
+Repaso rápido.
+
+¿Qué diferencia hay entre clasificación supervisada y clastering?
+
+[pausa 3]
+
+En la supervisada los grupos son conocidos.
+
+En Ademuz, ¿cuánto acierta el patrimonio solo, y cuánto el discriminante de Fisher?
+
+[pausa 3]
+
+Setenta y cinco por ciento, contra noventa y tres coma setenta y cinco.
+
+¿Dónde se ubica el corte del discriminante?
+
+[pausa 2]
+
+En el punto medio entre los puntajes promedio de los dos grupos.
+
+¿Cuáles son los tres supuestos de ele de a?
+
+[pausa 3]
+
+Normalidad multivariada, covarianzas iguales e independencia.
+
+¿Qué hago si el test eme de Box rechaza?
+
+[pausa 2]
+
+Uso cu de a.
+
+Eso fue el módulo quince.

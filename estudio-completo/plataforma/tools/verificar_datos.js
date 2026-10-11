@@ -38,9 +38,19 @@ unicos(D.pregunta, "pregunta");
 unicos(D.memorizar, "memorizar");
 const idRlab = unicos(D.rlab, "rlab");
 unicos(D.diferencia, "diferencia");
+unicos(D.audio, "audio");
 
 const req = (o, campos) => campos.forEach((c) => { if (o[c] === undefined || o[c] === null || o[c] === "" || (Array.isArray(o[c]) && !o[c].length)) err(o, `falta el campo «${c}»`); });
 const fuenteOk = (o) => { if (!Array.isArray(o.fuente) || !o.fuente.length) err(o, "sin fuente"); };
+
+/* ── Clases en audio (data/audio/*.js los genera tools/generar_audio.py) ─ */
+D.audio.forEach((a) => {
+  req(a, ["id", "modulo", "titulo", "archivo", "duracion", "capitulos"]);
+  if (!idModulo[a.modulo]) err(a, `audio de un módulo que no existe «${a.modulo}»`);
+  if (a.archivo && !fs.existsSync(path.join(RAIZ, a.archivo))) err(a, `no existe ${a.archivo}: corre tools/generar_audio.py`);
+  const guion = path.join(RAIZ, "tools", "guiones", a.modulo + ".txt");
+  if (!fs.existsSync(guion)) err(a, `no existe su guion tools/guiones/${a.modulo}.txt`);
+});
 
 /* ── Pruebas y temario ──────────────────────────────────────────────── */
 const enTemario = {};

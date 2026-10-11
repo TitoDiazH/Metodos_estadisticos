@@ -19,6 +19,8 @@ plataforma/
     manifiesto.js   GENERADO: lista de archivos de data/
     pruebas.js      P1/P2/P3 y su temario        fuentes.js   inventario de fuentes por ID
     modulos/  preguntas/  desarrollo/  memorizar/  rlab/  diferencias/
+    audio/          GENERADO: duración y capítulos de cada clase en audio
+  audio/            mp3 de las clases en audio (GENERADOS por tools/generar_audio.py)
   vendor/katex/     KaTeX 0.16.11 local (fórmulas)
   tools/            generador, verificadores, prueba funcional y plantillas
 ```
@@ -98,6 +100,26 @@ Un concepto puede llevar `figura: { tipo, pie, donde, …datos }` (o una lista).
 | `anova` | SC total, entre y dentro | `grupos`, `ejeY` |
 
 Para un tipo nuevo: `F.tipo("nombre", function (lienzo, parámetros, estado) { … })` en `js/figuras*.js`. `verificar_datos.js` rechaza tipos desconocidos y figuras sin pie; `prueba_funcional.js` dibuja todas y mueve sus controles.
+
+### Clases en audio (🎧)
+
+Cada clase es un guion de texto en `tools/guiones/<id del módulo>.txt` que `tools/generar_audio.py` convierte en `audio/<id>.mp3` con **Piper**, un TTS local (sin internet ni GPU; unos 80 s por clase de 18 min). El mismo script escribe `data/audio/<id>.js` con la duración y los capítulos.
+
+```bash
+# una sola vez
+python3 -m venv tools/.venv-tts && tools/.venv-tts/bin/pip install piper-tts
+tools/.venv-tts/bin/python -m piper.download_voices --data-dir tools/voces es_MX-claude-high
+# cada vez que se escribe o cambia un guion (solo regenera los que cambiaron)
+tools/.venv-tts/bin/python tools/generar_audio.py && node tools/generar_manifiesto.js && node tools/verificar_datos.js
+```
+
+Cómo escribir un guion (modelo: `tools/guiones/m05-hipotesis-una-poblacion.txt`):
+
+- Primera línea `# Título`; cada `## Capítulo` es un punto de salto en el reproductor; párrafos separados por una línea en blanco; `[pausa 3]` deja 3 s de silencio.
+- Por cada concepto: **en simple → con detalle (fórmula dicha en palabras, ejemplo de la clase, R) → pregunta + `[pausa]` + respuesta → otra vez en simple**. Cerrar con un repaso de preguntas rápidas.
+- Se escribe **como se dice**: «equis barra», «ji cuadrado», «pe valor», «te punto test», «en erre». El script rechaza símbolos (`$`, `=`, `μ`, `²`…).
+- Solo contenido del módulo ya redactado en `data/modulos/` (mismos ejemplos y números, redondeados para el oído).
+- La voz, el ritmo, las pausas y el bitrate son constantes al inicio de `generar_audio.py`.
 
 ### Preguntas (Fase 6)
 

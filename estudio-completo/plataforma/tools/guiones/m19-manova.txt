@@ -1,0 +1,145 @@
+# MANOVA
+
+## Qué es el MANOVA
+
+Ahora toca el módulo diecinueve: MANOVA, el análisis de varianza multivariado.
+
+En simple. El ANOVA compara las medias de varios grupos en una sola variable. El MANOVA hace lo mismo, pero cuando en cada individuo se miden varias variables a la vez. En vez de comparar medias, compara vectores de medias. Responde: ¿difieren los grupos, considerando todas las variables en conjunto?
+
+¿Y por qué no hacer simplemente un ANOVA por cada variable? Por dos razones, que hay que saberse.
+
+Primera: infla el error tipo uno global. Cada prueba tiene su propia probabilidad de error, y al hacer muchas, la probabilidad de equivocarse en al menos una crece.
+
+Segunda: ignora la correlación entre las variables respuesta.
+
+El MANOVA contrasta todo a la vez. Controla el error global, aprovecha la estructura de covarianzas, y gana potencia: puede detectar diferencias que los ANOVA por separado no ven.
+
+Pregunta. ¿Cuáles son los dos problemas de hacer un ANOVA por variable?
+
+[pausa 4]
+
+Infla el error tipo uno global, e ignora la correlación entre las variables.
+
+En simple. MANOVA es un ANOVA donde la respuesta es un vector. Una sola prueba, para todas las variables juntas.
+
+## Modelo, hipótesis y supuestos
+
+En simple. Cada grupo tiene su vector de medias, con una media por cada variable. La pregunta es si todos esos vectores son iguales.
+
+Con detalle. La hipótesis nula dice que los vectores de medias de todos los grupos son iguales. La alternativa, que al menos uno es distinto.
+
+Los supuestos son tres, y se parecen a los de ele de a. Normalidad multivariada dentro de cada grupo. La misma matriz de covarianzas en todos los grupos. Y observaciones independientes.
+
+El ejemplo de la guía de MANOVA: treinta estudiantes, asignados al azar a tres metodologías de enseñanza, diez por grupo. Las metodologías son tradicional, aprendizaje basado en problemas, y aprendizaje basado en proyectos. A cada estudiante se le mide el rendimiento en química, física y biología. La hipótesis nula dice que el vector de las tres medias es igual en las tres metodologías.
+
+## W, B y la lambda de Wilks
+
+En simple. El ANOVA separa la suma de cuadrados en dentro y entre. El MANOVA hace lo mismo, pero con matrices. Y la lambda de Wilks resume esas matrices en un solo número, que dice qué fracción de la variabilidad total no se explica por el factor.
+
+Con detalle. La matriz doble u contiene las sumas de cuadrados y productos dentro de los grupos. Equivale a la suma de cuadrados del error. La matriz be contiene lo mismo entre grupos. Equivale a la suma de cuadrados de tratamientos. Y la matriz total, te, es doble u más be.
+
+La lambda de Wilks es el determinante de doble u, dividido por el determinante de doble u más be. Dentro, sobre total.
+
+Ahora piensa. Si los grupos son muy parecidos, la matriz be es casi cero. ¿Cuánto vale lambda, aproximadamente?
+
+[pausa 3]
+
+Cerca de uno. Y si los grupos están muy separados, be es grande y lambda se acerca a cero. Por eso, y esto es al revés de lo habitual, se rechaza la hipótesis nula cuando lambda es pequeña. No cuando es grande.
+
+Erre convierte la lambda en un estadístico efe aproximado, con su pe valor. Los grados de libertad del numerador son pe, por ge menos uno. Pe es el número de variables, y ge el número de grupos.
+
+En el ejemplo de las metodologías, lambda da cero coma cero cuarenta y nueve. Es decir, solo cerca de un cinco por ciento de la variabilidad queda sin explicar por la metodología. El efe aproximado es veintinueve coma tres. Con tres variables y tres grupos, ¿cuántos grados de libertad tiene el numerador?
+
+[pausa 3]
+
+Seis. Tres por dos. El pe valor es prácticamente cero. Se rechaza la hipótesis nula: la metodología afecta el rendimiento conjunto en las tres asignaturas.
+
+Además de Wilks hay otros tres estadísticos: la traza de Pillai, la traza de Lawley Hotelling, y la raíz mayor de Roy. Todos se calculan a partir de los valores propios de la matriz doble u inversa por be.
+
+En erre, el modelo se ajusta con la función manova. A la izquierda de la fórmula van las variables respuesta, unidas con ce bind, y a la derecha el factor. Luego, summary, con el argumento test igual a Wilks.
+
+En simple. Lambda es dentro sobre total. Lambda chica, grupos separados, rechazo.
+
+## Verificación de supuestos
+
+En simple. Antes de confiar en el MANOVA se revisan dos supuestos con tests: la normalidad multivariada, con Mardia, y la homogeneidad de covarianzas, con eme de Box.
+
+Con detalle. La normalidad multivariada en cada grupo se revisa con el test de Mardia, o con un gráfico cu cu de distancias de Mahalanobis.
+
+La homogeneidad de covarianzas se revisa con el test eme de Box, el mismo de ele de a. Sus grados de libertad son: pe, por pe más uno, dividido por dos, y todo eso por ge menos uno. Con tres variables y tres grupos: tres por cuatro, dividido por dos, es seis. Por dos, doce grados de libertad.
+
+¿Y qué pasa si los supuestos fallan? Si falla la homogeneidad, el estadístico más robusto es el de Pillai. Si falla la normalidad, se consideran transformaciones.
+
+En el ejemplo de la guía, el test eme de Box resulta significativo, con doce grados de libertad. Es decir, no se cumple la homogeneidad. ¿Significa que el MANOVA no sirve?
+
+[pausa 3]
+
+No. Cuando los tamaños de muestra son iguales, como aquí con diez por grupo, el MANOVA es relativamente robusto a esa violación. Se interpreta con cautela, pero se interpreta.
+
+En simple. Mardia para normalidad. Eme de Box para covarianzas. Y si falla Box, mirar Pillai.
+
+## Relación con el análisis discriminante
+
+En simple. MANOVA y análisis discriminante son dos caras del mismo problema. Los dos usan las matrices doble u y be. El MANOVA responde si los grupos difieren. El discriminante responde cómo se separan, y en qué dirección.
+
+Con detalle. Las funciones discriminantes son los vectores propios de la matriz doble u inversa por be. Y sus valores propios miden cuánta separación aporta cada una.
+
+Aquí calzan los otros estadísticos. La raíz mayor de Roy es el mayor valor propio de esa matriz. Solo el mayor. Y la traza de Lawley Hotelling es la suma de todos los valores propios. En el ejemplo de las flores iris, los valores propios son treinta y dos coma diecinueve, y cero coma veintinueve. Entonces Roy vale treinta y dos coma diecinueve, y Lawley Hotelling, la suma: treinta y dos coma cuarenta y ocho.
+
+La secuencia natural es: primero MANOVA, para saber si los grupos difieren. Y si difieren, discriminante, para ver qué combinación de variables los separa.
+
+## Ejemplos y post hoc
+
+En simple. Si el MANOVA rechaza, todavía no sé qué variable ni qué grupos son los que difieren. El paso siguiente es el post hoc: un ANOVA por cada variable, y después Tukey si corresponde.
+
+Primer ejemplo, iris. Ciento cincuenta flores, tres especies, cuatro medidas. La lambda de Wilks da cero coma cero veintitrés, muy cerca de cero. El efe aproximado es cerca de doscientos, y el pe valor, prácticamente cero. Los cuatro estadísticos coinciden: las especies difieren mucho en su vector de medias. Las medidas de pétalo son las que más separan.
+
+Segundo ejemplo, las metodologías. Ya vimos que el MANOVA rechaza. Ahora el post hoc. En erre, la función summary punto a o ve, aplicada al modelo, entrega un ANOVA por cada variable. Resulta significativo en las tres asignaturas. Y luego, Tukey sobre química muestra que las tres diferencias entre metodologías son significativas. La de proyectos tiene la media más alta, y la tradicional, la más baja.
+
+Pregunta. Después de un MANOVA significativo, ¿qué hago para saber qué variables difieren?
+
+[pausa 3]
+
+Un ANOVA por variable, y si corresponde, Tukey.
+
+## Repaso
+
+Repaso rápido.
+
+¿Qué compara el MANOVA?
+
+[pausa 2]
+
+Los vectores de medias de varios grupos.
+
+¿Cómo se calcula la lambda de Wilks?
+
+[pausa 3]
+
+Determinante de doble u, sobre determinante de doble u más be.
+
+¿Se rechaza con lambda grande o pequeña?
+
+[pausa 2]
+
+Pequeña.
+
+¿Qué test revisa la homogeneidad de covarianzas, y cuál la normalidad multivariada?
+
+[pausa 3]
+
+Eme de Box, y Mardia.
+
+Si falla la homogeneidad, ¿qué estadístico es más robusto?
+
+[pausa 2]
+
+Pillai.
+
+¿A qué es igual la raíz mayor de Roy?
+
+[pausa 3]
+
+Al mayor valor propio de doble u inversa por be.
+
+Eso fue el módulo diecinueve.

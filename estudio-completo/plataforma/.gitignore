@@ -1,2 +1,5 @@
 tools/.cache_r.json
 tools/generadores/.cache_r.json
+# TTS local (tools/generar_audio.py): entorno de Python y voces de Piper, se bajan de nuevo
+tools/.venv-tts/
+tools/voces/

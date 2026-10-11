@@ -9,7 +9,7 @@
   "use strict";
   var P = (typeof window !== "undefined" ? window : globalThis).PLATAFORMA;
 
-  var TIPOS = ["prueba", "fuente", "modulo", "pregunta", "memorizar", "rlab", "diferencia"];
+  var TIPOS = ["prueba", "fuente", "modulo", "pregunta", "memorizar", "rlab", "diferencia", "audio"];
   /* Tipos de pregunta que la app sabe mostrar y corregir. */
   P.TIPOS_PREGUNTA = {
     "alternativas":     { nombre: "Alternativas",            icono: "🔘" },
@@ -52,12 +52,13 @@
   var idx = null;
   P.indexar = function () {
     idx = { modulo: {}, pregunta: {}, fuente: {}, prueba: {}, rlab: {}, memorizar: {},
-            pregPorModulo: {}, conceptos: {} };
+            pregPorModulo: {}, conceptos: {}, audio: {} };
     datos.modulo.sort(function (a, b) { return (a.orden || 0) - (b.orden || 0); });
     datos.prueba.forEach(function (x) { idx.prueba[x.id] = x; });
     datos.fuente.forEach(function (x) { idx.fuente[x.id] = x; });
     datos.rlab.forEach(function (x) { idx.rlab[x.id] = x; });
     datos.memorizar.forEach(function (x) { idx.memorizar[x.id] = x; });
+    datos.audio.forEach(function (x) { idx.audio[x.modulo] = x; });
     datos.modulo.forEach(function (m) {
       idx.modulo[m.id] = m;
       (m.conceptos || []).forEach(function (c) { idx.conceptos[c.id] = { concepto: c, modulo: m }; });
@@ -74,6 +75,8 @@
   P.pregunta = function (id) { return idx.pregunta[id] || null; };
   P.fuente = function (id) { return idx.fuente[id] || null; };
   P.prueba = function (id) { return idx.prueba[id] || null; };
+  /* Clase en audio de un módulo (o null si todavía no se generó). */
+  P.audioDe = function (moduloId) { return idx.audio[moduloId] || null; };
 
   /* Temario de una prueba: sus módulos + (si es acumulativa) los de las anteriores. */
   P.temario = function (pruebaId) {

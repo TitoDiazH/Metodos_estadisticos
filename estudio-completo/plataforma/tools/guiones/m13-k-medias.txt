@@ -1,0 +1,171 @@
+# K-medias y elección de k
+
+## Qué hace K-medias
+
+Ahora toca el módulo trece: ca medias y cómo elegir el número de clústeres.
+
+En simple. Los métodos jerárquicos construyen un árbol y después se corta. Ca medias no. Ca medias parte los datos directamente en ca grupos, y ese número ca lo decides tú antes de empezar. Busca que cada grupo sea lo más compacto posible alrededor de su centro, que se llama centroide.
+
+Con detalle. El centroide de un clúster es la media de sus observaciones. Ca medias busca la partición que minimiza la variabilidad interna total. Es decir, la suma de las distancias al cuadrado de cada observación al centroide de su propio clúster. Esa cantidad se conoce como doble u ese ese, la suma de cuadrados dentro de los clústeres.
+
+Tiene cuatro características. Requiere especificar ca de antemano. Es iterativo. Converge a un óptimo local, que depende de dónde se parte. Y es muy eficiente computacionalmente.
+
+Pregunta. ¿Ca medias busca el mejor valor de ca?
+
+[pausa 3]
+
+No. El número ca se le entrega. Lo que minimiza es la suma de distancias al cuadrado a los centroides, para ese ca.
+
+En simple. Ca medias: tú das ca, y el método arma ca grupos compactos alrededor de sus centroides.
+
+## El algoritmo paso a paso
+
+En simple, el algoritmo tiene cuatro pasos. Inicialización: elegir ca centroides iniciales. Asignación: cada observación se va con el centroide más cercano, usando distancia euclídea. Actualización: se recalcula cada centroide como la media de las observaciones que le tocaron. Y convergencia: se repiten asignación y actualización hasta que las asignaciones dejan de cambiar.
+
+Ejemplo de la clase, con cinco empresas estandarizadas y ca igual a dos. Los centroides iniciales son la empresa uno y la empresa ocho.
+
+Primera iteración. Se calcula la distancia de cada empresa a los dos centroides. La empresa dos está a cero coma sesenta y cinco del primero y a dos coma noventa y dos del segundo, así que va al clúster uno. La empresa cinco está a uno coma sesenta y cuatro del primero y a dos coma sesenta del segundo. También al uno. La empresa siete está a dos coma ochenta y uno del primero y a cero coma cuarenta y dos del segundo. Va al clúster dos. Resultado: empresas uno, dos y cinco por un lado. Siete y ocho por el otro.
+
+Ahora se recalculan los centroides. El del primer clúster es el promedio de las empresas uno, dos y cinco, coordenada por coordenada. El del segundo, el promedio de la siete y la ocho.
+
+Segunda iteración. Se vuelven a calcular las distancias, ahora a los centroides nuevos, y se reasigna. Ninguna empresa cambia de grupo. Entonces, ¿qué pasa?
+
+[pausa 3]
+
+El algoritmo se detiene. Convergió en dos iteraciones. El resultado coincide con el de singl y complit del módulo anterior.
+
+Un punto teórico. Ca medias siempre converge, porque la suma de cuadrados baja en cada iteración y no puede bajar de cero. Pero converge a un óptimo local, no necesariamente al mejor agrupamiento posible.
+
+Errores típicos al hacerlo a mano. Recalcular el centroide con todos los puntos, en vez de solo los de ese clúster. Y detenerse después de la primera asignación, sin comprobar que nada cambia.
+
+En simple. Asignar al más cercano, recalcular centros, y repetir hasta que nadie se mueva.
+
+## Inicialización
+
+En simple. El resultado depende de dónde parten los centroides. Si parten muy juntos, el algoritmo puede terminar en un óptimo local malo. Hay dos remedios.
+
+El primero es ca mins plas plas. La idea es elegir centroides iniciales bien dispersos. El primer centroide se elige al azar entre las observaciones. Para cada punto se calcula su distancia al centroide más cercano ya elegido. Y el siguiente centroide se elige con probabilidad proporcional a esa distancia al cuadrado. Así, los puntos lejanos tienen más probabilidad de ser elegidos. Se repite hasta tener ca centroides, y luego se corre ca medias normal.
+
+El segundo remedio es probar muchas inicializaciones y quedarse con la mejor. En erre, eso es el argumento ene start de la función ca mins. Pregunta: ¿qué hace ene start igual a veinticinco?
+
+[pausa 3]
+
+Ejecuta veinticinco inicializaciones distintas, y devuelve la de menor suma de cuadrados. No son veinticinco iteraciones ni veinticinco clústeres. El número de clústeres se indica con el argumento centers.
+
+Un cuidado. Una lámina de la clase dice que la función ca mins usa ca mins plas plas por defecto. La ayuda de erre dice otra cosa: elige filas al azar como centros iniciales. Si te lo preguntan, responde según la clase, pero ten presente la diferencia.
+
+En simple. Mala partida, mal resultado. Se arregla con centroides dispersos, o con muchas partidas.
+
+## Ventajas, limitaciones y cuándo usarlo
+
+Esto se pregunta en los ejercicios de preparación: mencione dos ventajas y dos desventajas.
+
+Ventajas. Es rápido y escalable a millones de observaciones. Es fácil de implementar e interpretar. Funciona bien con clústeres esféricos y de tamaño similar. Y entrega directamente los ca grupos, sin cortar un dendrograma.
+
+Limitaciones. Requiere especificar ca de antemano. Es sensible a la inicialización. Asume clústeres esféricos de tamaño similar. Es sensible a los valores atípicos, porque mueven los centroides. Y no produce dendrograma.
+
+¿Cuándo usar cada uno? Jerárquicos: datos pequeños o medianos, cuando quiero explorar distintos valores de ca mirando el dendrograma, o cuando los clústeres tienen forma irregular. Ca medias: datos grandes, cuando tengo una idea de ca, y busco eficiencia.
+
+Verdadero o falso. Ca medias entrega un dendrograma que permite elegir ca después de ejecutar el algoritmo.
+
+[pausa 3]
+
+Falso. No hay jerarquía ni dendrograma. Ca se fija antes.
+
+## K-medias en R
+
+Son tres pasos. Estandarizar siempre, con scale. Ejecutar ca mins, con centers igual a ca, y ene start igual a veinticinco. Y leer tres componentes del resultado.
+
+El componente cluster tiene la asignación de cada observación. El componente centers tiene los centroides finales, en la escala en que se entregaron los datos. Y el componente tot punto within ese ese tiene la suma de cuadrados total.
+
+Dos cuidados al interpretar. Primero, si los datos se estandarizaron, los centroides están en unidades estandarizadas, no en las originales. Un centroide de menos cero coma noventa y tres en inversión significa inversión bajo la media. Segundo, el número de cada clúster es arbitrario. Con otra semilla pueden salir permutados. Lo que importa es qué observaciones quedan juntas.
+
+Y un detalle de la pauta de la prueba dos: cómo volver a las unidades originales si se normalizó con min max. Se multiplica por el rango y se suma el mínimo. Si el mínimo es cien y el máximo doscientos, ¿a cuánto corresponde un centroide de cero coma dos?
+
+[pausa 4]
+
+A ciento veinte. Cero coma dos por cien, más cien.
+
+## Elegir k: el método del codo
+
+¿Y cómo sé qué ca usar?
+
+En simple. Busco un equilibrio entre dos cosas. Que los clústeres sean compactos, y que no sean demasiados. El método del codo grafica la suma de cuadrados para cada valor de ca, y busca el punto donde la curva se dobla: donde agregar otro clúster ya casi no mejora nada.
+
+Con detalle. La suma de cuadrados siempre baja al aumentar ca, porque subdividir siempre compacta. Con ca igual a ene, cada observación es su propio clúster, y la suma de cuadrados es cero. Por eso no sirve elegir el ca con la suma más baja. Lo que se mira es cuánto baja en cada paso.
+
+Ejemplo de la clase. Con un clúster, la suma de cuadrados es cien. Con dos, sesenta. Con tres, cuarenta y cinco. Con cuatro, cuarenta y dos. Con cinco, cuarenta y uno. Las bajadas son cuarenta, quince, tres y uno. ¿Dónde está el codo?
+
+[pausa 4]
+
+En ca igual a tres. Hasta ahí la mejora es sustancial. Después es marginal.
+
+En la ayudantía cinco, con seis clientes, la suma de cuadrados cae de tres coma cuatro a cero coma cero nueve al pasar de uno a dos clústeres, y después casi no cambia. Codo en ca igual a dos.
+
+En la prueba no basta con decir el número. Hay que justificar: antes del codo la mejora es grande, después es marginal.
+
+En simple. La suma de cuadrados siempre baja. No busco el mínimo, busco el codo.
+
+## Coeficiente de silueta
+
+Segunda herramienta para elegir ca, y también para validar.
+
+En simple. La silueta mide qué tan bien calza cada observación en su clúster, comparado con el clúster vecino. Combina cohesión y separación.
+
+Con detalle. Para cada observación se calculan dos números. A es la distancia promedio a las otras observaciones de su mismo clúster. Mide cohesión. Be es la distancia promedio a las observaciones del clúster vecino más cercano. Mide separación. La silueta es be menos a, dividido por el mayor de los dos.
+
+Va de menos uno a uno. Cerca de uno: muy bien asignada. Cerca de cero: está en el borde entre dos clústeres. Negativa: podría estar mejor en otro clúster.
+
+Pregunta. Una observación tiene a igual a dos, y be igual a ocho. ¿Cuánto vale su silueta?
+
+[pausa 4]
+
+Cero coma setenta y cinco. Ocho menos dos es seis, dividido por ocho. Está mucho más cerca de los suyos que de los vecinos.
+
+Ejemplo de la ayudantía cinco. Con ca igual a dos, las siluetas individuales van de cero coma ochenta y tres a cero coma noventa y dos. Todas cerca de uno, ninguna negativa. No hay observaciones mal asignadas. Y la pauta de la prueba dos usa justamente esa frase: todos los valores son mayores que cero, por lo que no hay ninguna mal asignada.
+
+Ojo con el cero. Silueta cero no es mala asignación, es estar en el borde. Mala asignación es silueta negativa.
+
+Ventajas: es una sola métrica fácil de interpretar, considera cohesión y separación, identifica observaciones mal clasificadas, y sirve para cualquier algoritmo. Limitaciones: es costosa de calcular, favorece clústeres convexos y de tamaño similar, depende de la distancia elegida, y es inestable con atípicos.
+
+La regla práctica es combinarla con el codo. Si los dos coinciden, hay confianza.
+
+En erre es la función silhouette, del paquete cluster.
+
+En simple. A es qué tan cerca estoy de los míos. Be, qué tan lejos de los vecinos. Silueta cerca de uno, bien. Negativa, mal asignada.
+
+## Repaso
+
+Repaso rápido.
+
+¿Qué minimiza ca medias?
+
+[pausa 3]
+
+La suma de distancias al cuadrado de cada observación a su centroide.
+
+¿Cuándo se detiene el algoritmo?
+
+[pausa 2]
+
+Cuando las asignaciones ya no cambian.
+
+¿Converge al óptimo global?
+
+[pausa 2]
+
+No necesariamente. A un óptimo local.
+
+¿Por qué no elijo el ca con la menor suma de cuadrados?
+
+[pausa 3]
+
+Porque siempre baja al aumentar ca. Se busca el codo.
+
+¿Qué indica una silueta negativa?
+
+[pausa 2]
+
+Que la observación podría estar mejor en otro clúster.
+
+Eso fue el módulo trece.

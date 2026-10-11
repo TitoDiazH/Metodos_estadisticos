@@ -1,0 +1,129 @@
+# Análisis de conglomerados: definición, pasos, distancias y estandarización
+
+## Qué es el clustering y sus pasos
+
+Ahora toca el módulo once: análisis de conglomerados, distancias y estandarización.
+
+En simple. El análisis de conglomerados, o clastering, agrupa observaciones de modo que las de un mismo grupo se parezcan entre sí, y las de grupos distintos se diferencien. Cada grupo se llama clúster. Y lo importante: nadie nos dice de antemano cuáles son los grupos. Salen de los datos.
+
+Con más detalle. Por eso se dice que es aprendizaje no supervisado: no hay etiquetas previas. Lo que se busca es una partición de los datos que cumpla tres condiciones. Cobertura: toda observación queda en algún clúster. Disjuntividad: ninguna observación queda en dos clústeres a la vez. Y no vacío: ningún clúster queda sin observaciones. El objetivo es que la variabilidad dentro de cada grupo sea mínima, eso es la cohesión, y que la diferencia entre grupos sea máxima, eso es la separación.
+
+El análisis tiene cinco pasos. Uno, preparar los datos, es decir, limpiar y estandarizar. Dos, definir la distancia. Tres, elegir el algoritmo, que puede ser jerárquico o particionado. Cuatro, determinar el número de clústeres, con el codo, la silueta o el dendrograma. Y cinco, validar e interpretar.
+
+Pregunta. ¿Qué distingue al clastering de la clasificación supervisada?
+
+[pausa 3]
+
+Que en el clastering no hay etiquetas previas. En la clasificación ya conocemos los grupos y queremos asignar casos nuevos. En el clastering los grupos emergen de los datos.
+
+En simple otra vez. Clastering: agrupar sin etiquetas. Parecidos adentro, distintos afuera. Y cinco pasos: datos, distancia, algoritmo, número de clústeres, validar.
+
+## Distancias numéricas
+
+Para agrupar lo parecido, primero hay que medir qué tan parecidas son dos observaciones. Eso se hace con una distancia.
+
+En simple. La distancia más usada es la euclídea, que es la línea recta entre dos puntos. Hay otras dos muy comunes: Manhattan y Chebyshev. Y las tres son casos de una misma familia, la de Minkowski.
+
+Con detalle. La distancia de Minkowski toma las diferencias entre dos observaciones, variable por variable, en valor absoluto. Las eleva a un exponente lambda, las suma, y saca la raíz lambda. Si lambda es uno, queda la distancia Manhattan: simplemente la suma de las diferencias absolutas. Si lambda es dos, queda la euclídea: raíz de la suma de las diferencias al cuadrado. Y si lambda es infinito, queda Chebyshev: la mayor diferencia en una sola variable.
+
+Ejemplo de la clase. Hay ocho empresas con inversión y ventas. La empresa uno tiene dieciséis y diez. La empresa dos tiene doce y catorce. Las diferencias son cuatro en inversión y cuatro en ventas. ¿Cuánto vale la distancia Manhattan?
+
+[pausa 3]
+
+Ocho. Cuatro más cuatro. La euclídea es la raíz de dieciséis más dieciséis, que da cinco coma sesenta y seis. Y Chebyshev es cuatro, la mayor diferencia.
+
+En erre se usa la función dist, y el método se indica con un texto: euclidean, manhattan, o maximum. Ojo con ese último: Chebyshev en erre se llama maximum.
+
+Hay una cuarta distancia, distinta en espíritu: la basada en la correlación. Se usa cuando interesa el patrón y no el nivel. Por ejemplo, dos clientes que suben y bajan su consumo al mismo tiempo, aunque uno consuma mucho más que el otro. Se calcula como uno menos la correlación entre las dos observaciones. Va de cero a dos. Cero significa correlación perfecta positiva. Uno, sin correlación. ¿Y cuándo vale dos?
+
+[pausa 3]
+
+Cuando la correlación es menos uno, perfecta negativa. Uno menos menos uno es dos. Esta distancia no cambia si se cambia la escala. En erre se calcula como uno menos cor de la traspuesta de los datos. La traspuesta es necesaria porque la correlación se calcula entre filas, entre observaciones, no entre columnas.
+
+Un dato más: la euclídea al cuadrado es la que usa el método de Ward, y amplifica las distancias grandes.
+
+En simple. Manhattan suma las diferencias. Euclídea es la línea recta. Chebyshev es la diferencia más grande. Y la de correlación, uno menos erre, mira el patrón y no el tamaño.
+
+## Distancias binarias
+
+¿Qué pasa si las variables son de sí o no, es decir, ceros y unos?
+
+En simple. Se cuentan coincidencias y diferencias. Y la pregunta clave es esta: que dos observaciones tengan un cero en común, ¿dice algo sobre su parecido? Si la respuesta es no, se usa Jaccard. Si es sí, se usa Simpl Matching.
+
+Con detalle. Al comparar dos observaciones, variable por variable, hay cuatro conteos. A: las dos tienen un uno. Be: la primera tiene uno y la segunda cero. Ce: la primera tiene cero y la segunda uno. Y de: las dos tienen cero.
+
+La distancia de Jaccard es be más ce, dividido por a más be más ce. Es decir, las diferencias, sobre todo menos las dobles ausencias. Jaccard ignora las coincidencias de ceros.
+
+La distancia de Simpl Matching es be más ce, dividido por los cuatro conteos. Las diferencias sobre el total de variables.
+
+Y la distancia de Hamming es todavía más simple: el número de variables en que difieren, o sea, be más ce. Con ceros y unos, coincide con la distancia Manhattan, y así se calcula en erre.
+
+Pregunta. Si a, be, ce y de valen uno cada una, ¿cuánto es la distancia de Simpl Matching?
+
+[pausa 4]
+
+Cero coma cinco. Dos diferencias sobre cuatro variables. Jaccard daría dos tercios, porque deja fuera la doble ausencia y divide por tres.
+
+Ejemplo de la ayudantía cinco. El producto uno es uno, cero, uno, uno. El producto tres es cero, uno, cero, cero. Difieren en las cuatro variables, así que la distancia de Hamming es cuatro.
+
+En simple. Jaccard ignora los ceros en común. Simpl Matching los cuenta como parecido. Hamming cuenta cuántas variables son distintas.
+
+## Estandarización
+
+Último tema: por qué hay que estandarizar antes de calcular distancias.
+
+En simple. Si una variable tiene números mucho más grandes que otra, domina la distancia, y la otra casi no cuenta. Estandarizando, todas aportan de forma comparable.
+
+Ejemplo de la clase. Empresas con activos, que van de diez a veinte, y trabajadores, que van de cuarenta a trescientos cincuenta. Sin estandarizar, la distancia depende casi solo de los trabajadores.
+
+Con detalle, hay tres formas. La primera es el puntaje zeta: a cada valor se le resta la media y se divide por la desviación estándar. Queda con media cero y desviación uno. Se usa cuando las variables tienen unidades o rangos distintos. En erre es la función scale.
+
+La segunda es dividir por el máximo. Sirve para datos positivos, y conserva el cero como origen.
+
+La tercera es min max: se resta el mínimo y se divide por el rango. Deja los extremos fijos en cero y uno.
+
+Pregunta. ¿Cuál de las tres es la más sensible a los valores atípicos?
+
+[pausa 3]
+
+Min max. Un solo valor extremo fija el máximo o el mínimo, y comprime a todos los demás.
+
+Y no estandarizar solo tiene sentido si las variables ya están en unidades comparables.
+
+En simple. Sin estandarizar, manda la variable de números grandes. Puntaje zeta para unidades distintas. Min max deja todo entre cero y uno, pero cuidado con los atípicos.
+
+## Repaso
+
+Repaso rápido.
+
+¿El clastering es supervisado o no supervisado?
+
+[pausa 2]
+
+No supervisado. No hay etiquetas.
+
+En Minkowski, ¿qué distancia sale con lambda igual a uno, a dos y a infinito?
+
+[pausa 3]
+
+Manhattan, euclídea y Chebyshev.
+
+¿Qué distancia binaria ignora las dobles ausencias?
+
+[pausa 2]
+
+Jaccard.
+
+¿Entre qué valores va la distancia de correlación?
+
+[pausa 2]
+
+Entre cero y dos.
+
+¿Qué pasa si no estandarizo y las escalas son muy distintas?
+
+[pausa 2]
+
+La variable de valores más grandes domina las distancias.
+
+Eso fue el módulo once.

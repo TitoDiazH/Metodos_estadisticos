@@ -289,7 +289,29 @@ pre.salida { background: var(--salida-fondo); color: var(--tinta); border: 1px s
 .carta + .fila-botones { justify-content: center; }
 .diferencia .convencion { background: var(--acento-suave); padding: 8px 12px; border-radius: 6px; }
 
+/* ── Clases en audio ─────────────────────────────────────────────────── */
+.audio-ahora h2 { margin: 2px 0 0; }
+.audio-ahora > .tenue { margin: 2px 0 10px; min-height: 1.5em; }
+.audio-barra { width: 100%; accent-color: var(--acento); margin: 0; }
+.audio-tiempo { margin: 0; text-align: right; font-size: .84rem; color: var(--tenue); font-variant-numeric: tabular-nums; }
+.audio-controles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 4px; }
+.audio-play { min-width: 10.5em; justify-content: center; }
+.audio-vel { margin-left: auto; font-size: .86rem; color: var(--tenue); display: inline-flex; gap: 6px; align-items: center; }
+.audio-vel select { font: inherit; padding: .35em .5em; border: 1px solid var(--borde); border-radius: 8px; background: var(--superficie); color: var(--tinta); min-height: 36px; }
+.audio-capitulos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--borde); }
+.audio-cola { margin: 12px 0 0; padding: 12px 0 0 1.6em; border-top: 1px solid var(--borde); font-size: .92rem; }
+.audio-cola li { margin: 3px 0; }
+.audio-cola li.actual { font-weight: 650; }
+.audio-cola li.actual::marker { content: "▶ "; color: var(--acento); }
+.enlace { font: inherit; color: var(--acento); background: none; border: 0; padding: 0; text-align: left; cursor: pointer; text-decoration: underline; }
+.audio-fila { display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 8px 12px; margin: 6px 0; background: var(--superficie); border: 1px solid var(--borde); border-radius: 8px; }
+.audio-fila .chk { flex: 1; }
+.audio-fila.sin-audio { display: block; background: none; border-style: dashed; color: var(--tenue); }
+
 @media (max-width: 560px) {
+  .audio-controles .btn, .audio-capitulos .btn { width: auto; }
+  .audio-play { flex: 1 1 100%; order: -1; }
+  .audio-vel { margin-left: 0; }
   .opciones-vf { grid-template-columns: 1fr; }
   .btn { width: 100%; align-items: center; text-align: center; }
   .btn-chico, .paginador .btn, .ant-sig .btn { width: auto; }

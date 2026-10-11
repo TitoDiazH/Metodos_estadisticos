@@ -17,6 +17,7 @@
   var MENU = [
     { id: "inicio", txt: "Inicio", icono: "🏠" },
     { id: "aprender", txt: "Aprender", icono: "📚" },
+    { id: "audio", txt: "Clases en audio", icono: "🎧" },
     { id: "memorizar", txt: "Memorizar", icono: "🧾" },
     { id: "rlab", txt: "Laboratorio R", icono: "💻" },
     { id: "practicar", txt: "Practicar", icono: "🎯" },

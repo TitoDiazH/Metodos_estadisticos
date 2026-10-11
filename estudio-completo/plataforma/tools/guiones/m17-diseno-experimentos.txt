@@ -1,0 +1,79 @@
+# Diseño de experimentos: introducción
+
+## Observar o experimentar
+
+Ahora toca el módulo diecisiete: introducción al diseño de experimentos. Ojo, no está confirmado que este módulo entre en la prueba dos.
+
+En simple. Para mejorar un proceso hay dos caminos. Uno es observar: monitorear el proceso y esperar a que aparezca una señal útil. Es una estrategia pasiva. El otro es experimentar: hacer cambios deliberados para provocar esas señales. Es una estrategia activa. El diseño de experimentos es el segundo camino.
+
+Con detalle. El diseño de experimentos es un conjunto de técnicas activas, que manipulan el proceso para que entregue la información que se necesita. Consiste en planear y realizar pruebas, para generar datos que, analizados estadísticamente, den evidencia objetiva para responder las preguntas del experimentador. No es ensayo y error sobre la marcha. Es un plan.
+
+Sirve, por ejemplo, para comparar materiales o instrumentos de medición. Para determinar qué factores impactan el producto final. Para encontrar condiciones de operación que reduzcan los defectos. Y para apoyar el diseño de productos o procesos.
+
+Tres nombres de la historia. Fisher, en mil novecientos treinta y cinco, con métodos para muestras pequeñas y varios factores a la vez, en agricultura. Box y Wilson, en mil novecientos cincuenta y uno, con la superficie de respuesta. Y Deming e Ishikawa, en la década de los ochenta, llevando la estadística a la calidad en la industria japonesa.
+
+En simple. Observar es esperar. Experimentar es provocar. Y el diseño de experimentos es experimentar con un plan.
+
+## Vocabulario
+
+El diseño de experimentos tiene un vocabulario propio, y hay que usarlo con precisión.
+
+Experimento: un cambio en las condiciones de operación, para medir su efecto sobre el resultado.
+
+Unidad experimental: la pieza o el conjunto de piezas que genera un valor representativo del resultado. Puede ser un lote, no necesariamente una sola pieza.
+
+Variable de respuesta: lo que se mide para conocer el efecto de cada prueba.
+
+Factor controlable: una variable que se puede fijar en un valor dado. Factor no controlable, o ruido: lo que no se puede controlar durante el experimento. La luz, la humedad, el ánimo de los operadores, la calidad del material que manda el proveedor.
+
+Niveles: los valores que se le asignan a cada factor.
+
+Tratamiento: una combinación de niveles de todos los factores.
+
+Pregunta. Se estudian dos factores, velocidad y temperatura, cada uno con dos niveles. ¿Cuántos tratamientos hay?
+
+[pausa 3]
+
+Cuatro. Dos por dos. Cada combinación de niveles es un tratamiento. Ese es el error típico: confundir nivel con tratamiento.
+
+Y dos tipos de error. El error aleatorio es la variabilidad que los factores no explican: causas comunes, el efecto pequeño de factores no estudiados, y la variabilidad de la medición. El error experimental es el error aleatorio, más los errores graves que comete el experimentador.
+
+En simple. Factor, lo que cambio. Nivel, el valor que le doy. Tratamiento, la combinación de niveles. Respuesta, lo que mido.
+
+## Aleatorización, repetición y bloqueo
+
+Los tres principios básicos.
+
+En simple. Aleatorizar el orden de las pruebas. Repetir los tratamientos. Y bloquear los factores que pueden alterar la respuesta pero que no son lo que quiero estudiar.
+
+Con detalle. Aleatorizar es correr los experimentos en orden aleatorio. Reparte los efectos del ambiente y del tiempo entre los tratamientos, y aumenta la posibilidad de que se cumpla el supuesto de independencia de los errores. Repetir es correr más de una vez un mismo tratamiento. Y bloquear es anular, o tomar en cuenta, los factores que pueden afectar la respuesta.
+
+Ejemplo de la clase. Se quieren comparar cuatro máquinas, y el operador podría influir. Una opción es que un mismo operador haga todas las pruebas. La otra es usar cuatro operadores, y que cada uno pruebe las cuatro máquinas, en orden aleatorio. Cada operador es un bloque, porque sus mediciones se parecen más entre sí que las de operadores distintos.
+
+Pregunta. ¿Bloquear y aleatorizar son lo mismo?
+
+[pausa 3]
+
+No. Se bloquea por el factor de molestia, y dentro de cada bloque se aleatoriza el orden.
+
+En simple. Aleatorizar protege la independencia. Repetir permite medir la variabilidad. Bloquear neutraliza un factor que molesta.
+
+## Etapas y elección del diseño
+
+En simple. Un experimento tiene tres etapas: planear, analizar e interpretar.
+
+Con detalle. En la planeación se entiende y delimita el problema, se eligen las variables de respuesta y los factores, y se termina especificando los tratamientos. El arreglo de tratamientos que se van a correr, con sus repeticiones, se llama matriz de diseño.
+
+En el análisis hay que recordar que los resultados son observaciones muestrales. Se necesita inferencia para saber si las diferencias observadas alcanzan para afirmar que hay diferencias poblacionales. ¿Cuál es la técnica central en esta etapa?
+
+[pausa 3]
+
+El análisis de varianza, ANOVA. Es el tema del módulo siguiente.
+
+Y en la interpretación se contrastan las hipótesis iniciales con los resultados, se verifican los supuestos, y se elige el tratamiento ganador.
+
+Para elegir el diseño influyen cinco aspectos. El objetivo del experimento. El número de factores. El número de niveles de cada factor. Los efectos que interesa investigar. Y el costo, el tiempo y la precisión deseada.
+
+En simple. Planear, analizar con ANOVA, interpretar. Y el diseño se elige según el objetivo, los factores, los niveles, los efectos y el costo.
+
+Eso fue el módulo diecisiete.
