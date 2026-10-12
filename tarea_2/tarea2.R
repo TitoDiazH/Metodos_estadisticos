@@ -142,10 +142,9 @@ table(ticket_cero = datos$ticket_promedio == 0, estado_t1 = datos$estado_t1)
 # Los ceros coinciden exactamente con estado_t1 = "Inactivo"
 # (la recodificación es determinística)
 
-# Tratamiento: SE MANTIENEN en la base. Son clientes reales y el segmento inactivo es
-# justamente de interés para retención; eliminarlos dejaría fuera a los más críticos y
-# sesgaría hacia arriba el ticket promedio. Se marcan con un indicador para poder
-# analizarlos por separado y hacer análisis de sensibilidad.
+# Tratamiento: SE MANTIENEN en la base. Son clientes reales
+# y eliminarlos quitaría a los clientes inactivos que
+# también son parte del negocio.
 datos$sin_pedidos_t1 <- datos$ticket_promedio == 0
 
 # Efecto sobre los análisis posteriores: el bloque de ceros baja la media de ticket_promedio
@@ -167,47 +166,17 @@ max(ds_clientes_completo$dias_ultima_sesion)
 
 ### Escalamiento
 
-# Las variables están en unidades muy distintas
-# (días, n de pedidos, miles de pesos, proporción).
 sapply(datos[, VARS_CONT], sd)
-# Para conglomerados (Parte 1) SÍ se estandarizan-
-# -las distancias dependen de la escala y ticket_promedio (sd ~31)
-# y dias_ultima_sesion (sd ~36) dominarían sobre pct_restaurantes (sd ~0,2).
 datos_z <- as.data.frame(scale(datos[, VARS_CONT]))
 colMeans(datos_z)
 sapply(datos_z, sd)
-# Para clasificación (Parte 2) LDA, QDA y Naive Bayes son
-# invariantes a cambios de escala (la función discriminante
-# se ajusta sola), por lo que se usan las variables originales,
-# lo que además deja los coeficientes interpretables en unidades originales.
-
 ### Correlación
 
 matriz_cor <- cor(datos[, VARS_CONT])
 matriz_cor
 
-# Comentario: pedidos_12m y ticket_promedio están muy correlacionadas (~0,85),
-# y ambas se relacionan con dias_ultima_sesion (~-0,59) y pct_restaurantes (~0,6)
-# - Parte 1: con distancia euclídea sin corregir, las variables correlacionadas cuentan
-#   "doble" (la dimensión actividad/gasto pesa más que las demás). Estandarizar iguala
-#   varianzas pero NO elimina la correlación.
-# - Parte 2: Naive Bayes supone independencia condicional entre predictores dentro de cada
-#   clase; con estas correlaciones (aún dentro de clase) ese supuesto no se cumple bien.
-#   LDA/QDA no lo requieren, pero la multicolinealidad entre pedidos_12m y ticket_promedio
-#   vuelve inestables los coeficientes individuales.
-
-#####################################
-### Fin del preprocesamiento      ###
-### Objetos para las Partes 1 y 2 ###
-#####################################
-# datos      : submuestra de 800 clientes (originales + sin_pedidos_t1)
-# datos_z    : las 4 variables continuas estandarizadas (para Parte 1)
-# VARS_CONT  : nombres de las 4 variables continuas
-# GROUP      : número de grupo (semilla)
-
-##########################################################
-### Exploración visual: PCA (¿hay clusters claros?)    ###
-##########################################################
+# **Esto no lo piden pero puede ayudar
+# PCA rápido para ver las variables en 2 dimensiones
 
 # PCA sobre las 4 variables continuas estandarizadas (solo exploratorio, no es parte del enunciado)
 pca <- prcomp(datos[, VARS_CONT], scale. = TRUE)   # muestra completa (la usa la Parte 1)
@@ -218,10 +187,6 @@ round(pca$sdev^2, 2)     # autovalores (criterio de Kaiser: > 1)
 
 screeplot(pca, type = "lines", main = "Scree plot")
 
-# Biplot (PC1 vs PC2)
-biplot(pca, scale = 0, cex = 0.5, main = "Biplot PC1 vs PC2")
-
-# Scores PC1 vs PC2 sin colorear (¿se ven grupos separados?) y coloreados por estado
 colores_estado <- c("Inactivo" = "gray40", "Bajo Gasto" = "orange", "Medio Gasto" = "green3", "Alto Gasto" = "blue")
 
 plot(
@@ -245,10 +210,6 @@ legend("topright", legend = niveles_estado, col = colores_estado[niveles_estado]
 dist_z <- dist(datos_z, method = "euclidean")
 as.matrix(dist_z)[1:5, 1:5] # muestra chica de la matriz de distancias
 
-# Efecto de la correlación (pedidos_12m y ticket_promedio ~0,85): la euclídea cuenta "doble"
-# la dimensión actividad/gasto, porque ambas variables miden en parte lo mismo. Estandarizar
-# iguala las varianzas pero no elimina la correlación; se deja como limitación del análisis.
-
 ### Método jerárquico: comparación de criterios de enlace
 
 hc_single <- hclust(dist_z, method = "single")
@@ -271,7 +232,7 @@ table(centroide = cutree(hc_centroid, k = 4))
 
 hc_ward <- hclust(dist_z, method = "ward.D2")
 plot(hc_ward, labels = FALSE, main = "Ward (ward.D2)", xlab = "Clientes", ylab = "Distancia")
-# Se ve más ordenado, aunque visualmente podría pensar k=4 o k=5
+# Se ve más ordenado
 table(ward = cutree(hc_ward, k = 4))
 
 ### Dendrograma y corte
@@ -280,14 +241,7 @@ table(ward = cutree(hc_ward, k = 4))
 round(tail(hc_ward$height, 8), 2)
 plot(hc_ward, labels = FALSE, main = "Dendrograma (Ward, distancia euclídea)",
      xlab = "Clientes", ylab = "Distancia (altura de fusión)")
-abline(h = 20, col = "red", lty = 2)   # línea de corte: entre las alturas 12,9 y 28,6 (4 grupos)
-# Cómo se lee: cada rama final es un cliente; la altura a la que se unen dos ramas es la
-# distancia entre los grupos. Se corta con una línea horizontal donde hay un salto grande
-# antes de la siguiente fusión. Las últimas fusiones (~8,1; 8,5; 9,7; 10,3; 12,9; 28,6; 30,7; 57,1)
-# muestran un salto fuerte entre la fusión que pasa de 5 a 4 grupos (12,9) y la que pasa de 4 a 3 (28,6):
-# unir cualquiera de los 4 grupos cuesta mucho más que las fusiones anteriores. Luego 3 -> 2 (30,7) y
-# 2 -> 1 (57,1). Un corte en k = 4 (línea entre 12,9 y 28,6) deja grupos bien separados; cortar más
-# abajo (k > 4) solo subdivide grupos que se unen a alturas similares (8,1 a 12,9).
+abline(h = 20, col = "red", lty = 2)
 grupos_hc <- cutree(hc_ward, k = 4)
 table(grupos_hc)
 
@@ -315,13 +269,6 @@ sil_prom
 plot(2:10, sil_prom[2:10], type = "b", pch = 19, xlab = "Número de clusters",
      ylab = "Silueta promedio", main = "Silueta")
 
-# - Codo: la caída del WSS es fuerte hasta k = 4 y después se suaviza (el codo está en 4).
-# - Silueta: máximo en k = 4 (0,446), apenas sobre k = 2 (0,442); k >= 5 empeora claramente.
-# Discrepancia: la silueta casi no distingue k = 2 de k = 4 (0,442 vs 0,446). k = 2 separa solo
-# "inactivos vs activos" (útil pero poco accionable), mientras que el codo muestra que pasar a 4
-# grupos reduce mucho el WSS. Se elige k = 4 por coincidir codo y silueta, y por ser el más
-# interpretable para gestión.
-
 ### K-medias con k final
 
 set.seed(GROUP)
@@ -331,12 +278,13 @@ km$centers                                  # centroides estandarizados
 round(km$tot.withinss, 1)
 round(100 * (1 - km$tot.withinss / wss[1]), 1)   # % de variabilidad explicada (igual que en el codo)
 
+colores_cluster <- unname(colores_estado[c("Medio Gasto", "Inactivo", "Bajo Gasto", "Alto Gasto")])
+
 # Silueta de la solución final
 sil_km <- silhouette(km$cluster, dist_z)
-plot(sil_km, main = "Silueta k-medias (k = 4)")
+plot(sil_km, main = "Silueta k-medias (k = 4)", col = colores_cluster, border = NA)
 
 # Guardar las asignaciones en la base (la Parte 3 las usa)
-# Ojo: los números de cluster los entrega kmeans y dependen de la semilla (set.seed(GROUP)).
 datos$cluster_km <- km$cluster
 datos$cluster_hc <- grupos_hc
 
@@ -344,13 +292,8 @@ datos$cluster_hc <- grupos_hc
 
 tabla_hc_km <- table(jerarquico = datos$cluster_hc, kmedias = datos$cluster_km)
 tabla_hc_km
-# Los números de cada método son arbitrarios: se compara qué columna concentra cada fila.
-# Cada grupo jerárquico cae casi entero en un solo grupo de k-medias: 301 + 174 + 228 + 74 = 777 de
-# 800 clientes (~97%) coinciden. El grupo de 74 inactivos es idéntico en ambos métodos; las
-# diferencias (23 clientes) están en la frontera entre los grupos de actividad media y alta,
-# que forman un continuo.
 
-# Estabilidad: ¿cambia la solución con otra semilla?
+# Estabilidad. Se prueba con otra semilla para ver que tanto cambiaría
 set.seed(GROUP + 1)
 km_otra_semilla <- kmeans(datos_z, centers = 4, nstart = 25)
 table(original = datos$cluster_km, otra_semilla = km_otra_semilla$cluster)
@@ -380,63 +323,12 @@ aggregate(datos[, VARS_CONT], by = list(cluster = datos$cluster), FUN = sd)
 # Clientes con ticket_promedio = 0 (ceros estructurales) en cada segmento
 table(datos$cluster, datos$sin_pedidos_t1)
 
-# Puntos coloreados por el cluster de k-medias
-# Mismos colores que el gráfico de PCA por estado_t1 (colores_estado), en el orden de nombres_cluster:
-# Regulares = Medio Gasto, Inactivos = Inactivo, Ocasionales = Bajo Gasto, Frecuentes = Alto Gasto
-colores_cluster <- unname(colores_estado[c("Medio Gasto", "Inactivo", "Bajo Gasto", "Alto Gasto")])
+# Puntos coloreados por el cluster de k-medias (colores_cluster se define arriba, antes de la silueta)
 
-# (a) Sobre las dos primeras componentes principales (scores del PCA de arriba)
+# Sobre las dos primeras componentes principales (scores del PCA de arriba)
 plot(scores$PC1, scores$PC2, pch = 19, col = colores_cluster[datos$cluster_km],
      xlab = "PC1", ylab = "PC2", main = "Clusters de k-medias sobre PC1 vs PC2")
 legend("topright", legend = nombres_cluster, col = colores_cluster, pch = 19)
-
-# (b) Sobre variables originales
-plot(datos$pedidos_12m, datos$ticket_promedio, pch = 19, col = colores_cluster[datos$cluster_km],
-     xlab = "pedidos_12m", ylab = "ticket_promedio", main = "Clusters de k-medias: pedidos vs ticket")
-legend("topleft", legend = nombres_cluster, col = colores_cluster, pch = 19)
-
-plot(datos$dias_ultima_sesion, datos$pedidos_12m, pch = 19, col = colores_cluster[datos$cluster_km],
-     xlab = "dias_ultima_sesion", ylab = "pedidos_12m", main = "Clusters de k-medias: días sin sesión vs pedidos")
-legend("topright", legend = nombres_cluster, col = colores_cluster, pch = 19)
-
-# Alternativa de la clase 5.2 (requiere install.packages("factoextra")):
-# library(factoextra)
-# fviz_cluster(km, data = datos_z, palette = "Set2", ggtheme = theme_minimal())
-
-# Interpretación (centroides en unidades originales):
-# 1. Inactivos (74; 9,2%): ~134 días sin sesión, ~1 pedido en 12 meses, ticket 0, 24% restaurantes.
-#    Son los clientes que ya se fueron (el 100% tiene ticket_promedio = 0 en T1).
-# 2. Ocasionales de bajo gasto (303; 37,9%): ~46 días sin sesión, ~9 pedidos, ticket ~19 mil, 23%
-#    restaurantes. Compran poco, con tickets bajos y orientados a supermercado/farmacia/conveniencia.
-# 3. Regulares de gasto medio (249; 31,1%): ~32 días, ~23 pedidos, ticket ~36 mil, 60% restaurantes.
-# 4. Frecuentes de alto gasto (174; 21,8%): ~15 días, ~43 pedidos, ticket ~88 mil, 60% restaurantes.
-#    Son los clientes más valiosos y más recientes.
-# La silueta (gráfico de arriba) muestra el ancho promedio de cada segmento.
-
-### Acciones comerciales por segmento
-
-# 1. Inactivos (~9% de la base; ~134 días sin abrir la app, ~1 pedido/año)
-#    Acción: campaña de reactivación de bajo costo y acotada (1 correo/push mensual por 2-3 meses)
-#    con un cupón de primer pedido de monto fijo, sin descuentos porcentuales altos.
-#    Evidencia: el costo de recuperar crece más rápido que el ingreso (enunciado) y su ticket
-#    histórico es 0; conviene un tope de presupuesto y cortar el contacto si no responden.
-# 2. Ocasionales de bajo gasto (~38% de la base; ~9 pedidos/año, ticket ~19 mil)
-#    Acción: incentivos para subir frecuencia y ticket (envío gratis sobre un monto mínimo,
-#    "pide X veces este mes y obtén un beneficio"), contacto quincenal.
-#    Evidencia: ~46 días sin sesión (a riesgo de pasar a inactivos) y el ticket más bajo entre
-#    los activos; son el mayor segmento y el donde un aumento pequeño del ticket pesa más.
-# 3. Regulares de gasto medio (~31% de la base; ~23 pedidos/año, ticket ~36 mil)
-#    Acción: programa de fidelización y recomendaciones por categoría (60% restaurantes);
-#    contacto semanal y solo incentivos no monetarios (puntos, acceso anticipado).
-#    Evidencia: recurrencia alta y ticket cercano al umbral de Alto Gasto: el objetivo es
-#    mantenerlos y empujar a algunos al segmento 4 sin gastar cupones en quienes ya compran.
-# 4. Frecuentes de alto gasto (~22% de la base; ~43 pedidos/año, ticket ~88 mil)
-#    Acción: retención preventiva con beneficios exclusivos (membresía, atención prioritaria),
-#    sin descuentos generales. Contacto solo ante señales de alerta (p. ej. más de 30 días sin sesión).
-#    Evidencia: concentran el ingreso por comisión (mayor frecuencia y ticket, el más reciente);
-#    un cupón masivo sería gasto innecesario porque ya compran.
-# (Los porcentajes y valores de los comentarios son los de la corrida con GROUP = 24;
-#  verificar con las tablas de arriba si se cambia la semilla o la muestra.)
 
 #########################################
 ### 2. Clasificación supervisada (P2) ###
