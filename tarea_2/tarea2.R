@@ -302,8 +302,6 @@ table(original = datos$cluster_km, otra_semilla = km_otra_semilla$cluster)
 
 ### Caracterización de los conglomerados
 
-# Nombres según los centroides (ver abajo), en el orden de numeración que entrega kmeans
-# con set.seed(GROUP): 1 = 249 clientes, 2 = 74, 3 = 303, 4 = 174.
 nombres_cluster <- c("Regulares de gasto medio", "Inactivos", "Ocasionales de bajo gasto", "Frecuentes de alto gasto")
 datos$cluster <- factor(datos$cluster_km, levels = 1:4, labels = nombres_cluster)
 
@@ -319,11 +317,6 @@ round(100 * tabla_cluster / sum(tabla_cluster), 1)
 
 # Dispersión dentro de cada segmento (desviación estándar, unidades originales)
 aggregate(datos[, VARS_CONT], by = list(cluster = datos$cluster), FUN = sd)
-
-# Clientes con ticket_promedio = 0 (ceros estructurales) en cada segmento
-table(datos$cluster, datos$sin_pedidos_t1)
-
-# Puntos coloreados por el cluster de k-medias (colores_cluster se define arriba, antes de la silueta)
 
 # Sobre las dos primeras componentes principales (scores del PCA de arriba)
 plot(scores$PC1, scores$PC2, pch = 19, col = colores_cluster[datos$cluster_km],
@@ -355,11 +348,6 @@ distribucion_t2
 
 clase_mayoritaria_muestra <- names(which.max(frecuencias_t2))
 clase_mayoritaria_muestra
-
-# La clase más frecuente es "Medio Gasto" (35,50 %),
-# seguida de "Bajo Gasto" (23,88 %), "Alto Gasto" (23,38 %)
-# e "Inactivo" (17,25 %). Por lo tanto, el clasificador trivial
-# es la categoría "Medio Gasto".
 
 ### Separación en entrenamiento y validación
 
@@ -407,13 +395,6 @@ print(particion)
 # Comprobar que no hay clientes compartidos
 any(entrenamiento$id_cliente %in% validacion$id_cliente)
 
-# El desempeño no puede evaluarse con los mismos datos con los
-# que se entrenó, ya que el modelo podría sobreajustarse a esos datos
-# porque ya los ha visto. Es por eso que se usa una partición
-# de validación, para evaluar el desempeño con datos que el modelo
-# no ha visto antes, lo que refleja una situacion más realista
-# y permite medir la capacidad de generalizar del modelo.
-
 ### Verificación de los supuestos de los métodos
 
 # Predictores que evaluaremos: las 4 variables continuas (VARS_CONT)
@@ -439,15 +420,6 @@ normalidad_inactivo
 normalidad_bajo
 normalidad_medio
 normalidad_alto
-
-# La prueba de Mardia rechaza la hipótesis nula de normalidad multivariante
-# en las cuatro clases, ya que la prueba de asimetría presenta p < 0.001
-# en todas ellas. La prueba de curtosis también rechaza su hipótesis
-# nula en Inactivo, Bajo Gasto y Alto Gasto. En Medio Gasto no se rechaza
-# la curtosis al 5% (p = 0.058), pero sí la asimetría. Esto indica que no
-# se cumple el supuesto de normalidad multivariante dentro de cada clase,
-# lo que representa una limitación para el uso de LDA y QDA, ya que ambos
-# métodos requieren este supuesto.
 
 # H0: las matrices de covarianza son iguales entre clases
 # H1: al menos una matriz es distinta
@@ -476,30 +448,20 @@ cov_medio <- covarianza_clase("Medio Gasto")
 cov_alto <- covarianza_clase("Alto Gasto")
 
 round(cov_inactivo, 2)
-# Varianza "dias_ultima_sesion": 2708.85
-# Varianza "ticket_promedio":  465.49
+# varianza "dias_ultima_sesion": 2708.85
+# varnza "ticket_promedio":  465.49
 
 round(cov_bajo, 2)
-# Varianza "dias_ultima_sesion":  890.83
-# Varianza "ticket_promedio":  519.92
+# var "dias_ultima_sesion":  890.83
+# var "ticket_promedio":  519.92
 
 round(cov_medio, 2)
-# Varianza "dias_ultima_sesion":  377.19
-# Varianza "ticket_promedio":  529.07
+# var "dias_ultima_sesion":  377.19
+# var "ticket_promedio":  529.07
 
 round(cov_alto, 2)
-# Varianza "dias_ultima_sesion": 417.06
-# Varianza "ticket_promedio":  1031.60
-
-# La prueba de box M rechaza la hipótesis nula de igualdad de matrices
-# de covarianza entre clases (p < 2.2e-16), lo que indica que al menos
-# una de las matrices es diferente. Ademas las matrices muestran diferencias
-# importantes en las varianzas de "dias_ultima_sesion" y "ticket_promedio"
-# entre clases. Por esto elegimos QDA, ya que permite una matriz de covarianza
-# distinta para cada clase, a diferencia de LDA que supone una matriz común
-# entre todas las clases. Sin embargo, la falta de normalidad detectada
-# por Mardia exige interpretar Box M con cautela y sigue siendo una limitación
-# para QDA.
+# var "dias_ultima_sesion": 417.06
+# var "ticket_promedio":  1031.60
 
 ### Ajuste de clasificadores
 
@@ -511,12 +473,6 @@ modelo_qda <- qda(
 )
 
 modelo_qda
-
-# Las medias por clase muestran que los clientes que son Inactivos en t2
-# presentaron, en promedio, más días sin sesión y menores valores de pedidos
-# y ticket promedio en t1. En cambio, quienes tienen Alto Gasto en t2
-# presentaron mayor actividad y ticket promedio. Bajo y Medio Gasto muestran
-# valores intermedios.
 
 # Naive Bayes
 
@@ -535,12 +491,6 @@ correlacion_clase("Bajo Gasto")
 correlacion_clase("Medio Gasto")
 correlacion_clase("Alto Gasto")
 
-# Naive Bayes supone independencia entre los predictores dentro de cada
-# clase. Sin embargo las correlaciones entre "pedidos_12m" y
-# "ticket_promedio" (0.74 a 0.92) indican que este supuesto no se cumple
-# adecuadamente. Esto limita el modelo, lo que puede afectar el desempeño
-# en validación.
-
 modelo_nb <- naiveBayes(
   estado_t2 ~ dias_ultima_sesion + pedidos_12m +
     ticket_promedio + pct_restaurantes,
@@ -548,13 +498,6 @@ modelo_nb <- naiveBayes(
 )
 
 modelo_nb
-
-# Naive Bayes supone normalidad de cada predictor numérico dentro de cada
-# clase. La normalidad de cada variable por separado no se ha verificado,
-# ya que Mardia evalúa la normalidad conjunta. Por ello su rechazo no
-# permite concluir que todos los predictores sean individualmente no
-# normales. Esto limita la justificación de los supuestos del modelo
-# y debe considerarse al evaluar su desempeño.
 
 ### Matriz de confusión y métricas por clase
 
@@ -625,17 +568,6 @@ metricas_clasificador(matriz_qda)
 metricas_clasificador(matriz_nb)
 metricas_clasificador(matriz_trivial)
 
-# QDA y Naive Bayes superan la exactitud del clasificador trivial
-# (35.56%), con valores de 59.00% y 57.74%, respectivamente.
-# QDA presenta mayor sensibilidad para Medio Gasto (74.12%), mientras
-# que Naive Bayes detecta mejor Alto Gasto (73.21%) y Bajo Gasto (40.35%).
-# Sin embargo, ambos presentan baja sensibilidad para Inactivo y Bajo
-# Gasto, por lo que la exactitud global no es suficiente para concluir
-# que identifican adecuadamente a los clientes de menor gasto.
-# El clasificador trivial solo identifica Medio Gasto y tiene sensibilidad
-# nula para las demás clases. Su precisión en esas clases no está definida
-# (NA), ya que nunca las predice.
-
 ### Análisis de errores y predictores por clase
 
 graficar_por_clase <- function(variable) {
@@ -652,22 +584,6 @@ graficar_por_clase("dias_ultima_sesion")
 graficar_por_clase("pedidos_12m")
 graficar_por_clase("ticket_promedio")
 graficar_por_clase("pct_restaurantes")
-
-# Los errores se concentran principalmente entre Medio Gasto y las
-# otras clases. En QDA destacan Bajo Gasto clasificado como Medio Gasto
-# (22 clientes) y Alto Gasto como Medio Gasto (16). En Naive Bayes destaca
-# la confusión entre Bajo y Medio Gasto, con 18 y 16 errores en cada sentido.
-# Este patrón es compatible con el solapamiento de los perfiles en T1:
-# clientes con características similares pueden presentar distintos
-# niveles de gasto en T2. Además, clasificar a un futuro Inactivo como
-# Medio Gasto podría dejarlo fuera de una campaña de retención.
-
-# Las medias de entrenamiento sugieren que "dias_ultima_sesion" distingue
-# principalmente a Inactivo, mientras que "ticket_promedio" y "pedidos_12m"
-# distinguen a Alto Gasto. Bajo y Medio Gasto presentan perfiles intermedios,
-# lo que dificulta su separación. Los boxplots permiten revisar la dispersión
-# y el solapamiento para complementar esta interpretación; las diferencias
-# de medias no constituyen un ranking formal de importancia de variables.
 
 #####################################
 ### 3. Integración de ambos (P3)  ###
@@ -695,35 +611,15 @@ barplot(
 )
 legend("topright", legend = niveles_estado, col = colores_estado[niveles_estado], pch = 15)
 
-# Si a cada segmento se le asigna su nivel de gasto más frecuente en T2,
-# ¿qué proporción de los 800 clientes queda bien clasificada?
 apply(tabla_cluster_t2, 1, max)
 sum(apply(tabla_cluster_t2, 1, max)) / sum(tabla_cluster_t2)
-# Referencia: clasificador trivial sobre la misma muestra (todos a "Medio Gasto")
 max(frecuencias_t2) / sum(frecuencias_t2)
 
-# Comparación con estado_t1 (el nivel de gasto del mismo trimestre de la segmentación)
+# Comparación con estado_t1
 table(cluster = datos$cluster, estado_t1 = datos$estado_t1)
-
-# - Cada segmento tiene un nivel de gasto dominante en T2 y coincide con su nombre:
-#   Inactivos -> 78,4% Inactivo; Frecuentes de alto gasto -> 63,8% Alto Gasto;
-#   Regulares de gasto medio -> 54,6% Medio Gasto; Ocasionales de bajo gasto -> 38,9% Bajo Gasto.
-# - Asignando la clase más frecuente de cada segmento se acierta en 423 de 800 clientes (52,9%),
-#   contra 35,5% del clasificador trivial: los segmentos SÍ anticipan en parte el gasto de T2,
-#   aunque se construyeron sin mirar estado_t2.
-# - La anticipación es buena en los extremos y mala al centro: los Ocasionales de bajo gasto se
-#   reparten casi igual entre Bajo Gasto (38,9%) y Medio Gasto (35,3%), y un 17,2% pasa a Inactivo.
-#   Es el mismo solapamiento Bajo/Medio donde se concentran los errores de la Parte 2.
-# - Contra estado_t1 la tabla es casi diagonal (los 74 Inactivos y los 174 Frecuentes caen en una
-#   sola celda): los segmentos describen el estado ACTUAL del cliente (T1). Anticipan T2 solo en la
-#   medida en que el nivel de gasto persiste de un trimestre al otro; no capturan quién va a cambiar.
 
 ### Conglomerado como variable predictora adicional
 
-# entrenamiento y validacion ya traen la columna cluster, porque la partición de la Parte 2
-# se hizo después de guardar los conglomerados en datos. Se usa la misma partición.
-# Ojo: k-medias se ajustó con los 800 clientes (incluidos los de validación), pero sin usar
-# estado_t2, así que la clase de validación no participa en la construcción del predictor.
 table(entrenamiento$cluster)
 table(validacion$cluster)
 
@@ -742,14 +638,13 @@ matriz_qda_cl <- table(
 )
 
 # Naive Bayes con el conglomerado como predictor adicional
-# (Naive Bayes maneja variables categóricas directamente)
 modelo_nb_cl <- naiveBayes(
   estado_t2 ~ dias_ultima_sesion + pedidos_12m +
     ticket_promedio + pct_restaurantes + cluster,
   data = entrenamiento
 )
 
-modelo_nb_cl$tables$cluster   # P(conglomerado | clase)
+modelo_nb_cl$tables$cluster
 
 pred_nb_cl <- predict(modelo_nb_cl, validacion)
 
@@ -758,7 +653,7 @@ matriz_nb_cl <- table(
   Predicho = pred_nb_cl
 )
 
-# Comparación sobre validación: sin conglomerado (Parte 2) vs con conglomerado
+# sin conglomerado vs con conglomerado
 matriz_qda
 matriz_qda_cl
 sum(diag(matriz_qda)) / sum(matriz_qda)
@@ -772,46 +667,3 @@ sum(diag(matriz_nb)) / sum(matriz_nb)
 sum(diag(matriz_nb_cl)) / sum(matriz_nb_cl)
 metricas_clasificador(matriz_nb)
 metricas_clasificador(matriz_nb_cl)
-
-# - QDA: el accuracy pasa de 59,00% a 59,41% (141 -> 142 aciertos de 239): un solo cliente de
-#   diferencia. Sube la sensibilidad de Alto Gasto (67,86% -> 73,21%) y Medio Gasto (74,12% ->
-#   76,47%), pero baja la de Inactivo (46,34% -> 41,46%) y Bajo Gasto (36,84% -> 33,33%).
-# - Naive Bayes: el accuracy baja de 57,74% a 56,90% (138 -> 136 aciertos). Sube la sensibilidad de
-#   Bajo Gasto (40,35% -> 56,14%) a costa de Medio Gasto (64,71% -> 54,12%) e Inactivo (46,34% ->
-#   41,46%).
-# - Conclusión: incorporar el conglomerado NO mejora el desempeño; solo mueve aciertos de una clase
-#   a otra. Para retención incluso empeora, porque en ambos modelos baja la sensibilidad de Inactivo.
-# - Por qué no mejora: el conglomerado se calcula a partir de las mismas cuatro variables continuas
-#   (es el centroide más cercano), así que es información redundante y resumida en 4 categorías.
-#   En Naive Bayes además agrava el supuesto de independencia: la misma evidencia se cuenta dos veces.
-#   En QDA se agrega una variable que no es continua ni normal, alejándose más de sus supuestos.
-# - Qué significaría que mejorara: que la pertenencia al segmento aporta algo que el clasificador no
-#   logra extraer de las variables originales (por ejemplo, fronteras entre clases que su forma
-#   funcional no puede representar).
-# - Qué significa que no mejore: que el clasificador ya aprovecha la información de las cuatro
-#   variables y que el techo de desempeño (~59%) no se debe a la falta de un resumen de ellas, sino
-#   a que con la información de T1 los perfiles de Bajo y Medio Gasto se solapan.
-
-### Conclusión: ¿qué mirada responde mejor cada pregunta de la gerencia?
-
-# Pregunta 1: ¿qué tipos de cliente conviven en la base?  ->  segmentación descriptiva (Parte 1)
-# - Entrega 4 perfiles interpretables en unidades originales (días sin sesión, pedidos, ticket,
-#   % restaurantes), estables entre el método jerárquico y k-medias (777 de 800 coinciden) y que
-#   permiten definir una acción comercial por segmento.
-# - El clasificador no responde esta pregunta: sus clases están definidas de antemano por los
-#   cortes del ticket y no describen frecuencia, recencia ni tipo de comercio.
-#
-# Pregunta 2: ¿se puede anticipar el nivel de gasto del trimestre siguiente?  ->  clasificación (Parte 2)
-# - Se ajusta directamente con estado_t2 y se evalúa en datos no vistos: QDA 59,00% y Naive Bayes
-#   57,74% de accuracy en validación, contra 35,56% del clasificador trivial, y entrega una
-#   probabilidad por cliente (permite modificar las a priori según el costo de cada error).
-# - Los segmentos por sí solos llegan a 52,9% (sobre los 800 clientes, sin validación): anticipan
-#   algo porque el gasto persiste, pero menos que el clasificador, y sumarlos al modelo no mejora.
-#
-# Alcances y limitaciones
-# - Las dos miradas son complementarias: la segmentación dice QUÉ ofrecer a cada tipo de cliente y
-#   la clasificación dice A QUIÉN priorizar con el presupuesto de retención.
-# - Ninguna separa bien Bajo de Medio Gasto, y la sensibilidad para Inactivo es baja (46,34%):
-#   más de la mitad de los futuros inactivos no se detecta con las variables disponibles en T1.
-# - Los resultados corresponden a una sola partición 70/30 (239 clientes de validación); diferencias
-#   de 1 o 2 clientes entre modelos no son concluyentes.
