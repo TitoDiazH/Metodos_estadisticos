@@ -1,0 +1,33 @@
+# ── Material del curso (no se versiona) ──────────────────────────
+
+# Presentaciones, documentos y PDFs (clases, pruebas, pautas, enunciados)
+*.ppt
+*.pptx
+*.pdf
+*.doc
+*.docx
+
+# Excepción: presentación propia de la Tarea 2
+!tarea_2/Presentacion Tarea 2.pptx
+
+# Carpetas con material entregado por el curso
+capitulo-1/classes/
+capitulo-1/past-tests/
+capitulo-1/r-codes-for-study/
+estudio-completo/Material_Nuevo/
+estudio-completo/clases/
+estudio-completo/pruebas-y-ejercicios/
+estudio-completo/ayudantias/
+estudio-completo/scripts/
+tarea_*/clases/
+tarea_*/scripts de clases/
+
+# Enunciados de proyectos en otros formatos
+tarea_2/ME - Proyecto 2.*
+
+# ── Basura del sistema / R ───────────────────────────────────────
+*Zone.Identifier
+.Rhistory
+.RData
+.Rproj.user/
+Rplots.pdf

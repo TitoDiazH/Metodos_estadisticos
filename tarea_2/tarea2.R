@@ -278,7 +278,17 @@ km$centers                                  # centroides estandarizados
 round(km$tot.withinss, 1)
 round(100 * (1 - km$tot.withinss / wss[1]), 1)   # % de variabilidad explicada (igual que en el codo)
 
-colores_cluster <- unname(colores_estado[c("Medio Gasto", "Inactivo", "Bajo Gasto", "Alto Gasto")])
+
+#########...
+# Claude ayudó a hacer calzar los colores de k-means con los puestos en PCA
+#########...
+orden_ticket <- order(tapply(datos$ticket_promedio, km$cluster, mean))   # n° de grupo de menor a mayor ticket
+nombres_cluster <- character(4)
+nombres_cluster[orden_ticket] <- c("Inactivos", "Ocasionales de bajo gasto", "Regulares de gasto medio", "Frecuentes de alto gasto")
+colores_cluster <- character(4)
+colores_cluster[orden_ticket] <- unname(colores_estado[c("Inactivo", "Bajo Gasto", "Medio Gasto", "Alto Gasto")])
+nombres_cluster
+table(nombres_cluster[km$cluster])   # tamaño de cada grupo, para comprobar que los nombres calzan
 
 # Silueta de la solución final
 sil_km <- silhouette(km$cluster, dist_z)
@@ -293,6 +303,25 @@ datos$cluster_hc <- grupos_hc
 tabla_hc_km <- table(jerarquico = datos$cluster_hc, kmedias = datos$cluster_km)
 tabla_hc_km
 
+# La numeración de los grupos de Ward es arbitraria: a cada grupo de Ward se le asigna el
+# color del grupo de k-medias donde cae la mayoría de sus clientes, para poder compararlos.
+color_ward <- colores_cluster[apply(tabla_hc_km, 1, which.max)]
+
+# Mismo plano PCA (PC1 vs PC2) coloreado de tres formas: estado_t1, Ward y k-medias
+par(mfrow = c(1, 3))
+plot(scores$PC1, scores$PC2, pch = 19, col = colores_estado[as.character(datos$estado_t1)],
+     xlab = "PC1", ylab = "PC2", main = "PCA coloreado por estado_t1")
+legend("topright", legend = niveles_estado, col = colores_estado[niveles_estado], pch = 19, cex = 0.8)
+
+plot(scores$PC1, scores$PC2, pch = 19, col = color_ward[datos$cluster_hc],
+     xlab = "PC1", ylab = "PC2", main = "PCA coloreado por Ward (k = 4)")
+legend("topright", legend = nombres_cluster, col = colores_cluster, pch = 19, cex = 0.8)
+
+plot(scores$PC1, scores$PC2, pch = 19, col = colores_cluster[datos$cluster_km],
+     xlab = "PC1", ylab = "PC2", main = "PCA coloreado por k-medias (k = 4)")
+legend("topright", legend = nombres_cluster, col = colores_cluster, pch = 19, cex = 0.8)
+par(mfrow = c(1, 1))
+
 # Estabilidad. Se prueba con otra semilla para ver que tanto cambiaría
 set.seed(GROUP + 1)
 km_otra_semilla <- kmeans(datos_z, centers = 4, nstart = 25)
@@ -302,7 +331,7 @@ table(original = datos$cluster_km, otra_semilla = km_otra_semilla$cluster)
 
 ### Caracterización de los conglomerados
 
-nombres_cluster <- c("Regulares de gasto medio", "Inactivos", "Ocasionales de bajo gasto", "Frecuentes de alto gasto")
+# (nombres_cluster y colores_cluster se definen arriba, justo después de ajustar k-medias)
 datos$cluster <- factor(datos$cluster_km, levels = 1:4, labels = nombres_cluster)
 
 # Centroides en unidades originales (no estandarizadas)

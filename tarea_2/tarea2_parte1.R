@@ -1,15 +1,17 @@
-# == Librerías ========================================================================================
+# == Librerías ======================================================
 # Paquetes necesarios (instalar una sola vez, luego dejar comentado):
-# install.packages(c("psych", "dplyr", "cluster"))   # cluster viene con la instalación de R
+# install.packages(c("psych", "dplyr", "cluster"))
+# cluster viene con la instalación de R
 library(dplyr)
 library(psych)
-# =====================================================================================================
+library(cluster)
+# ===================================================================
 
-# == Variables de entorno =======================================================================================
+# == Variables de entorno ===========================================
 # i = ((GROUP - 1) %% 5) + 1 = 4
 PATH_TO_DATASET <- "tarea_2/grupo_4_clientes.csv"
 GROUP <- 24   # Somos el grupo 24 en canvas
-# ===============================================================================================================
+# ===================================================================
 
 # == Cargar datos iniciales ===============
 ds_clientes_completo <- read.csv(PATH_TO_DATASET)
@@ -33,7 +35,12 @@ sum(is.na(datos)) # si hay nulos?
 sum(duplicated(datos$id_cliente)) # si hay duplicados?
 
 # Variables continuas (las 4 de la segmentación y de los predictores)
-VARS_CONT <- c("dias_ultima_sesion", "pedidos_12m", "ticket_promedio", "pct_restaurantes")
+VARS_CONT <- c(
+  "dias_ultima_sesion",
+  "pedidos_12m",
+  "ticket_promedio",
+  "pct_restaurantes"
+)
 
 ### Descriptivos
 
@@ -70,21 +77,33 @@ graficar_boxplot <- function(x) {
 
 graficar_hist("dias_ultima_sesion")
 graficar_boxplot("dias_ultima_sesion")
-# Mostrar el valor en días de los outliers (puntos fuera de los bigotes del boxplot)
+# Mostrar el valor en días de los outliers
+# (puntos fuera de los bigotes del boxplot)
 outliers_dias <- boxplot.stats(datos$dias_ultima_sesion)$out
 min(outliers_dias)
-sum(outliers_dias >= 118)
+sum(outliers_dias > 113)
 # eliminar outliers
-datos_2 <- datos[datos$dias_ultima_sesion < 118, ]
+datos_2 <- datos[datos$dias_ultima_sesion < 113, ]
 
 graficar_hist("pedidos_12m")
 graficar_boxplot("pedidos_12m")
+outliers_pedidos <- boxplot.stats(datos$pedidos_12m)$out
+min(outliers_pedidos)
+sum(outliers_pedidos > 59)
+datos_2 <- datos[datos_2$pedidos_12m < 59, ]
 
 graficar_hist("ticket_promedio")
 graficar_boxplot("ticket_promedio")
+outliers_ticket <- boxplot.stats(datos$ticket_promedio)$out
+min(outliers_ticket)
+sum(outliers_ticket > 99.07)
+datos_2 <- datos[datos_2$ticket_promedio < 150, ]
 
 graficar_hist("pct_restaurantes")
 graficar_boxplot("pct_restaurantes")
+outliers_pct <- boxplot.stats(datos$pct_restaurantes)$out
+min(outliers_pct)
+sum(outliers_pct > 0.9)
 
 # Distribución de frecuencias de estado_t1 y estado_t2
 tabla_t1 <- table(datos$estado_t1)
@@ -92,18 +111,32 @@ tabla_t2 <- table(datos$estado_t2)
 tabla_t1
 tabla_t2
 
-barplot(tabla_t1, main = "estado_t1", xlab = "Nivel de gasto", ylab = "Frecuencia", col = "blue")
-barplot(tabla_t2, main = "estado_t2", xlab = "Nivel de gasto", ylab = "Frecuencia", col = "blue")
+barplot(
+  tabla_t1,
+  main = "estado_t1",
+  xlab = "Nivel de gasto",
+  ylab = "Frecuencia",
+  col = "lightblue"
+)
+barplot(
+  tabla_t2,
+  main = "estado_t2",
+  xlab = "Nivel de gasto",
+  ylab = "Frecuencia",
+  col = "lightblue"
+)
 
-# Transiciones T1 -> T2 (útil para la discusión de la Parte 2)
+# Transiciones T1 -> T2
 table(estado_t1 = datos$estado_t1, estado_t2 = datos$estado_t2)
 
 ### Ceros estructurales
 
-# ticket_promedio = 0 NO es dato faltante: son clientes que no hicieron pedidos en T1.
+# ticket_promedio = 0 NO es dato faltante
+# (son clientes que no hicieron pedidos en T1)
 sum(datos$ticket_promedio == 0)
 table(ticket_cero = datos$ticket_promedio == 0, estado_t1 = datos$estado_t1)
-# Los ceros coinciden exactamente con estado_t1 = "Inactivo" (la recodificación es determinística)
+# Los ceros coinciden exactamente con estado_t1 = "Inactivo"
+# (la recodificación es determinística)
 
 # Tratamiento: SE MANTIENEN en la base. Son clientes reales y el segmento inactivo es
 # justamente de interés para retención; eliminarlos dejaría fuera a los más críticos y
@@ -122,22 +155,26 @@ cor(datos[!datos$sin_pedidos_t1, VARS_CONT])
 
 ### Truncamiento
 
-# dias_ultima_sesion está truncada en 180: quien lleva más de eso se registra con 180
+# dias_ultima_sesion está truncada en 180
 sum(datos$dias_ultima_sesion >= 180)  # Ninguno
 max(datos$dias_ultima_sesion) # 179
-max(ds_clientes_completo$dias_ultima_sesion) # 179, incluso en todo el dataset original no hay
+max(ds_clientes_completo$dias_ultima_sesion)
+# 179, incluso en todo el dataset original no hay
 
 ### Escalamiento
 
-# Las variables están en unidades muy distintas (días, n de pedidos, miles de pesos, proporción).
+# Las variables están en unidades muy distintas
+# (días, n de pedidos, miles de pesos, proporción).
 sapply(datos[, VARS_CONT], sd)
-# Para conglomerados (Parte 1) SÍ se estandarizan: las distancias dependen de la escala y
-# ticket_promedio (sd ~31) y dias_ultima_sesion (sd ~36) dominarían sobre pct_restaurantes (sd ~0,2).
+# Para conglomerados (Parte 1) SÍ se estandarizan-
+# -las distancias dependen de la escala y ticket_promedio (sd ~31)
+# y dias_ultima_sesion (sd ~36) dominarían sobre pct_restaurantes (sd ~0,2).
 datos_z <- as.data.frame(scale(datos[, VARS_CONT]))
 colMeans(datos_z)
 sapply(datos_z, sd)
-# Para clasificación (Parte 2) LDA, QDA y Naive Bayes son invariantes a cambios de escala
-# (la función discriminante se ajusta sola), por lo que se usan las variables originales,
+# Para clasificación (Parte 2) LDA, QDA y Naive Bayes son
+# invariantes a cambios de escala (la función discriminante
+# se ajusta sola), por lo que se usan las variables originales,
 # lo que además deja los coeficientes interpretables en unidades originales.
 
 ### Correlación
@@ -145,8 +182,8 @@ sapply(datos_z, sd)
 matriz_cor <- cor(datos[, VARS_CONT])
 matriz_cor
 
-# Comentario: pedidos_12m y ticket_promedio están muy correlacionadas (~0,85), y ambas se
-# relacionan con dias_ultima_sesion (~-0,59) y pct_restaurantes (~0,6).
+# Comentario: pedidos_12m y ticket_promedio están muy correlacionadas (~0,85),
+# y ambas se relacionan con dias_ultima_sesion (~-0,59) y pct_restaurantes (~0,6)
 # - Parte 1: con distancia euclídea sin corregir, las variables correlacionadas cuentan
 #   "doble" (la dimensión actividad/gasto pesa más que las demás). Estandarizar iguala
 #   varianzas pero NO elimina la correlación.
@@ -185,22 +222,18 @@ biplot(pca, scale = 0, cex = 0.5, main = "Biplot PC1 vs PC2")
 colores_estado <- c("Inactivo" = "gray40", "Bajo Gasto" = "orange", "Medio Gasto" = "green3", "Alto Gasto" = "blue")
 
 plot(
-    scores$PC1, scores$PC2,
-    pch = 19, col = rgb(0, 0, 0, 0.4),
-    xlab = "PC1", ylab = "PC2", main = "Scores PCA (sin colorear)"
+  scores$PC1, scores$PC2,
+  pch = 19, col = rgb(0, 0, 0, 0.4),
+  xlab = "PC1", ylab = "PC2", main = "Scores PCA (sin colorear)"
 )
 plot(scores$PC1, scores$PC2, pch = 19, col = colores_estado[as.character(datos$estado_t1)],
-     xlab = "PC1", ylab = "PC2", main = "Scores PCA coloreados por estado_t1")
+  xlab = "PC1", ylab = "PC2", main = "Scores PCA coloreados por estado_t1")
 niveles_estado <- names(colores_estado)
 legend("topright", legend = niveles_estado, col = colores_estado[niveles_estado], pch = 19)
 
 #########################################
 ### 1. Análisis de conglomerados (P1) ###
 #########################################
-
-# Solo se usan las 4 variables continuas estandarizadas (datos_z).
-# estado_t1 y estado_t2 NO participan en esta parte.
-library(cluster)
 
 ### Medida de distancia
 

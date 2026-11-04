@@ -241,9 +241,11 @@ const hashJs = () => {
     ok(/K-medias/.test(t2) && !/Covarianza/.test(t2), "P2 muestra solo módulos de P2", t2);
     ok((await js("PLATAFORMA.preguntas({prueba:'P1'}).every(q => /^m(0[1-9]|10)-/.test(q.modulo))")), "el banco de P1 no mezcla preguntas de P2");
     await clic('#selectorPrueba [data-prueba="P3"]'); await dormir(80);
-    ok((await js("document.querySelectorAll('.tarjeta-modulo').length")) === 0 && (await js("/sin definir/.test(document.querySelector('#app').textContent)")), "P3: dice «sin definir» y no muestra contenido");
+    const t3 = await titulos();
+    ok(/MANOVA/.test(t3) && /bloques/.test(t3) && !/K-medias/.test(t3) && !/Covarianza/.test(t3), "P3 muestra MANOVA y los módulos nuevos, sin el resto de P1/P2", t3);
+    ok((await js("PLATAFORMA.preguntas({prueba:'P3'}).every(q => /^m(19|2[0-6])-/.test(q.modulo))")), "el banco de P3 solo trae preguntas de M19–M26");
     await ir("examen");
-    ok((await js("!document.querySelector('[data-accion=empezarExamen]')")), "P3: no deja armar un examen sin banco");
+    ok((await js("!!document.querySelector('[data-accion=empezarExamen]')")), "P3: deja armar un examen con su banco");
     await cargar();
     ok((await js("PLATAFORMA.app.sel()")) === "P3", "la prueba elegida persiste al recargar");
     await clic('#selectorPrueba [data-prueba="todo"]'); await dormir(80);

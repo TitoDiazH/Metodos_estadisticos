@@ -8,7 +8,7 @@ PLATAFORMA.registrar("modulo", {
   orden: 19,
   titulo: "MANOVA",
   descripcion: "El ANOVA cuando la respuesta no es un número sino un vector: comparar a la vez los vectores de medias de varios grupos.",
-  pruebas: ["P2"],
+  pruebas: ["P2", "P3"],
   prioridad: "baja",
   fuentes: [{ id: "C7.2", loc: "slides 25–34" }, { id: "CMAN", loc: "páginas 1–13" }],
 

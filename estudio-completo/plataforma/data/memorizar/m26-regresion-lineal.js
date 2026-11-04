@@ -1,0 +1,27 @@
+/* Memorizar · M26 Regresión lineal (P3) */
+PLATAFORMA.registrar("memorizar", [
+  { id: "m26-mem-01", modulo: "m26-regresion-lineal", categoria: "formula", titulo: "Mínimos cuadrados (simple)",
+    contenido: String.raw`$b_1=\dfrac{n\sum xy-\sum x\sum y}{n\sum x^2-(\sum x)^2}$ · $b_0=\bar y-b_1\bar x$ · residuo $e_i=y_i-\hat y_i$.`,
+    fuente: [{ id: "C8.1", loc: "slides 7–10" }] },
+  { id: "m26-mem-02", modulo: "m26-regresion-lineal", categoria: "formula", titulo: "R², R² ajustado, s² y t",
+    contenido: String.raw`$R^2=SEC/STC=1-SRC/STC$ · $R^2_{aj}=1-(1-R^2)\frac{n-1}{n-k-1}$ · $s^2=SCE/(n-k-1)$ · $t=b_j/ee(b_j)$ · $\hat\beta=(X'X)^{-1}X'y$.`,
+    fuente: [{ id: "C8.1", loc: "slides 12, 15, 17–18 y 23" }] },
+  { id: "m26-mem-03", modulo: "m26-regresion-lineal", categoria: "decision", titulo: "Interpretar coeficientes",
+    contenido: "b_j = cambio esperado en y cuando x_j sube 1 unidad, manteniendo constantes los demás x. El intercepto no se interpreta si x = 0 está fuera del rango. Si la F global no es significativa, no se miran los t.",
+    fuente: [{ id: "C8.1", loc: "slides 21–23" }] },
+  { id: "m26-mem-04", modulo: "m26-regresion-lineal", categoria: "formula", titulo: "Polinomial",
+    contenido: String.raw`<code>lm(y ~ x + I(x^2))</code> · pendiente $b_1+2b_2x$ · $b_2>0$ convexa, $b_2<0$ cóncava (máximo en $x^*=-b_1/(2b_2)$) · no extrapolar.`,
+    fuente: [{ id: "C8.1", loc: "slides 24–26" }] },
+  { id: "m26-mem-05", modulo: "m26-regresion-lineal", categoria: "umbral", titulo: "Diagnóstico: cortes",
+    contenido: String.raw`Shapiro: $H_0$ normalidad · $h_{ii}>2(k+1)/n$ alto apalancamiento · Cook $D_i>1$ muy influyente · VIF $>5$–$10$ multicolinealidad · U en residuos ⇒ falta $x^2$ · embudo ⇒ transformar $y$.`,
+    fuente: [{ id: "C8.1", loc: "slides 28–34" }] },
+  { id: "m26-mem-06", modulo: "m26-regresion-lineal", categoria: "decision", titulo: "Selección de modelos",
+    contenido: "R² ajustado (mayor) · AIC = n ln(SCE/n) + 2p (menor) · Cp ≈ p · PRESS (menor). step(modelo, direction = \"forward\" | \"backward\" | \"both\") usa AIC; el resultado es un candidato.",
+    fuente: [{ id: "C8.1", loc: "slides 37–38" }] },
+  { id: "m26-mem-07", modulo: "m26-regresion-lineal", categoria: "salida", titulo: "Ejemplos",
+    contenido: "Óxido nitroso: solo Humedad significativa (t = −4,01; p = 0,001); F = 21,4 (3, 16); R² = 0,8005; R²aj = 0,763; Shapiro p = 0,195; VIF < 2,4; step saca Temperatura (R²aj 0,775). mtcars: wt −3,21; 6 cil −4,26; 8 cil −6,07.",
+    fuente: [{ id: "C8.1", loc: "slides 20–39" }] },
+  { id: "m26-mem-08", modulo: "m26-regresion-lineal", categoria: "funcion-R", titulo: "Flujo en R",
+    contenido: "<code>lm</code> + <code>summary</code> → <code>par(mfrow = c(2, 2)); plot(modelo)</code> → <code>shapiro.test(residuals(modelo))</code> → <code>hatvalues</code>, <code>cooks.distance</code> → <code>car::vif</code> → <code>step(modelo, direction = \"both\")</code>. Categóricas con <code>factor()</code>.",
+    fuente: [{ id: "C8.1", loc: "slide 40" }] }
+]);

@@ -33,6 +33,9 @@
 | C7.1 | `7.1 Diseño de Experimentos - Introducción y ANOVA (parte 1).pptx.pdf` | clase (PDF de un PPT) | P2 (por confirmar) / P3 | 54 págs. | núcleo; **parcial**: ~15 págs. son solo fórmulas/tablas en imagen (se miraron p29–30, 33, 38–40, 42, 45–49) |
 | C7.2 | `7.2 ANOVA de un factor (parte 2) y MANOVA.pptx` | clase | P2 (ANOVA: por confirmar; MANOVA: P2) | 34 slides | núcleo; **parcial**: fórmulas LSD/Tukey en imagen (leídas al renderizar) |
 | CMAN | `MANOVA.pdf` | complemento de C7.2 | P2 | 16 págs. | núcleo (ejemplo resuelto); págs. 14–16 («Anexo») casi sin texto |
+| C7.3 | `7.3 Diseño Factorial y en Bloques (DBCA).pptx` | clase | P3 | 38 slides | núcleo; s23/s29 gráficos; datos de s33 en imagen (leídos al renderizar) — **subida 2026-11-03** |
+| C7.4 | `7.4 Diseño Factorial 2^k.pptx` | clase | P3 | 26 slides | núcleo; s13, s14, s21 gráficos — **subida 2026-11-03** |
+| C8.1 | `8.1_Regresion_Lineal.pptx` | clase | P3 | 40 slides | núcleo; **parcial**: fórmulas en imagen (leídas al renderizar) — **subida 2026-11-03** |
 
 ### Ayudantías (`ayudantias/`)
 | ID | Archivo | Tipo | Prueba | Tamaño | Estado |
@@ -62,6 +65,8 @@
 | S6.1 | `6.1 Clasificación Supervisada (clase 1). Ejemplos R.R` | P2 | 42 l. | núcleo |
 | S6.2 | `6.2 Clasificación Supervisada (clase 2). Ejemplos R.R` | P2 | 79 l. | núcleo |
 | S7.2 | `7.2 ANOVA de un factor (parte 2) y MANOVA. Ejemplos R.R` | P2 | 47 l. | núcleo |
+| S7.3 | `7.3 Diseño Factorial y en Bloques (DBCA). Ejemplos R.R` | P3 | 34 l. | núcleo (DBCA ensamble + `agricolae::LSD.test`) |
+| S7.4 | `7.4 Diseño Factorial 2^k. Ejemplos R.R` | P3 | 66 l. | núcleo (2³ con réplicas, `model.tables`, `interaction.plot`, 2² con bloques, `plot.design`) |
 | (dup.) | `Ayudantia 3 2026-20 Pauta R.R`, `Ayudantia 5 2026-20 Pauta R.R` | — | 288 / 254 l. | duplicados de AY3-R y AY5-R (se citan con esos IDs) |
 
 > **No hay scripts de las clases 1, 2, 3, 4.1 ni 4.2 en `scripts/`.** Existen en `../capitulo-1/r-codes-for-study/` (no se leyeron ni se inventariaron: regla 5 del ROADMAP). Ver §4.
@@ -91,8 +96,10 @@
 
 **Archivos en `capitulo-1/` que no están en esta carpeta (solo nombres):** `r-codes-for-study/` con scripts de las clases 2, 3, 4.1, 4.2 y de AY1 y AY3.
 
+> **Proyecto computacional 3** (`pruebas-y-ejercicios/Proyecto Computacional 3 - Enunciado (2026-20)-1.pdf`, ID **PC3**, 2 págs., subido 2026-11-03): experimento propio factorial 2 × 2 × 3 (factor de 3 niveles cuantitativo y equiespaciado), ≥ 3 réplicas, orden aleatorio con `set.seed(<grupo>)`, ANOVA + supuestos + gráficos, superficie de respuesta de 2.º orden, óptimo y 3 corridas de confirmación. Se usa en el Laboratorio R (`data/rlab/p3-proyecto-3.js`).
+
 ### Casillas por archivo (3.6 — todos asociados a ≥1 contenido)
-- [x] C1 → M01–M04 · [x] C2 → M05–M08 · [x] C3 → M09 · [x] C4.1 → M10 (+M02) · [x] C4.2 → M10 (+M09) · [x] C5.1 → M11–M12 · [x] C5.2 → M13–M14 · [x] C6.1 → M15 · [x] C6.2 → M16 · [x] C7.1 → M17, M18 (+M20) · [x] C7.2 → M18, M19 · [x] CMAN → M19
+- [x] C1 → M01–M04 · [x] C2 → M05–M08 · [x] C3 → M09 · [x] C4.1 → M10 (+M02) · [x] C4.2 → M10 (+M09) · [x] C5.1 → M11–M12 · [x] C5.2 → M13–M14 · [x] C6.1 → M15 · [x] C6.2 → M16 · [x] C7.1 → M17, M18 (+M20) · [x] C7.2 → M18, M19 · [x] CMAN → M19 · [x] C7.3 → M20, M25 · [x] C7.4 → M21 · [x] C8.1 → M26 · [x] S7.3 → M20 · [x] S7.4 → M21 · [x] PC3 → Laboratorio R (M20, M21, M25, M26)
 - [x] AY1-E/AY1-R → M01, M02, M04 · [x] AY2-E/PPT/P → M05, M06, M07, M08, M09 · [x] AY3-E/P/R → M09, M10, M06 · [x] AY4-E/P/PPT → M05, M07, M06, M10 · [x] AY5-E/P/R → M04, M11–M14 · [x] AY6-E/P → M15, M16, M18
 - [x] S5.1 → M11, M12 · [x] S5.2 → M13, M14 · [x] S6.1 → M15 · [x] S6.2 → M16 · [x] S7.2 → M18, M19 · [x] duplicados → AY3-R, AY5-R
 - [x] EJ-P1 → M01–M07 · [x] EJ-P1b → M05 (tema por confirmar) · [x] EJ-P2 → M11–M14 · [x] EJ-P3 → M18, M20, M21 (solo referencias)
@@ -326,27 +333,64 @@
 | Ejemplo iris (Λ=0,0234; F≈199; gl 8,288) | C7.2 s33–34 | sí | `manova`, `summary.aov` | **Baja** — sin registro fuera de clases | |
 | Ejemplo metodologías (Λ=0,048958; F=29,329; numDf=p(g−1)=6) y post hoc ANOVA + Tukey | MANOVA p1–13 | sí | `manova`, `summary.aov`, `TukeyHSD` | **Baja** — sin registro fuera de clases | |
 
-### P3 / por confirmar — módulos que aparecen **solo** en pruebas pasadas (sin clase subida)
+### P3 — módulos (clases 7.3, 7.4 y 8.1; MANOVA M19 también entra en P3)
 
-> Estos temas aparecen en `Enunciado Prueba 3` / pautas de P3 y en el Examen del 1 de julio de 2026, pero **no hay clase ni slide en `clases/` que los desarrolle** (solo menciones en C1 s4 —«Diseños factoriales, Bloqueo, Superficies de respuesta, Optimización de procesos», «Árboles de clasificación»— y la definición de bloqueo en C7.1 p17). El estudiante dijo que las clases de P3 aún no están subidas (`PROMPT_MAESTRO` §0). **No se redacta teoría desde aquí**: solo se registra qué se evaluó. Cuando se suban las clases, esto se completa con la Fase 7.
+> Reparto declarado por el estudiante (2026-11-03): P3 va **desde MANOVA en adelante** (M19 + clases 7.3, 7.4, 8.1 y lo que se suba). Las filas «PR-…» registran lo evaluado en la Prueba 3 de 2026-10 (enunciado y pautas), que coincide con los ejercicios 1 y 2 resueltos en C7.3 s16–17 y C7.4 s25–26.
 
-#### M20 · Diseño en bloques completos al azar (DBCA) (P3, por confirmar)
-| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Detalle observado |
+#### M20 · Diseño en bloques completos al azar (DBCA) (P3)
+| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Supuestos / criterios |
 |---|---|---|---|---|---|
-| Identificar el diseño, modelo Yij=μ+τi+βj+εij e hipótesis (tratamiento y bloque) | PR-P3-E P1a; PR-P3-Q1 a | sí | – | **Alta** (única pregunta de DBCA vista) | H0 trat: τ1=τ2=τ3=0; H0 bloque: β1=…=β4=0 |
-| Totales por bloque y gran total; FC=Y..²/N; SCtrat, SCbloque, SCerror por diferencia | PR-P3-E P1b–c; PR-P3-Q1 b–c | sí (3 fertilizantes × 4 sectores: SCtrat=72, SCbloq=60, SCerror=24, SCT=156) | – | **Alta** | Verificado con R: F tratamiento=9,00 (p=0,0156); F bloque=5,00 (p=0,0452); F crít (2,6)=5,143; (3,6)=4,757 |
-| Tabla ANOVA con bloque; gl: a−1, b−1, (a−1)(b−1), N−1 | PR-P3-Q1 d | sí | – | **Alta** | «En el valor p basta que comparen el valor crítico que les damos» |
-| Decisión sobre tratamientos y sobre el efecto del bloqueo | PR-P3-Q1 e–f | sí | – | **Alta** | Bloqueo «efectivo apenas» (F=5,00 vs 4,76) |
-| LSD en DBCA: LSD=t(0,025;6)·√(2·CME/b)=3,46 | PR-P3-Q1 g | sí | – | **Alta** | Recomendación F3 (28 kg) significativamente superior a F1 |
-| Comparar con DCA (sumar SCbloque al error): F=3,86 < 4,26 | PR-P3-Q1 h | sí | – | **Alta** | Muestra el valor del bloqueo |
-| Teoría de bloqueo (definición, ejemplo operadores/máquinas) | C7.1 p17 | – | – | Media | Solo una página en clases |
+| Factor de bloque: qué es, para qué (separar variabilidad perturbadora; no interesa su efecto) | C7.3 s3–5; C7.1 p17 | sí (máquinas/operadores) | – | **Alta** — PR-P3-Q1 a | importancia secundaria |
+| DBCA: completo, aleatorización dentro de cada bloque, restricción (no se aleatoriza entre bloques); modelo Yij=μ+τi+γj+εij; supuestos (N(0,σ²), aditivo sin interacción) | C7.3 s7–8; PR-P3-E P1a | – | – | **Alta** — PR-P3-Q1 a | sin interacción trat×bloque |
+| ANOVA de dos criterios: SC_T, SC_TRAT, SC_B con totales; SC_E por diferencia; gl k−1, b−1, (k−1)(b−1), N−1; F y decisión | C7.3 s9–12; PR-P3-Q1 b–e | sí (ensamble: 61,5/28,5/18; F 10,25 y 4,75) | – | **Alta** — PR-P3-Q1 c–d | |
+| DBCA en R: `aov(y ~ metodo + operador)`, `summary`, `agricolae::LSD.test` | C7.3 s13; S7.3 | sí | `aov`, `LSD.test` | **Alta** | |
+| Interpretar el efecto de bloque (significativo / no) | C7.3 s14; PR-P3-Q1 f | sí (operador p=0,030) | – | **Alta** | si no es significativo, no controlarlo a futuro |
+| LSD en DBCA: t(α/2,(k−1)(b−1))·√(2·CME/b) y tabla de pares | C7.3 s15; PR-P3-Q1 g | sí (2,262) | – | **Alta** | b hace de réplicas |
+| Ejercicio fertilizantes (prueba 3): ANOVA, LSD=3,46 y comparación con DCA | C7.3 s16–17; PR-P3-Q1 a–h | sí | – | **Alta** | sin bloque el CME sube de 4 a 9,3 |
 
-#### M21 · Experimentos factoriales 2^k completos (P3, por confirmar)
-| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Detalle observado |
+#### M25 · Diseño factorial: efectos, interacción, a × b y a × b × c (P3)
+| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Supuestos / criterios |
 |---|---|---|---|---|---|
-| Efectos principales e interacción en 2² con réplicas (por promedios o por contrastes, notación de Yates (1), a, b, ab) | PR-P3-E P2a; PR-P3-Q2 a | sí (A=11; B=−6,5; AB=5) | – | **Alta** | Rúbrica: cálculo 1,2 pts + interpretación 0,8 pts |
-| Gráficos de efectos principales y de interacción (eje y con valores; líneas no paralelas ⇒ interacción) | PR-P3-E P2b; PR-P3-Q2 b | sí | – | **Alta** | Rúbrica: 0,5 por gráfico + 0,5 conclusión |
-| ANOVA factorial: SS=(contraste)²/(4·r), modelo Yijk=μ+Ai+Bj+(AB)ij+εijk, hipótesis por efecto | PR-P3-E P2c; PR-P3-Q2 c | sí (SSA=242; SSB=84,5; SSAB=50) | – | **Alta** | Verificado con R: F_A=35,85 (p=0,0039); F_B=12,52 (p=0,024); F_AB=7,41 (p=0,0529 ⇒ no significativa al 5 %); SSE=27 con 4 gl |
+| Diseño factorial: objetivo, factores cualitativos/cuantitativos, todas las combinaciones, ≥2 niveles | C7.3 s19 | – | – | **Media** | |
+| Efecto principal (cambio en la media de Y); cálculo con 2² (levadura/temperatura: A=−2,5, B=19,5); gráfica de efectos principales | C7.3 s20 | sí | – | **Alta** — PR-P3-Q2 a | |
+| Interacción: efecto de A depende de B (13 vs −18; AB=−15,5); gráfica de interacción (paralelas = sin interacción) | C7.3 s21–23 | sí | – | **Alta** — PR-P3-Q2 b | |
+| Factorial a × b con n réplicas: modelo, 3 pares de hipótesis, ANOVA (gl, SC con totales); ≥2 réplicas | C7.3 s25–26 | – | – | **Alta** — PR-P3-Q2 c | |
+| Ejemplo 4 × 3 acabado de metal: tabla ANOVA, interpretación y óptimo | C7.3 s27–29 | sí (SC 2125,1/3160,5/557,07/689,33) | `aov(y ~ A * B)` | **Media** | minimizar |
+| LSD sin interacción (medias marginales, r=bn o an) y con interacción (dentro de cada nivel, r=n) | C7.3 s30–31 | sí | – | **Media** | |
+| Factorial a × b × c: modelo, ANOVA (7 efectos), ejemplo sedimentación 3 × 2 × 2 y mejor tratamiento | C7.3 s33–36 | sí | `aov(Y ~ A * B * C)` | **Media** | efectos no significativos se mandan al error |
+| Factorial general con K factores; principio de escasez de efectos | C7.3 s37 | – | – | **Baja** | motiva 2^(k−p) |
+
+#### M21 · Experimentos factoriales 2^k (2³ y bloqueo en 2^k) (P3)
+| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Supuestos / criterios |
+|---|---|---|---|---|---|
+| Diseño 2³: 8 tratamientos, notación de Yates, cubo | C7.4 s4 | – | – | **Media** | |
+| Tabla de signos; contrastes; interacción doble y triple | C7.4 s5–7 | – | – | **Alta** — PR-P3-Q2 a | |
+| Efecto = contraste/(n·2^(k−1)); SC = contraste²/(n·2^k); 1 gl por efecto; ANOVA 2^k (error 2^k(n−1)) | C7.4 s7–8, s23 | – | – | **Alta** — PR-P3-Q2 c | |
+| Ejemplo 2³ resistencia (n=2): `aov(Y ~ A * B * C)`, ANOVA e interpretación | C7.4 s9–11; S7.4 l.12–30 | sí | `aov`, `summary` | **Alta** | |
+| Efectos estimados con `model.tables(type = "effects")`; gráfica de efectos principales | C7.4 s12–13; S7.4 l.33 | sí | `model.tables`, `plot.design` | **Media** | `model.tables` da la mitad del efecto (ver §3) |
+| Gráficas de interacción `interaction.plot` | C7.4 s14–15; S7.4 l.39–45 | sí | `interaction.plot` | **Alta** — PR-P3-Q2 b | |
+| Bloqueo en 2^k: objetivo, jerarquía de efectos, réplica completa por bloque | C7.4 s17–18 | – | – | **Media** | |
+| Ejemplo 2² con bloques (días): `aov(respuesta ~ A * B + bloque)` e interpretación | C7.4 s19–22; S7.4 l.49–65 | sí | `aov`, `interaction.plot`, `plot.design` | **Media** | |
+| Ejercicio 2² viscosidad (prueba 3): efectos por contrastes, ANOVA y gráficos | C7.4 s25–26; PR-P3-Q2 | sí (A=11; B=−6,5; AB=5; F 35,85/12,52/7,41) | – | **Alta** | AB no significativa al 5 % |
+
+#### M26 · Regresión lineal simple, múltiple y polinomial (P3)
+| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Supuestos / criterios |
+|---|---|---|---|---|---|
+| Modelo simple Y=β0+β1x+ε; esperanza condicional; error vs residuo | C8.1 s2–8 | – | – | **Media** | E(ε)=0, Var(ε)=σ² |
+| Mínimos cuadrados: fórmulas de b1 y b0; ejemplo 11.1 (ŷ=3,8296+0,9036x) | C8.1 s9–11 | sí | – | **Media** | |
+| R²: SEC, SRC, STC; qué es y qué no es; descomposición de la varianza | C8.1 s12–14 | – | – | **Alta** | R²=r² con una x |
+| Regresión múltiple matricial β=(X'X)⁻¹X'y; supuestos; s²=SCE/(n−k−1); ee y t | C8.1 s15–18 | – | – | **Media** | X de rango completo |
+| Ejemplo óxido nitroso: `lm`, `summary`, interpretación de coeficientes (ceteris paribus) | C8.1 s19–22 | sí | `lm`, `summary` | **Alta** | intercepto fuera de rango no se interpreta |
+| Prueba F global, R² y R² ajustado | C8.1 s23 | sí (F=21,4; R²aj=0,763) | – | **Alta** | |
+| Regresión polinomial (lineal en los parámetros), `I(x^2)`, pendiente variable b1+2b2x | C8.1 s24–26 | sí (set.seed(32)) | `lm(y ~ x + I(x^2))`, `coef` | **Alta** — base de la superficie de respuesta (PC3) | no extrapolar |
+| Diagnóstico de residuos: 4 supuestos y sus gráficos; `plot(modelo)`; Q-Q y Shapiro-Wilk | C8.1 s28–31 | sí (p=0,195) | `plot`, `shapiro.test` | **Alta** — PC3 | |
+| Puntos influyentes: apalancamiento hii (> 2(k+1)/n) y distancia de Cook (> 1) | C8.1 s32 | sí | `hatvalues`, `cooks.distance` | **Media** | no se eliminan automáticamente |
+| Multicolinealidad y VIF (> 5 a 10) | C8.1 s33–34 | sí | `cor`, `car::vif` | **Media** | |
+| Variables indicadoras (ℓ−1), categoría de referencia; ejemplo mtcars | C8.1 s35–36 | sí | `lm(mpg ~ wt + factor(cyl))` | **Media** | |
+| Selección de modelos: R² aj, AIC, Cp, PRESS; forward/backward/both con `step` | C8.1 s37–39 | sí (AIC −111,64 → −113,45) | `step` | **Media** | resultado = candidato |
+| Flujo de trabajo en R (ajustar, supuestos, influyentes, VIF, selección) | C8.1 s40 | – | todas | **Alta** — PC3 | |
+
+> **Aún sin clase** (siguen en `observado` de P3): fraccionado 2^(k−p) (M22), superficie de respuesta / Box–Behnken (M23; C8.1 se titula «Regresión lineal y superficie de respuesta» pero las 40 slides solo cubren regresión) y árboles/bosques (M24). Se registran solo como evaluaciones pasadas:
 
 #### M22 · Factorial fraccionado 2^(k−p) (P3 / Examen, por confirmar)
 | Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Detalle observado |
@@ -422,6 +466,9 @@
 | PR-P3-Q2 | En la fórmula de SSAB figura «(304 + **1269**)» (typo de 269) | Verificado con R: SSA=242, SSB=84,5, SSAB=50; SSE=27 (4 gl); AB p=0,0529 |
 | AY4-P (d) | Código `promax_sol <- fa(datos, nfactors = nfac, …)`: `nfac` no está definido en la pauta | |
 
+- **C7.4 s12 (2³ resistencia):** dice «B (presión): ±2,688 → Efecto positivo», pero en los datos la media con B alto es 62,75 y con B bajo 68,125 (R: `model.tables` da B=+1 → −2,6875): **la presión baja la resistencia**. La gráfica de efectos principales de s13 lo muestra bien (−1 arriba). Verificado con R (2026-11-03).
+- **C7.4 s7 vs s12 («efecto»):** s7 define Efecto = contraste/(n·2^(k−1)) = ȳ₊ − ȳ₋; `model.tables(type = "effects")` (s12) entrega la **desviación de cada nivel respecto de la media general**, que en un 2^k es la mitad: A = ±11,313 ⇒ efecto de A = 22,625. Verificado con R.
+
 ### 3.3 Notación y código
 - **Hipótesis con alternativa**: C2 usa `alternative = "greater"/"less"/"two.sided"`; AY2-PPT repite la tabla (H0 `≥/≤/=`).
 - **Matriz de dispersión**: C6.1 s13 usa F (entre) y W (dentro); C7.2 s29 y MANOVA.pdf usan **B** (entre) y **W** (dentro).
@@ -493,5 +540,7 @@
 
 **¿Contenido nuevo o P1+P2?** Por lo observado, las preguntas de P3 evalúan **contenido que no está desarrollado en ninguna clase de `clases/`**: DBCA, factoriales 2^k, fraccionados, superficies de respuesta y árboles/bosques. Lo único relacionado en clases es: el ANOVA de un factor (C7.1/C7.2) como base de la tabla de DBCA y de la comparación con DCA; la prueba LSD (C7.2 s10–17); la definición de bloqueo (C7.1 p17); y menciones de temario en C1 s4 («Diseños factoriales, Bloqueo, Superficies de respuesta, Optimización de procesos», «Árboles de clasificación»).
 **Lo que no se puede afirmar:** si la P3 de este semestre es acumulativa; qué clases la cubrirán; el reparto exacto con el Examen. Queda como pregunta §4.2 (4).
+
+**Actualización 2026-11-03 (Fase 7):** el estudiante declaró que **P3 va desde MANOVA en adelante** (no acumulativa). Subidas C7.3 (DBCA y factorial), C7.4 (2^k y bloques en 2^k) y C8.1 (regresión lineal), con scripts S7.3 y S7.4, y el enunciado del Proyecto 3 (PC3). Los ejercicios resueltos en C7.3 s16–17 y C7.4 s25–26 son las preguntas 1 y 2 de la Prueba 3 anterior. Siguen sin clase: fraccionados, superficie de respuesta y árboles.
 
 **Implicancia para el ROADMAP (Fase 7):** cuando se suban las clases de P3, los módulos M20–M24 de §2 ya tienen la lista de lo que se evaluó antes; la Fase 7 debe completar teoría y fuentes, y decidir si `data/pruebas.js` marca P3 como acumulativa (**preguntar**).

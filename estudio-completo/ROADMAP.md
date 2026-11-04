@@ -22,7 +22,7 @@
 | 4 | Crear la base funcional de la app | **Opus** | ✅ hecha (pendiente tu revisión) |
 | 5 | Poblar Aprender / Memorizar / Laboratorio R | Sonnet | ✅ hecha (pendiente tu revisión) |
 | 6 | Poblar con preguntas | **Sonnet** | 🟡 primera pasada hecha (370 preguntas + 11 desarrollos); faltan metas de cantidad en 12 módulos |
-| 7 | *(recurrente)* Incorporar clases nuevas (P3) | Sonnet (+ Opus si cambia la arquitectura) | ⬜ cuando subas material |
+| 7 | *(recurrente)* Incorporar clases nuevas (P3) | Sonnet (+ Opus si cambia la arquitectura) | 🟡 1.ª tanda hecha (2026-11-03: C7.3, C7.4, C8.1 + Proyecto 3); faltan las clases que se suban |
 
 > Orden decidido por el estudiante: primero el contenido de estudio (Fase 5) y después las preguntas (Fase 6), para que las preguntas se apoyen en módulos ya redactados.
 
@@ -197,15 +197,30 @@ Por origen: 189 `curso`, 50 `variacion`, 131 `nueva`. Por tipo: 115 cálculo, 10
 ## Fase 7 — Incorporar clases nuevas (recurrente)
 
 Se usa cada vez que subas material (p. ej. clases de P3). Pasos:
-- [ ] 7.1 Subir los archivos a `clases/`, `ayudantias/`, etc.
-- [ ] 7.2 Actualizar `CONTENIDOS.md` (nuevos IDs en §1, conceptos en §2, §6 alcance de P3) — solo lo nuevo, leyendo solo lo nuevo.
-- [ ] 7.3 Actualizar `data/pruebas.js` (estado y módulos de P3; acumulativa sí/no — **preguntar**).
-- [ ] 7.4 Crear módulos y preguntas nuevos como en las Fases 5 y 6; correr `generar_manifiesto` y los verificadores.
-- [ ] 7.5 Si P3 incluye módulos de P1/P2, **referenciarlos** (campo `pruebas`), no duplicarlos.
+- [x] 7.1 Subir los archivos a `clases/`, `ayudantias/`, etc.
+- [x] 7.2 Actualizar `CONTENIDOS.md` (nuevos IDs en §1, conceptos en §2, §6 alcance de P3) — solo lo nuevo, leyendo solo lo nuevo.
+- [x] 7.3 Actualizar `data/pruebas.js` (estado y módulos de P3; acumulativa sí/no — **preguntar**).
+- [x] 7.4 Crear módulos y preguntas nuevos como en las Fases 5 y 6; correr `generar_manifiesto` y los verificadores.
+- [x] 7.5 Si P3 incluye módulos de P1/P2, **referenciarlos** (campo `pruebas`), no duplicarlos.
+
+**Tanda 1 (2026-11-03)** — material de `Material_Nuevo/` copiado (sin borrar el original) a `clases/` (C7.3, C7.4, C8.1), `scripts/` (S7.3, S7.4) y `pruebas-y-ejercicios/` (PC3). P3 = **desde MANOVA en adelante** (dicho por el estudiante), no acumulativa: M19 (referenciado, no duplicado) + M20 DBCA, M25 factorial a×b y a×b×c, M21 2^k y bloques, M26 regresión lineal.
+
+| Módulo | Aprender | Memorizar | Lab R | Preguntas | Desarrollo |
+|---|---|---|---|---|---|
+| M20 DBCA | 7 conceptos | 7 | 2 | 14 | 1 |
+| M25 Factorial general | 8 | 7 | 2 | 14 | 0 |
+| M21 Factorial 2^k | 9 | 7 | 4 | 15 | 1 |
+| M26 Regresión lineal | 13 | 8 | 4 | 17 | 1 |
+
+**Laboratorio R · Proyecto 3** (`data/rlab/a-proyecto-3.js`, 12 recetas, salen primero): mapa/rúbrica y plantilla del script, diseño 2×2×3 + `set.seed`, anotar datos, gráficos, ANOVA, supuestos (Shapiro, Levene/Bartlett, independencia), gráficos de residuos, LSD/Tukey, superficie de 2.º orden con `lm` + `I(x3^2)`, óptimo (derivada y grilla), gráfico de la superficie y corridas de confirmación (`predict(interval=)` + `t.test`). Datos de ejemplo simulados (avión de papel). Funciones fuera de los scripts del curso marcadas con aviso.
+Verificación: `verificar_todo` en verde (106 salidas de R comparadas) y `prueba_funcional` 125/125 (se actualizaron 2 comprobaciones que suponían P3 vacía).
+Pendiente de esta tanda: clases en audio de M20–M26; superficie de respuesta (receta 8–11) revisar cuando se suba su clase; M22–M24 siguen sin clase.
 
 ---
 
 ## Preguntas abiertas para el estudiante
+
+- (2026-11-03) ¿Entra en P3 la parte de la regresión que no es de diseño (VIF, indicadoras, selección)? Se asumió que sí: toda la clase 8.1 está en M26.
 
 - ¿P2 incluye diseño de experimentos (clase 7.1) o solo ANOVA/MANOVA? (supuesto: sí)
 - ~~¿Nota de aprobación y exigencia?~~ **Respondido 2026-10-08: nota 4,0 con 50 % de exigencia.** Sigue abierto: ¿30 preguntas por examen/simulacro?
