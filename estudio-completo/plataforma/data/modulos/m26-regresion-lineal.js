@@ -8,7 +8,7 @@ PLATAFORMA.registrar("modulo", {
   orden: 23,
   titulo: "Regresión lineal simple, múltiple y polinomial",
   descripcion: "Explicar una respuesta cuantitativa con uno o varios regresores: estimar, interpretar, probar, verificar supuestos y elegir el modelo. Es la base de la superficie de respuesta.",
-  pruebas: ["P3"],
+  pruebas: ["P4"],
   prioridad: "alta",
   fuentes: [{ id: "C8.1", loc: "slides 1–40" }],
 

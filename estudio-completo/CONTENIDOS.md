@@ -98,6 +98,8 @@
 
 > **Proyecto computacional 3** (`pruebas-y-ejercicios/Proyecto Computacional 3 - Enunciado (2026-20)-1.pdf`, ID **PC3**, 2 págs., subido 2026-11-03): experimento propio factorial 2 × 2 × 3 (factor de 3 niveles cuantitativo y equiespaciado), ≥ 3 réplicas, orden aleatorio con `set.seed(<grupo>)`, ANOVA + supuestos + gráficos, superficie de respuesta de 2.º orden, óptimo y 3 corridas de confirmación. Se usa en el Laboratorio R (`data/rlab/p3-proyecto-3.js`).
 
+> **Libro guía** (`libro-guia/Analisis y diseño de experimentos - Gutiérrez & de la Vara - 2ed.pdf`, ID **LG**, 564 págs., subido 2026-11-04; ignorado en git): Gutiérrez y de la Vara, *Análisis y diseño de experimentos*, 2.ª ed. El profesor recomendó para P3 (temario: MANOVA, bloqueo, factorial y 2^k) los ejercicios cap. 4 ej. 9–12 (pp. 119–120), cap. 5 ej. 18–22 (pp. 159–162) y cap. 6 ej. 3, 5, 8 y 10 (pp. 222–226). No se usa para ampliar el temario, solo como fuente de ejercicios de desarrollo (M20, M25, M21).
+
 ### Casillas por archivo (3.6 — todos asociados a ≥1 contenido)
 - [x] C1 → M01–M04 · [x] C2 → M05–M08 · [x] C3 → M09 · [x] C4.1 → M10 (+M02) · [x] C4.2 → M10 (+M09) · [x] C5.1 → M11–M12 · [x] C5.2 → M13–M14 · [x] C6.1 → M15 · [x] C6.2 → M16 · [x] C7.1 → M17, M18 (+M20) · [x] C7.2 → M18, M19 · [x] CMAN → M19 · [x] C7.3 → M20, M25 · [x] C7.4 → M21 · [x] C8.1 → M26 · [x] S7.3 → M20 · [x] S7.4 → M21 · [x] PC3 → Laboratorio R (M20, M21, M25, M26)
 - [x] AY1-E/AY1-R → M01, M02, M04 · [x] AY2-E/PPT/P → M05, M06, M07, M08, M09 · [x] AY3-E/P/R → M09, M10, M06 · [x] AY4-E/P/PPT → M05, M07, M06, M10 · [x] AY5-E/P/R → M04, M11–M14 · [x] AY6-E/P → M15, M16, M18

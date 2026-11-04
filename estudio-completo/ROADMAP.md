@@ -203,7 +203,7 @@ Se usa cada vez que subas material (p. ej. clases de P3). Pasos:
 - [x] 7.4 Crear módulos y preguntas nuevos como en las Fases 5 y 6; correr `generar_manifiesto` y los verificadores.
 - [x] 7.5 Si P3 incluye módulos de P1/P2, **referenciarlos** (campo `pruebas`), no duplicarlos.
 
-**Tanda 1 (2026-11-03)** — material de `Material_Nuevo/` copiado (sin borrar el original) a `clases/` (C7.3, C7.4, C8.1), `scripts/` (S7.3, S7.4) y `pruebas-y-ejercicios/` (PC3). P3 = **desde MANOVA en adelante** (dicho por el estudiante), no acumulativa: M19 (referenciado, no duplicado) + M20 DBCA, M25 factorial a×b y a×b×c, M21 2^k y bloques, M26 regresión lineal.
+**Tanda 1 (2026-11-03)** — material de `Material_Nuevo/` movido (carpeta vaciada 2026-11-04) a `clases/` (C7.3, C7.4, C8.1), `scripts/` (S7.3, S7.4) y `pruebas-y-ejercicios/` (PC3). P3 = **desde MANOVA en adelante** (dicho por el estudiante), no acumulativa: M19 (referenciado, no duplicado) + M20 DBCA, M25 factorial a×b y a×b×c, M21 2^k y bloques, M26 regresión lineal.
 
 | Módulo | Aprender | Memorizar | Lab R | Preguntas | Desarrollo |
 |---|---|---|---|---|---|
@@ -216,9 +216,14 @@ Se usa cada vez que subas material (p. ej. clases de P3). Pasos:
 Verificación: `verificar_todo` en verde (106 salidas de R comparadas) y `prueba_funcional` 125/125 (se actualizaron 2 comprobaciones que suponían P3 vacía).
 Pendiente de esta tanda: clases en audio de M20–M26; superficie de respuesta (receta 8–11) revisar cuando se suba su clase; M22–M24 siguen sin clase.
 
+**Tanda 2 (2026-11-04) — libro guía.** El estudiante subió el libro guía (Gutiérrez y de la Vara, 2.ª ed.), que se movió a `libro-guia/` (agregado a `.gitignore`) y se registró como fuente **LG**. Temario oficial de P3 (correo del profesor): **MANOVA, bloqueo, factorial y 2^k**, con ejercicios recomendados cap. 4 ej. 9–12, cap. 5 ej. 18–22, cap. 6 ej. 3, 5, 8 y 10. Se generaron **42 desarrollos** con solución paso a paso (`tools/generadores/p3lg.js` → `data/desarrollo/m20-dbca-b.js` (13), `m25-factorial-general-b.js` (16), `m21-factorial-2k-b.js` (13)): los 13 ejercicios del libro con sus datos («ORIGINAL-LIBRO GUIA», origen `curso`) y 2–3 variantes ligeras de cada uno («MODIFICADA-LIBRO GUIA», origen `variacion`). Todo número se calcula en JS/R y se re-verifica. Supuestos con `shapiro.test` y `car::leveneTest` (como en M18). Cuando el enunciado no dice si se maximiza o minimiza (cap. 4 ej. 9), la solución lo declara como supuesto; en 5.19 se supone minimizar el hinchamiento y en 5.22 «blancura mínima 4,8» se interpretó como color ≤ 4,8.
+Verificación: `verificar_todo` en verde (621 cálculos R) y `prueba_funcional` 125/125.
+
 ---
 
 ## Preguntas abiertas para el estudiante
+
+- (2026-11-04) **Existe una Prueba 4** (dicho por el estudiante). P3 quedó definida con el temario oficial (M19, M20, M25, M21). Se creó P4 como **supuesto**: M26 regresión + observados M22 fraccionado, M23 superficie de respuesta, M24 árboles. Confirmar cuando el profesor publique el temario de P4 (¿acumulativa?).
 
 - (2026-11-03) ¿Entra en P3 la parte de la regresión que no es de diseño (VIF, indicadoras, selección)? Se asumió que sí: toda la clase 8.1 está en M26.
 

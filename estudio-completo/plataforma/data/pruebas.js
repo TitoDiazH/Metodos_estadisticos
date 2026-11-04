@@ -41,17 +41,24 @@ PLATAFORMA.registrar("prueba", [
     ]
   },
   {
-    id: "P3", orden: 3, nombre: "Prueba 3", estado: "parcial", acumulativa: false,
-    nota: "Reparto declarado por el estudiante (2026-11-03): <strong>desde MANOVA en adelante</strong> (M19 + clases 7.3, 7.4 y 8.1). Se irá completando a medida que se suban las clases; aún no hay clase de fraccionados, superficie de respuesta ni árboles (abajo, «observado»).",
+    id: "P3", orden: 3, nombre: "Prueba 3", estado: "definida", acumulativa: false,
+    nota: "Temario oficial (correo del profesor, 2026-11-04): <strong>MANOVA, bloqueo, factorial y 2^k</strong>. Ejercicios recomendados del libro guía: cap. 4 ej. 9–12, cap. 5 ej. 18–22, cap. 6 ej. 3, 5, 8 y 10 (en Desarrollo, marcados ORIGINAL/MODIFICADA-LIBRO GUIA).",
     modulos: [
       { id: "m19-manova", codigo: "M19", titulo: "MANOVA", prioridad: "baja" },
       { id: "m20-dbca", codigo: "M20", titulo: "Diseño en bloques completos al azar (DBCA)", prioridad: "alta" },
       { id: "m25-factorial-general", codigo: "M25", titulo: "Diseño factorial: efectos, interacción, a × b y a × b × c", prioridad: "alta" },
-      { id: "m21-factorial-2k", codigo: "M21", titulo: "Factorial 2^k (2³) y bloqueo en 2^k", prioridad: "alta" },
+      { id: "m21-factorial-2k", codigo: "M21", titulo: "Factorial 2^k (2³) y bloqueo en 2^k", prioridad: "alta" }
+    ]
+  },
+  {
+    id: "P4", orden: 4, nombre: "Prueba 4", estado: "parcial", acumulativa: null,
+    nota: "<strong>Supuesto, sin confirmar:</strong> lo que no entró en el temario de P3 (regresión lineal, clase 8.1) y los temas que aún no tienen clase subida (abajo, «observado»). Se ajusta cuando el profesor publique el temario de P4.",
+    modulos: [
       { id: "m26-regresion-lineal", codigo: "M26", titulo: "Regresión lineal simple, múltiple y polinomial", prioridad: "alta" }
     ],
     /* Temas que aparecieron en pruebas pasadas pero aún NO tienen clase subida.
-       No son temario: cuando se suban las clases (Fase 7) pasan a "modulos". */
+       No son temario: cuando se suban las clases (Fase 7) pasan a "modulos".
+       (Antes estaban en P3; el temario oficial de P3 no los incluye.) */
     observado: [
       { codigo: "M22", titulo: "Factorial fraccionado 2^(k−p)", fuente: [{ id: "PR-EX-E", loc: "pregunta 3.1" }, { id: "PR-EX-Q3" }] },
       { codigo: "M23", titulo: "Metodología de superficie de respuesta (Box–Behnken)", fuente: [{ id: "PR-EX-E", loc: "pregunta 3.2" }, { id: "PR-EX-Q3" }] },

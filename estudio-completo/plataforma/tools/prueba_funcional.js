@@ -144,7 +144,7 @@ const hashJs = () => {
     ok(await cargar(), "la app arranca desde file://");
     await js("localStorage.clear()"); await cargar();
     ok((await js("document.querySelectorAll('#menu a').length")) === 11, "menú con 11 secciones");
-    ok((await js("Array.from(document.querySelectorAll('#selectorPrueba button')).map(b=>b.textContent).join(',')")) === "P1,P2,P3,Todo", "selector P1 · P2 · P3 · Todo (derivado de los datos)");
+    ok((await js("Array.from(document.querySelectorAll('#selectorPrueba button')).map(b=>b.textContent).join(',')")) === "P1,P2,P3,P4,Todo", "selector P1 · P2 · P3 · Todo (derivado de los datos)");
     ok((await js("PLATAFORMA.datos.modulo.length")) >= 2 && (await js("PLATAFORMA.datos.pregunta.length")) > 0, "datos registrados por el cargador");
     ok((await js("document.querySelector('.pie').textContent.indexOf('No reemplaza') > 0")), "pie de advertencia visible");
     await captura("01-inicio");
@@ -243,7 +243,7 @@ const hashJs = () => {
     await clic('#selectorPrueba [data-prueba="P3"]'); await dormir(80);
     const t3 = await titulos();
     ok(/MANOVA/.test(t3) && /bloques/.test(t3) && !/K-medias/.test(t3) && !/Covarianza/.test(t3), "P3 muestra MANOVA y los módulos nuevos, sin el resto de P1/P2", t3);
-    ok((await js("PLATAFORMA.preguntas({prueba:'P3'}).every(q => /^m(19|2[0-6])-/.test(q.modulo))")), "el banco de P3 solo trae preguntas de M19–M26");
+    ok((await js("PLATAFORMA.preguntas({prueba:'P3'}).every(q => /^m(19|2[0-5])-/.test(q.modulo))")), "el banco de P3 solo trae preguntas de M19–M26");
     await ir("examen");
     ok((await js("!!document.querySelector('[data-accion=empezarExamen]')")), "P3: deja armar un examen con su banco");
     await cargar();

@@ -48,7 +48,7 @@ PLATAFORMA.registrar("fuente", [
   { id: "C7.4", titulo: "Clase 7.4 · Diseño factorial 2^k y bloqueo en 2^k", tipo: "clase", pruebas: ["P3"], tamano: "26 slides",
     estado: "núcleo; s13, s14 y s21 son gráficos",
     ruta: "../clases/7.4 Diseño Factorial 2^k.pptx" },
-  { id: "C8.1", titulo: "Clase 8.1 · Regresión lineal (y superficie de respuesta)", tipo: "clase", pruebas: ["P3"], tamano: "40 slides",
+  { id: "C8.1", titulo: "Clase 8.1 · Regresión lineal (y superficie de respuesta)", tipo: "clase", pruebas: ["P4"], tamano: "40 slides",
     estado: "núcleo; parcial: muchas fórmulas en imagen (leídas al renderizar)",
     ruta: "../clases/8.1_Regresion_Lineal.pptx" },
   { id: "AY1-E", titulo: "Ayudantía 1 · Enunciado", tipo: "ayudantia", pruebas: ["P1"], tamano: "4 págs.",
@@ -147,7 +147,7 @@ PLATAFORMA.registrar("fuente", [
   { id: "PR-P2-Q3", titulo: "Prueba 2 · Pauta pregunta 3 (análisis factorial)", tipo: "prueba", pruebas: ["P1","P2"], tamano: "5 págs.",
     estado: "núcleo; parcial; análisis factorial (ver CONTENIDOS §4)",
     ruta: "../pruebas-y-ejercicios/Pauta Pregunta 3 - Prueba 2.docx.pdf" },
-  { id: "PC3", titulo: "Proyecto computacional 3 · Enunciado (2026-20)", tipo: "ejercicios", pruebas: ["P3"], tamano: "2 págs.",
+  { id: "PC3", titulo: "Proyecto computacional 3 · Enunciado (2026-20)", tipo: "ejercicios", pruebas: ["P3", "P4"], tamano: "2 págs.",
     estado: "núcleo para el Laboratorio R (experimento 2 × 2 × 3 y superficie de respuesta)",
     ruta: "../pruebas-y-ejercicios/Proyecto Computacional 3 - Enunciado (2026-20)-1.pdf" },
   { id: "PR-P3-E", titulo: "Prueba 3 · Enunciado (16-jun-2026)", tipo: "prueba", pruebas: ["P3"], tamano: "6 págs.",
@@ -173,5 +173,8 @@ PLATAFORMA.registrar("fuente", [
     ruta: "../pruebas-y-ejercicios/Pauta P2 examen.docx.pdf" },
   { id: "PR-EX-Q3", titulo: "Examen · Pauta pregunta 3", tipo: "prueba", pruebas: ["P3"], tamano: "7 págs.",
     estado: "núcleo; parcial",
-    ruta: "../pruebas-y-ejercicios/ExamenMEGpregunta3 (1).pdf" }
+    ruta: "../pruebas-y-ejercicios/ExamenMEGpregunta3 (1).pdf" },
+  { id: "LG", titulo: "Libro guía · Gutiérrez y de la Vara, Análisis y diseño de experimentos (2.ª ed.)", tipo: "ejercicios", pruebas: ["P3"], tamano: "564 págs.",
+    estado: "recomendado por el profesor para P3: cap. 4 ej. 9–12, cap. 5 ej. 18–22, cap. 6 ej. 3, 5, 8 y 10",
+    ruta: "../libro-guia/Analisis y diseño de experimentos - Gutiérrez & de la Vara - 2ed.pdf" }
 ]);
