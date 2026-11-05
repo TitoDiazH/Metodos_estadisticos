@@ -1,0 +1,45 @@
+# Prueba 1, pregunta 3.1: componentes principales en retail
+@modulo m09-pca
+@ejercicio Prueba 1 (2026-20) · Pregunta 3.1
+@pregunta m09-d011
+@orden 1
+
+## Qué pide la pregunta
+
+{inicio} Vamos a preparar la pregunta adicional de componentes principales con la pregunta tres punto uno de la Prueba uno de este semestre.
+
+{enun} Una empresa de retail estudia a cincuenta clientes con cuatro variables: frecuencia de compra, gasto promedio, número de categorías y uso de cupones. {clave1} Nos dan la salida de erre: las desviaciones estándar de los cuatro componentes, {clave2} y la matriz de rotación, que son los loadings. {clave3} Las variables están estandarizadas.
+
+## ¿Cuántos componentes?
+
+{autovalor} El primer paso es la clave de toda la pregunta: erre no muestra los autovalores, muestra desviaciones estándar. ¿Cómo paso de una a otra?
+
+[pausa 3]
+
+{autovalor-r} Elevando al cuadrado. El autovalor es la varianza del componente. {lam} Uno coma veinticinco al cuadrado es uno coma cinco seis. Cero coma nueve ocho al cuadrado, cero coma nueve seis. Cero coma nueve al cuadrado, cero coma ocho uno. Y cero coma ocho al cuadrado, cero coma seis cuatro.
+
+{kaiser} Con el criterio de Kaiser se retienen los componentes con autovalor mayor que uno. Solo el primero lo cumple. {kaiser-r} Por Kaiser, un componente.
+
+{prop} Para el criterio del ochenta por ciento, divido cada autovalor por la suma, que es tres coma nueve siete. {acum} El primero explica el treinta y nueve por ciento. Con el segundo se llega al sesenta y tres. Y con el tercero, al ochenta y cuatro. {k80} Para superar el ochenta por ciento se necesitan tres componentes.
+
+{nocoinciden} Los criterios no coinciden, y eso está bien. Lo que se pide es aplicarlos y justificar.
+
+## La expresión de PC uno
+
+{pc1} La expresión de PC uno sale de la primera columna de la rotación. {pc1-f} PC uno es cero coma seis dos uno por zeta de frecuencia, más cero coma cuatro cinco dos por zeta de gasto, más cero coma cinco tres ocho por zeta de categorías, menos cero coma tres cuatro nueve por zeta de cupones.
+
+{zeta} Fíjate que se escribe con zetas, las variables estandarizadas, no con las variables originales.
+
+## Interpretar
+
+{interp} ¿Qué mide PC uno? {interp-pos} Frecuencia, gasto y categorías tienen signo positivo: crecen juntas. {interp-neg} Cupones tiene signo negativo. {interp-r} Entonces PC uno es un índice de intensidad de compra: es alto en clientes que compran seguido, gastan más y llevan más categorías, y es bajo en los que usan más cupones.
+
+## El cliente nuevo
+
+{nuevo} La última parte trae una trampa. Un cliente nuevo tiene frecuencia diez, gasto cincuenta y ocho mil, cinco categorías y tres cupones. ¿Se puede reemplazar directo en la fórmula?
+
+[pausa 4]
+
+{nuevo-r} No. La fórmula usa variables estandarizadas. {nuevo-z} Primero habría que calcular cada zeta: el valor menos la media de la muestra, dividido por su desviación estándar. {nuevo-falta} Y como el enunciado no da esas medias ni desviaciones, el score no se puede calcular. Lo que se pide es explicar el procedimiento.
+
+{fin} En resumen: desviación al cuadrado es autovalor, se aplican los dos criterios, se escribe PC uno con zetas, se interpreta por los signos, y nunca se reemplazan valores originales sin estandarizar.

@@ -42,19 +42,22 @@ PLATAFORMA.registrar("prueba", [
   },
   {
     id: "P3", orden: 3, nombre: "Prueba 3", estado: "definida", acumulativa: false,
-    nota: "Temario oficial (correo del profesor, 2026-11-04): <strong>MANOVA, bloqueo, factorial y 2^k</strong>. Ejercicios recomendados del libro guía: cap. 4 ej. 9–12, cap. 5 ej. 18–22, cap. 6 ej. 3, 5, 8 y 10 (en Desarrollo, marcados ORIGINAL/MODIFICADA-LIBRO GUIA).",
+    nota: "Temario oficial (correo del profesor, 2026-11-04): <strong>MANOVA, bloqueo, factorial y 2^k</strong>. Ejercicios recomendados del libro guía: cap. 4 ej. 9–12, cap. 5 ej. 18–22, cap. 6 ej. 3, 5, 8 y 10 (en Desarrollo, marcados ORIGINAL/MODIFICADA-LIBRO GUIA). <strong>Pregunta adicional de ANOVA</strong> (anuncio docente, 2026-11-05): su nota reemplaza la pregunta de menor rendimiento de P2 ⇒ se agrega M18, con ejercicios del cap. 3 del libro guía.",
     modulos: [
       { id: "m19-manova", codigo: "M19", titulo: "MANOVA", prioridad: "baja" },
       { id: "m20-dbca", codigo: "M20", titulo: "Diseño en bloques completos al azar (DBCA)", prioridad: "alta" },
       { id: "m25-factorial-general", codigo: "M25", titulo: "Diseño factorial: efectos, interacción, a × b y a × b × c", prioridad: "alta" },
-      { id: "m21-factorial-2k", codigo: "M21", titulo: "Factorial 2^k (2³) y bloqueo en 2^k", prioridad: "alta" }
+      { id: "m21-factorial-2k", codigo: "M21", titulo: "Factorial 2^k (2³) y bloqueo en 2^k", prioridad: "alta" },
+      { id: "m18-anova-un-factor", codigo: "M18", titulo: "ANOVA de un factor (pregunta adicional: reemplaza la peor pregunta de P2)", prioridad: "alta" }
     ]
   },
   {
     id: "P4", orden: 4, nombre: "Prueba 4", estado: "parcial", acumulativa: null,
-    nota: "<strong>Supuesto, sin confirmar:</strong> lo que no entró en el temario de P3 (regresión lineal, clase 8.1) y los temas que aún no tienen clase subida (abajo, «observado»). Se ajusta cuando el profesor publique el temario de P4.",
+    nota: "<strong>Supuesto, sin confirmar:</strong> lo que no entró en el temario de P3 (regresión lineal, clase 8.1) y los temas que aún no tienen clase subida (abajo, «observado»). Se ajusta cuando el profesor publique el temario de P4. <strong>Pregunta adicional confirmada</strong> (anuncio docente, 2026-11-05): análisis factorial y componentes principales, cuya nota se promedia con P1 ⇒ se agregan M09 y M10 (con las preguntas de la P1 de este semestre).",
     modulos: [
-      { id: "m26-regresion-lineal", codigo: "M26", titulo: "Regresión lineal simple, múltiple y polinomial", prioridad: "alta" }
+      { id: "m26-regresion-lineal", codigo: "M26", titulo: "Regresión lineal simple, múltiple y polinomial", prioridad: "alta" },
+      { id: "m09-pca", codigo: "M09", titulo: "Componentes principales (pregunta adicional: se promedia con P1)", prioridad: "alta" },
+      { id: "m10-analisis-factorial", codigo: "M10", titulo: "Análisis factorial (pregunta adicional: se promedia con P1)", prioridad: "alta" }
     ],
     /* Temas que aparecieron en pruebas pasadas pero aún NO tienen clase subida.
        No son temario: cuando se suban las clases (Fase 7) pasan a "modulos".

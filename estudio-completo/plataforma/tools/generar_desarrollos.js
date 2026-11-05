@@ -41,7 +41,7 @@ const L = require("./generadores/lib");
   ["m25", "m25-factorial-general", "Factorial general a × b — libro guía (P3)", 1]
 ].forEach((m) => L.modulo(...m));
 
-const gens = Object.assign({}, require("./generadores/p1a"), require("./generadores/p1b"), require("./generadores/p2a"), require("./generadores/p2b"), require("./generadores/p3lg"));
+const gens = Object.assign({}, require("./generadores/p1a"), require("./generadores/p1b"), require("./generadores/p2a"), require("./generadores/p2b"), require("./generadores/p3lg"), require("./generadores/refuerzo"));
 Object.keys(gens).sort().forEach((k) => gens[k]());
 
 const escritos = L.emitir(path.join(__dirname, "..", "data", "desarrollo"));

@@ -9,7 +9,7 @@ PLATAFORMA.registrar("modulo", {
   orden: 18,
   titulo: "ANOVA de un factor, comparaciones múltiples y supuestos",
   descripcion: "Comparar las medias de más de dos grupos con un solo test (F), saber cuáles difieren (LSD y Tukey), comprobar los supuestos con los residuos y decidir cuántas observaciones usar.",
-  pruebas: ["P2"],
+  pruebas: ["P2", "P3"],
   prioridad: "alta",
   fuentes: [{ id: "C7.1", loc: "páginas 23–54" }, { id: "C7.2", loc: "slides 2–24" }, { id: "S7.2", loc: "líneas 11–27" }],
 

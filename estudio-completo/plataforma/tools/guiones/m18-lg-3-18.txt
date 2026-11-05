@@ -1,0 +1,47 @@
+# Ejercicio 3.18: clonas de agave y el empate estadístico
+@modulo m18-anova-un-factor
+@ejercicio Libro guía · Cap. 3, ej. 18
+@pregunta m18-d022
+@orden 3
+
+## Qué pide el ejercicio
+
+{inicio} Ahora el ejercicio dieciocho del capítulo tres: cuatro clonas de agave tequilero.
+
+{enun} Las cuatro clonas se cultivaron bajo el mismo manejo, y se midió el porcentaje de azúcares reductores. {clave1} Hay cinco plantas por clona. {clave2} Se quiere saber cuál responde mejor, o sea, más azúcar es mejor. {clave3} Y hay una pregunta poco común: qué hacer si hay un empate estadístico.
+
+{dis} Es un diseño completamente al azar con un factor, la clona, con cuatro niveles y cinco réplicas. Veinte datos en total.
+
+{modelo} El modelo: media global, más efecto de la clona, más error. {h0} La hipótesis nula dice que las cuatro clonas tienen el mismo porcentaje medio de azúcares.
+
+## Totales y sumas de cuadrados
+
+{tot} Los totales: {tot-i} la clona uno suma treinta y ocho coma nueve, la dos, sesenta y tres coma cuatro, la tres, setenta y nueve coma dos, y la cuatro, cuarenta y dos coma cuatro. {tot-g} El gran total es doscientos veintitrés coma nueve.
+
+{corr} Con la corrección y la suma de los datos al cuadrado, {sct} la suma de cuadrados total da trescientos cuatro coma cinco cinco. {sctr} La de clonas, con los totales al cuadrado divididos en cinco, da doscientos trece coma seis tres. {sce} Y el error, por diferencia, noventa coma nueve tres.
+
+## Tabla ANOVA
+
+{gl} Los grados de libertad son tres para las clonas y dieciséis para el error. {cm} Los cuadrados medios: setenta y uno coma dos uno y cinco coma seis ocho.
+
+{f} El efe es doce coma cinco tres. {fc} El crítico con tres y dieciséis grados de libertad es tres coma dos cuatro, y el pe valor, cero coma cero cero cero dos. {conc} Se rechaza: las clonas no responden igual.
+
+## ¿Hay una clona mejor?
+
+{lsd} La ele ese de usa te con dieciséis grados de libertad, dos coma uno dos, {lsd-n} por la raíz de dos por cinco coma seis ocho, dividido en cinco. Da tres coma dos.
+
+{medias} Las medias, de mayor a menor, son: clona tres, quince coma ocho cuatro; clona dos, doce coma seis siete; clona cuatro, ocho coma cuatro nueve; y clona uno, siete coma siete nueve.
+
+{pares} La clona tres supera a la uno y a la cuatro por mucho. {empate} Pero contra la clona dos, la diferencia es tres coma uno siete, y la ele ese de es tres coma dos. ¿Qué significa eso?
+
+[pausa 4]
+
+{empate-r} Que no alcanza. Estadísticamente, la tres y la dos están empatadas: no podemos decir que la tres sea mejor que la dos, aunque su media sea más alta.
+
+{desempate} ¿Cómo se desempata? Con más réplicas de esas dos clonas, para ganar precisión. O usando otros criterios: costo, rendimiento en campo, o cuál es más estable, con menor variabilidad.
+
+## Supuestos
+
+{sup} En los residuos, Shapiro Wilk da pe igual a cero coma ocho, y Bartlett, cero coma tres cinco. No hay problemas con los supuestos.
+
+{fin} La lección de este ejercicio: la media más alta no es automáticamente la mejor. Antes de elegir, siempre hay que mirar la ele ese de.

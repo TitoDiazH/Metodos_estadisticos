@@ -196,5 +196,45 @@ PLATAFORMA.registrar("desarrollo", [
       { id: "C4.1", loc: "slides 17–20 y 22" },
       { id: "C4.2", loc: "slides 15–16" }
     ]
+  },
+  {
+    id: "m10-d008",
+    modulo: "m10-analisis-factorial",
+    concepto: "m10-c03",
+    dificultad: 2,
+    origen: "curso",
+    titulo: "ORIGINAL-PRUEBA 1 (2026-20) · Pregunta 3.2 · KMO, comunalidades y Varimax (servicio de entrega)",
+    enunciado: `<p><strong>ORIGINAL-PRUEBA 1 (2026-20)</strong> — pregunta 3.2 de la Prueba 1 de este semestre (pauta oficial).</p><p>Una empresa de comercio electrónico encuestó a 300 clientes sobre 10 criterios del servicio de entrega (precio, descuentos, condiciones de pago, calidad del producto, confiabilidad, certificaciones, tiempo de entrega, soporte técnico, comunicación y flexibilidad). Salidas de R:</p><p><code>KMO(cor_mat)</code>: Overall MSA = 0,64. MSA por variable:</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>precio</th><th>descuentos</th><th>cond_pago</th><th>calidad_prod</th><th>confiabilidad</th><th>certificaciones</th><th>tiempo_entrega</th><th>soporte_tecnico</th><th>comunicacion</th><th>flexibilidad</th></tr></thead><tbody><tr><td>$0{,}88$</td><td>$0{,}93$</td><td>$0{,}94$</td><td>$0{,}68$</td><td>$0{,}78$</td><td>$0{,}97$</td><td>$0{,}55$</td><td>$0{,}17$</td><td>$0{,}23$</td><td>$0{,}42$</td></tr></tbody></table></div><p><code>principal(r = datos, nfactors = 3, rotate = "varimax")</code>, cargas &gt; 0,4:</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>RC1</th><th>RC2</th><th>RC3</th><th>h2</th><th>u2</th><th>com</th></tr></thead><tbody><tr><td>precio</td><td>$0{,}91$</td><td></td><td></td><td>$0{,}89$</td><td>$0{,}105$</td><td>$1{,}1$</td></tr><tr><td>descuentos</td><td>$0{,}92$</td><td></td><td></td><td>$0{,}85$</td><td>$0{,}145$</td><td>$1$</td></tr><tr><td>cond_pago</td><td>$0{,}91$</td><td></td><td></td><td>$0{,}85$</td><td>$0{,}154$</td><td>$1{,}1$</td></tr><tr><td>calidad_prod</td><td></td><td></td><td>$0{,}95$</td><td>$0{,}96$</td><td>$0{,}039$</td><td>$1{,}1$</td></tr><tr><td>confiabilidad</td><td>$0{,}53$</td><td></td><td>$0{,}81$</td><td>$0{,}93$</td><td>$0{,}068$</td><td>$1{,}7$</td></tr><tr><td>certificaciones</td><td>$0{,}89$</td><td></td><td></td><td>$0{,}91$</td><td>$0{,}091$</td><td>$1{,}3$</td></tr><tr><td>tiempo_entrega</td><td>$0{,}85$</td><td></td><td></td><td>$0{,}83$</td><td>$0{,}165$</td><td>$1{,}3$</td></tr><tr><td>soporte_tecnico</td><td></td><td>$0{,}8$</td><td></td><td>$0{,}65$</td><td>$0{,}355$</td><td>$1$</td></tr><tr><td>comunicacion</td><td></td><td>$0{,}89$</td><td></td><td>$0{,}8$</td><td>$0{,}197$</td><td>$1$</td></tr><tr><td>flexibilidad</td><td></td><td>$0{,}89$</td><td></td><td>$0{,}97$</td><td>$0{,}028$</td><td>$1{,}5$</td></tr></tbody></table></div><p>SS loadings: 4,50; 2,24; 1,91 · Proportion Var: 0,45; 0,22; 0,19.</p><ol type="a"><li>¿Qué representa la prueba KMO? Explique los resultados usando el concepto de correlación parcial.</li><li>¿Qué variable está mejor representada por la solución factorial? ¿Y peor?</li><li>¿Los factores están correlacionados? Explique.</li><li>¿Cuál es el valor y qué representa el «Mean item complexity»?</li></ol>`,
+    partes: [
+      { titulo: "a) KMO", puntos: 1.5, solucion: "<p>El KMO compara las correlaciones simples con las <strong>parciales</strong> (la correlación entre dos variables controlando las demás). Si las parciales son chicas respecto de las simples, las variables comparten estructura común y el análisis factorial tiene sentido.</p><p>KMO global = 0,64: adecuación aceptable (≥ 0,5). Pero soporte técnico (0,17) y comunicación (0,23) tienen MSA muy bajos: se relacionan poco con el resto y podrían perjudicar la solución.</p>" },
+      { titulo: "b) Mejor y peor representada", puntos: 1.5, solucion: "<p>Se mira la <strong>comunalidad</strong> $h^2$ (varianza de la variable explicada por los factores). Mejor: <strong>flexibilidad</strong>, $h^2=0{,}97$ (97 %). Peor: <strong>soporte técnico</strong>, $h^2=0{,}65$: los factores explican el 65 % de su varianza y queda un 35,5 % específico ($u^2=0{,}355$).</p><p>⚠ La pauta oficial dice «comunalidad ≈ 0,35» para soporte técnico: ese número es su especificidad $u^2$, no $h^2$ (ver Diferencias entre fuentes). La variable peor representada es la misma.</p>" },
+      { titulo: "c) ¿Factores correlacionados?", puntos: 1.5, solucion: "<p>No: se usó <strong>Varimax</strong>, una rotación <strong>ortogonal</strong>, que mantiene los factores no correlacionados. Con una rotación oblicua (Oblimin, Promax) sí podrían estarlo.</p>" },
+      { titulo: "d) Mean item complexity", puntos: 1.5, solucion: "<p>Es el promedio de la columna <code>com</code>: $(1{,}1+1+1{,}1+1{,}1+1{,}7+1{,}3+1{,}3+1+1+1{,}5)/10=1{,}21$. Indica en cuántos factores carga, en promedio, cada variable: cerca de 1 ⇒ cada variable carga principalmente en un solo factor (estructura simple, fácil de interpretar). La más compleja es confiabilidad (1,7), que carga en RC1 y RC3.</p>" }
+    ],
+    escala: "Reparto de 6 puntos entre las partes: es una regla de la plataforma, no proviene de una pauta.",
+    verifica: [
+      { que: "mean item complexity", js: "[1.1,1,1.1,1.1,1.7,1.3,1.3,1,1,1.5].reduce((a,b)=>a+b,0)/10", esperado: 1.21, tol: 0.0050000010000000004 }
+    ],
+    fuente: [
+      { id: "PR-P1-26-Q3", loc: "pregunta 3.2" },
+      { id: "C4.1", loc: "slides 9–22" }
+    ]
+  },
+  {
+    id: "m10-d009",
+    modulo: "m10-analisis-factorial",
+    concepto: "m10-c01",
+    dificultad: 1,
+    origen: "curso",
+    titulo: "ORIGINAL-PRUEBA 1 (2026-20) · Pregunta 2.4–2.5 · Objetivos y etapas del AFE (lectura)",
+    enunciado: `<p><strong>ORIGINAL-PRUEBA 1 (2026-20)</strong> — preguntas 2.4 y 2.5 de la Prueba 1 de este semestre, basadas en la lectura de análisis factorial exploratorio.</p><ol type="a"><li>Mencione y describa brevemente cinco objetivos del análisis factorial exploratorio (AFE).</li><li>Explique el propósito y las principales características de cada una de las cinco etapas del análisis factorial.</li></ol>`,
+    partes: [
+      { titulo: "a) Cinco objetivos del AFE", puntos: 2, solucion: "<ol><li><strong>Reducir el número de variables</strong> a unos pocos factores que resuman las dimensiones principales.</li><li><strong>Examinar la estructura</strong> de relaciones entre variables (qué grupos de variables van juntas).</li><li><strong>Evaluar la unidimensionalidad</strong> de un constructo.</li><li><strong>Evaluar la validez de constructo</strong> de una escala o instrumento.</li><li><strong>Lograr una interpretación parsimoniosa</strong> con pocos factores.</li></ol><p>También: abordar la multicolinealidad y desarrollar o contrastar teorías.</p>" },
+      { titulo: "b) Las cinco etapas", puntos: 4, solucion: "<ol><li><strong>¿Los datos son adecuados?</strong> Tamaño de muestra, razón N:p, matriz de correlaciones; KMO ≥ 0,5 y Bartlett significativo (p &lt; 0,05).</li><li><strong>Método de extracción:</strong> PCA, ejes principales (PAF), máxima verosimilitud, mínimos cuadrados, etc., según el objetivo y los datos.</li><li><strong>Número de factores:</strong> combinar criterios — Kaiser (autovalor &gt; 1), gráfico de sedimentación, % de varianza acumulada y análisis paralelo — y el juicio del investigador.</li><li><strong>Rotación:</strong> simplificar la estructura (cargas altas más altas, bajas más bajas). Ortogonal (Varimax, Quartimax: factores no correlacionados) u oblicua (Oblimin, Promax). Revisar variables sin cargas claras o que cargan en varios factores.</li><li><strong>Interpretación:</strong> nombrar cada factor según las variables que cargan en él (idealmente 2–3 o más); es un proceso teórico y subjetivo que requiere criterio.</li></ol>" }
+    ],
+    escala: "Reparto de 6 puntos entre las partes: es una regla de la plataforma, no proviene de una pauta.",
+    fuente: [
+      { id: "PR-P1-26-Q2", loc: "preguntas 2.4–2.5" }
+    ]
   }
 ]);

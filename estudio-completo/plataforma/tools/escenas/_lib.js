@@ -124,7 +124,15 @@ function dosK(tot, k, nrep) {
   });
   return ef;
 }
+/* ANOVA de un factor: Y = [[datos del trat. 1], …] (balanceado) */
+function anova1(Y) {
+  const k = Y.length, n = Y[0].length, N = k * n;
+  const Ti = Y.map(suma), G = suma(Ti), C = (G * G) / N, ssy = suma(Y.flat().map((x) => x * x));
+  const SST = ssy - C, sTi2 = suma(Ti.map((t) => t * t)), SStr = sTi2 / n - C, SSE = SST - SStr;
+  const gT = k - 1, gE = N - k, CMt = SStr / gT, CME = SSE / gE;
+  return { k, n, N, Ti, G, C, ssy, SST, sTi2, SStr, SSE, gT, gE, CMt, CME, F: CMt / CME, m: Ti.map((t) => t / n) };
+}
 const yates = (fila, k) => { let s = ""; for (let f = 0; f < k; f++) if ((fila >> f) & 1) s += "abc"[f]; return s || "(1)"; };
 
 module.exports = { n, nt, en, fuera, hl, at, $, $$, div, p, span, kicker, titulo, formula, nota, clave, paso, lista, tabla,
-  grafica, COL, suma, dbca, factorial, dosK, yates };
+  grafica, COL, suma, dbca, factorial, dosK, yates, anova1 };

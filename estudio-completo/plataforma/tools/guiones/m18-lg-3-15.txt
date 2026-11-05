@@ -1,0 +1,53 @@
+# Ejercicio 3.15: almidón y dureza de tabletas
+@modulo m18-anova-un-factor
+@ejercicio Libro guía · Cap. 3, ej. 15
+@pregunta m18-d021
+@orden 1
+
+## Qué pide el ejercicio
+
+{inicio} Vamos a preparar la pregunta adicional de ANOVA con el ejercicio quince del capítulo tres del libro guía.
+
+{enun} Una farmacéutica quiere saber si la cantidad de almidón cambia la dureza de las tabletas. {clave1} Prueba tres niveles: dos, cinco y diez por ciento de almidón. {clave2} Cada nivel se repite cuatro veces. {clave3} Y al final pregunta qué recomendaría si se quiere maximizar la dureza.
+
+{dis} Hay un solo factor, el porcentaje de almidón, con tres niveles, y las corridas se hacen al azar. Es un diseño completamente al azar: ka vale tres, ene vale cuatro, y hay doce datos.
+
+{modelo} El modelo es cada dato igual a la media global, más el efecto del nivel de almidón, más el error. {h0} La hipótesis nula dice que las tres medias de dureza son iguales. La alternativa, que al menos dos son distintas.
+
+## Totales y sumas de cuadrados
+
+{tot} Como siempre, partimos por los totales. {tot-i} El dos por ciento suma dieciocho coma ocho, el cinco por ciento, veintiséis coma ocho, y el diez por ciento, treinta y tres coma cuatro. {tot-g} El gran total es setenta y nueve.
+
+{corr} La corrección es setenta y nueve al cuadrado, dividido en doce: quinientos veinte coma cero ocho.
+
+{sct} Los datos al cuadrado suman quinientos cuarenta y ocho coma ocho ocho, así que la suma de cuadrados total es veintiocho coma ocho.
+
+{sctr} Para los tratamientos, cada total al cuadrado se divide por cuatro, el número de réplicas, y se resta la corrección. Da veintiséis coma siete tres.
+
+{sce} El error sale por diferencia: veintiocho coma ocho menos veintiséis coma siete tres, o sea, dos coma cero siete. Fíjate qué chico es comparado con el tratamiento.
+
+## Tabla ANOVA
+
+{gl} Los grados de libertad son dos para el almidón, ka menos uno, y nueve para el error, ene total menos ka.
+
+{cm} Los cuadrados medios: trece coma tres seis para el almidón, y cero coma veintitrés para el error.
+
+{f} El efe es trece coma tres seis dividido en cero coma veintitrés: cincuenta y ocho coma uno. {fc} El crítico con dos y nueve grados de libertad es cuatro coma veintiséis. {conc} Cincuenta y ocho lo supera de lejos, y el pe valor es prácticamente cero. Se rechaza la hipótesis nula: el almidón sí influye en la dureza.
+
+## ¿Qué nivel conviene?
+
+{lsd} El ANOVA dice que hay diferencias, pero no cuáles. Para eso, la ele ese de: {lsd-n} te con nueve grados de libertad, dos coma dos seis dos, por la raíz de dos por cero coma veintitrés, dividido en cuatro. Da cero coma siete siete.
+
+{medias} Las medias son cuatro coma siete, seis coma siete, y ocho coma tres cinco.
+
+{pares} Ahora cada par contra cero coma siete siete. Dos contra cinco por ciento difieren en dos: sí. Dos contra diez, en tres coma seis cinco: sí. Y cinco contra diez, en uno coma seis cinco: también sí.
+
+{mejor} Como los tres niveles son distintos y queremos máxima dureza, la recomendación es el diez por ciento de almidón.
+
+{ojo} Ojo con algo que en la prueba se repite: si cinco y diez no hubieran sido distintos, lo correcto sería recomendar el cinco por ciento, porque da la misma dureza con menos almidón.
+
+## Supuestos
+
+{sup} Por último, los supuestos. {sup-sw} Shapiro Wilk sobre los residuos da pe igual a cero coma cuarenta y tres, así que se acepta la normalidad. {sup-var} Bartlett y Levene dan pe sobre cero coma siete: las varianzas son parecidas.
+
+{fin} Ese es el camino completo de la pregunta de ANOVA: modelo e hipótesis, totales, sumas de cuadrados, tabla, decisión, comparaciones y supuestos.

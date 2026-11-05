@@ -1,6 +1,13 @@
 /* Diferencias entre fuentes · módulos de P1 (Fase 5). Todas verificadas en R 4.6.1. */
 PLATAFORMA.registrar("diferencia", [
   {
+    id: "dif-p126-comunalidad", tipo: "error", modulos: ["m10-analisis-factorial"],
+    tema: "Prueba 1 (2026-20), pregunta 3.2: comunalidad de soporte técnico",
+    fuentes: [{ id: "PR-P1-26-Q3", loc: "pregunta 3.2", dice: "«La peor representada es soporte técnico, con una comunalidad de aproximadamente 0,35»." }],
+    verificacion: "En la salida de <code>principal()</code> del mismo enunciado, soporte_tecnico tiene <code>h2 = 0.65</code> y <code>u2 = 0.355</code>: 0,35 es la especificidad (u²), no la comunalidad (h²). Igual es la menor comunalidad de las 10 variables.",
+    convencion: "La plataforma responde con h² = 0,65 (y u² = 0,355). La conclusión de la pauta —soporte técnico es la peor representada— no cambia."
+  },
+  {
     id: "dif-ay2-p5-prcomp", tipo: "error", modulos: ["m09-pca"],
     tema: "Ayudantía 2, P5: la salida de <code>prcomp</code> no corresponde a la tabla de datos",
     fuentes: [{ id: "AY2-E", loc: "P5", dice: "Tabla de 5 clientes y un <code>summary</code> con desviaciones 1,4617; 0,9909; 0,8623; 0,3714." }],

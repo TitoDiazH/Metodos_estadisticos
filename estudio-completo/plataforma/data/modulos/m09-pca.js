@@ -9,7 +9,7 @@ PLATAFORMA.registrar("modulo", {
   orden: 9,
   titulo: "Análisis de Componentes Principales (PCA)",
   descripcion: "Resumir muchas variables correlacionadas en pocas combinaciones nuevas que conservan la mayor variación posible: cómo se construyen, cuántas conservar y cómo leerlas.",
-  pruebas: ["P1"],
+  pruebas: ["P1", "P4"],
   prioridad: "alta",
   fuentes: [{ id: "C3", loc: "slides 2–26" }, { id: "AY2-E", loc: "P5" }, { id: "C4.2", loc: "slides 4–5" }],
 

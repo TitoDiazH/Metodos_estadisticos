@@ -1,0 +1,43 @@
+# Ejercicio 3.5: completar una tabla ANOVA
+@modulo m18-anova-un-factor
+@ejercicio Libro guía · Cap. 3, ej. 5
+@pregunta m18-d017
+@orden 2
+
+## Qué pide el ejercicio
+
+{inicio} Este es un clásico de prueba: el ejercicio cinco del capítulo tres, completar una tabla ANOVA.
+
+{enun} Nos dan una tabla a medias. {clave1} Se comparan cinco tratamientos, con cuatro réplicas cada uno. {clave2} Y de la tabla solo conocemos dos números: la suma de cuadrados de tratamientos, ochocientos, y la del error, cuatrocientos.
+
+{piezas} Antes de tocar la tabla, saquemos las piezas. Ka vale cinco, ene vale cuatro, así que hay veinte datos en total.
+
+## Completar la tabla
+
+{gl} Empecemos por los grados de libertad. Para tratamientos, ka menos uno: cuatro. {gl-e} Para el error, el total de datos menos ka: veinte menos cinco, quince. {gl-t} Y para el total, veinte menos uno, diecinueve. Fíjate que cuatro más quince dan diecinueve: siempre se cumple.
+
+{sct} La suma de cuadrados total también es una suma: ochocientos más cuatrocientos, mil doscientos.
+
+{cm} Los cuadrados medios son cada suma dividida por sus grados de libertad. Para tratamientos, ochocientos dividido en cuatro: doscientos. {cme} Para el error, cuatrocientos dividido en quince: veintiséis coma sesenta y siete.
+
+{f} Y el efe es el cuadrado medio de tratamientos sobre el del error: doscientos dividido en veintiséis coma sesenta y siete. ¿Cuánto da?
+
+[pausa 3]
+
+{f-r} Siete coma cinco.
+
+## El valor-p, en un dibujo
+
+{pval} La segunda parte pide explicar cómo se calcula el valor-p. {pval-curva} Bajo la hipótesis nula, ese efe sigue una distribución efe con cuatro y quince grados de libertad. {pval-f0} Se marca siete coma cinco en el eje, {pval-area} y el valor-p es el área bajo la curva a la derecha de ese punto. Aquí da cero coma cero cero dieciséis.
+
+{pval-r} En erre, ese número sale con la función pe efe, con siete coma cinco, cuatro y quince, pidiendo la cola superior.
+
+## ¿Hay diferencias?
+
+{conc} ¿Se puede concluir algo con esta tabla? Sí. {crit} El crítico al cinco por ciento, con cuatro y quince grados de libertad, es tres coma cero seis. {conc-r} Siete coma cinco lo supera, así que se rechaza la igualdad de medias.
+
+{cuales} Pero ojo con lo que no se puede decir. La tabla no dice cuáles tratamientos difieren. Para eso harían falta las medias y una comparación múltiple, como la ele ese de o Tukey.
+
+{modelo} La última parte pide el modelo y la hipótesis. El modelo: cada dato es la media global, más el efecto de su tratamiento, más un error normal con media cero. {h0} Y la hipótesis nula dice que las cinco medias son iguales.
+
+{fin} El truco de este tipo de pregunta es recordar que los grados de libertad y las sumas de cuadrados se suman, y que todo lo demás sale dividiendo.

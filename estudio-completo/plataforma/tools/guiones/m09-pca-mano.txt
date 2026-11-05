@@ -1,0 +1,49 @@
+# Componentes principales a mano con una matriz de dos por dos
+@modulo m09-pca
+@ejercicio Ejercicio tipo prueba · PCA a mano
+@pregunta m09-d002
+@orden 2
+
+## Qué pide el ejercicio
+
+{inicio} Este ejercicio es la base de todo el análisis de componentes principales: hacerlo a mano con una matriz de dos por dos.
+
+{enun} Se estudian dos variables de un grupo de empresas: ventas y utilidad. {clave1} Nos dan su matriz de covarianza: cinco y dos en la diagonal, y dos fuera de la diagonal. {clave2} Y nos piden los autovalores, el porcentaje de varianza de cada componente, y el autovector del primero.
+
+## Los autovalores
+
+{car} Los autovalores salen de la ecuación característica: el determinante de ese menos lambda por la identidad, igualado a cero.
+
+{det} Con una matriz de dos por dos, el determinante es fácil. Cinco menos lambda, por dos menos lambda, menos dos al cuadrado, igual a cero.
+
+{cuad} Si desarrollo, queda lambda al cuadrado, menos siete lambda, más seis, igual a cero.
+
+{raices} Con la fórmula de la ecuación cuadrática: siete más o menos la raíz de cuarenta y nueve menos veinticuatro, que es cinco, todo dividido en dos. ¿Cuáles son los dos autovalores?
+
+[pausa 4]
+
+{raices-r} Seis y uno.
+
+{chequeo} Hay un chequeo rápido que conviene hacer siempre. La suma de los autovalores es la traza, cinco más dos, siete. Y el producto es el determinante, cinco por dos menos cuatro, seis. Las dos cosas calzan.
+
+## Varianza explicada
+
+{var} La varianza total es la traza, siete. {var-1} El primer componente explica seis de siete: ochenta y cinco coma siete por ciento. {var-2} El segundo, el resto: catorce coma tres por ciento. {var-r} Con un solo componente ya se supera el ochenta por ciento.
+
+## El autovector
+
+{vec} Para el autovector del primer componente, se resuelve ese menos seis por la identidad, por v, igual a cero.
+
+{vec-fila} Con la primera fila: cinco menos seis, por v uno, más dos por v dos, igual a cero. O sea, v uno es igual a dos veces v dos.
+
+{vec-prop} Entonces el vector es proporcional a dos coma uno.
+
+{vec-norm} Falta normalizarlo, para que su largo sea uno. La norma es la raíz de cuatro más uno, raíz de cinco, dos coma dos tres. Dividiendo, quedan cero coma ocho nueve cuatro y cero coma cuatro cuatro siete.
+
+## Interpretar
+
+{interp} Entonces PC uno es cero coma ocho nueve por ventas, más cero coma cuatro cinco por utilidad, con las variables centradas. {interp-r} Los dos loadings tienen el mismo signo, así que PC uno es un índice de tamaño: crece cuando crecen ventas y utilidad. Y pesa más ventas, porque es la variable con más varianza.
+
+{signo} Un detalle: el signo del autovector es arbitrario. Si erre te lo entrega con los dos signos negativos, es el mismo componente.
+
+{fin} El esquema para una pregunta así: ecuación característica, raíces, chequeo con traza y determinante, porcentajes, autovector normalizado, e interpretación por los signos.

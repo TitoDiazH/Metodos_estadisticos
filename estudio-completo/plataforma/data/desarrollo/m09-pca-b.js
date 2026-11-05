@@ -248,5 +248,73 @@ PLATAFORMA.registrar("desarrollo", [
       { id: "C3", loc: "slides 13–14 y 19–26" },
       { id: "AY2-E", loc: "P5(d)" }
     ]
+  },
+  {
+    id: "m09-d011",
+    modulo: "m09-pca",
+    concepto: "m09-c06",
+    dificultad: 2,
+    origen: "curso",
+    titulo: "ORIGINAL-PRUEBA 1 (2026-20) · Pregunta 3.1 · PCA de clientes de retail",
+    enunciado: `<p><strong>ORIGINAL-PRUEBA 1 (2026-20)</strong> — pregunta 3.1 de la Prueba 1 de este semestre (pauta oficial).</p><p>Una empresa de retail analiza a 50 clientes con cuatro variables: frecuencia de compra (veces al mes), gasto promedio (en pesos), número de categorías compradas y uso de cupones (veces). Se hizo un PCA con las variables estandarizadas.</p><p>Salida de R (<code>summary(pca)</code> y <code>pca$rotation</code>):</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>PC1</th><th>PC2</th><th>PC3</th><th>PC4</th></tr></thead><tbody><tr><td>Standard deviation</td><td>$1{,}25$</td><td>$0{,}98$</td><td>$0{,}9$</td><td>$0{,}8$</td></tr></tbody></table></div><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>PC1</th><th>PC2</th><th>PC3</th><th>PC4</th></tr></thead><tbody><tr><td>Frecuencia</td><td>$0{,}621$</td><td>$-0{,}281$</td><td>$-0{,}041$</td><td>$-0{,}731$</td></tr><tr><td>Gasto</td><td>$0{,}452$</td><td>$0{,}541$</td><td>$-0{,}612$</td><td>$0{,}359$</td></tr><tr><td>Categorias</td><td>$0{,}538$</td><td>$-0{,}474$</td><td>$0{,}372$</td><td>$0{,}592$</td></tr><tr><td>Cupones</td><td>$-0{,}349$</td><td>$-0{,}637$</td><td>$-0{,}696$</td><td>$0{,}021$</td></tr></tbody></table></div><ol type="a"><li>¿Cuántos componentes retener según Kaiser y según el 80 % de varianza acumulada? Justifique.</li><li>Escriba explícitamente la expresión de PC1.</li><li>Interprete conceptualmente el primer componente.</li><li>Un nuevo cliente presenta Frecuencia = 10, Gasto = 58000, Categorias = 5, Cupones = 3. ¿Se puede obtener su score en PC1 reemplazando estos valores en la expresión de b)? Explique cómo proceder.</li></ol>`,
+    partes: [
+      { titulo: "a) Kaiser y 80 %", puntos: 1.8, solucion: String.raw`<p>Autovalor = varianza = sd²: $\lambda_1=1{,}25^2=1{,}5625$, $\lambda_2=0{,}98^2=0{,}9604$, $\lambda_3=0{,}9^2=0{,}81$, $\lambda_4=0{,}8^2=0{,}64$. Total: $3{,}9729$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>PC1</th><th>PC2</th><th>PC3</th><th>PC4</th></tr></thead><tbody><tr><td>Autovalor</td><td>$1{,}5625$</td><td>$0{,}9604$</td><td>$0{,}81$</td><td>$0{,}64$</td></tr><tr><td>% varianza</td><td>$39{,}33$</td><td>$24{,}17$</td><td>$20{,}39$</td><td>$16{,}11$</td></tr><tr><td>% acumulado</td><td>$39{,}33$</td><td>$63{,}5$</td><td>$83{,}89$</td><td>$100$</td></tr></tbody></table></div><p>Kaiser (autovalor &gt; 1): se retiene <strong>1</strong>. Varianza acumulada ≥ 80 %: se necesitan <strong>3</strong> componentes. Los criterios no coinciden; se informa ambos y se decide con la interpretación.</p>` },
+      { titulo: "b) Expresión de PC1", puntos: 1.4, solucion: String.raw`<p>Con variables estandarizadas: $$PC_1=0{,}621\,Z_{\text{Frecuencia}}+0{,}452\,Z_{\text{Gasto}}+0{,}538\,Z_{\text{Categorias}}-0{,}349\,Z_{\text{Cupones}}$$ donde $Z=(X-\bar X)/s$.</p>` },
+      { titulo: "c) Interpretación de PC1", puntos: 1.4, solucion: "<p>PC1 es un índice de <strong>intensidad de compra</strong>: crece con la frecuencia, el gasto y las categorías (loadings positivos) y baja con el uso de cupones (loading negativo). Un PC1 alto = cliente activo y de alto gasto; un PC1 bajo = menos actividad y más cupones.</p>" },
+      { titulo: "d) Score de un cliente nuevo", puntos: 1.4, solucion: String.raw`<p><strong>No</strong> se puede reemplazar directamente: el PCA se hizo con variables estandarizadas, así que primero hay que calcular $Z=(X-\bar X)/s$ para cada variable con la media y la desviación estándar de la muestra. Como el enunciado no las entrega, el score no se puede calcular numéricamente; solo se puede describir el procedimiento.</p>` }
+    ],
+    escala: "Reparto de 6 puntos entre las partes: es una regla de la plataforma, no proviene de una pauta.",
+    verifica: [
+      { que: "varianza total", js: "[1.25,0.98,0.9,0.8].reduce((a,s)=>a+s*s,0)", esperado: 3.9729, tol: 0.000050001 }
+    ],
+    fuente: [
+      { id: "PR-P1-26-Q3", loc: "pregunta 3.1" },
+      { id: "C3", loc: "slides 13–15" }
+    ]
+  },
+  {
+    id: "m09-d012",
+    modulo: "m09-pca",
+    concepto: "m09-c06",
+    dificultad: 2,
+    origen: "variacion",
+    base: [
+      { id: "PR-P1-26-Q3", loc: "pregunta 3.1" },
+      { id: "C3", loc: "slides 13–15" }
+    ],
+    titulo: "MODIFICADA-PRUEBA 1 (2026-20) · Pregunta 3.1 · PCA de clientes (con score calculable)",
+    enunciado: `<p><strong>MODIFICADA-PRUEBA 1 (2026-20)</strong> — variante de la pregunta 3.1 de la Prueba 1 de este semestre. Cambio: otras desviaciones estándar y se entregan las medias y desviaciones de la muestra, para calcular el score.</p><p>La misma empresa repite el análisis con otra muestra de 50 clientes (variables estandarizadas).</p><p>Salida de R (<code>summary(pca)</code> y <code>pca$rotation</code>):</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>PC1</th><th>PC2</th><th>PC3</th><th>PC4</th></tr></thead><tbody><tr><td>Standard deviation</td><td>$1{,}4$</td><td>$1{,}05$</td><td>$0{,}7$</td><td>$0{,}55$</td></tr></tbody></table></div><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>PC1</th><th>PC2</th><th>PC3</th><th>PC4</th></tr></thead><tbody><tr><td>Frecuencia</td><td>$0{,}58$</td><td>$-0{,}3$</td><td>$0{,}1$</td><td>$-0{,}75$</td></tr><tr><td>Gasto</td><td>$0{,}5$</td><td>$0{,}48$</td><td>$-0{,}7$</td><td>$0{,}17$</td></tr><tr><td>Categorias</td><td>$0{,}55$</td><td>$-0{,}4$</td><td>$0{,}3$</td><td>$0{,}67$</td></tr><tr><td>Cupones</td><td>$-0{,}33$</td><td>$-0{,}72$</td><td>$-0{,}64$</td><td>$0{,}01$</td></tr></tbody></table></div><ol type="a"><li>¿Cuántos componentes retener según Kaiser y según el 80 % de varianza acumulada? Justifique.</li><li>Escriba explícitamente la expresión de PC1.</li><li>Interprete conceptualmente el primer componente.</li><li>Un nuevo cliente presenta Frecuencia = 10, Gasto = 58000, Categorias = 5, Cupones = 3. ¿Se puede obtener su score en PC1 reemplazando estos valores en la expresión de b)? Explique cómo proceder y calcule el score (medias: 7; 45000; 4; 4; desviaciones: 2; 10000; 1{,}5; 2).</li></ol>`,
+    partes: [
+      { titulo: "a) Kaiser y 80 %", puntos: 1.8, solucion: String.raw`<p>Autovalor = varianza = sd²: $\lambda_1=1{,}4^2=1{,}96$, $\lambda_2=1{,}05^2=1{,}1025$, $\lambda_3=0{,}7^2=0{,}49$, $\lambda_4=0{,}55^2=0{,}3025$. Total: $3{,}855$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th></th><th>PC1</th><th>PC2</th><th>PC3</th><th>PC4</th></tr></thead><tbody><tr><td>Autovalor</td><td>$1{,}96$</td><td>$1{,}1025$</td><td>$0{,}49$</td><td>$0{,}3025$</td></tr><tr><td>% varianza</td><td>$50{,}84$</td><td>$28{,}6$</td><td>$12{,}71$</td><td>$7{,}85$</td></tr><tr><td>% acumulado</td><td>$50{,}84$</td><td>$79{,}44$</td><td>$92{,}15$</td><td>$100$</td></tr></tbody></table></div><p>Kaiser (autovalor &gt; 1): se retienen <strong>2</strong>. Varianza acumulada ≥ 80 %: se necesitan <strong>3</strong> componentes. Los criterios no coinciden; se informa ambos y se decide con la interpretación.</p>` },
+      { titulo: "b) Expresión de PC1", puntos: 1.4, solucion: String.raw`<p>Con variables estandarizadas: $$PC_1=0{,}58\,Z_{\text{Frecuencia}}+0{,}5\,Z_{\text{Gasto}}+0{,}55\,Z_{\text{Categorias}}-0{,}33\,Z_{\text{Cupones}}$$ donde $Z=(X-\bar X)/s$.</p>` },
+      { titulo: "c) Interpretación de PC1", puntos: 1.4, solucion: "<p>PC1 sigue siendo un índice de intensidad de compra: pesos positivos en frecuencia, gasto y categorías, y negativo en cupones.</p>" },
+      { titulo: "d) Score de un cliente nuevo", puntos: 1.4, solucion: String.raw`<p>Primero se estandariza cada valor con la media y la desviación de la muestra: $Z=(X-\bar X)/s$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Variable</th><th>X</th><th>$\bar X$</th><th>s</th><th>Z</th><th>loading PC1</th><th>Z × loading</th></tr></thead><tbody><tr><td>Frecuencia</td><td>$10$</td><td>$7$</td><td>$2$</td><td>$1{,}5$</td><td>$0{,}58$</td><td>$0{,}87$</td></tr><tr><td>Gasto</td><td>$58000$</td><td>$45000$</td><td>$10000$</td><td>$1{,}3$</td><td>$0{,}5$</td><td>$0{,}65$</td></tr><tr><td>Categorias</td><td>$5$</td><td>$4$</td><td>$1{,}5$</td><td>$0{,}667$</td><td>$0{,}55$</td><td>$0{,}367$</td></tr><tr><td>Cupones</td><td>$3$</td><td>$4$</td><td>$2$</td><td>$-0{,}5$</td><td>$-0{,}33$</td><td>$0{,}165$</td></tr></tbody></table></div><p>Score: $PC_1=2{,}052$. Positivo: cliente más activo que el promedio.</p>` }
+    ],
+    escala: "Reparto de 6 puntos entre las partes: es una regla de la plataforma, no proviene de una pauta.",
+    verifica: [
+      { que: "varianza total", js: "[1.4,1.05,0.7,0.55].reduce((a,s)=>a+s*s,0)", esperado: 3.855, tol: 0.000050001 }
+    ],
+    fuente: [
+      { id: "PR-P1-26-Q3", loc: "pregunta 3.1" },
+      { id: "C3", loc: "slides 13–15" }
+    ]
+  },
+  {
+    id: "m09-d013",
+    modulo: "m09-pca",
+    concepto: "m09-c03",
+    dificultad: 1,
+    origen: "curso",
+    titulo: "ORIGINAL-PRUEBA 1 (2026-20) · Pregunta 2.1–2.3 · Conceptos de ACP (lectura)",
+    enunciado: String.raw`<p><strong>ORIGINAL-PRUEBA 1 (2026-20)</strong> — preguntas 2.1 a 2.3 de la Prueba 1 de este semestre, basadas en la lectura de ACP.</p><ol type="a"><li>Explique los conceptos de <strong>loadings</strong> y <strong>scores</strong> en el ACP: qué información aporta cada uno y cómo ayudan a interpretar las componentes.</li><li>¿Qué papel cumplen los vectores y valores propios de la matriz de correlación? Explique qué representa $\pi_j=\lambda_j/\sum_{j=1}^p\lambda_j$ y cómo se usa para decidir cuántas componentes conservar.</li><li>¿Qué es un biplot y cuáles son sus ventajas? Explique la reflexión de los autores sobre aplicar ACP cuando $p>n$: ¿qué dificultades aparecen?</li></ol>`,
+    partes: [
+      { titulo: "a) Loadings y scores", puntos: 2, solucion: "<p><strong>Loadings</strong> (cargas): la importancia y dirección de la relación de cada variable original con cada componente. Un loading alto en valor absoluto indica que la variable contribuye mucho; el signo indica la dirección (mismos signos ⇒ las variables se mueven juntas; signos opuestos ⇒ en sentidos contrarios).</p><p><strong>Scores</strong>: el valor de cada individuo en cada componente; se calculan combinando sus valores estandarizados con los loadings. Sirven para ubicar y comparar observaciones en el nuevo espacio.</p>" },
+      { titulo: "b) Vectores y valores propios; π_j", puntos: 2, solucion: String.raw`<p>Los <strong>vectores propios</strong> dan los pesos de las variables en cada componente (componentes no correlacionadas entre sí). Los <strong>valores propios</strong> son la varianza que explica cada componente: el primero explica la máxima variabilidad posible, el segundo la mayor restante siendo ortogonal al primero, etc.</p><p>$\pi_j$ es la <strong>proporción de varianza explicada</strong> por la componente $j$. Como $\pi_1\ge\pi_2\ge\dots$, se suman en orden hasta superar un umbral (≈ 80 %) para decidir cuántas conservar.</p>` },
+      { titulo: "c) Biplot y el caso p > n", puntos: 2, solucion: "<p>El <strong>biplot</strong> representa a la vez observaciones (puntos) y variables (flechas) en el plano de las dos primeras componentes. Permite ver relaciones entre variables (ángulos entre flechas), su asociación con las componentes y similitudes entre observaciones.</p><p>Con $p>n$ el ACP se puede aplicar (no hay impedimento matemático), pero el rango de la matriz lo fija $n$: solo hay pocos autovalores no nulos, que explican toda la variabilidad. La dificultad es que las componentes muestrales pueden parecerse poco a las poblacionales.</p>" }
+    ],
+    escala: "Reparto de 6 puntos entre las partes: es una regla de la plataforma, no proviene de una pauta.",
+    fuente: [
+      { id: "PR-P1-26-Q2", loc: "preguntas 2.1–2.3" }
+    ]
   }
 ]);

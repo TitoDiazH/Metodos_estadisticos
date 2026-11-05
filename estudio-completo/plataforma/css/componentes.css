@@ -502,3 +502,5 @@ abbr.sigla:focus-visible, .sigla-formula:focus-visible { outline: 2px solid var(
 .pz .pz-tabla { width: auto; margin: 0; }
 .pz-datos { display: flex; justify-content: center; }
 .pz-datos .pz-tabla { font-size: .85em; }
+.pz .pz-tabla.pz-mini { font-size: .68em; }
+.pz .pz-tabla.pz-mini th, .pz .pz-tabla.pz-mini td { padding: .12em .55em; }

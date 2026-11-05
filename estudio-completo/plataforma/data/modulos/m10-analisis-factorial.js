@@ -9,7 +9,7 @@ PLATAFORMA.registrar("modulo", {
   orden: 10,
   titulo: "Análisis factorial",
   descripcion: "Explicar las correlaciones entre muchas variables con pocos factores latentes: modelo, comunalidad, requisitos (Bartlett y KMO), extracción, número de factores, rotación e interpretación.",
-  pruebas: ["P1"],
+  pruebas: ["P1", "P4"],
   prioridad: "alta",
   aviso: "El reparto declarado por el estudiante pone PCA y análisis factorial en la Prueba 1; en pruebas pasadas el AF cayó en «Prueba 2» (CONTENIDOS.md §4.2).",
   fuentes: [{ id: "C4.1", loc: "slides 2–27" }, { id: "C4.2", loc: "slides 3–19" }, { id: "PR-P2-Q3", loc: "preguntas 3.1–3.4" }],
