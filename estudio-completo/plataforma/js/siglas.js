@@ -134,7 +134,7 @@
   function marcarKatex(raiz) {
     Array.prototype.forEach.call(raiz.querySelectorAll(".katex:not([data-sigla-ok])"), function (k) {
       k.setAttribute("data-sigla-ok", "1");
-      if (k.closest("a, button, label")) return;
+      if (k.closest("a, button, label, .no-sigla")) return;
       var ann = k.querySelector("annotation");
       if (!ann) return;
       var lista = explicarTeX(ann.textContent || "");

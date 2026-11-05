@@ -1,5 +1,6 @@
 "use strict";
 const E = require("./_ej");
+const A = require("./_anim");
 const { n, nt, $, c, k, kicker, titulo, tabla, formula, nota, p, factorial, portada, enunciado, factDis, anovaFact, COL } = E;
 const Y = [[[3900, 3600], [4300, 3700], [3700, 4100]], [[4100, 3500], [4200, 3900], [3900, 4000]], [[4000, 3800], [4300, 3600], [3600, 3800]]];
 const R = factorial(Y);
@@ -17,7 +18,7 @@ const svg = `<svg viewBox="0 0 420 220"><path class="ejes" d="M40,20 V190 H400"/
   `<text x="${X(1.6)}" y="${Yp(0.25)}" data-en="pval-area" style="fill:${COL.am};font-size:16px">área = 0,892</text>` +
   [0, 1, 2, 3, 4, 5].map((v) => `<text x="${X(v)}" y="208" text-anchor="middle">${v}</text>`).join("") +
   `<text x="300" y="40" data-en="pval-curva">F(2, 9)</text></svg>`;
-module.exports = { escenas: [
+module.exports = (ctx) => ({ escenas: [
   portada("Libro guía · Cap. 5, ej. 21", "Caucho vulcanizado: cuando nada sale", "Factorial 3 × 3 con 2 réplicas"),
   enunciado("Libro guía · Cap. 5, ej. 21",
     `Resistencia del caucho según tiempo de curado (40, 60, 80 min) y tipo de acelerante (A, B, C). ${k("clave1", "2 réplicas por combinación")}. ` +
@@ -25,8 +26,12 @@ module.exports = { escenas: [
     tabla(["Tiempo", "A", "B", "C"], Y.map((f, i) => [{ v: ["40", "60", "80"][i] + " min", th: true }].concat(f.map((x) => x.join("; ")))), "pz-chica")),
   factDis("Tiempo", "Acelerante", 3, 3, 2, true),
   { en: "tabla", html: kicker("Tabla ANOVA") + titulo("Ningún efecto es significativo") +
-    anovaFact([["Tiempo (A)", R.SSA, R.gA, R.CMA, R.FA, "0,8919", "fa", ["fa", "fb"]], ["Acelerante (B)", R.SSB, R.gB, R.CMB, R.FB, "0,5555", "fb", ["fb", "fab"]],
-      ["AB", R.SSAB, R.gAB, R.CMAB, R.FAB, "0,9173", "fab", ["fab", "conc"]], ["Error", R.SSE, R.gE, R.CME, null, "", "tabla"], ["Total", R.SST, R.N - 1, null, null, "", "tabla"]], 1) +
+    (() => { const AN = A.anovaAnimada({ ctx, pref: "an", dec: 1, filas: [
+      { nombre: "Tiempo", sc: R.SSA, gl: R.gA, tGl: "tabla@0.3", tCM: "tabla@0.6", tF: "fa", p: "0,8919", hlF: ["fa", "fb"] },
+      { nombre: "Acelerante", sc: R.SSB, gl: R.gB, tGl: "tabla@0.5", tCM: "fb", tF: "fb@0.1", p: "0,5555", hlF: ["fb", "fab"] },
+      { nombre: "AB", sc: R.SSAB, gl: R.gAB, tGl: "tabla@0.7", tCM: "fab", tF: "fab@0.1", p: "0,9173", hlF: ["fab", "conc"] },
+      { nombre: "E", sc: R.SSE, gl: R.gE, tGl: "tabla@0.9", tCM: "tabla@0.4", error: true }], total: { sc: R.SST, gl: R.N - 1, tGl: "tabla@1.1" } });
+      return AN.tabla.replace(">E<", ">Error<") + AN.calcs; })() +
     nota({ en: "conc" }, "F crít.: 4,26 (A y B) y 3,63 (AB) ⇒ no se rechaza ninguna H₀", "mal") },
   { en: "medias", html: kicker("¿Hay algo mejor?") + titulo("Diferencias que son puro azar") +
     `<div class="pz-cols">` +
@@ -45,4 +50,4 @@ module.exports = { escenas: [
       [c("Levene", "sup-lev"), c("&lt; 0,0001", "sup-lev"), c("varianzas distintas", "sup-lev", { clase: "pz-ro" })]], "pz-chica") +
     nota({ en: "varianza" }, "El tiempo afectaría la <strong>dispersión</strong>, no la media ⇒ elegir el de menor variabilidad. Corrección: transformar (log, raíz) y repetir el ANOVA.") +
     nota({ en: "fin" }, "«No hay efecto» también sirve: permite elegir el nivel más barato", "ok") }
-] };
+] });

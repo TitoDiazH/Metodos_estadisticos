@@ -52,7 +52,8 @@ function tabla(cab, filas, clase = "") {
     if (typeof c !== "object") c = { v: c };
     const tag = c.th || th ? "th" : "td";
     const cls = [c.tot ? "pz-tot" : "", c.clase || ""].filter(Boolean).join(" ");
-    return `<${tag}${cls ? ` class="${cls}"` : ""}${en(c.en)}${fuera(c.fuera)}${c.hl ? hl(c.hl[0], c.hl[1]) : ""}${c.contar ? " data-contar" : ""}>${c.v}</${tag}>`;
+    return `<${tag}${cls ? ` class="${cls}"` : ""}${en(c.en)}${fuera(c.fuera)}${c.hl ? hl(c.hl[0], c.hl[1]) : ""}${c.contar ? " data-contar" : ""}` +
+      `${c.id ? ` data-id="${c.id}"` : ""}${c.desde ? ` data-desde="${c.desde}"` : ""}${c.hasta ? ` data-hasta="${c.hasta}"` : ""}>${c.v}</${tag}>`;
   };
   return `<table class="pz-tabla ${clase}">` +
     (cab ? `<thead><tr>${cab.map((c) => celda(c, true)).join("")}</tr></thead>` : "") +

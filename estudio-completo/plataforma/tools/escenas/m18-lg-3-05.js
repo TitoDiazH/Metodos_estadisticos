@@ -1,5 +1,6 @@
 "use strict";
 const { n, $, c, k, kicker, titulo, tabla, formula, nota, p, lista, portada, enunciado, COL } = require("./_ej");
+const A = require("./_anim");
 /* Densidad F(4,15), escalada para el dibujo */
 const d1 = 4, d2 = 15, lg = (x) => { let a = 1; for (let i = 2; i < x; i++) a *= i; return a; };
 const f = (x) => (x <= 0 ? 0 : Math.pow(x, d1 / 2 - 1) * Math.pow(1 + (d1 * x) / d2, -(d1 + d2) / 2));
@@ -21,11 +22,19 @@ module.exports = { escenas: [
     tabla(["Fuente", "SC", "gl", "CM", "F₀"], [["Tratamiento", "800", "?", "?", "?"], ["Error", "400", "?", "?", ""], ["Total", "?", "?", "", ""]])),
   { en: "piezas", html: kicker("Completar la tabla") + titulo("k = 5 · n = 4 · N = 20") +
     tabla(["Fuente", "SC", "gl", "CM", "F₀"], [
-      ["Tratamiento", "800", c("k − 1 = <strong>4</strong>", "gl"), c("800 / 4 = <strong>200</strong>", "cm"), c("200 / 26,67 = <strong>7,5</strong>", "f-r", { hl: ["f-r", "pval"] })],
-      ["Error", "400", c("N − k = <strong>15</strong>", "gl-e"), c("400 / 15 = <strong>26,67</strong>", "cme"), ""],
-      ["Total", c("800 + 400 = <strong>1200</strong>", "sct"), c("N − 1 = <strong>19</strong>", "gl-t"), "", ""]]) +
-    nota({ en: "gl-t" }, "Los gl y las SC se <strong>suman</strong>: 4 + 15 = 19 · 800 + 400 = 1200") +
-    formula({ en: "f" }, "F_0=\\frac{CM_{TRAT}}{CM_E}=\\frac{200}{26{,}67}") },
+      ["Tratamiento", { v: "800", id: "sc1" }, { v: "<strong>4</strong>", en: "gl@2.2", desde: "r-gl1", id: "gl1" }, { v: "<strong>200</strong>", en: "cm@2.6", desde: "r-cm1", id: "cm1" }, { v: "<strong>7,5</strong>", en: "f-r@0.9", desde: "r-f", hl: ["f-r@0.9", "pval"] }],
+      ["Error", { v: "400", id: "sc2" }, { v: "<strong>15</strong>", en: "gl-e@2.4", desde: "r-gl2", id: "gl2" }, { v: "<strong>26,67</strong>", en: "cme@2.4", desde: "r-cm2", id: "cm2" }, ""],
+      ["Total", { v: "<strong>1200</strong>", en: "sct@2.2", desde: "r-sct" }, { v: "<strong>19</strong>", en: "gl-t@2.4", desde: "r-gl3" }, "", ""]]) +
+    A.secuencia([
+      { t: "gl", html: A.calc({ partes: [["gl", "gl_{TRAT}=k-1="], ["gl@0.7", "5-1"]], tRes: "gl@1.3", res: "4", idRes: "r-gl1" }) },
+      { t: "gl-e", html: A.calc({ partes: [["gl-e", "gl_{E}=N-k="], ["gl-e@0.7", "20-5"]], tRes: "gl-e@1.4", res: "15", idRes: "r-gl2" }) },
+      { t: "gl-t", html: A.calc({ partes: [["gl-t", "gl_{T}=N-1="], ["gl-t@0.7", "20-1"]], tRes: "gl-t@1.4", res: "19", idRes: "r-gl3" }) },
+      { t: "sct", html: A.calc({ partes: [["sct", "SC_T=SC_{TRAT}+SC_E="], ["sct@0.7", "800+400"]], tRes: "sct@1.3", res: "1200", idRes: "r-sct" }) },
+      { t: "cm", html: A.calc({ partes: [["cm", "CM_{TRAT}=\\dfrac{SC_{TRAT}}{gl}="], ["cm@1", "\\dfrac{800}{4}"]], tRes: "cm@1.7", res: "200", idRes: "r-cm1" }) },
+      { t: "cme", html: A.calc({ partes: [["cme", "CM_{E}=\\dfrac{SC_E}{gl}="], ["cme@0.8", "\\dfrac{400}{15}"]], tRes: "cme@1.5", res: "26,67", idRes: "r-cm2" }) },
+      { t: "f", html: A.calc({ partes: [["f", "F_0=\\dfrac{CM_{TRAT}}{CM_E}="], ["f@1.2", "\\dfrac{200}{26{,}67}"]], tRes: "f-r", res: "7,5", idRes: "r-f" }) }
+    ]) +
+    nota({ en: "gl-t@2.6" }, "Los gl y las SC se <strong>suman</strong>: 4 + 15 = 19 · 800 + 400 = 1200") },
   { en: "pval", html: kicker("El valor-p, en un dibujo") + titulo("Área a la derecha de F₀") +
     `<div class="pz-cols pz-cols-64"><div style="height:58cqh">${svg}</div><div class="pz-col">` +
     p({ en: "pval-curva" }, "Bajo H₀: " + $("F_0\\sim F_{4,15}")) + formula({ en: "pval-area" }, "p=P(F_{4,15}>7{,}5)=0{,}0016") +

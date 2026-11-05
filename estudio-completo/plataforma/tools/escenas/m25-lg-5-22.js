@@ -1,10 +1,11 @@
 "use strict";
 const E = require("./_ej");
+const A = require("./_anim");
 const { n, nt, $, c, k, kicker, titulo, tabla, formula, nota, p, lista, grafica, COL, factorial, portada, enunciado, factDis, anovaFact } = E;
 const Y = [[[5.8, 5.9], [5.4, 5.5], [4.9, 5.1], [4.5, 4.4]], [[5, 4.9], [4.8, 4.7], [4.6, 4.4], [4.1, 4.3]], [[4.7, 4.6], [4.4, 4.4], [4.1, 4], [3.7, 3.6]]];
 const R = factorial(Y);
 const AR = ["0,8 %", "0,9 %", "1,0 %", "1,1 %"], TE = ["90", "100", "110"];
-module.exports = { escenas: [
+module.exports = (ctx) => ({ escenas: [
   portada("Libro guía · Cap. 5, ej. 22", "Blanqueo de aceite comestible", "Factorial 3 × 4 con 2 réplicas"),
   enunciado("Libro guía · Cap. 5, ej. 22",
     `La eficacia del blanqueo se mide con el color: ${k("clave1", "un valor menor indica un aceite más claro (mejor)")}. ` +
@@ -15,8 +16,12 @@ module.exports = { escenas: [
     lista([["niveles", "Temperatura: hacia ambos lados de 100"], ["niveles", "Arcilla: hacia abajo de 1,1 % (la arcilla cuesta)"],
       ["niveles", "Objetivo: ¿se puede ahorrar arcilla sin perder calidad?"]]) },
   { en: "tabla", html: kicker("Tabla ANOVA") + titulo("Los tres efectos activos") +
-    anovaFact([["Temperatura (A)", R.SSA, R.gA, R.CMA, R.FA, "&lt; 0,0001", "fa", ["fa", "fb"]], ["Arcilla (B)", R.SSB, R.gB, R.CMB, R.FB, "&lt; 0,0001", "fb", ["fb", "fab"]],
-      ["AB", R.SSAB, R.gAB, R.CMAB, R.FAB, "0,0109", "fab", ["fab", "conc"]], ["Error", R.SSE, R.gE, R.CME, null, "", "tabla"], ["Total", R.SST, R.N - 1, null, null, "", "tabla"]]) +
+    (() => { const AN = A.anovaAnimada({ ctx, pref: "an", dec: 3, filas: [
+      { nombre: "Temperatura", sc: R.SSA, gl: R.gA, tGl: "tabla@0.3", tCM: "tabla@0.6", tF: "fa", p: "&lt; 0,0001", hlF: ["fa", "fb"] },
+      { nombre: "Arcilla", sc: R.SSB, gl: R.gB, tGl: "tabla@0.5", tCM: "fb", tF: "fb@0.1", p: "&lt; 0,0001", hlF: ["fb", "fab"] },
+      { nombre: "AB", sc: R.SSAB, gl: R.gAB, tGl: "tabla@0.7", tCM: "fab", tF: "fab@0.1", p: "0,0109", hlF: ["fab", "conc"] },
+      { nombre: "E", sc: R.SSE, gl: R.gE, tGl: "tabla@0.9", tCM: "tabla@0.4", error: true }], total: { sc: R.SST, gl: R.N - 1, tGl: "tabla@1.1" } });
+      return AN.tabla.replace(">E<", ">Error<") + AN.calcs; })() +
     nota({ en: "conc" }, "Interacción activa (4,72 &gt; 3,00) ⇒ decidir con las 12 medias de celda", "ok") },
   { en: "efectos", html: kicker("Gráficas") + titulo("Más arcilla y más temperatura ⇒ más claro") +
     `<div class="pz-cols"><div style="height:56cqh">` + grafica({ xs: AR, ymin: 3.5, ymax: 6, etiquetaY: "color medio", dec: 1,
@@ -35,4 +40,4 @@ module.exports = { escenas: [
   { en: "fin", html: kicker("Cierre") + titulo("Todo junto") +
     lista([["fin", "Leer qué significa «mejor» en la respuesta (aquí: menor color)"], ["fin", "Respetar la interacción: decidir con las medias de celda"],
       ["fin", "Usar la restricción práctica (color ≤ 4,8) y el costo para elegir"]]) }
-] };
+] });

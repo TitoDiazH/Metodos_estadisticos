@@ -1,5 +1,6 @@
 "use strict";
 const { n, $, c, k, kicker, titulo, tabla, formula, nota, p, paso, lista, portada, enunciado, COL } = require("./_ej");
+const A = require("./_anim");
 /* Elipse de datos con los ejes de los componentes */
 const svg = `<svg viewBox="0 0 300 220"><path class="ejes" d="M30,200 H290 M30,200 V10"/>` +
   `<ellipse cx="160" cy="110" rx="105" ry="38" transform="rotate(-26.57 160 110)" fill="${COL.ce}" opacity=".15" stroke="${COL.ce}"/>` +
@@ -17,7 +18,9 @@ module.exports = { escenas: [
     paso(1, "car", $("|S-\\lambda I|=0")) + paso(2, "det", $("(5-\\lambda)(2-\\lambda)-2^2=0")) + paso(3, "cuad", $("\\lambda^2-7\\lambda+6=0")) +
     paso(4, "raices", $("\\lambda=\\dfrac{7\\pm\\sqrt{49-24}}{2}=\\dfrac{7\\pm5}{2}")) +
     paso(5, "raices-r", $("\\lambda_1=\\mathbf{6},\\qquad \\lambda_2=\\mathbf{1}")) + "</div>" +
-    nota({ en: "chequeo" }, `Chequeo: ${$("\\lambda_1+\\lambda_2=7=\\text{traza}")} · ${$("\\lambda_1\\lambda_2=6=|S|")}`, "ok") },
+    `<div class="pz-cols">` +
+    A.calc({ partes: [["chequeo@0.5", "\\lambda_1+\\lambda_2=6+1"], ["chequeo@1.5", "\\text{traza}=5+2"]], tRes: "chequeo@2.5", res: "7 ✓" }) +
+    A.calc({ partes: [["chequeo@3.5", "\\lambda_1\\lambda_2=6\\cdot1"], ["chequeo@4.5", "|S|=5\\cdot2-2^2"]], tRes: "chequeo@5.5", res: "6 ✓" }) + "</div>" },
   { en: "var", html: kicker("Paso 2 · Varianza explicada") + titulo("Total = traza = 7") +
     `<div class="pz-cols"><div class="pz-col">` +
     formula({ en: "var-1" }, "PC_1:\\ \\frac{6}{7}=\\mathbf{85{,}7\\,\\%}") + formula({ en: "var-2" }, "PC_2:\\ \\frac{1}{7}=14{,}3\\,\\%") +

@@ -176,7 +176,7 @@
   /* ── Vista ─────────────────────────────────────────────────────────── */
   function marcoPizarra(a, t, sonando) {
     return '<div class="pz-marco" id="pzMarco">' +
-      '<div class="pz" id="pizarra" data-accion="alternar" role="img" aria-label="Pizarra animada de la clase"></div>' +
+      '<div class="pz no-sigla" id="pizarra" data-accion="alternar" role="img" aria-label="Pizarra animada de la clase"></div>' +
       '<div class="pz-barra">' +
       '<button type="button" class="pz-btn" data-accion="alternar" aria-label="' + (sonando ? "Pausar" : "Reproducir") + '">' + (sonando ? "⏸" : "▶") + "</button>" +
       '<button type="button" class="pz-btn" data-accion="atras" aria-label="Retroceder ' + SALTO + ' segundos">↺</button>' +
@@ -244,6 +244,9 @@
     P.modulosDe(P.app.sel()).forEach(function (m) { out = out.concat(P.audiosDe(m.id)); });
     return out;
   }
+
+  /* Acceso al <audio> (para pruebas automáticas de la pizarra). */
+  P.reproductorAudio = function () { return motor(); };
 
   V.audio = {
     titulo: "Clases en audio",

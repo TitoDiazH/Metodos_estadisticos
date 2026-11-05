@@ -1,10 +1,11 @@
 "use strict";
 const E = require("./_ej");
+const A = require("./_anim");
 const { n, nt, $, c, k, kicker, titulo, tabla, formula, nota, p, grafica, COL, factorial, portada, enunciado, factDis, anovaFact } = E;
 const Y = [[[93, 92, 93, 92, 91, 90, 90, 90, 91, 91], [92, 90, 92, 94, 91, 91, 90, 92, 91, 92], [95, 94, 94, 94, 97, 96, 94, 95, 94, 96]],
   [[88, 88, 87, 88, 87, 88, 87, 87, 87, 87], [90, 89, 88, 88, 90, 89, 88, 89, 88, 88], [91, 97, 91, 90, 89, 91, 92, 90, 90, 91]]];
 const R = factorial(Y);
-module.exports = { escenas: [
+module.exports = (ctx) => ({ escenas: [
   portada("Libro guía · Cap. 5, ej. 19", "Hinchamiento del catalizador", "Factorial 2 × 3 con 10 réplicas"),
   enunciado("Libro guía · Cap. 5, ej. 19",
     `Botellas de polietileno: hinchamiento del catalizador tras la extrusión. ${k("clave1", "A: molde (2 niveles), B: catalizador (3 niveles)")}, ` +
@@ -12,8 +13,12 @@ module.exports = { escenas: [
     tabla(["Molde", "B1", "B2", "B3"], Y.map((f, i) => [{ v: "A" + (i + 1), th: true }].concat(f.map((x) => `<span style="font-size:.7em">${x.join(" ")}</span>`))), "pz-chica")),
   factDis("Molde", "Catalizador", 2, 3, 10),
   { en: "tabla", html: kicker("Tabla ANOVA (R)") + titulo("¿Qué efectos están activos?") +
-    anovaFact([["Molde (A)", R.SSA, R.gA, R.CMA, R.FA, "&lt; 0,0001", "fa", ["fa", "fb"]], ["Catalizador (B)", R.SSB, R.gB, R.CMB, R.FB, "&lt; 0,0001", "fb", ["fb", "fab"]],
-      ["AB", R.SSAB, R.gAB, R.CMAB, R.FAB, "0,3542", "fab", ["fab", "conc"]], ["Error", R.SSE, R.gE, R.CME, null, "", "tabla"], ["Total", R.SST, R.N - 1, null, null, "", "tabla"]]) +
+    (() => { const AN = A.anovaAnimada({ ctx, pref: "an", dec: 3, filas: [
+      { nombre: "Molde", sc: R.SSA, gl: R.gA, tGl: "tabla@0.3", tCM: "tabla@0.6", tF: "fa", p: "&lt; 0,0001", hlF: ["fa", "fb"] },
+      { nombre: "Catalizador", sc: R.SSB, gl: R.gB, tGl: "tabla@0.5", tCM: "fb", tF: "fb@0.1", p: "&lt; 0,0001", hlF: ["fb", "fab"] },
+      { nombre: "AB", sc: R.SSAB, gl: R.gAB, tGl: "tabla@0.7", tCM: "fab", tF: "fab@0.1", p: "0,3542", hlF: ["fab", "conc"] },
+      { nombre: "E", sc: R.SSE, gl: R.gE, tGl: "tabla@0.9", tCM: "tabla@0.4", error: true }], total: { sc: R.SST, gl: R.N - 1, tGl: "tabla@1.1" } });
+      return AN.tabla.replace(">E<", ">Error<") + AN.calcs; })() +
     nota({ en: "conc" }, "Activos: molde y catalizador · Interacción no ⇒ cada factor por separado", "ok") },
   { en: "medias", html: kicker("Comparar medias") + titulo("LSD y Tukey") +
     `<div class="pz-cols">` +
@@ -35,4 +40,4 @@ module.exports = { escenas: [
       [c("Levene (6 trat.)", "sup-lev"), c("0,5499", "sup-lev"), c("varianzas iguales ✓", "sup-lev", { clase: "pz-ve" })]]) +
     tabla(["Molde", "s de residuos"], [[c("A1", "disp", { hl: ["disp"] }), c("1,106", "disp", { hl: ["disp"] })], [c("A2", "disp"), c("1,340", "disp")]], "pz-chica") +
     nota({ en: "fin" }, "A2 da menor hinchamiento medio; A1 es más parejo: elegir es pesar ambas cosas") }
-] };
+] });

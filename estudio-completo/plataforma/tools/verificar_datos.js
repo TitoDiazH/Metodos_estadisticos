@@ -60,8 +60,8 @@ D.audio.forEach((a) => {
   const marcas = a.marcas || {};
   const usadas = new Set();
   e.escenas.forEach((x) => {
-    if (x.en) usadas.add(x.en);
-    for (const m of x.html.matchAll(/data-(?:en|fuera|hl)="([^"]+)"/g)) m[1].split(/\s+/).forEach((y) => usadas.add(y));
+    if (x.en) usadas.add(x.en.split("@")[0]);
+    for (const m of x.html.matchAll(/data-(?:en|fuera|hl|hasta)="([^"]+)"/g)) m[1].split(/\s+/).forEach((y) => usadas.add(y.split("@")[0]));
   });
   usadas.forEach((m) => { if (!(m in marcas)) err(e, `la marca «${m}» no tiene tiempo en ${a.id}: corre tools/generar_audio.py`); });
 });

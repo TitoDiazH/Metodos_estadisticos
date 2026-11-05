@@ -1,22 +1,29 @@
 "use strict";
 const { n, $, c, k, kicker, titulo, tabla, formula, nota, p, lista, portada, enunciado } = require("./_ej");
+const A = require("./_anim");
 const sd = [1.25, 0.98, 0.90, 0.80], lam = sd.map((s) => s * s), tot = lam.reduce((a, b) => a + b, 0), ac = lam.map((_, i) => lam.slice(0, i + 1).reduce((a, b) => a + b, 0) / tot);
 const vars = ["Frecuencia", "Gasto", "Categorías", "Cupones"];
 const rot = [[0.621, -0.281, -0.041, -0.731], [0.452, 0.541, -0.612, 0.359], [0.538, -0.474, 0.372, 0.592], [-0.349, -0.637, -0.696, 0.021]];
-module.exports = { escenas: [
+module.exports = (ctx) => {
+  const tL = A.espaciar(ctx, A.reparto(ctx, "lam", "kaiser", 4, 0.2), 1.6);
+  const tAc = A.espaciar(ctx, A.reparto(ctx, "acum", "k80", 3, 0.2), 2.2);
+  const pct = lam.map((l) => (100 * l) / tot);
+  return { escenas: [
   portada("Prueba 1 (2026-20) · Pregunta 3.1", "Componentes principales en retail", "Pregunta adicional de P4 · se promedia con P1"),
   enunciado("Prueba 1 (2026-20) · Pregunta 3.1", `50 clientes, 4 variables: frecuencia, gasto, categorías y cupones. ${k("clave1", "summary(pca): desviaciones estándar")} y ` +
     `${k("clave2", "pca&#36;rotation: loadings")}. ${k("clave3", "Variables estandarizadas")}.`,
     tabla(["", "PC1", "PC2", "PC3", "PC4"], [[{ v: "Std. dev.", th: true }].concat(sd.map((s) => n(s, 2)))].concat(vars.map((v, i) => [{ v, th: true }].concat(rot[i].map((x) => n(x, 3))))), "pz-chica")),
   { en: "autovalor", html: kicker("¿Cuántos componentes?") + titulo("Autovalor = desviación estándar²") +
     tabla(["", "PC1", "PC2", "PC3", "PC4"], [
-      [{ v: "sd", th: true }].concat(sd.map((s) => n(s, 2))),
-      [{ v: "λ = sd²", th: true }].concat(lam.map((l, i) => c(n(l, 4), "lam", { hl: i === 0 ? ["kaiser", "prop"] : null, clase: l > 1 ? "pz-ve" : "" }))),
-      [{ v: "% acumulado", th: true }].concat(ac.map((a, i) => c(n(a * 100, 1) + " %", "acum", { hl: i === 2 ? ["k80", "nocoinciden"] : null })))
+      [{ v: "sd", th: true }].concat(sd.map((x, i) => ({ v: n(x, 2), id: `sd${i}` }))),
+      [{ v: "λ = sd²", th: true }].concat(lam.map((l, i) => ({ v: n(l, 4), en: A.mas(tL[i], 1.5), desde: `l${i}`, id: `lv${i}`, hl: i === 0 ? ["kaiser", "prop"] : null, clase: l > 1 ? "pz-ve" : "" }))),
+      [{ v: "% acumulado", th: true }].concat(ac.map((x, i) => (i === 0 ? { v: n(x * 100, 1) + " %", en: A.mas(tAc[0], -0.6) } : i < 3 ? { v: n(x * 100, 1) + " %", en: A.mas(tAc[i], 1.6), desde: `ac${i}`, hl: i === 2 ? ["k80", "nocoinciden"] : null } : { v: "100 %", en: "k80" })))
     ]) +
+    A.secuencia(lam.map((l, i) => ({ t: tL[i], html: A.calc({ partes: [[tL[i], `\\lambda_${i + 1}=${n(sd[i], 2).replace(",", "{,}")}^2`]], tRes: A.mas(tL[i], 0.7), res: n(l, 4), idRes: `l${i}` }) }))
+      .concat([{ t: "prop", html: A.sumaVuela({ etiqueta: "Total", terms: lam.map((v, i) => ({ v, desde: `lv${i}` })), tiempos: A.reparto(ctx, "prop", "acum", 5, 0.3).slice(0, 4), tRes: A.reparto(ctx, "prop", "acum", 5, 0.3)[4], idRes: "tot", dec: 4 }) }])
+      .concat([1, 2].map((i) => ({ t: tAc[i], html: A.calc({ partes: [[tAc[i], `${n(ac[i - 1] * 100, 1).replace(",", "{,}")}\\,\\%+\\tfrac{${n(lam[i], 4).replace(",", "{,}")}}{${n(tot, 4).replace(",", "{,}")}}`]], tRes: A.mas(tAc[i], 1), res: n(ac[i] * 100, 1) + " %", idRes: `ac${i}` }) }))), "cálculo") +
     `<div class="pz-cols">` + nota({ en: "kaiser-r" }, "Kaiser (λ &gt; 1): <strong>1 componente</strong>", "ok") +
-    nota({ en: "k80" }, "≥ 80 % acumulado: <strong>3 componentes</strong>", "ok") + "</div>" +
-    p({ en: "prop", clase: "pz-tenue" }, `Total = ${n(tot, 4)} · % = λ / total`) + nota({ en: "nocoinciden" }, "Los criterios no coinciden: se aplican ambos y se justifica") },
+    nota({ en: "k80" }, "≥ 80 % acumulado: <strong>3 componentes</strong>", "ok") + "</div>" },
   { en: "pc1", html: kicker("Expresión e interpretación") + titulo("PC1 con variables estandarizadas") +
     formula({ en: "pc1-f" }, "PC_1=0{,}621\\,Z_{\\text{Frec}}+0{,}452\\,Z_{\\text{Gasto}}+0{,}538\\,Z_{\\text{Categ}}-0{,}349\\,Z_{\\text{Cupones}}") +
     nota({ en: "zeta" }, `Con ${$("Z=(X-\\bar X)/s")}, no con las variables originales`) +
@@ -29,3 +36,4 @@ module.exports = { escenas: [
     nota({ en: "nuevo-falta" }, "Sin las medias y desviaciones de la muestra, el score no se puede calcular: se explica el procedimiento") +
     lista([["fin", "sd² = autovalor · Kaiser y 80 % · PC1 con Z · interpretar por signos · estandarizar antes del score"]]) }
 ] };
+};

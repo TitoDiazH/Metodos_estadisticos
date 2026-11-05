@@ -1,6 +1,6 @@
 "use strict";
 const { dbcaEj, k, kicker, titulo, nota, tabla, c, p } = require("./_ej");
-module.exports = { escenas: dbcaEj({
+module.exports = (ctx) => ({ escenas: dbcaEj({
   ej: "Libro guía · Cap. 4, ej. 10", titulo: "Atomizadores y el efecto del día",
   Y: [[72, 65, 67, 75, 62, 73], [55, 59, 68, 70, 53, 50], [64, 74, 61, 58, 51, 69]], trat: ["Marca 1", "Marca 2", "Marca 3"],
   bloq: ["D1", "D2", "D3", "D4", "D5", "D6"], datosChica: true,
@@ -18,4 +18,4 @@ module.exports = { escenas: dbcaEj({
       [c("Igual varianza entre marcas", "sup-lev"), c("Levene", "sup-lev"), c("0,600", "sup-lev"), c("Se cumple", "sup-lev", { clase: "pz-ve" })]
     ]) + p({ en: "sup-sw", clase: "pz-tenue" }, "Gráficamente: QQ-plot de residuos y residuos vs. predichos sin forma de embudo") }],
   cierre: "Identificar el bloque en el enunciado, y no buscar «el mejor» si el ANOVA no detectó diferencias"
-}) };
+}, ctx) });

@@ -1,11 +1,14 @@
 "use strict";
 const { n, $, c, k, kicker, titulo, tabla, formula, nota, p, lista, portada, enunciado } = require("./_ej");
+const A = require("./_anim");
 const vars = ["precio", "descuentos", "cond_pago", "calidad_prod", "confiabilidad", "certificaciones", "tiempo_entrega", "soporte_tecnico", "comunicacion", "flexibilidad"];
 const msa = [0.88, 0.93, 0.94, 0.68, 0.78, 0.97, 0.55, 0.17, 0.23, 0.42];
 const car = [[0.91, "", ""], [0.92, "", ""], [0.91, "", ""], ["", "", 0.95], [0.53, "", 0.81], [0.89, "", ""], [0.85, "", ""], ["", 0.80, ""], ["", 0.89, ""], ["", 0.89, ""]];
 const h2 = [0.89, 0.85, 0.85, 0.96, 0.93, 0.91, 0.83, 0.65, 0.80, 0.97], u2 = [0.105, 0.145, 0.154, 0.039, 0.068, 0.091, 0.165, 0.355, 0.197, 0.028];
 const com = [1.1, 1.0, 1.1, 1.1, 1.7, 1.3, 1.3, 1.0, 1.0, 1.5];
-module.exports = { escenas: [
+module.exports = (ctx) => {
+  const tc = A.reparto(ctx, "com-col", "com-n", 11, 0.3);
+  return { escenas: [
   portada("Prueba 1 (2026-20) · Pregunta 3.2", "Leer un análisis factorial en R", "Pregunta adicional de P4 · se promedia con P1"),
   enunciado("Prueba 1 (2026-20) · Pregunta 3.2", `300 clientes evalúan 10 criterios del servicio de entrega. ${k("clave1", "KMO(cor_mat)")} y ` +
     `${k("clave2", "principal(…, nfactors = 3, rotate = \"varimax\")")}. ${k("clave3", "4 preguntas: KMO · comunalidades · ¿factores correlacionados? · Mean item complexity")}.`),
@@ -22,8 +25,11 @@ module.exports = { escenas: [
   { en: "rot", html: kicker("Rotación y complejidad") + titulo("Varimax y Mean item complexity") +
     nota({ en: "rot-r" }, "Varimax es <strong>ortogonal</strong> ⇒ los factores <strong>no</strong> están correlacionados", "ok") +
     p({ en: "rot-obl", clase: "pz-tenue" }, "Oblimin o Promax (oblicuas) sí permitirían correlación") +
-    formula({ en: "com-n" }, `\\overline{com}=\\frac{${com.map((x) => n(x, 1).replace(",", "{,}")).join("+")}}{10}=1{,}21`) +
+    `<div class="pz-suma"><span class="pz-tenue">columna com:</span> ` + com.map((x, i) => `<span class="pz-chip" data-en="com" data-id="cm${i}">${n(x, 1)}</span>`).join("") + "</div>" +
+    A.sumaVuela({ etiqueta: $("\\sum com"), terms: com.map((v, i) => ({ v, desde: `cm${i}` })), tiempos: tc.slice(0, 10), tRes: tc[10], idRes: "sumc", dec: 1 }) +
+    A.calc({ partes: [["com-n", "\\overline{com}=\\dfrac{\\sum com}{10}="], ["com-n@1", "\\dfrac{12{,}1}{10}"]], tRes: "com-n@1.8", res: "1,21", idRes: "mic" }) +
     nota({ en: "com-idea" }, "≈ 1 ⇒ cada variable carga en un solo factor: estructura simple") +
     p({ en: "com-conf", clase: "pz-tenue" }, "Más compleja: confiabilidad (1,7), carga en RC1 y RC3") +
     lista([["fin", "Qué columna mirar: MSA por variable · h2 · tipo de rotación · com"]]) }
 ] };
+};

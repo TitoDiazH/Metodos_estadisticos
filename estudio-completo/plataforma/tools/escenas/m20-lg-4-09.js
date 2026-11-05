@@ -1,6 +1,6 @@
 "use strict";
 const { dbcaEj, k } = require("./_ej");
-module.exports = { escenas: dbcaEj({
+module.exports = (ctx) => ({ escenas: dbcaEj({
   ej: "Libro guía · Cap. 4, ej. 9", titulo: "Bloques con tres tratamientos",
   Y: [[3, 4, 2, 6], [7, 9, 3, 10], [4, 6, 3, 7]], trat: ["A", "B", "C"], bloq: ["Bloque 1", "Bloque 2", "Bloque 3", "Bloque 4"],
   nomTrat: "tratamiento", NomTrat: "Tratamiento", nomBloque: "bloque", NomBloque: "Bloque", sctrDiv: true,
@@ -13,4 +13,4 @@ module.exports = { escenas: dbcaEj({
 summary(modelo)
 agricolae::LSD.test(modelo, "trat")$groups`,
   cierre: "Totales → corrección → SC (con el divisor correcto) → error por diferencia → tabla → LSD"
-}) };
+}, ctx) });

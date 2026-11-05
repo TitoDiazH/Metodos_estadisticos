@@ -1,6 +1,6 @@
 "use strict";
 const { dbcaEj, k } = require("./_ej");
-module.exports = { escenas: dbcaEj({
+module.exports = (ctx) => ({ escenas: dbcaEj({
   ej: "Libro guía · Cap. 4, ej. 12", titulo: "Detergentes y lavadoras",
   Y: [[45, 43, 51], [47, 44, 52], [50, 49, 57], [42, 37, 49]], trat: ["A", "B", "C", "D"], bloq: ["Lavadora 1", "Lavadora 2", "Lavadora 3"],
   nomTrat: "detergente", NomTrat: "Detergente", nomBloque: "lavadora", NomBloque: "Lavadora", disR: true,
@@ -15,4 +15,4 @@ module.exports = { escenas: dbcaEj({
 summary(modelo)
 agricolae::LSD.test(modelo, "detergente")$groups`,
   cierre: "El bloque (lavadora) se llevó más variabilidad que el propio tratamiento: sin bloquear, el error habría sido enorme"
-}) };
+}, ctx) });
