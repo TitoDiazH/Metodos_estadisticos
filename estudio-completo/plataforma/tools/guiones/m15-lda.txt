@@ -1,105 +1,59 @@
 # Clasificación supervisada: LDA
 
-## Clasificación supervisada y el Banco de Ademuz
+## Ahora los grupos sí se conocen
 
-Ahora toca el módulo quince: clasificación supervisada y análisis discriminante lineal, que abreviamos ele de a.
+{inicio} Ahora toca el módulo quince: la clasificación supervisada, y el análisis discriminante lineal, ele de a.
 
-En simple. En la clasificación supervisada ya sé a qué grupo pertenece cada observación histórica. Con eso construyo una regla, para clasificar observaciones nuevas. Es lo contrario del clastering, donde no había grupos conocidos.
+{idea} En el clastering no sabíamos cuáles eran los grupos. Ahora es al revés. {sup} Tenemos datos históricos donde sí sabemos a qué grupo pertenece cada observación, {regla} y queremos construir una regla para clasificar casos nuevos.
 
-Con detalle. Tengo ene observaciones, varias variables predictoras, y una respuesta categórica que indica el grupo. Busco una función que, dado un caso nuevo, me diga a qué grupo asignarlo. Los métodos del capítulo son tres: ele de a, cu de a, y Naive Bayes.
+{banco} El ejemplo de la clase es el Banco de Ademuz. {banco-d} Hay dieciséis clientes, con dos variables: patrimonio y deuda. {banco-g} Ocho de ellos fueron fallidos, no pagaron, y ocho fueron cumplidores. {banco-m} Los fallidos tienen, en promedio, patrimonio cinco y deuda cinco. Los cumplidores, patrimonio nueve y deuda tres. {nuevo} Llega un cliente nuevo, con patrimonio siete y deuda cuatro. ¿Le prestamos?
 
-El ejemplo de toda la unidad es el Banco de Ademuz. Hay dieciséis clientes. De cada uno se conoce el patrimonio y la deuda. Ocho son fallidos y ocho son cumplidores. La media de los fallidos es patrimonio cinco y deuda cinco. La de los cumplidores es patrimonio nueve y deuda tres. Y llega un cliente nuevo, con patrimonio siete y deuda cuatro. ¿Es fallido o cumplidor?
+## Con una sola variable
 
-Primer intento: clasificar con una sola variable, cortando en el promedio de las dos medias. Con el patrimonio, el corte queda en siete: fallido si tiene menos de siete. Eso acierta doce de dieciséis, el setenta y cinco por ciento. Con la deuda, el corte queda en cuatro, y acierta solo nueve de dieciséis, el cincuenta y seis por ciento.
+{uni} Lo más simple es mirar una sola variable. {uni-pat} Con el patrimonio, el corte natural está en el promedio de las dos medias: cinco más nueve, dividido en dos, siete. {uni-pat-r} Bajo siete, fallido; sobre siete, cumplidor. Con esa regla se acierta en doce de los dieciséis clientes, el setenta y cinco por ciento.
 
-Una sola variable no captura toda la información. La idea de Fisher es combinar las dos.
+{uni-deu} Con la deuda, el corte es cuatro, y se acierta solo en nueve de dieciséis, el cincuenta y seis por ciento. {uni-nuevo} Y fíjate en el cliente nuevo: patrimonio siete y deuda cuatro. Cae justo en el corte de las dos reglas.
 
-En simple. Supervisado: grupos conocidos, y una regla para clasificar casos nuevos. Y con una sola variable, el banco acierta a lo más setenta y cinco por ciento.
+{uni-q} ¿Qué se está perdiendo al mirar las variables por separado?
+
+[pausa 3]
+
+{uni-r} La información que hay en la combinación de las dos. Un cliente puede tener patrimonio regular y deuda baja, y en conjunto parecerse claramente a un grupo.
 
 ## La función discriminante de Fisher
 
-En simple. Fisher combina las variables en un solo puntaje. El puntaje es un peso por el patrimonio, más otro peso por la deuda. Y los pesos se eligen para separar los grupos lo mejor posible.
+{fisher} La idea de Fisher es combinar las variables en un solo puntaje: {fisher-d} de igual a u uno por patrimonio, más u dos por deuda. {fisher-q} ¿Y cómo se eligen los pesos? {fisher-senal} Buscando que las medias de los grupos queden lo más lejos posible, eso es la señal, {fisher-ruido} y que dentro de cada grupo los datos queden lo más juntos posible, eso es el ruido.
 
-¿Qué significa separar bien? Dos cosas a la vez. Que los puntajes promedio de los grupos queden lo más lejos posible entre sí. Eso es la señal. Y que los puntajes dentro de cada grupo queden lo más juntos posible. Eso es el ruido. Fisher maximiza el cociente entre señal y ruido.
+{fisher-f} Formalmente se maximiza un cociente entre la dispersión entre grupos y la dispersión dentro de los grupos. Es la misma idea del ANOVA, entre contra dentro, pero con matrices. {fisher-2g} Y con dos grupos, la solución es directa: u es la inversa de la matriz de dispersión dentro, W, por la diferencia de medias.
 
-Con detalle. La señal se mide con la dispersión entre grupos, y el ruido con la dispersión dentro de los grupos, que se representa con la matriz doble u. Es la misma lógica del ANOVA, entre contra dentro, pero con matrices. Con dos grupos, los pesos salen de multiplicar la inversa de la matriz doble u por la diferencia de medias de los grupos. La clase dice que no hay que memorizar la fórmula. Sí hay que entender qué hace.
+{nomem} La clase dice que esta fórmula no hay que memorizarla. Lo que sí hay que entender es qué hace.
 
-Una vez que tengo el puntaje, la regla es simple. Calculo el puntaje promedio de cada grupo, y el corte es el punto medio entre esos dos promedios.
+{calc} En el banco, {calc-dif} la diferencia de medias, fallidos menos cumplidores, es menos cuatro en patrimonio y dos en deuda. {calc-w} Con la matriz W de la clase, {calc-u} los pesos salen menos cero coma cero setenta y cuatro para el patrimonio, y cero coma cero sesenta y siete para la deuda.
 
-En el Banco de Ademuz, los pesos resultan ser menos cero coma cero setenta y cuatro para el patrimonio, y más cero coma cero sesenta y siete para la deuda. Tiene sentido: más patrimonio baja el puntaje, más deuda lo sube. El puntaje promedio de los fallidos es menos cero coma cero cuatro, y el de los cumplidores, menos cero coma cuarenta y siete. El corte queda en menos cero coma veinticinco. Si el puntaje es mayor que el corte, fallido. Si es menor, cumplidor.
+{calc-sig} Léelo así: más patrimonio baja el puntaje, y más deuda lo sube. Puntaje alto, perfil de fallido.
 
-¿Y el cliente nuevo, con patrimonio siete y deuda cuatro? Su puntaje da menos cero coma veinticinco. ¿Qué significa eso?
+{corte} El corte es el promedio de los puntajes medios de cada grupo: {corte-f} menos cero coma cero tres siete para los fallidos, y menos cero coma cuatro seis seis para los cumplidores. {corte-v} El corte queda en menos cero coma doscientos cincuenta y uno.
 
-[pausa 3]
+{nuevo-d} ¿Y el cliente nuevo? {nuevo-c} Menos cero coma cero setenta y cuatro por siete, más cero coma cero sesenta y siete por cuatro. {nuevo-r} Da menos cero coma doscientos cincuenta y uno: justo en la frontera. Es un cliente realmente dudoso.
 
-Que cae justo en la frontera. Ele de a no logra decidirse con este cliente. Lo retomamos en el próximo módulo.
+{acc} Con los dieciséis clientes, la regla de Fisher acierta en quince: noventa y tres coma setenta y cinco por ciento, contra el setenta y cinco de la mejor variable sola. {acc-err} El único error es el cliente trece, un cumplidor con patrimonio seis coma tres y deuda cinco coma dos.
 
-¿Y qué tan bien clasifica a los dieciséis clientes originales? Acierta quince de dieciséis, el noventa y tres coma setenta y cinco por ciento. Contra setenta y cinco usando solo el patrimonio. El único error es el cliente trece, un cumplidor con patrimonio bajo y deuda alta, que queda clasificado como fallido. Ojo: una lámina de la clase dice que el error es el cliente siete, pero su propia tabla muestra que es el trece.
+{escala} Un detalle importante. Solo importa la dirección de los pesos. Si se multiplican por cualquier número, incluso negativo, la regla es la misma. {escala-r} Por eso erre entrega otros coeficientes, menos cero coma cuatro dos dos y cero coma tres ocho, que apuntan en la misma dirección.
 
-Un último punto. De los pesos, solo importa la dirección. Se pueden multiplicar por cualquier número, incluso negativo, y la clasificación no cambia. Por eso erre entrega otros valores para los mismos datos. Y por eso el signo o el tamaño de un peso no se interpreta como importancia.
+## Supuestos y erre
 
-Pregunta. ¿Qué maximiza el criterio de Fisher?
+{sup2} ¿Cuándo funciona bien ele de a? {sup-n} Primero, normalidad multivariada dentro de cada grupo, aunque es bastante robusto a desviaciones leves. {sup-s} Segundo, que los grupos tengan la misma matriz de covarianza. Eso se contrasta con el test de Box. {sup-i} Y tercero, observaciones independientes, que depende del diseño del estudio.
 
-[pausa 3]
-
-La separación entre los grupos, relativa a la dispersión dentro de cada grupo. Señal sobre ruido.
-
-En simple. Fisher mezcla las variables en un puntaje que aleja los grupos y aprieta cada grupo. El corte es el punto medio de los puntajes promedio.
-
-## Supuestos y la función lda en R
-
-En simple. Ele de a funciona bien bajo tres supuestos. Y en erre, una función lo calcula todo.
-
-Los supuestos. Uno: normalidad multivariada dentro de cada grupo. Se revisa con gráficos cu cu o con el test de Shapiro. Ele de a es bastante robusto si la desviación es leve. Dos: los grupos tienen la misma matriz de covarianza. Tres: las observaciones son independientes, lo que depende del diseño del estudio y no tiene un test específico.
-
-Pregunta. ¿Con qué test se revisa que las covarianzas de los grupos sean iguales?
+{sup-q} ¿Y si el test de Box rechaza que las covarianzas son iguales?
 
 [pausa 3]
 
-Con el test eme de Box. Si se rechaza la igualdad, se pasa a cu de a, que es el tema del módulo siguiente. Cuidado con confundirlo con el test de Bartlett de esfericidad, que es otra cosa.
+{sup-qr} Entonces conviene el discriminante cuadrático, cu de a, que es lo que viene en el módulo dieciséis.
 
-En erre, la función se llama ele de a, en minúsculas, y viene en el paquete MASS. Se le entrega una fórmula: el grupo, explicado por las variables. Después se usa predict, que devuelve tres cosas. Class, con la clasificación. Posterior, con la probabilidad de pertenecer a cada grupo. Y equis, con los puntajes discriminantes.
+{r} En erre se usa la función lda, del paquete MASS, con la fórmula grupo tilde patrimonio más deuda. {r-pred} Después, predict entrega tres cosas: class, la clasificación; posterior, las probabilidades de cada grupo; y equis, los puntajes discriminantes. {r-conf} La matriz de confusión se arma con table, el real contra el predicho, {r-acc} y la exactitud es la suma de la diagonal sobre el total. {r-ej} En el banco: siete cumplidores bien y uno mal, ocho fallidos bien. Quince de dieciséis.
 
-Para evaluar se arma la matriz de confusión con la función table, cruzando el grupo real con el predicho. La exactitud es la suma de la diagonal dividida por el total. En Ademuz: siete cumplidores bien clasificados y uno mal. Ocho fallidos bien. Quince de dieciséis.
+## Para cerrar
 
-Al imprimir el modelo aparecen tres bloques. Las probabilidades a priori, que son la proporción de cada grupo: aquí cero coma cinco y cero coma cinco. Las medias por grupo. Y los coeficientes del discriminante lineal, que en erre son menos cero coma cuarenta y dos, y cero coma treinta y ocho. Distintos a los calculados a mano, pero con la misma dirección.
+{c} En resumen: {c1} en la clasificación supervisada los grupos se conocen, y se busca una regla para casos nuevos. {c2} Fisher combina las variables en un puntaje que separa las medias y junta los datos de cada grupo, {c3} y se clasifica comparando con el punto medio. {c4} Supone normalidad, covarianzas iguales e independencia. {c5} En el banco pasamos de setenta y cinco a casi noventa y cuatro por ciento de aciertos.
 
-Y para el cliente nuevo, erre entrega probabilidad posterior de cero coma cinco para cada grupo. La frontera exacta.
-
-En simple. Tres supuestos: normalidad, covarianzas iguales, independencia. La igualdad de covarianzas se prueba con eme de Box. Y en erre, ele de a más predict.
-
-## Repaso
-
-Repaso rápido.
-
-¿Qué diferencia hay entre clasificación supervisada y clastering?
-
-[pausa 3]
-
-En la supervisada los grupos son conocidos.
-
-En Ademuz, ¿cuánto acierta el patrimonio solo, y cuánto el discriminante de Fisher?
-
-[pausa 3]
-
-Setenta y cinco por ciento, contra noventa y tres coma setenta y cinco.
-
-¿Dónde se ubica el corte del discriminante?
-
-[pausa 2]
-
-En el punto medio entre los puntajes promedio de los dos grupos.
-
-¿Cuáles son los tres supuestos de ele de a?
-
-[pausa 3]
-
-Normalidad multivariada, covarianzas iguales e independencia.
-
-¿Qué hago si el test eme de Box rechaza?
-
-[pausa 2]
-
-Uso cu de a.
-
-Eso fue el módulo quince.
+{fin} Eso fue el módulo quince.

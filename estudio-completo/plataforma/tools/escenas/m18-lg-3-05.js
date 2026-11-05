@@ -9,7 +9,7 @@ let curva = "", area = `M${X(7.5)},${Yp(0)}`;
 for (let x = 0; x <= 9.001; x += 0.05) { curva += `${x ? "L" : "M"}${X(x).toFixed(1)},${Yp(f(x)).toFixed(1)} `; if (x >= 7.5) area += ` L${X(x).toFixed(1)},${Yp(f(x)).toFixed(1)}`; }
 area += ` L${X(9)},${Yp(0)} Z`;
 const svg = `<svg viewBox="0 0 420 220"><path class="ejes" d="M40,20 V190 H400"/>` +
-  `<path d="${area}" fill="${COL.am}" opacity=".6" data-en="pval-area"/>` +
+  `<g data-en="pval-area"><path d="${area}" fill="${COL.am}" opacity=".6"/></g>` +
   `<path class="trazo" pathLength="1" data-en="pval-curva" d="${curva}" fill="none" stroke="${COL.ce}" stroke-width="3"/>` +
   `<g data-en="pval-f0"><line x1="${X(7.5)}" y1="190" x2="${X(7.5)}" y2="120" stroke="${COL.ro}" stroke-width="2.5"/><text x="${X(7.5) - 6}" y="112" text-anchor="end" style="fill:${COL.ro}">F₀ = 7,5</text></g>` +
   `<g data-en="crit"><line x1="${X(3.06)}" y1="190" x2="${X(3.06)}" y2="140" stroke="${COL.ve}" stroke-width="2" stroke-dasharray="4 3"/><text x="${X(3.06) + 4}" y="136" style="fill:${COL.ve};font-size:12px">crítico 3,06</text></g>` +

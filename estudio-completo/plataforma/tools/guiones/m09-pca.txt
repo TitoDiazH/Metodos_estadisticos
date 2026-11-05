@@ -1,0 +1,73 @@
+# Análisis de componentes principales
+
+## Resumir muchas variables en pocas
+
+{inicio} Ahora toca el módulo nueve: el análisis de componentes principales, o pe ce a.
+
+{idea} Cuando tienes muchas variables, y varias de ellas están correlacionadas, en parte están diciendo lo mismo. {idea-pca} Componentes principales aprovecha eso: crea unas pocas variables nuevas, los componentes, que resumen la mayor parte de la información.
+
+{no-elim} Un detalle importante, que se pregunta mucho: pe ce a no elimina variables. {no-elim-r} Cada componente es una combinación lineal de todas las variables originales.
+
+{orden} Los componentes se ordenan por cuánta variabilidad capturan. {pc1} El primero captura lo máximo posible. {pc2} El segundo, lo máximo de lo que queda, y es perpendicular al primero. Y así sucesivamente.
+
+{lim} ¿Y qué no hace? {lim-1} No te dice por sí solo qué variables son importantes. {lim-2} No garantiza que cada componente tenga una interpretación clara. {lim-3} Y no sirve si las relaciones entre variables no son lineales.
+
+## Cómo se construye
+
+{const} La construcción tiene tres pasos. {centrar} Primero se centran los datos: a cada variable se le resta su media. {centrar-q} ¿Para qué?
+
+[pausa 3]
+
+{centrar-r} Para que el primer componente apunte hacia donde los datos varían más, y no simplemente hacia donde está su media.
+
+{s} Segundo, se calcula la matriz de covarianza. {eig} Y tercero, se buscan sus valores y vectores propios. {eig-v} Cada vector propio es una dirección: un componente. {eig-l} Y su valor propio es la varianza de los datos en esa dirección.
+
+{max} Formalmente, el primer componente es la dirección de largo uno que maximiza la varianza de los datos proyectados. {max-r} Resolviendo ese problema, sale que es el vector propio con el mayor valor propio, y que su varianza es justamente ese valor propio.
+
+## Un ejemplo a mano
+
+{ej} El ejemplo de la clase es chico: tres observaciones y dos variables. {ej-d} Los puntos son dos cero, cero dos, y tres tres. {ej-m} Las dos medias son uno coma sesenta y siete.
+
+{ej-s} Después de centrar, la matriz de covarianza tiene dos coma tres tres en la diagonal, y cero coma tres tres fuera. {ej-l} Sus valores propios son dos coma seis seis siete y dos. {ej-v1} El primer vector propio es uno uno, dividido por raíz de dos: las dos variables pesan igual y se suman. {ej-v2} El segundo es uno menos uno, dividido por raíz de dos: un contraste, una variable menos la otra.
+
+{ej-var} ¿Qué porcentaje de la varianza explica el primer componente?
+
+[pausa 4]
+
+{ej-var-r} Dos coma seis seis siete sobre la suma, cuatro coma seis seis siete: cincuenta y siete por ciento.
+
+## Loadings y scores
+
+{load} Hay dos palabras que hay que tener claras. {load-def} Los loadings son los pesos con que cada variable entra en un componente: los elementos del vector propio. {score} Y los scores son los valores que toma cada observación en los componentes: sus nuevas coordenadas.
+
+{score-f} El score de una observación es la suma de cada variable centrada, por su loading. {score-ojo} Y aquí hay un error típico, que apareció en la ayudantía dos. Si el pe ce a se hizo con variables estandarizadas, para calcular el score de una observación nueva hay que estandarizarla primero, con la media y la desviación de la muestra. {score-ojo-r} Si se reemplazan los valores crudos, la variable con números más grandes domina el resultado.
+
+## Cuántos componentes conservar
+
+{cuantos} ¿Con cuántos componentes nos quedamos? Hay tres reglas. {r80} La primera: acumular al menos el ochenta por ciento de la varianza. {kaiser} La segunda, el criterio de Kaiser: quedarse con los de valor propio mayor que uno. Esto vale con datos estandarizados. {codo} Y la tercera: mirar el codo del gráfico de sedimentación, donde los valores propios dejan de caer rápido.
+
+{sd} En la salida de erre hay una trampa. {sd-r} Summary no entrega los valores propios, sino las desviaciones estándar de los componentes. Para obtener el valor propio, hay que elevar al cuadrado.
+
+{ay} En la ayudantía dos: las desviaciones son uno coma cuatro seis, cero coma nueve nueve, cero coma ocho seis y cero coma tres siete. {ay-l} Al cuadrado: dos coma catorce, cero coma noventa y ocho, cero coma setenta y cuatro y cero coma catorce. {ay-k} Con Kaiser, solo el primero supera uno: un componente. {ay-codo} El codo también sugiere uno. {ay-80} Pero el acumulado es cincuenta y tres, setenta y ocho, y noventa y siete por ciento. Con la regla del ochenta, hacen falta tres. {ay-c} Las reglas no siempre coinciden, y lo que se pide es justificar la elección.
+
+## En erre: los autos
+
+{r} En erre, todo sale con prcomp, con scale punto igual a TRUE para estandarizar. {r-s} Summary da la varianza explicada, {r-rot} rotation da los loadings, {r-x} y equis, los scores.
+
+{mt} El ejemplo de la clase es mtcars: treinta y dos autos, once variables. {mt-var} El primer componente explica el sesenta por ciento, y el segundo, el veinticuatro. Juntos, ochenta y cuatro por ciento.
+
+{mt-regla} Para interpretar, la regla de la clase: un loading de cero coma tres o más en valor absoluto es relevante, y de cero coma cuatro o más, fuerte.
+
+{mt-pc1} En el primer componente, pesan positivo los cilindros, la cilindrada, la potencia y el peso. Y negativo, el rendimiento en millas por galón. {mt-pc1-q} ¿Cómo lo llamarías?
+
+[pausa 3]
+
+{mt-pc1-r} Tamaño y potencia, contra eficiencia. Autos grandes y potentes a un lado, autos económicos al otro. {mt-pc2} En el segundo pesan las marchas, la transmisión manual y los carburadores, contra el tiempo de aceleración: una configuración deportiva.
+
+{signo} Y un detalle: el signo de un componente completo es arbitrario. Si se invierten todos los loadings, es el mismo componente.
+
+## Para cerrar
+
+{c} En resumen: {c1} pe ce a crea combinaciones lineales perpendiculares, ordenadas por varianza. {c2} Los vectores propios son las direcciones, y los valores propios, la varianza en cada una. {c3} Para decidir cuántos, ochenta por ciento, Kaiser o el codo, recordando que la desviación de erre se eleva al cuadrado. {c4} Y se interpreta por los loadings más grandes y sus signos.
+
+{fin} Eso fue el módulo nueve.

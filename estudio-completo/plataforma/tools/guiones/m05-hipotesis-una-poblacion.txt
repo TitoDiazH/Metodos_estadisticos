@@ -1,183 +1,73 @@
 # Pruebas de hipótesis: marco general y una población
 
-## La idea de una prueba de hipótesis
+## La lógica de una prueba
 
-Ahora toca el módulo cinco: pruebas de hipótesis para una población.
+{inicio} Ahora toca el módulo cinco: las pruebas de hipótesis, y cómo se aplican a una población.
 
-En simple. Una prueba de hipótesis es como un juicio. Hay una suposición inicial, que se da por cierta mientras nadie demuestre lo contrario. Y nosotros llegamos con datos a preguntar: ¿hay evidencia suficiente para rechazar esa suposición?
+{q} El ejemplo de la clase es este: ¿la gente vive, en promedio, más de setenta años? {q-m} Se toma una muestra de cien personas, y la edad media es setenta y uno coma ocho. {q-dud} Es más que setenta, sí. Pero, ¿es suficientemente más, o podría ser solo suerte de la muestra?
 
-La suposición inicial se llama hipótesis nula. Es el estatus quo. Lo que queremos demostrar se llama hipótesis alternativa.
+{h0} Una prueba de hipótesis parte de una suposición, la hipótesis nula, hache cero. Es el statu quo: {h0-ej} acá, que la media es setenta o menos. {h1} Y la alternativa, hache uno, es lo que queremos demostrar: que la media es mayor a setenta.
 
-Ahora con más detalle. Tomemos el ejemplo de la clase: ¿viven las personas más de setenta años en promedio? Lo que queremos demostrar es que la media es mayor que setenta. Esa es la hipótesis alternativa. Entonces la hipótesis nula es lo contrario: que la media es menor o igual a setenta.
+{pval} Después se calcula el pe valor: la probabilidad de obtener un resultado tan extremo como el observado, o más, si hache cero fuera cierta. {pval-ej} En el ejemplo da dos coma diecisiete por ciento. {pval-lee} O sea, si la media real fuera setenta, ver una muestra con setenta y uno coma ocho sería bastante raro.
 
-Después fijamos el nivel de significancia, alfa. Alfa es la probabilidad máxima que aceptamos de cometer un error tipo uno. Y el error tipo uno es rechazar la hipótesis nula cuando en realidad era verdadera. Los valores comunes de alfa son uno por ciento, cinco por ciento y diez por ciento.
+{alfa} Para decidir, se compara con alfa, el nivel de significancia, que se fija antes: típicamente uno, cinco o diez por ciento. {regla} La regla de la clase es: si el pe valor es menor o igual que alfa, se rechaza hache cero. {regla-ej} Dos coma diecisiete es menor que cinco, así que se rechaza: hay evidencia de que la esperanza de vida supera los setenta años.
 
-Luego miramos los datos y calculamos el pe valor. El pe valor es la probabilidad de obtener un resultado tan extremo como el que observamos, o más extremo todavía, suponiendo que la hipótesis nula es verdadera. Si esa probabilidad es muy chica, lo que vimos sería muy raro bajo la hipótesis nula, y por eso la rechazamos.
+{alfa-def} Y alfa tiene un significado preciso: es la probabilidad de rechazar hache cero cuando en realidad es verdadera. El error tipo uno.
 
-La regla de la clase es esta: si el pe valor es menor o igual que alfa, se rechaza la hipótesis nula. Si el pe valor es mayor que alfa, no se rechaza.
-
-En el ejemplo, con una muestra de cien personas y una media muestral de setenta y uno coma ocho años, el pe valor resulta ser dos coma diecisiete por ciento. Trabajamos con alfa de cinco por ciento. Entonces, ¿qué se concluye?
-
-[pausa 4]
-
-Se rechaza la hipótesis nula. Dos coma diecisiete por ciento es menor que cinco por ciento, así que hay evidencia de que la esperanza de vida supera los setenta años.
-
-Ahora una pregunta con trampa. Supón que el pe valor hubiera sido treinta por ciento. No rechazamos la hipótesis nula. ¿Podemos decir entonces que la hipótesis nula es verdadera?
-
-[pausa 4]
-
-No. Y esto es muy importante, porque apareció en una prueba pasada. No rechazar no es lo mismo que demostrar que es cierta. Solo significa que nos faltó evidencia. Igual que en un juicio: absolver por falta de pruebas no demuestra inocencia. La prueba nunca demuestra que la hipótesis nula es verdadera.
-
-Segunda trampa, también de una prueba pasada. Si aumento el tamaño de la muestra, ¿baja la probabilidad de cometer error tipo uno?
-
-[pausa 4]
-
-Tampoco. La probabilidad de error tipo uno es alfa, y alfa la fija quien hace la prueba. No depende del tamaño de la muestra.
-
-Volvamos a lo simple para dejarlo grabado. Hipótesis nula: la suposición inicial. Hipótesis alternativa: lo que quiero demostrar. Alfa: cuánto riesgo acepto de rechazar algo que era cierto. Y la regla: pe valor menor o igual que alfa, rechazo. Pe valor mayor que alfa, no rechazo, pero tampoco demuestro nada.
-
-## Media con sigma desconocida: la prueba te
-
-En simple: quiero saber si la media de una población es distinta de un valor de referencia, y no conozco la desviación estándar de la población. Eso es lo habitual, casi nunca la conocemos. En ese caso uso la distribución te de Student.
-
-¿Por qué la te y no la normal? Porque al no conocer la desviación estándar verdadera, tengo que estimarla con la muestra, y eso agrega incertidumbre. La te de Student tiene colas más anchas que la normal, justamente para compensar esa incertidumbre extra.
-
-Ahora el detalle. El estadístico te se calcula así: la media de la muestra, menos el valor de referencia, y todo eso dividido por el error estándar. El error estándar es la desviación estándar de la muestra dividida por la raíz de ene.
-
-Ese estadístico sigue una distribución te con ene menos uno grados de libertad.
-
-Ejemplo de la clase. Se mide el consumo eléctrico de veinte hogares de un barrio, y se quiere saber si consumen más que el promedio de la ciudad, que es setecientos veintiún kilowatts hora. La hipótesis alternativa es que la media del barrio es mayor que setecientos veintiuno. La nula, que es menor o igual. Con veinte hogares, ¿cuántos grados de libertad tiene la te?
+{norech} Ahora, una pregunta que aparece en las pruebas. Si no rechazo hache cero, ¿quedó demostrado que es verdadera?
 
 [pausa 3]
 
-Diecinueve. Ene menos uno. Con diecinueve grados de libertad y alfa de cinco por ciento, el valor crítico es uno coma setenta y tres. El pe valor del ejemplo fue cero coma cero veintidós, o sea, dos coma dos por ciento. Menor que cinco por ciento. Se rechaza la hipótesis nula: hay evidencia de que el barrio consume más que el promedio de la ciudad.
+{norech-r} No. Solo quiere decir que los datos no dieron suficiente evidencia en su contra. Puede que hache cero sea falsa y la muestra no alcanzó a mostrarlo.
 
-En erre, todo esto lo hace una sola función: te punto test. Recibe los datos, el argumento mu, que es el valor de referencia, y el argumento alternative, que indica la dirección de la prueba. Alternative tiene tres opciones. Tu saided, entre comillas, para una prueba bilateral, cuando la alternativa dice distinto de. Greiter, para cola derecha, cuando la alternativa dice mayor que. Y les, para cola izquierda, cuando dice menor que. Se escriben en inglés: two punto sided, greater, y less.
+{n-alfa} Y otra afirmación típica: al aumentar el tamaño de muestra, baja la probabilidad de error tipo uno. {n-alfa-r} Falso. Esa probabilidad es alfa, y la fija quien hace la prueba. Lo que baja con más datos es el error tipo dos, que viene en el módulo siete.
 
-Ahora leamos una salida. En la clase hay un ejemplo donde te punto test muestra: te igual a dos coma cero cinco, de efe igual a veinticuatro, y pe valor igual a cero coma cero cinco diecisiete. De efe son los grados de libertad. Si de efe es veinticuatro, ¿cuántas observaciones había?
+## La media con desviación desconocida
 
-[pausa 3]
+{t} El caso más común es probar una media sin conocer la desviación de la población. {t-f} Se usa el estadístico te: la media muestral menos el valor de hache cero, dividido por ese sobre raíz de ene. {t-gl} Con ene menos uno grados de libertad. {t-colas} La distribución te tiene colas más anchas que la normal, para compensar que la desviación también se estimó.
 
-Veinticinco. Porque los grados de libertad son ene menos uno. Esa es una pregunta típica.
+{t-ej} El ejemplo de la clase: el consumo eléctrico de veinte hogares de un barrio, contra la media de la ciudad, setecientos veintiún kilowatts hora. {t-ej-h} La pregunta es si el barrio consume más. Hache uno: la media es mayor a setecientos veintiuno. {t-ej-crit} Con diecinueve grados de libertad, el valor crítico es uno coma setenta y tres. {t-ej-p} El pe valor da cero coma cero dos dos. {t-ej-r} Se rechaza: el barrio consume más que la ciudad.
 
-Y con ese pe valor, cero coma cero cinco diecisiete, y alfa de cinco por ciento, ¿se rechaza?
+{r} En erre, se usa t punto test, con los datos, mu igual al valor de hache cero, y alternative. {r-alt} Alternative puede ser two punto sided, si hache uno es distinto de; greater, si es mayor; o less, si es menor.
 
-[pausa 3]
+{r-ej} En el script de la clase, con veinticinco datos y mu igual a diez, bilateral: {r-ej-t} te da dos coma cero cinco, con veinticuatro grados de libertad. {r-ej-p} El pe valor, cero coma cero cinco uno siete. Apenas sobre cero coma cero cinco: no se rechaza. {r-ej-ic} Y el intervalo de confianza va de nueve coma noventa y nueve a once coma cuarenta y ocho. Contiene el diez, coherente con no rechazar.
 
-No se rechaza. Es un caso límite, pero cero coma cero cinco diecisiete es mayor que cero coma cero cinco. Además, la salida entrega un intervalo de confianza del noventa y cinco por ciento, que iba de nueve coma noventa y nueve a once coma cuarenta y ocho. El valor de referencia era diez, y diez está dentro del intervalo. Eso es coherente: en una prueba bilateral, si el intervalo contiene al valor de referencia, no se rechaza.
-
-De nuevo en simple. No conozco sigma: uso te. El estadístico es la diferencia entre la media muestral y el valor de referencia, medida en errores estándar. Grados de libertad: ene menos uno. En erre: te punto test.
-
-## Media con sigma conocida: la prueba zeta
-
-Segunda prueba. Es casi igual a la anterior, con una sola diferencia.
-
-En simple: si la desviación estándar de la población es conocida, por ejemplo por información histórica, ya no necesito la te. Uso directamente la normal estándar, y el estadístico se llama zeta.
-
-El detalle. El estadístico zeta es la media muestral menos el valor de referencia, dividido por sigma sobre raíz de ene. Es la misma forma que la te, pero en el denominador va sigma, la desviación poblacional conocida, en lugar de la desviación de la muestra. Y se compara con la normal estándar, que no tiene grados de libertad.
-
-Ejemplo de la clase. Treinta datos, sigma conocida igual a dos. La hipótesis nula dice que la media es menor o igual a diez, y la alternativa, que es mayor que diez. La media muestral fue diez coma setenta y nueve. El estadístico zeta da dos coma dieciséis, y el pe valor, cero coma cero quince. Con alfa de cinco por ciento, se rechaza la hipótesis nula.
-
-En erre se usa la función zeta punto test, que viene en el paquete be, ese, de, a. Recibe los datos, mu, y un argumento que no hay que olvidar: sigma punto equis, donde se entrega la desviación estándar conocida.
-
-Pregunta. El enunciado te da una muestra y te pide probar una hipótesis sobre la media, pero no menciona en ninguna parte la desviación estándar de la población. ¿Usas zeta o te?
-
-[pausa 4]
-
-Te. Si el enunciado no entrega sigma, no la conoces, y corresponde la te de Student. Usar zeta sin tener sigma es un error típico.
-
-En simple: sigma conocida, zeta. Sigma desconocida, te. Esa es toda la diferencia.
-
-## Proporción
-
-Tercera prueba. Ahora no hablamos de un promedio, sino de un porcentaje.
-
-En simple: quiero saber si la proporción de una población es igual a cierto valor. Por ejemplo, si el cuarenta por ciento de los estudiantes trabaja. Tomo una muestra, calculo la proporción de la muestra, y mido qué tan lejos quedó del valor de referencia, en errores estándar.
-
-El detalle. Antes de calcular nada, hay un requisito que se debe verificar. La prueba usa una aproximación normal, y esa aproximación solo vale si hay suficientes éxitos y fracasos esperados. El requisito es: ene por pe cero debe ser mayor o igual a cinco, y ene por uno menos pe cero también debe ser mayor o igual a cinco. Pe cero es la proporción de la hipótesis nula. Si el requisito falla, hay que usar un método exacto, con la binomial.
-
-El estadístico es un zeta. En el numerador va la proporción de la muestra menos pe cero. En el denominador, la raíz cuadrada de pe cero, por uno menos pe cero, dividido por ene.
-
-Fíjate bien en ese denominador. ¿Qué proporción va ahí: la de la muestra, o la de la hipótesis nula?
-
-[pausa 4]
-
-La de la hipótesis nula, pe cero. Porque todo el cálculo se hace suponiendo que la hipótesis nula es verdadera. Poner la proporción de la muestra en el denominador es un error frecuente.
-
-Ejemplo de la clase. Cuarenta y tres de ciento veinte estudiantes trabajan. La hipótesis nula dice que la proporción es cero coma cuarenta, la alternativa dice que es distinta, y alfa es diez por ciento. Primero el requisito: ciento veinte por cero coma cuatro es cuarenta y ocho, y ciento veinte por cero coma seis es setenta y dos. Los dos son mayores que cinco, así que se cumple. La proporción muestral es cero coma treinta y seis. El zeta da menos cero coma noventa y tres. Como la prueba es bilateral con alfa de diez por ciento, el valor crítico es uno coma sesenta y cuatro. El valor absoluto de zeta es menor que eso, así que no se rechaza. El pe valor es cero coma treinta y cinco.
-
-En erre la función es prop punto test. Recibe el número de éxitos, el tamaño de la muestra, pe cero, y la alternativa. Y hay que agregar correct igual a fols, para que no aplique corrección de continuidad. Un detalle de la salida: prop punto test no muestra el zeta. Muestra un valor llamado equis cuadrado, que es zeta al cuadrado.
-
-En simple: para proporciones, primero verifico que ene por pe cero y ene por uno menos pe cero sean al menos cinco. Después calculo un zeta usando pe cero en el denominador. En erre, prop punto test, que entrega zeta al cuadrado.
-
-## Varianza: la prueba ji cuadrado
-
-Cuarta y última prueba. Ya no nos interesa el centro de los datos, sino cuánto varían.
-
-En simple: quiero saber si la variabilidad de una población es igual, mayor o menor que un valor de referencia. Comparo la varianza de la muestra con ese valor, usando la distribución ji cuadrado.
-
-El detalle. El estadístico es: ene menos uno, multiplicado por la varianza de la muestra, y dividido por la varianza de referencia. Sigue una distribución ji cuadrado con ene menos uno grados de libertad.
-
-Hay una trampa clásica. La hipótesis se plantea sobre la varianza, no sobre la desviación estándar. Si el enunciado dice que la desviación estándar es a lo más dos minutos, ¿cuál es la hipótesis nula sobre la varianza?
-
-[pausa 4]
-
-Que la varianza es menor o igual a cuatro. Hay que elevar al cuadrado. Si usas el dos sin elevarlo, todo el cálculo queda mal.
-
-Ese es justo el ejemplo de la clase: tiempos de conexión, con veinticuatro observaciones y una varianza muestral de cuatro coma nueve. La nula dice que la varianza es menor o igual a cuatro, y la alternativa, que es mayor. El estadístico es veintitrés por cuatro coma nueve, dividido por cuatro. Eso da veintiocho coma dos. El valor crítico de la ji cuadrado, con veintitrés grados de libertad y alfa de cinco por ciento, es treinta y cinco coma dos. ¿Se rechaza?
+{r-uni} ¿Qué pasaría con los mismos datos, si la alternativa fuera mayor?
 
 [pausa 3]
 
-No se rechaza. Veintiocho coma dos es menor que treinta y cinco coma dos, así que el estadístico no cae en la región de rechazo. El pe valor es más o menos cero coma veintiuno. No hay evidencia de que la desviación estándar supere los dos minutos. Y recuerda: comparar el estadístico con el valor crítico, o comparar el pe valor con alfa, siempre llevan a la misma decisión.
+{r-uni-r} El pe valor se reduce a la mitad, cero coma cero dos seis, y ahí sí se rechaza. {r-uni-c} Por eso la hipótesis alternativa se elige antes de mirar los datos, según lo que pregunta el enunciado.
 
-En erre hay una diferencia importante con las otras pruebas. No existe una función como te punto test para la varianza. Se calcula a mano. El valor crítico se obtiene con la función cu, ji, es, cu, que se escribe q, c, h, i, s, q. Y el pe valor de cola derecha se obtiene como uno menos pe, ji, es, cu, que se escribe igual pero empezando con p.
+## La media con desviación conocida
 
-En simple: para la varianza uso ji cuadrado. El estadístico es ene menos uno por la varianza muestral, sobre la varianza de referencia. Siempre trabajo con la varianza, elevando al cuadrado si me dan la desviación. Y en erre no hay función lista: se calcula a mano.
+{z} Si la desviación de la población se conoce, por ejemplo por información histórica, se usa la normal en vez de la te. {z-f} El estadístico zeta es igual, pero con sigma en vez de ese. {z-regla} La regla es simple: sigma conocida, zeta; sigma desconocida, te.
 
-## Repaso final
+{z-ej} En la clase, con treinta datos y sigma igual a dos, la media muestral es diez coma setenta y nueve, contra hache cero de diez. {z-ej-c} Zeta da dos coma dieciséis, y el pe valor, cero coma cero uno cinco. Se rechaza. {z-r} En erre se usa zeta punto test, del paquete BSDA, y hay que pasarle sigma punto equis.
 
-Repaso rápido.
+## Una proporción
 
-Quiero probar una hipótesis sobre una media y no conozco sigma. ¿Qué estadístico uso?
+{prop} Para una proporción, la idea es la misma. {prop-f} Zeta es la proporción de la muestra menos pe cero, dividido por la raíz de pe cero por uno menos pe cero, sobre ene. {prop-ojo} Fíjate que en el denominador va pe cero, el valor de la hipótesis, no la proporción de la muestra.
 
-[pausa 3]
+{prop-req} Pero antes hay un requisito: ene por pe cero, y ene por uno menos pe cero, tienen que ser al menos cinco. Si no, la aproximación normal no sirve.
 
-Te de Student, con ene menos uno grados de libertad. En erre, te punto test.
+{prop-ej} En la ayudantía dos, doscientos parabrisas, cuarenta defectuosos. La empresa dice que a lo más el quince por ciento sale defectuoso. {prop-ej-p} La proporción de la muestra es veinte por ciento. {prop-ej-z} Zeta da uno coma noventa y ocho, mayor que el crítico de uno coma sesenta y cuatro. {prop-ej-r} Se rechaza: la muestra no respalda a la empresa.
 
-Ahora sí conozco sigma. ¿Qué uso?
+{prop-r} En erre se usa prop punto test, con correct igual a FALSE. {prop-r-x} Ojo que no entrega zeta, sino equis cuadrado, que es zeta al cuadrado. En los parabrisas, tres coma noventa y dos.
 
-[pausa 3]
+## Una varianza
 
-Zeta, con la normal estándar. En erre, zeta punto test, con el argumento sigma punto equis.
+{var} Y por último, la varianza. {var-f} El estadístico es ene menos uno, por la varianza muestral, dividido por la varianza de hache cero. Se compara con una chi cuadrado de ene menos uno grados de libertad.
 
-Quiero probar una hipótesis sobre una proporción. ¿Qué debo verificar primero?
-
-[pausa 3]
-
-Que ene por pe cero, y ene por uno menos pe cero, sean mayores o iguales a cinco. Luego uso un zeta con pe cero en el denominador. En erre, prop punto test.
-
-Quiero probar una hipótesis sobre la variabilidad. ¿Qué distribución uso?
+{var-ej} En la clase: la desviación del tiempo de conexión sería a lo más dos minutos. {var-ej-q} Primer detalle, ¿qué va en hache cero, dos o cuatro?
 
 [pausa 3]
 
-Ji cuadrado, con ene menos uno grados de libertad, y siempre sobre la varianza. En erre se calcula a mano.
+{var-ej-qr} Cuatro. La prueba es sobre la varianza, así que la desviación se eleva al cuadrado. {var-ej-d} Con veinticuatro datos y varianza muestral cuatro coma nueve: {var-ej-x} veintitrés por cuatro coma nueve, dividido en cuatro, veintiocho coma dos. {var-ej-crit} El crítico es treinta y cinco coma uno. {var-ej-r} No se supera, así que no se rechaza: no hay evidencia de que la desviación sea mayor a dos minutos.
 
-El pe valor es menor o igual que alfa. ¿Qué hago?
+{var-r} En erre no hay una función como t punto test para esto. Se calcula a mano: qchisq para el valor crítico, y uno menos pchisq para el pe valor.
 
-[pausa 3]
+## Para cerrar
 
-Rechazo la hipótesis nula.
+{c} En resumen: {c1} se plantea hache cero y hache uno, se calcula el pe valor, y si es menor o igual que alfa, se rechaza. {c2} No rechazar no prueba hache cero. {c3} Para la media, te si sigma es desconocida y zeta si es conocida. {c4} Para una proporción, zeta, revisando el requisito de cinco. {c5} Y para una varianza, chi cuadrado, siempre con la varianza, no la desviación.
 
-El pe valor es mayor que alfa. ¿Qué puedo afirmar?
-
-[pausa 3]
-
-Solo que no hay evidencia suficiente para rechazar. No que la hipótesis nula sea verdadera.
-
-Y la última. ¿Cuál es la probabilidad de cometer error tipo uno?
-
-[pausa 3]
-
-Alfa. La fija quien hace la prueba, y no cambia con el tamaño de la muestra.
-
-Eso fue el módulo cinco.
+{fin} Eso fue el módulo cinco.

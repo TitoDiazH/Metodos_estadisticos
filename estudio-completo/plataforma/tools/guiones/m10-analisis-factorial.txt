@@ -1,0 +1,81 @@
+# Análisis factorial
+
+## Factores que no se ven
+
+{inicio} Ahora toca el módulo diez: el análisis factorial.
+
+{idea} Piensa en un cuestionario de satisfacción laboral con veinte preguntas. {idea-2} Seguramente las respuestas se agrupan: las preguntas sobre el sueldo se parecen entre sí, las del ambiente de trabajo también. {idea-3} El análisis factorial propone que detrás de esas correlaciones hay unos pocos factores latentes, que no se observan directamente, y que explican por qué unas variables se parecen más a otras.
+
+{papel} Algo que lo distingue de la regresión: acá no hay variable dependiente. Todas las variables cumplen el mismo papel.
+
+{var} La idea central es que la varianza de cada variable tiene tres partes. {var-c} Una común, que comparte con las demás. {var-e} Una específica, que es solo suya. {var-u} Y un error. {var-af} El análisis factorial se concentra en la parte común.
+
+{vs-pca} ¿En qué se diferencia de componentes principales?
+
+[pausa 3]
+
+{vs-pca-r} Componentes principales analiza toda la varianza de las variables. El análisis factorial por factores comunes analiza solo la parte compartida.
+
+## El modelo
+
+{mod} El modelo escribe cada variable estandarizada como una suma ponderada de los factores, más un término propio. {mod-a} Los pesos se llaman cargas, y se ordenan en una matriz, a.
+
+{h2} De ahí salen dos números clave. {h2-def} La comunalidad, hache dos: la parte de la varianza de la variable que explican los factores. Se calcula sumando las cargas de esa variable al cuadrado. {psi} Y la especificidad, psi: lo que queda, uno menos hache dos.
+
+{ej} En la clase hay seis materias y dos factores. {ej-ma} Matemáticas tiene cargas cero coma ocho y cero coma dos. {ej-ma-c} Su comunalidad es cero coma ocho al cuadrado, más cero coma dos al cuadrado. ¿Cuánto da?
+
+[pausa 4]
+
+{ej-ma-r} Cero coma sesenta y cuatro, más cero coma cero cuatro: cero coma sesenta y ocho. {ej-ma-psi} Su especificidad es cero coma treinta y dos. {ej-ma-lee} El sesenta y ocho por ciento de la varianza de matemáticas lo explican los factores, y el treinta y dos es propio.
+
+{ej-err} Un error típico es calcular la comunalidad con un solo factor. Se suman los cuadrados de toda la fila.
+
+## ¿Los datos sirven?
+
+{adec} Antes de hacer un análisis factorial, hay que comprobar que las variables estén correlacionadas. {adec-b} El test de Bartlett, que ya vimos en el módulo dos, prueba si la matriz de correlación es la identidad. Si se rechaza, hay correlación.
+
+{kmo} Y la otra herramienta es el KMO. {kmo-def} Compara las correlaciones simples con las parciales. La correlación parcial es la que queda entre dos variables cuando se controla el efecto de todas las demás. {kmo-idea} Si las variables comparten factores, las parciales deberían ser chicas comparadas con las simples, y el KMO es alto.
+
+{kmo-esc} Va de cero a uno. {kmo-075} Sobre cero coma setenta y cinco, bien. {kmo-05} Sobre cero coma cinco, aceptable. {kmo-mal} Bajo cero coma cinco, no conviene hacer el análisis.
+
+{kmo-ej} En la clase, con las notas de varias materias, el KMO global daba cero coma treinta y cinco. {kmo-ej2} Al sacar las materias poco correlacionadas con las demás, lenguaje, música y educación física, subió a cero coma sesenta y uno.
+
+## Extraer los factores
+
+{ext} Extraer los factores es encontrar la matriz de cargas. {ext-gl} Primer cuidado: no se pueden pedir demasiados factores. La regla es que ka sea a lo más pe menos uno, dividido en dos. {ext-gl-ej} Con cuatro variables, a lo más un factor.
+
+{ext-met} Hay tres métodos clásicos. {met-cp} El de componentes principales, que siempre da solución, pero analiza toda la varianza. {met-ep} El de ejes principales, que reemplaza los unos de la diagonal por comunalidades e itera. {met-mv} Y el de máxima verosimilitud, que supone normalidad, y a cambio entrega una prueba chi cuadrado de qué tan bien ajusta el modelo.
+
+{cuantos} ¿Cuántos factores? {cu-k} Kaiser, valores propios mayores que uno, aunque tiende a quedarse corto. {cu-80} Explicar entre setenta y cinco y ochenta por ciento de la varianza. {cu-scree} El codo del gráfico de sedimentación. {cu-par} Y el análisis paralelo, que compara los valores propios reales con los de datos simulados al azar.
+
+{cu-pauta} En la pauta de una prueba pasada se eligieron dos factores con tres argumentos: solo dos valores propios mayores que uno, un codo después del segundo, y entre los dos, dos coma cinco uno más uno coma siete cuatro, dividido en seis variables: setenta coma nueve por ciento.
+
+## Rotar e interpretar
+
+{rot} La solución inicial muchas veces es difícil de leer: varias variables cargan en varios factores a la vez. {nounica} Pero la solución no es única: si se giran los ejes, se obtiene otra solución igual de válida. {rot-def} Eso es rotar. Se busca una estructura simple: que cada variable cargue fuerte en un solo factor.
+
+{rot-q} Y al rotar, ¿cambian las comunalidades?
+
+[pausa 3]
+
+{rot-r} No. Cambia cómo se reparte la varianza entre los factores, pero la comunalidad de cada variable y la varianza total explicada quedan iguales. {rot-ej} En la clase, al girar cuarenta y cinco grados, matemáticas pasa de cero coma ocho y cero coma dos a cero coma cuatro dos y cero coma siete uno. Y su comunalidad sigue siendo cero coma sesenta y ocho.
+
+{rot-tipos} Hay dos familias. {rot-ort} Las ortogonales mantienen los factores sin correlación: varimax, la más usada, quartimax y equamax. {rot-obl} Las oblicuas permiten que los factores se correlacionen: oblimin y promax.
+
+{interp} Para interpretar, se miran las cargas grandes, mayores que cero coma cuatro o cero coma cinco. {interp-ej} En las materias, el primer factor reúne matemáticas, física y química: aptitud científica. {interp-ej2} El segundo, inglés, historia y dibujo: aptitud humanística.
+
+## En erre
+
+{r} En erre, con el paquete psych: {r-1} se estandarizan los datos, {r-2} se revisan KMO y cortest punto bartlett, {r-3} se decide el número con fa punto parallel, {r-4} y se ajusta con fa, indicando nfactors y rotate.
+
+{r-sal} En la salida hay tres columnas que se preguntan siempre. {r-h2} Hache dos, la comunalidad. {r-u2} U dos, la especificidad. Ojo con no confundirlas. {r-com} Y com, la complejidad: en cuántos factores carga cada variable. Cerca de uno, en uno solo.
+
+{r-ej} Con USArrests, el KMO global es cero coma sesenta y cinco. {r-ej-f} Con varimax, el primer factor reúne asesinatos y asaltos, y el segundo, la población urbana. {r-ej-com} Las violaciones cargan en los dos, y su complejidad es dos.
+
+{signo} Un último detalle: el signo de un factor es arbitrario. Si en otra muestra todas las cargas de un factor salen con el signo invertido, es el mismo factor.
+
+## Para cerrar
+
+{c} En resumen: {c1} el análisis factorial explica las correlaciones con pocos factores latentes. {c2} La comunalidad es la suma de las cargas al cuadrado, y la especificidad, uno menos eso. {c3} Antes, Bartlett y KMO. {c4} Se rota para interpretar, y la rotación no cambia las comunalidades. {c5} Y en la salida de erre: hache dos, u dos y com.
+
+{fin} Eso fue el módulo diez.

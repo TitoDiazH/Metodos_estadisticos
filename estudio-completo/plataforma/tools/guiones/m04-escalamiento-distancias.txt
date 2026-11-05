@@ -1,0 +1,63 @@
+# Escalamiento, distancias y similitud
+
+## Por qué escalar
+
+{inicio} Ahora toca el módulo cuatro: escalamiento, distancias y similitud.
+
+{prob} Imagina que comparas personas por su edad y su ingreso. {prob-ej} Dos personas que difieren en treinta años y en un millón de pesos. {prob-q} Si calculas la distancia entre ellas con esos números tal cual, ¿qué variable crees que manda?
+
+[pausa 3]
+
+{prob-r} El ingreso, por lejos. Un millón pesa muchísimo más que treinta. La edad casi no cuenta, y no porque sea menos importante, sino por sus unidades.
+
+{cuando} Por eso se recomienda escalar en tres situaciones: {cuando-1} cuando las variables están en unidades distintas, {cuando-2} cuando se van a usar distancias, {cuando-3} y cuando se va a aplicar componentes principales o clastering. {cuando-dep} Qué método usar depende de lo que viene después, y de si hay valores atípicos.
+
+## Cuatro formas de escalar
+
+{datos} Para ver los métodos, usemos los datos de la clase: diez, doce, quince, veinte y veinticinco.
+
+{mm} El primero es min max. {mm-f} A cada dato se le resta el mínimo, y se divide por el rango, el máximo menos el mínimo. {mm-r} Así todo queda entre cero y uno. {mm-ej} El mínimo es diez y el rango quince. El diez queda en cero, el veinticinco en uno, {mm-ej2} y el quince queda en cinco quinceavos, cero coma tres tres.
+
+{mm-inv} Y se puede volver atrás: el valor original es el normalizado, por el rango, más el mínimo. {mm-inv-ej} Un cero coma cinco corresponde a cero coma cinco por quince, más diez: diecisiete coma cinco. {mm-inv-uso} Esto se usa, por ejemplo, para interpretar un centroide de ka medias en las unidades originales.
+
+{mm-trampa} En la prueba uno hubo una afirmación: min max deja los datos con media cero y varianza uno. ¿Verdadero o falso?
+
+[pausa 3]
+
+{mm-trampa-r} Falso. Los deja entre cero y uno, pero la media y la varianza quedan donde caigan. Media cero y varianza uno es lo que hace el puntaje zeta.
+
+{z} Justamente, el segundo método es el puntaje zeta. {z-f} A cada dato se le resta la media y se divide por la desviación estándar. {z-r} Cada valor queda expresado como cuántas desviaciones está sobre o bajo la media. {z-ej} Con los datos de la clase, la media es dieciséis coma cuatro y la desviación seis coma uno. El diez queda en menos uno coma cero cinco, y el veinticinco en uno coma cuatro uno. {z-erre} En erre, la función scale.
+
+{rob} El tercero es el escalamiento robusto. {rob-f} En vez de la media y la desviación, usa la mediana y el rango intercuartílico. {rob-por} ¿Por qué? Porque un valor extremo arrastra a la media y a la desviación, pero casi no mueve a la mediana. {rob-uso} Es el que conviene cuando hay atípicos.
+
+{l2} Y el cuarto es la normalización ele dos: dividir cada dato por el largo del vector, la raíz de la suma de los cuadrados. {l2-uso} Sirve cuando importa la dirección y no la magnitud.
+
+## Distancias
+
+{dist} Una vez escalados los datos, se miden distancias. {dist-ej} Toma dos puntos: a, en dos coma tres, y be, en seis coma ocho. {dist-dif} Difieren en cuatro en la primera variable y en cinco en la segunda.
+
+{euc} La distancia euclídea es la línea recta: {euc-c} la raíz de cuatro al cuadrado más cinco al cuadrado, raíz de cuarenta y uno, {euc-r} seis coma cuatro.
+
+{man} La distancia Manhattan es lo que recorrerías por calles en cuadrícula: {man-c} cuatro más cinco, {man-r} nueve. {man-ojo} Siempre con las diferencias en valor absoluto. Si no, se pueden cancelar.
+
+{dist-erre} En erre, las dos salen con dist, cambiando el método. {dist-est} Y recuerda: si las variables están en escalas distintas, primero se estandariza.
+
+## Similitud: dirección y patrón
+
+{sim} A veces no importa qué tan lejos están dos observaciones, sino si apuntan hacia el mismo lado. Para eso está la similitud.
+
+{cos} La similitud coseno mide el ángulo entre dos vectores: el producto punto, dividido por el producto de sus largos. {cos-r} Si apuntan exactamente igual, da uno.
+
+{corr} Y la correlación resulta ser lo mismo, pero con los vectores centrados: primero se les resta su media. {corr-ej} En la clase: equis es uno, dos, tres, cuatro, y ye es dos, ocho, seis, ocho. {corr-ej-sin} Sin centrar, el coseno da cero coma noventa y seis: los vectores apuntan casi igual. {corr-ej-con} Centrados, da cero coma setenta y tres, que es exactamente la correlación.
+
+{corr-q} ¿Por qué cambia tanto al centrar?
+
+[pausa 3]
+
+{corr-qr} Porque sin centrar, los dos vectores son todos positivos y apuntan hacia la misma zona solo por estar lejos del origen. Al centrar, se mira el patrón: si suben y bajan juntos respecto de su media.
+
+## Para cerrar
+
+{c} En resumen: {c1} se escala cuando hay unidades distintas, distancias, o componentes principales y clastering. {c2} Min max deja todo entre cero y uno; el puntaje zeta, media cero y desviación uno; el robusto usa mediana y rango intercuartílico. {c3} La euclídea es la línea recta; la Manhattan, la suma de las diferencias absolutas. {c4} Y la correlación es el coseno de los vectores centrados.
+
+{fin} Eso fue el módulo cuatro.

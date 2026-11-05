@@ -1,143 +1,57 @@
 # Clustering jerárquico aglomerativo
 
-## Aglomerativo, desagregativo y el dendrograma
+## De abajo hacia arriba
 
-Ahora toca el módulo doce: clastering jerárquico aglomerativo.
+{inicio} Ahora toca el módulo doce: el clastering jerárquico aglomerativo.
 
-En simple. Los métodos jerárquicos construyen un árbol. Hay dos formas de hacerlo. Si parto con cada observación sola y voy uniendo las más parecidas, el método es aglomerativo, de abajo hacia arriba. Si parto con todas juntas y voy dividiendo, es desagregativo, de arriba hacia abajo.
+{idea} Los métodos jerárquicos no entregan una sola partición, sino un árbol completo de uniones. {aglo} Si parten con cada observación como su propio clúster, y los van uniendo de a dos, se llaman aglomerativos: van de abajo hacia arriba. {desag} Si parten con todo en un solo grupo y lo van dividiendo, se llaman desagregativos, como DIANA, que viene en el módulo catorce.
 
-Con detalle. El aglomerativo comienza con ene clústeres, uno por observación. En cada iteración une los dos más similares. Y termina cuando queda un solo clúster. El desagregativo hace lo contrario: comienza con un clúster, en cada paso divide el más heterogéneo, y termina con ene clústeres. Un ejemplo de desagregativo es Diana, que se ve en otro módulo.
+{algo} El algoritmo aglomerativo es muy simple. {algo1} Se parte con ene clústeres de un dato. {algo2} Se unen los dos más cercanos. {algo3} Se recalculan las distancias del clúster nuevo a los demás. {algo4} Y se repite, hasta que queda uno solo.
 
-Los dos producen un dendrograma. Es un árbol binario que muestra la jerarquía. Y lo clave para leerlo: la altura de cada fusión es la distancia entre los dos clústeres que se unieron. Para obtener los grupos, se corta el árbol a cierta altura. En erre el árbol se construye con hache clast, y se corta con la función cut tri, indicando cuántos clústeres se quieren.
+{dendro} Todo eso se dibuja en un dendrograma. {dendro-h} La altura de cada unión es la distancia a la que se unieron esos dos clústeres. {corte} Y para obtener los grupos se corta el árbol a cierta altura: el número de ramas que cruza la línea de corte es el número de clústeres. {cutree} En erre eso lo hace cutree, dándole el árbol y el número de grupos.
 
-Pregunta. ¿Hay que decidir el número de clústeres antes de construir el dendrograma?
-
-[pausa 3]
-
-No. Se construye el árbol completo, y el número de clústeres se decide después, al cortarlo.
-
-En simple. Aglomerativo: de muchos a uno, uniendo. Desagregativo: de uno a muchos, dividiendo. El dendrograma muestra las uniones, y su altura es la distancia.
-
-Ahora, unir los dos clústeres más cercanos suena fácil. Pero, ¿cómo se mide la distancia entre dos grupos que tienen varios puntos cada uno? Hay cinco respuestas, y cada una es un método.
-
-## Single linkage
-
-Primer método: singl línkach, o vecino más cercano.
-
-En simple. La distancia entre dos clústeres es la distancia entre sus dos puntos más cercanos. Es el mínimo.
-
-Con detalle. El algoritmo es así. Cada observación parte como un clúster. Se unen los dos con la menor distancia. Se recalculan las distancias al nuevo clúster, tomando siempre el mínimo. Y se repite hasta que queda uno solo.
-
-Ejemplo de la clase, con cinco empresas estandarizadas. El par más cercano es la empresa siete con la ocho, a distancia cero coma cuarenta y dos. Se unen. Después, la uno con la dos, a cero coma sesenta y cinco. Ahora viene lo interesante. La empresa cinco está a uno coma sesenta y cuatro de la empresa uno, y a uno coma noventa y siete de la empresa dos. ¿Cuál es su distancia al clúster formado por la uno y la dos, con singl línkach?
-
-[pausa 4]
-
-Uno coma sesenta y cuatro. El mínimo. Entonces la empresa cinco se une a ese clúster a esa altura. Y la última fusión ocurre a dos coma veintiocho.
-
-El rasgo característico de este método es el efecto cadena. Como basta un solo punto cercano para unir dos grupos, tiende a formar clústeres largos y filamentosos. En el ejemplo, la empresa cinco se pegó al grupo solo por estar cerca de la empresa uno.
-
-En erre: hache clast con method igual a single.
-
-En simple. Singl es el mínimo. Une con facilidad, y produce el efecto cadena.
-
-## Complete linkage
-
-Segundo método: complit línkach, o vecino más lejano.
-
-En simple. Es lo opuesto. La distancia entre dos clústeres es la distancia entre sus dos puntos más lejanos. Es el máximo.
-
-Con detalle. Es más conservador: para unir dos grupos exige que incluso sus puntos más alejados estén cerca. Por eso forma clústeres compactos y evita el efecto cadena.
-
-Mismo ejemplo. Las dos primeras fusiones son iguales, a cero coma cuarenta y dos y cero coma sesenta y cinco, porque cuando los clústeres tienen un solo elemento, el mínimo y el máximo coinciden. Pero ahora, la distancia de la empresa cinco al clúster de la uno y la dos, ¿cuánto vale?
+{k-antes} ¿Hay que decidir el número de clústeres antes de construir el árbol?
 
 [pausa 3]
 
-Uno coma noventa y siete. El máximo entre uno coma sesenta y cuatro y uno coma noventa y siete. Y la última fusión ocurre a tres coma veintidós, en vez de dos coma veintiocho. Las mismas uniones, pero a mayor altura. Complit siempre da distancias de fusión mayores o iguales que singl.
+{k-antes-r} No. Se construye el árbol entero, y el número de grupos se decide después, al cortarlo.
 
-En erre: method igual a complete.
+## La distancia entre dos clústeres
 
-En simple. Complit es el máximo. Une con cautela, y produce clústeres compactos.
+{link} Ahora, hay un detalle que cambia todo. Entre dos observaciones, la distancia es clara. Pero, ¿cuál es la distancia entre dos clústeres que tienen varios puntos? {link-r} Hay varias respuestas, y cada una es un método distinto.
 
-## Average linkage
+{single} La primera es single linkage, o vecino más cercano: la distancia entre dos clústeres es la de sus dos puntos más cercanos, el mínimo.
 
-Tercer método: áverach línkach, o promedio.
+{ej} Veámoslo con cinco de las empresas de la clase, ya estandarizadas. {ej1} El par más cercano es E siete con E ocho, a cero coma cuarenta y dos, y se unen primero. {ej2} Después E uno con E dos, a cero coma sesenta y cinco. {ej3} Ahora, ¿a qué distancia queda E cinco del clúster E uno, E dos? E cinco está a uno coma sesenta y cuatro de E uno, y a uno coma noventa y siete de E dos. ¿Qué número usa single?
 
-En simple. La distancia entre dos clústeres es el promedio de todas las distancias entre pares, tomando un punto de cada clúster. Queda entre singl y complit.
+[pausa 3]
 
-Este método no tiene lámina propia en la clase, pero aparece en la ayudantía cinco y en pruebas pasadas, así que hay que saberlo.
+{ej3-r} El mínimo: uno coma sesenta y cuatro. Y E cinco se une a ese grupo. {ej4} La última unión queda a dos coma veintiocho.
 
-Ejemplo de la ayudantía. Hay cinco tiendas, y se usa distancia Manhattan. Las más cercanas son la ce y la e, a distancia tres, y se unen primero en los tres métodos. Ahora, la tienda a está a distancia cinco de ce, y a distancia cuatro de e. ¿Cuánto es la distancia de a al clúster ce, e, con cada método?
+{cadena} Single tiene un problema conocido: el efecto cadena. Como basta con que un punto esté cerca de uno solo de los miembros, los clústeres van creciendo como una cadena, largos y filamentosos.
 
-[pausa 4]
+{complete} La alternativa es complete linkage, o vecino más lejano: la distancia entre clústeres es la de sus dos puntos más lejanos, el máximo. {comp-ej} Con las mismas empresas, las dos primeras uniones son iguales, porque con clústeres de un solo punto no hay diferencia. {comp-e5} Pero E cinco ahora queda a uno coma noventa y siete del grupo, el máximo, {comp-fin} y la última unión sube a tres coma veintidós. {comp-r} Complete es más conservador: une a mayor altura, y forma clústeres compactos.
 
-Con singl, cuatro, el mínimo. Con complit, cinco, el máximo. Y con áverach, cuatro coma cinco, el promedio.
+{average} Entre los dos está el average linkage, o promedio: la distancia entre dos clústeres es el promedio de todas las distancias entre pares, un punto de cada clúster.
 
-Un detalle de ese ejercicio: la tienda a y la tienda de quedan a la misma distancia del clúster. Hay un empate. Cuando hay empates, el orden de la siguiente fusión depende de cómo desempate el programa.
-
-Y un error que evitar: áverach promedia todas las distancias entre pares. No es la distancia entre los centros de los grupos. Eso es otro método, que viene ahora.
-
-En erre: method igual a average.
-
-En simple. Áverach es el promedio de todos los pares. Un punto intermedio entre singl y complit.
+{tiendas} En la ayudantía cinco había cinco tiendas, con distancia Manhattan. {tiendas-1} Las más cercanas son ce y e, a tres, y se unen primero. {tiendas-2} Después, la distancia de la tienda a a ese grupo: a está a cinco de ce y a cuatro de e. {tiendas-s} Single toma cuatro, {tiendas-c} complete toma cinco, {tiendas-a} y average, el promedio: cuatro coma cinco.
 
 ## Centroide y Ward
 
-Los dos últimos métodos.
+{cent} Quedan dos métodos más. {cent-def} El del centroide mide la distancia entre los puntos medios de cada clúster. Es barato de calcular, pero tiene una rareza. {inv} Puede producir inversiones en el dendrograma: una unión posterior que queda más abajo que una anterior. {inv-ej} Con las ocho empresas pasa: las últimas alturas son uno coma tres ocho cinco, uno coma cinco uno, y de nuevo uno coma tres ocho tres, más abajo.
 
-En simple. El método del centroide mide la distancia entre los puntos medios de los clústeres. Y el método de Ward une los clústeres cuya fusión aumenta lo menos posible la variabilidad interna.
+{ward} Y el de Ward, que es probablemente el más usado. {ward-def} Une los dos clústeres cuya fusión aumenta lo menos posible la variabilidad interna. {ward-r} El resultado son clústeres compactos y de tamaños parecidos. {ward-erre} En erre se pide como ward punto de dos, y se usa con distancias euclídeas.
 
-Con detalle, el centroide. Calcula el centro de cada clúster, que es el promedio de sus puntos, y mide la distancia entre centros. Es barato de calcular. Pero tiene un problema: no es una métrica, y puede producir inversiones en el dendrograma. Una inversión es cuando una fusión posterior ocurre a menor altura que una anterior, y las ramas del árbol se cruzan. En el ejemplo de las ocho empresas, las últimas alturas del centroide son uno coma treinta y nueve, uno coma cincuenta y uno, y uno coma treinta y ocho. La última es menor que la anterior. Eso es una inversión.
-
-Con detalle, Ward. Busca clústeres compactos, bien definidos y de tamaño similar, porque penaliza las fusiones desiguales. Es estable y muy usado. Tampoco es una métrica, pero sus alturas siempre crecen. Trabaja con la suma de cuadrados, por eso se usa con distancias euclídeas.
-
-En erre: method igual a centroid, para el centroide. Y para Ward, method igual a ward punto de dos, con de mayúscula.
-
-Pregunta. ¿Cuál de los cinco métodos puede mostrar inversiones en el dendrograma?
+{inv-q} De estos cinco métodos, ¿cuál es el único que puede mostrar inversiones?
 
 [pausa 3]
 
-El centroide. Singl, complit y Ward no.
+{inv-q-r} El del centroide. Single, complete, average y Ward siempre suben.
 
-En simple. Centroide: distancia entre centros, barato, pero puede dar inversiones. Ward: minimiza el aumento de variabilidad, y da grupos compactos de tamaño parecido.
+{r} En erre, todos salen con la misma función, hclust, dándole la matriz de distancias y el método: single, complete, average, centroid o ward punto de dos. {r-plot} Con plot se dibuja el dendrograma, y con cutree se obtienen los grupos.
 
-## Repaso
+## Para cerrar
 
-Repaso rápido de los cinco métodos.
+{c} En resumen: {c1} el aglomerativo une de a dos, de abajo hacia arriba, y el dendrograma muestra a qué altura. {c2} Single usa el mínimo y produce cadenas; complete, el máximo, y da grupos compactos; average, el promedio. {c3} El centroide puede tener inversiones, y Ward busca grupos compactos y parejos. {c4} Y el número de clústeres se decide al final, cortando el árbol.
 
-¿Qué distancia usa singl línkach, y qué efecto produce?
-
-[pausa 3]
-
-La mínima. Efecto cadena.
-
-¿Qué distancia usa complit línkach, y cómo son sus clústeres?
-
-[pausa 3]
-
-La máxima. Clústeres compactos.
-
-¿Qué usa áverach?
-
-[pausa 2]
-
-El promedio de todas las distancias entre pares.
-
-¿Qué método puede dar inversiones?
-
-[pausa 2]
-
-El centroide.
-
-¿Qué método tiende a formar clústeres de tamaño similar?
-
-[pausa 2]
-
-Ward.
-
-En un dendrograma, ¿qué representa la altura de una fusión?
-
-[pausa 3]
-
-La distancia entre los dos clústeres que se unieron.
-
-Eso fue el módulo doce.
+{fin} Eso fue el módulo doce.

@@ -1,0 +1,69 @@
+# Matriz de covarianza, matriz de correlación y test de Bartlett
+
+## Muchas variables a la vez
+
+{inicio} Ahora toca el módulo dos: la matriz de covarianza, la matriz de correlación, y el test de Bartlett.
+
+{idea} Con dos variables había una sola covarianza. Pero con cuatro, cinco o diez variables, hay una covarianza por cada par. {idea-m} La matriz de covarianza las ordena todas en una tabla cuadrada.
+
+{diag} En la diagonal van las varianzas de cada variable. {fuera} Fuera de la diagonal, la covarianza de cada par. {sim} Y es simétrica: la covarianza de equis uno con equis dos es la misma que la de equis dos con equis uno.
+
+## ¿Puede ser una matriz de covarianza?
+
+{valida} En las pruebas aparece mucho una pregunta: te dan una matriz, y preguntan si puede ser una matriz de covarianza. {valida-1} Primero, tiene que ser simétrica. {valida-2} Segundo, la diagonal no puede tener negativos, porque son varianzas. {valida-3} Y tercero, la que más se olvida: tiene que ser semidefinida positiva.
+
+{sdp} ¿Qué significa eso? Que para cualquier vector zeta, zeta traspuesto por la matriz por zeta es mayor o igual a cero. {sdp-int} La intuición es que esa expresión es la varianza de una combinación de las variables, y una varianza nunca puede ser negativa. {sdp-eig} En la práctica se revisa con los valores propios: todos tienen que ser mayores o iguales a cero.
+
+{neg} Entonces, si una matriz simétrica tiene un valor propio negativo, ¿qué concluyes?
+
+[pausa 3]
+
+{neg-r} Que no puede ser una matriz de covarianza. Habría una combinación de las variables con varianza negativa, y eso es imposible.
+
+{ay} En la ayudantía uno había una matriz de dos por dos: cuatro y tres en la diagonal, y uno fuera. {ay-q} La forma cuadrática es cuatro zeta uno al cuadrado, más dos zeta uno zeta dos, más tres zeta dos al cuadrado. {ay-re} Reordenando, queda zeta uno más zeta dos al cuadrado, más tres zeta uno al cuadrado, más dos zeta dos al cuadrado. {ay-r} Todo son cuadrados, así que solo vale cero si zeta es cero. Es definida positiva. {ay-eig} Y sus valores propios lo confirman: cuatro coma seis dos y dos coma tres ocho, ambos positivos.
+
+{corr-val} Si te preguntan por una matriz de correlación, se agregan dos cosas: unos en la diagonal, y todos los valores fuera de la diagonal entre menos uno y uno. {corr-trampa} Pero ojo: eso tampoco basta. También tiene que ser semidefinida positiva.
+
+## En erre
+
+{r} En erre, cov aplicado a un data frame entrega la matriz de covarianza, dividiendo por ene menos uno. {r-eig} Y eigen la descompone en valores propios y vectores propios.
+
+{r-ej} En la clase hay diez observaciones de cuatro variables. {r-ej-val} Los valores propios son cuatro coma tres cinco, cero coma cinco tres, cero coma dos ocho y cero coma cero dos. {r-ej-1} El primero concentra casi toda la variación. {r-ej-traza} Y su suma, cinco coma uno ocho, es igual a la suma de las varianzas, la traza de la matriz. {r-ej-pca} Esto es justamente la base de componentes principales, en el módulo nueve.
+
+## La matriz de correlación
+
+{cor} La matriz de correlación es la de covarianza, pero sin unidades. {cor-f} Cada covarianza se divide por la raíz del producto de las dos varianzas.
+
+{cor-ej} En la ayudantía uno: tiempo, costo y distancia, con varianzas dieciséis, nueve y veinticinco. {cor-ej-sd} Las desviaciones son cuatro, tres y cinco. {cor-ej-12} La covarianza entre tiempo y costo es seis, y seis dividido por cuatro por tres da cero coma cinco. {cor-ej-13} Entre tiempo y distancia, ocho dividido por cuatro por cinco: cero coma cuatro. {cor-ej-23} Y entre costo y distancia, uno dividido por quince: cero coma cero seis siete. {cor-ej-q} ¿Cuál es la relación más fuerte?
+
+[pausa 3]
+
+{cor-ej-r} Tiempo con costo, cero coma cinco: positiva y moderada. {cor-r} En erre, cor de los datos, o cov dos cor si solo tienes la matriz de covarianza.
+
+## El test de Bartlett
+
+{bart} Y ahora el test de Bartlett, que aparece siempre antes de componentes principales o de análisis factorial. {bart-q} La pregunta es: ¿las variables están correlacionadas entre sí? {bart-por} Porque si no lo están, no hay nada que resumir. Cada variable va por su lado.
+
+{bart-h0} La hipótesis nula es que la matriz de correlación es la identidad: unos en la diagonal, ceros afuera. {bart-h1} La alternativa, que no lo es. {bart-sup} Y el test supone normalidad multivariada.
+
+{bart-f} El estadístico es menos, entre paréntesis, ene menos uno menos dos pe más cinco sobre seis, por el logaritmo del determinante de la matriz de correlación. {bart-gl} Se compara con una chi cuadrado de pe por pe menos uno, sobre dos grados de libertad.
+
+{bart-int} La intuición está en el determinante. Si las variables no están correlacionadas, la matriz es la identidad, su determinante es uno, el logaritmo es cero, y el estadístico es cero. {bart-int2} Mientras más correlacionadas, más chico el determinante, y más grande el estadístico.
+
+{bart-ej} En la ayudantía, con diez datos y tres variables: {bart-ej-det} el determinante de la matriz de correlación es cero coma seis uno, y su logaritmo, menos cero coma cuatro nueve. {bart-ej-c} El coeficiente es nueve menos once sextos: siete coma uno siete. {bart-ej-x} El estadístico: siete coma uno siete por cero coma cuatro nueve, tres coma cincuenta y dos, {bart-ej-gl} con tres grados de libertad. {bart-ej-crit} El valor crítico es siete coma ochenta y uno. {bart-ej-q} ¿Se rechaza?
+
+[pausa 3]
+
+{bart-ej-r} No. Tres coma cinco no llega a siete coma ocho. Con diez datos, no hay evidencia de que las variables estén correlacionadas.
+
+{bart-ojo} Y ojo con cómo se dice eso. No se rechaza no significa que no haya correlación: significa que la evidencia no alcanza. Con diez datos, puede ser simplemente falta de muestra.
+
+{bart-clase} En cambio, en el ejemplo de la clase, con cuatro variables muy correlacionadas, el estadístico da veintiséis coma nueve, con pe valor cero coma cero cero cero uno. Se rechaza, y tiene sentido aplicar componentes principales.
+
+{bart-r} En erre, se puede calcular a mano con det y log, o con cortest punto bartlett, del paquete psych. {bart-r-n} Y ahí hay que pasarle ene, el número de observaciones. Si no, la función no sabe con cuántos datos se calculó la matriz.
+
+## Para cerrar
+
+{c} En resumen: {c1} la matriz de covarianza tiene varianzas en la diagonal, es simétrica y semidefinida positiva, con valores propios mayores o iguales a cero. {c2} La de correlación es la misma sin unidades, con unos en la diagonal. {c3} Y Bartlett prueba si la matriz de correlación es la identidad. Si se rechaza, hay correlación que vale la pena resumir.
+
+{fin} Eso fue el módulo dos.

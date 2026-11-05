@@ -1,0 +1,61 @@
+# Pruebas de hipótesis: dos poblaciones
+
+## Qué prueba usar
+
+{inicio} Ahora toca el módulo seis: las pruebas de hipótesis para comparar dos poblaciones.
+
+{tres} Cuando hay dos grupos, se pueden hacer tres preguntas. {tres-v} ¿Tienen la misma variabilidad? Eso se responde con la prueba efe. {tres-m} ¿Tienen la misma media? Con una prueba te, que tiene dos versiones según las varianzas. {tres-p} Y si son los mismos sujetos medidos dos veces, ¿cambió la media? Eso es una prueba pareada.
+
+{arbol} El árbol de decisión de la clase es así. {arbol-1} Primero: ¿son los mismos sujetos medidos dos veces, como pacientes antes y después de un tratamiento? Si es así, prueba pareada. {arbol-2} Si son grupos independientes: ¿las varianzas son iguales? {arbol-3} Si se sabe que sí, se usa la versión combinada, o pooled. {arbol-4} Y si no se sabe, o son distintas, se usa Welch.
+
+{welch-def} La recomendación actual es usar Welch por defecto, salvo que haya certeza de que las varianzas son iguales. {welch-enun} En una prueba: si el enunciado dice suponga varianzas iguales, pooled. Si no dice nada, Welch.
+
+## Comparar varianzas
+
+{f} La prueba efe compara las varianzas con un cociente: la varianza de un grupo dividida por la del otro. {f-1} Si el cociente es cercano a uno, son parecidas. {f-lejos} Si es muy grande o muy chico, difieren. {f-gl} Se compara con una distribución efe, con ene uno menos uno y ene dos menos uno grados de libertad.
+
+{f-ej} En la ayudantía dos se comparan dos máquinas, con diez datos cada una. {f-ej-q} La pregunta es si la máquina a tiene mayor varianza que la be. {f-ej-v} Las varianzas son dos coma veintitrés y uno coma cero siete. {f-ej-f} El cociente da dos coma cero nueve, con nueve y nueve grados de libertad. {f-ej-crit} El crítico es tres coma dieciocho. {f-ej-q2} ¿Se rechaza?
+
+[pausa 3]
+
+{f-ej-r} No. Aunque una varianza es el doble de la otra, con diez datos no alcanza: el pe valor es cero coma catorce. No hay evidencia de que a varíe más.
+
+{f-ojo} Un detalle: en una prueba unilateral hacia la derecha, la varianza más grande va arriba. {f-r} En erre, var punto test, con los dos grupos.
+
+## Medias con varianzas distintas: Welch
+
+{w} Welch compara dos medias sin suponer varianzas iguales. {w-f} El estadístico es la diferencia de medias, menos la diferencia de la hipótesis, dividido por la raíz de ese uno al cuadrado sobre ene uno, más ese dos al cuadrado sobre ene dos. {w-gl} Y los grados de libertad se calculan con una fórmula especial, que casi nunca da un número entero.
+
+{w-ej} El ejemplo de la clase es el precio del limón. {w-ej-d} En enero, la media es mil novecientos treinta y ocho pesos, con trece datos. En abril, tres mil quinientos sesenta, con quince datos. {w-ej-h} La pregunta es si el precio subió más de mil quinientos pesos. {w-ej-h1} Así que la diferencia de la hipótesis no es cero, es mil quinientos.
+
+{w-ej-num} El numerador: tres mil quinientos sesenta menos mil novecientos treinta y ocho, menos mil quinientos. Da ciento veintidós. {w-ej-t} Dividido por el error estándar, te sale cero coma noventa y tres. {w-ej-gl} Los grados de libertad de Welch son veintiuno coma seis, y el crítico, uno coma setenta y dos. {w-ej-r} No se rechaza: no se puede afirmar que el aumento supere los mil quinientos pesos.
+
+{w-ojo} Fíjate en el detalle de la diferencia de la hipótesis. En erre, eso se indica con el argumento mu. {w-r} Welch es t punto test con los dos grupos, y var punto equal igual a FALSE, que es lo que hace erre por defecto.
+
+## Medias con varianzas iguales: pooled
+
+{p} Si se puede suponer que las varianzas son iguales, se juntan en una sola estimación: la varianza combinada. {p-f} Es un promedio ponderado de las dos varianzas, con pesos ene menos uno de cada grupo. {p-gl} La prueba queda con ene uno más ene dos menos dos grados de libertad, más que Welch.
+
+{p-ej} En la clase, de nuevo con el limón, pero otro año: dieciocho datos en enero y diez en abril, y la pregunta es si la diferencia es distinta de mil. {p-ej-sp} La varianza combinada da veintidós mil ochocientos diecinueve. {p-ej-t} Te da uno coma cuarenta y seis, con veintiséis grados de libertad. {p-ej-crit} Con alfa diez por ciento y bilateral, el crítico es uno coma setenta y uno. {p-ej-r} No se rechaza.
+
+{p-r} En erre, t punto test con var punto equal igual a TRUE.
+
+## Muestras pareadas
+
+{par} El último caso es el de las muestras pareadas. {par-ej} En la clase, se mide el colesterol de once pacientes, antes y después de un medicamento. {par-q} ¿Por qué no se pueden tratar como dos grupos independientes?
+
+[pausa 3]
+
+{par-qr} Porque son las mismas personas. Cada dato de antes está unido a uno de después, y gran parte de la variación entre pacientes se repite en las dos mediciones.
+
+{par-d} Lo que se hace es calcular la diferencia de cada paciente, antes menos después, {par-t} y hacer una prueba te de una sola muestra sobre esas diferencias, con ene menos uno grados de libertad.
+
+{par-ej-d} En el ejemplo, la diferencia media es diecinueve. {par-ej-t} Te da nueve coma cero seis, con diez grados de libertad, {par-ej-p} y un pe valor muy chico. {par-ej-r} Se rechaza: el medicamento cambia el colesterol. Y como la diferencia es antes menos después, y es positiva, lo baja.
+
+{par-r} En erre, t punto test con paired igual a TRUE. {par-ord} Y ojo con el orden: si pones después antes que antes, el signo se invierte, y hay que leer la conclusión al revés.
+
+## Para cerrar
+
+{c} En resumen: {c1} la prueba efe compara varianzas con un cociente. {c2} Para medias de grupos independientes, Welch por defecto, y pooled solo si se sabe que las varianzas son iguales. {c3} Si la hipótesis no es diferencia cero, se indica con mu. {c4} Y si son los mismos sujetos, se trabaja con las diferencias, en una prueba pareada.
+
+{fin} Eso fue el módulo seis.

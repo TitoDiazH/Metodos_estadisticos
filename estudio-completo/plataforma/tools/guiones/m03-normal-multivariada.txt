@@ -1,0 +1,51 @@
+# Distribución normal multivariada
+
+## La campana en varias dimensiones
+
+{inicio} Ahora toca el módulo tres: la distribución normal multivariada.
+
+{idea} La normal de siempre, la campana de Gauss, describe una sola variable con dos números: la media y la varianza. {idea-m} La normal multivariada hace lo mismo con varias variables a la vez. {idea-dos} Y también queda descrita por dos cosas: {mu} un vector de medias, {sigma} y una matriz de covarianza. {frase} En la clase lo resumen así: normal multivariada es media más covarianza.
+
+{mu-r} El vector de medias dice dónde está el centro de la nube de puntos. {sigma-r} Y la matriz de covarianza dice su forma: qué tan dispersa es en cada dirección, y hacia dónde se inclina.
+
+{elipse} Con dos variables, si cortas la campana a cierta altura, el borde que queda es una elipse. {elipse-ej} En el ejemplo de la clase, con medias cero, varianzas uno y correlación cero coma siete, la elipse se inclina hacia arriba, porque la correlación es positiva. {circulo} ¿Y cómo se vería si la correlación fuera cero y las dos varianzas iguales?
+
+[pausa 3]
+
+{circulo-r} Como un círculo. Sin inclinación, e igual de ancha en todas las direcciones.
+
+{marg} Un detalle importante: en una normal multivariada, cada variable por separado es normal. {marg-no} Pero al revés no basta. Que cada variable sea normal por su lado no garantiza que juntas sean normal multivariada.
+
+## Correlación cero e independencia
+
+{indep} En el módulo uno vimos que correlación cero no implica independencia. {indep-exc} Bueno, la normal es justamente la excepción. {indep-r} Si dos variables son normales conjuntas y su correlación es cero, entonces sí son independientes.
+
+{indep-tabla} Ordenémoslo. {indep-1} Si son independientes, la correlación es cero. Eso vale siempre. {indep-2} Si la correlación es cero, son independientes: eso solo vale si son normales conjuntas.
+
+{pauta} En la prueba uno apareció esta afirmación, y la pauta pedía justificar que es falsa en general. {pauta-1} La relación puede ser no lineal. {pauta-2} Solo vale con normalidad conjunta. {pauta-3} Y una variable puede afectar la varianza de la otra sin cambiar la correlación.
+
+## La suma de dos normales
+
+{suma} El ejercicio típico de este tema es con una suma. {suma-def} Si equis uno y equis dos son normales conjuntas, ye igual a equis uno más equis dos también es normal. {suma-idea} Así que solo hay que calcular su media y su varianza, y después usar la normal de siempre.
+
+{suma-mu} La media es fácil: la suma de las medias. {suma-var} La varianza tiene un truco: es la varianza de equis uno, más la de equis dos, más dos veces la covarianza.
+
+{ej} El ejemplo de la clase: las medias son uno y dos, {ej-s} y la matriz de covarianza tiene cuatro y tres en la diagonal, y uno fuera. {ej-q} Nos piden la probabilidad de que ye sea menor o igual a cinco.
+
+{ej-mu} La media de ye: uno más dos, tres. {ej-var} La varianza: cuatro más tres, más dos por uno. ¿Cuánto da?
+
+[pausa 3]
+
+{ej-var-r} Nueve. Así que la desviación estándar es tres.
+
+{ej-z} Ahora es una normal común: cinco menos tres, dividido en tres, da cero coma sesenta y siete. {ej-p} Y la probabilidad de estar bajo eso es cero coma siete cuatro siete cinco.
+
+{ej-r} En erre es una línea: pnorm de cinco, con media tres y desviación tres. {ej-sd} Ojo con eso: pnorm pide la desviación estándar, no la varianza. Si le pasas nueve, el resultado sale mal.
+
+{olvido} El otro error típico es olvidar el dos por la covarianza. {olvido-r} Sin ese término, la varianza daría siete en vez de nueve, y la probabilidad cambia.
+
+## Para cerrar
+
+{c} En resumen: {c1} la normal multivariada se describe con un vector de medias y una matriz de covarianza. {c2} En dos dimensiones, sus contornos son elipses, cuya forma depende de la covarianza. {c3} Con normalidad conjunta, correlación cero sí implica independencia. {c4} Y la suma de dos normales es normal, con varianza igual a la suma de varianzas más dos veces la covarianza.
+
+{fin} Eso fue el módulo tres.

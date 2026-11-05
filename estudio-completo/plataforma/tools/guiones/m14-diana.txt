@@ -1,87 +1,55 @@
 # DIANA (desagregativo)
 
-## El algoritmo DIANA
+## De arriba hacia abajo
 
-Ahora toca el módulo catorce: Diana, el método jerárquico desagregativo.
+{inicio} Ahora toca el módulo catorce: DIANA, el clastering jerárquico de arriba hacia abajo.
 
-En simple. Diana hace lo contrario de un aglomerativo. Empieza con todos los datos en un solo clúster, y los va dividiendo. En cada paso toma el clúster más heterogéneo, saca a la observación más distinta del resto, y luego deja que se vayan con ella las que le quedan más cerca que su grupo original.
+{idea} Los métodos aglomerativos partían con cada dato solo y los iban uniendo. DIANA hace lo contrario. {idea-1} Parte con todos los datos en un solo clúster, {idea-2} y lo va dividiendo. {nombre} El nombre viene del inglés: divisive analysis.
 
-Con detalle. La entrada es la matriz de distancias. El algoritmo tiene dos fases que se repiten.
+{pregunta} La pregunta es cómo dividir un grupo en dos. La idea de DIANA es bien intuitiva: sacar primero a quien más se aleja del resto, y después ver quién lo quiere seguir.
 
-Fase uno, la escisión. Para cada observación del clúster se calcula su disparidad promedio, que es su distancia promedio a todas las demás. La que tenga la mayor disparidad sale, y forma un grupo nuevo ella sola.
+## El algoritmo
 
-Fase dos, la reasignación. Para cada observación que quedó en el grupo original se calculan dos promedios: su distancia promedio a sus compañeras del grupo original, y su distancia promedio al grupo nuevo. Se resta: la primera menos la segunda. Si esa diferencia es positiva, significa que está más lejos de las suyas que del grupo nuevo, y entonces se cambia. Se repite hasta que nadie más se mueva.
+{disp} Primero se calcula la disparidad de cada observación: su distancia promedio a todas las demás del grupo. {escis} La que tenga la mayor disparidad sale, y forma un clúster nuevo. Eso es la escisión.
 
-Después se vuelve a empezar, dividiendo el clúster más heterogéneo de los que hay, y así hasta que cada clúster tenga un solo elemento.
+{reas} Después viene la reasignación. Para cada observación que quedó en el grupo original, se compara: {reas-1} su distancia promedio a los que se quedaron, {reas-2} menos su distancia promedio al grupo nuevo. {reas-pos} Si esa diferencia es positiva, quiere decir que está más cerca del grupo nuevo, y se cambia. {reas-rep} Esto se repite hasta que nadie se mueve.
 
-Pregunta. ¿Qué observación inicia el grupo nuevo en la escisión?
+{sig} Y para la siguiente división, se elige el clúster más heterogéneo, el que tiene la mayor disparidad. {sig-q} Fíjate que no dice el más grande. ¿Por qué importa esa diferencia?
 
 [pausa 3]
 
-La de mayor disparidad promedio. Es decir, la que está, en promedio, más lejos de todas las demás.
+{sig-r} Porque un grupo grande puede ser muy parejo, y uno chico puede tener puntos muy separados. Lo que se busca dividir es el que está más desordenado.
 
 ## El ejemplo de las cinco empresas
 
-Veamos el ejemplo de la clase, con las mismas cinco empresas de los módulos anteriores.
+{ej} Veámoslo con las cinco empresas de la clase. {ej-d} Tenemos la matriz de distancias entre ellas.
 
-Primero las disparidades. La empresa uno tiene dos coma cero ocho. La dos, dos coma cero uno. La cinco, dos coma doce. La siete, dos coma cero cero. Y la ocho, dos coma veintinueve. ¿Cuál sale?
+{ej-disp} Primero, las disparidades. {ej-e8} Para E ocho: tres coma veintidós, más dos coma noventa y dos, más dos coma sesenta, más cero coma cuarenta y dos, dividido en cuatro: dos coma veintinueve. {ej-otras} Las otras quedan alrededor de dos: dos coma cero ocho, dos coma cero uno, dos coma doce y dos coma cero cero. {ej-sale} E ocho tiene la mayor, así que sale y forma su propio grupo.
 
-[pausa 3]
-
-La empresa ocho, que tiene la mayor. Queda sola en el grupo nuevo, y las otras cuatro en el original.
-
-Ahora la reasignación. Las diferencias son: menos uno coma cincuenta y dos para la empresa uno. Menos uno coma veintiuno para la dos. Menos cero coma sesenta y cuatro para la cinco. Y más dos coma once para la siete. ¿Quién se mueve?
+{ej-reas} Ahora la reasignación. ¿Alguna de las otras quiere irse con E ocho? {ej-e7} Mira E siete. Su distancia promedio a E uno, E dos y E cinco es dos coma ochenta y uno, más dos coma cincuenta y uno, más dos coma veintiocho, dividido en tres, que da dos coma cincuenta y tres. {ej-e7b} Y su distancia a E ocho es solo cero coma cuarenta y dos. ¿La diferencia es positiva o negativa?
 
 [pausa 3]
 
-Solo la empresa siete, la única con diferencia positiva. Está más cerca de la ocho que de su grupo. Ahora los grupos son: siete y ocho por un lado, y uno, dos y cinco por el otro. Se hace otra ronda, y todas las diferencias son negativas. La división es estable.
+{ej-e7r} Positiva: dos coma once. E siete está mucho más cerca de E ocho, y se cambia de grupo. {ej-resto} Para E uno, E dos y E cinco la diferencia sale negativa: se quedan. {ej-r2} En la segunda ronda nadie más se mueve. La primera división queda E siete con E ocho, y E uno, E dos y E cinco.
 
-Segunda división. Hay que elegir cuál de los dos clústeres dividir. La disparidad del grupo siete y ocho es cero coma cuarenta y dos. La del grupo uno, dos y cinco es uno coma cuarenta y dos. Se divide el segundo, porque es el más heterogéneo. Dentro de él, la empresa cinco tiene la mayor disparidad, uno coma ochenta, y sale. Las diferencias de la uno y la dos son negativas, así que nadie la sigue.
+{ej-2} Para la segunda división se elige el grupo más heterogéneo. {ej-2a} E siete con E ocho tiene una disparidad de cero coma cuarenta y dos. {ej-2b} E uno, E dos y E cinco, de uno coma cuarenta y dos. {ej-2c} Se divide el segundo, y sale E cinco, que tiene la mayor disparidad, uno coma ochenta. Nadie la sigue.
 
-Con tres clústeres, entonces, quedan: siete y ocho. Uno y dos. Y la cinco sola. La empresa cinco, que tiene alta inversión y bajas ventas, queda aislada como un perfil atípico.
+{ej-3} Con tres clústeres quedan: E siete con E ocho, E uno con E dos, y E cinco sola. {ej-3r} Tiene sentido: E cinco es la empresa de mucha inversión y pocas ventas, un perfil que no se parece a ninguna otra.
 
-Dos errores típicos. El primero: dividir el clúster más grande. No. Se divide el más heterogéneo, que no siempre es el más grande. El segundo: olvidar la fase de reasignación.
+## En erre y el dendrograma
 
-En erre se usa la función diana, del paquete cluster, y el árbol se corta con cut tri. El dendrograma se lee de arriba hacia abajo, desde la raíz. Y un detalle: en el dendrograma de Diana, las alturas son los diámetros de los clústeres, no distancias de fusión como en un aglomerativo.
+{r} En erre, DIANA está en el paquete cluster, con la función diana. Se le dan los datos estandarizados o una matriz de distancias, {r-cut} y para cortar en grupos se transforma con as punto hclust y se usa cutree, igual que antes.
 
-En simple. Diana: parto con todos juntos. Saco al más distinto. Se van con él los que le quedan más cerca. Y repito con el grupo más heterogéneo.
+{dendro} El dendrograma se lee al revés que el aglomerativo: de la raíz hacia abajo. {dendro-h} Y un detalle: en DIANA las alturas son el diámetro de cada clúster, la mayor distancia entre dos de sus miembros, no una distancia de fusión.
 
-## Comparación de métodos
+## Comparar los métodos
 
-Para cerrar el capítulo de conglomerados, comparemos lo que dieron los distintos métodos con las mismas cinco empresas.
+{comp} Con estas mismas empresas ya usamos varios métodos. {comp-1} Todos juntan a E siete con E ocho. {comp-2} Con dos grupos, single, complete y ka medias dan lo mismo: E uno, E dos y E cinco contra E siete y E ocho. {comp-3} Y con tres, DIANA aísla a E cinco. {comp-r} Es lo normal: los métodos coinciden en lo que está muy marcado, y difieren en los casos ambiguos.
 
-En simple. Todos agrupan a la siete con la ocho. Con dos clústeres, singl, complit y ca medias dan lo mismo: uno, dos y cinco, contra siete y ocho. Con tres clústeres, Diana además separa a la empresa cinco. Los métodos coinciden en lo muy marcado, y difieren en lo ambiguo.
+{cuando} ¿Cuándo conviene cada uno? {cuando-j} Los jerárquicos, con datos pequeños o medianos, para explorar distintos ka con el dendrograma. {cuando-k} Ka medias, con datos grandes y una idea de cuántos grupos hay. {cuando-d} Y DIANA, cuando interesa detectar primero las separaciones grandes, por ejemplo aislar un perfil atípico.
 
-¿Cuándo conviene cada uno? Los jerárquicos, con datos pequeños o medianos, cuando quiero explorar distintos números de clústeres con el dendrograma, o hay formas irregulares. Ca medias, con datos grandes, cuando tengo idea del número de clústeres y busco eficiencia. Y Diana, cuando quiero un enfoque de arriba hacia abajo, que detecta primero las separaciones grandes y aísla los perfiles atípicos.
+## Para cerrar
 
-La clase cierra con los pasos prácticos. Preparar los datos, limpiando y estandarizando. Elegir la distancia según el tipo de datos. Aplicar el algoritmo: Ward para jerárquico, ca medias para datos grandes. Determinar el número de clústeres con codo y silueta. Interpretar y validar. Y documentar el perfil de cada clúster.
+{c} En resumen: {c1} DIANA parte del todo y divide. {c2} Saca a la observación con mayor disparidad, {c3} mueve a las que quedan más cerca del grupo nuevo, {c4} y en cada paso divide el clúster más heterogéneo, no el más grande.
 
-## Repaso
-
-Repaso rápido.
-
-¿Diana va de abajo hacia arriba, o de arriba hacia abajo?
-
-[pausa 2]
-
-De arriba hacia abajo. Parte con un solo clúster.
-
-¿Qué es la disparidad promedio?
-
-[pausa 3]
-
-La distancia promedio de una observación a las demás de su clúster.
-
-En la reasignación, ¿cuándo se mueve una observación al grupo nuevo?
-
-[pausa 3]
-
-Cuando la diferencia es positiva. Es decir, cuando está más lejos de su propio grupo que del grupo nuevo.
-
-¿Qué clúster se divide en cada paso?
-
-[pausa 2]
-
-El más heterogéneo. No el más grande.
-
-Eso fue el módulo catorce.
+{fin} Eso fue el módulo catorce.

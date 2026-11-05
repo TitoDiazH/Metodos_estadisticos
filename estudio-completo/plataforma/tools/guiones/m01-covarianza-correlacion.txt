@@ -1,0 +1,65 @@
+# Covarianza, correlación y regresión simple
+
+## Cómo se mueven dos variables juntas
+
+{inicio} Ahora toca el módulo uno: covarianza, correlación, y cómo saber si una correlación es significativa.
+
+{q} La pregunta de fondo es simple: cuando una variable sube, ¿qué suele pasar con la otra?
+
+{datos} El ejemplo de la clase son seis personas, con su altura y su peso. {datos-x} Las alturas son ciento sesenta y uno, ciento setenta, ciento ochenta, ciento setenta y cinco, ciento sesenta y cinco, y ciento ochenta y siete centímetros. {datos-y} Y los pesos, cincuenta, sesenta y cinco, setenta y ocho, ochenta y dos, sesenta, y setenta y seis kilos.
+
+{cov} La covarianza mide cómo se mueven juntas. {cov-pos} Si es positiva, tienden a subir y bajar al mismo tiempo. {cov-neg} Si es negativa, cuando una sube, la otra tiende a bajar. {cov-0} Y si es cercana a cero, no se ve una relación lineal clara.
+
+{cov-f} Para calcularla, a cada persona se le resta la media en las dos variables, se multiplican esas dos diferencias, se suman, y se divide por ene menos uno.
+
+{ej-med} En el ejemplo, la altura media es ciento setenta y tres, y el peso medio, sesenta y ocho coma cinco. {ej-p1} La primera persona mide ciento sesenta y uno: doce bajo la media. Y pesa cincuenta: dieciocho coma cinco bajo la media. {ej-p1r} Menos doce por menos dieciocho coma cinco: doscientos veintidós, positivo. {ej-prods} Los demás productos son diez coma cinco, sesenta y seis coma cinco, veintisiete, sesenta y ocho, y ciento cinco. {ej-signo} Fíjate que todos son positivos: cada persona está del mismo lado de la media en las dos variables. {ej-suma} La suma da cuatrocientos noventa y nueve, {ej-cov} y dividido en cinco, la covarianza es noventa y nueve coma ocho.
+
+{unid} Ahora, ¿noventa y nueve coma ocho es mucho o poco?
+
+[pausa 3]
+
+{unid-r} No se puede saber. Si la altura se midiera en metros, la covarianza sería cero coma nueve nueve ocho, y la relación sería exactamente la misma. {unid-c} La covarianza depende de las unidades. Su signo dice la dirección, pero su tamaño no dice la fuerza.
+
+{var} Un detalle: la varianza es un caso particular. Es la covarianza de una variable consigo misma.
+
+## La correlación
+
+{cor} Para tener una medida que no dependa de las unidades está la correlación. {cor-f} Es la covarianza dividida por el producto de las dos desviaciones estándar. {cor-rango} Así queda siempre entre menos uno y uno. Y una relación lineal perfecta da uno o menos uno.
+
+{cor-ej} En el ejemplo: {cor-sx} la desviación de la altura es nueve coma seis cinco, {cor-sy} la del peso, doce coma veintinueve. {cor-r} Noventa y nueve coma ocho dividido por el producto da cero coma ochenta y cuatro. {cor-lee} Una relación positiva y fuerte. Y si la altura estuviera en metros, seguiría dando cero coma ochenta y cuatro.
+
+{nube} Antes de calcular, conviene mirar la nube de puntos: la dirección, qué tan alineados están, y si hay valores atípicos.
+
+{indep} Hay una afirmación que aparece en las pruebas: si la correlación es cero, las variables son independientes. ¿Verdadero o falso?
+
+[pausa 4]
+
+{indep-r} Falso. La correlación solo mide relación lineal. {indep-curva} Dos variables pueden tener una relación en forma de curva, muy fuerte, y correlación cero. {indep-var} O una puede cambiar la varianza de la otra sin cambiar su media. {indep-sent} Lo que sí vale es el otro sentido: si son independientes, la covarianza es cero, y la correlación también. {indep-norm} La equivalencia completa solo se cumple si las dos tienen distribución normal conjunta.
+
+{causa} Y lo otro que hay que recordar siempre: una correlación alta no prueba causalidad.
+
+{reg} La correlación y la regresión están relacionadas, pero no son lo mismo. {reg-r} La regresión representa la relación con una recta, para predecir. La correlación mide qué tan fuerte es esa relación lineal.
+
+## ¿Es significativa?
+
+{sig} Con seis personas, un ere de cero coma ochenta y cuatro podría haber salido por azar. ¿Cómo sabemos si en la población hay correlación?
+
+{rho} Primero, una distinción. Ere es la correlación de la muestra. Ro es la de la población, el parámetro que no conocemos. {rho-h} Las hipótesis se escriben siempre sobre ro: {h0} la nula es que ro es cero, {h1} y la alternativa, que es distinto de cero.
+
+{t} El estadístico es te igual a ere, por la raíz de ene menos dos, sobre uno menos ere al cuadrado. Con ene menos dos grados de libertad.
+
+{t-ej} En el ejemplo: {t-ej1} cero coma ochenta y cuatro, por la raíz de cuatro sobre uno menos cero coma ochenta y cuatro al cuadrado. {t-ej2} Da tres coma once. {t-crit} El valor crítico, con cuatro grados de libertad y cinco por ciento, es dos coma setenta y ocho. {t-conc} Como tres coma once lo supera, se rechaza: hay evidencia de correlación lineal entre altura y peso.
+
+{r} En erre, todo eso lo hace cor punto test. {r-t} Entrega te igual a tres coma uno uno, con cuatro grados de libertad. {r-p} El pe valor, cero coma cero tres seis, menor que cero coma cero cinco. {r-ic} Un intervalo de confianza que va de cero coma cero nueve a cero coma noventa y ocho. No contiene el cero, coherente con rechazar, pero es muy ancho, porque son solo seis datos. {r-cor} Y al final, el ere de la muestra.
+
+{fuerte} Una última idea, que es de las más preguntadas. En la ayudantía uno había una correlación de apenas cero coma cero seis siete. ¿Puede ser significativa?
+
+[pausa 3]
+
+{fuerte-r} Sí, si la muestra es suficientemente grande. Con cien datos no lo es, pero con mil sí. {fuerte-c} Significativa no es lo mismo que fuerte. El pe valor depende de ene; la fuerza la da el tamaño de ere.
+
+## Para cerrar
+
+{c} En resumen: {c1} la covarianza da la dirección, pero depende de las unidades. {c2} La correlación la estandariza, entre menos uno y uno. {c3} Correlación cero no implica independencia. {c4} Y cor punto test prueba si ro es cero, con te igual a ere por la raíz de ene menos dos sobre uno menos ere al cuadrado.
+
+{fin} Eso fue el módulo uno.

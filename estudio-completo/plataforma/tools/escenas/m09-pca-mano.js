@@ -4,8 +4,8 @@ const A = require("./_anim");
 /* Elipse de datos con los ejes de los componentes */
 const svg = `<svg viewBox="0 0 300 220"><path class="ejes" d="M30,200 H290 M30,200 V10"/>` +
   `<ellipse cx="160" cy="110" rx="105" ry="38" transform="rotate(-26.57 160 110)" fill="${COL.ce}" opacity=".15" stroke="${COL.ce}"/>` +
-  `<line class="trazo" pathLength="1" data-en="vec-norm" x1="66" y1="157" x2="254" y2="63" stroke="${COL.am}" stroke-width="3"/>` +
-  `<text x="258" y="58" data-en="vec-norm" style="fill:${COL.am}">PC1</text>` +
+  `<line class="trazo" pathLength="1" data-en="var-1" x1="66" y1="157" x2="254" y2="63" stroke="${COL.am}" stroke-width="3"/>` +
+  `<text x="258" y="58" data-en="var-1" style="fill:${COL.am}">PC1</text>` +
   `<line class="trazo" pathLength="1" data-en="var-2" x1="145" y1="80" x2="175" y2="140" stroke="${COL.ro}" stroke-width="2.5"/>` +
   `<text x="180" y="150" data-en="var-2" style="fill:${COL.ro}">PC2</text><text x="160" y="216" text-anchor="middle">ventas</text>` +
   `<text x="16" y="110" transform="rotate(-90 16 110)" text-anchor="middle">utilidad</text></svg>`;

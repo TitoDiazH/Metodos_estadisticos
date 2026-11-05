@@ -1,0 +1,55 @@
+# Errores tipo I/II y potencia
+
+## Dos formas de equivocarse
+
+{inicio} Ahora toca el módulo siete: los errores tipo uno y tipo dos, y la potencia de una prueba.
+
+{idea} Cuando decidimos con datos, podemos equivocarnos de dos maneras. {idea-q} Piensa en una alarma de incendio. ¿Cuáles son los dos errores posibles?
+
+[pausa 3]
+
+{idea-r} Que suene sin que haya fuego, una falsa alarma. O que haya fuego y no suene.
+
+{tabla} En una prueba de hipótesis es igual. {t1} El error tipo uno es rechazar hache cero cuando es verdadera: la falsa alarma. Su probabilidad es alfa. {t2} El error tipo dos es no rechazar hache cero cuando es falsa: no detectar algo que sí existe. Su probabilidad se llama beta. {pot} Y la potencia es uno menos beta: la probabilidad de detectar un efecto que de verdad está.
+
+{balance} Hay un equilibrio entre los dos. {balance-r} Si bajas alfa para tener menos falsas alarmas, la prueba se vuelve más exigente, y aumenta beta: se escapan más efectos reales. {balance-c} Cuál importa más depende del contexto.
+
+{pauta} En la prueba uno aparecieron dos afirmaciones sobre esto. {pauta-1} La primera: con alfa igual a cero coma cero uno, a mayor tamaño de muestra, menor probabilidad de error tipo uno. {pauta-1r} Falso: la probabilidad de error tipo uno es alfa, cero coma cero uno, sin importar ene. Lo que baja con más datos es beta. {pauta-2} La segunda: si no rechazo hache cero, puedo estar seguro de que es verdadera. {pauta-2r} También falso: puedo estar cometiendo un error tipo dos.
+
+## De qué depende beta
+
+{beta} Para calcular beta hay un detalle clave. {beta-q} Hache uno dice, por ejemplo, que la media no es uno. Pero, ¿cuál es entonces?
+
+[pausa 3]
+
+{beta-r} Hay que fijar un valor verdadero concreto, por ejemplo uno coma cero cero cinco. Sin ese valor, beta no se puede calcular. {beta-lejos} Y mientras más lejos esté el valor verdadero del de hache cero, más fácil es detectarlo, y más chico es beta.
+
+{dep} Beta depende de cuatro cosas. {dep-n} Del tamaño de muestra: más datos, menor beta. {dep-a} De alfa: si alfa baja, beta sube. {dep-d} De la diferencia real con el valor de hache cero: más diferencia, menor beta. {dep-s} Y de la variabilidad: más dispersión, mayor beta.
+
+## El ejercicio típico
+
+{ej} El ejercicio típico de prueba tiene dos partes. {ej-1} Primero: ¿para qué valores de la media muestral se rechaza hache cero? {ej-2} Y segundo: si el parámetro verdadero fuera tal valor, ¿cuál es la probabilidad de no rechazar? Esa segunda probabilidad es beta.
+
+{ej-d} El de la ayudantía dos: una máquina que llena bolsas de un kilo, con desviación conocida de cero coma cero dos kilos, y veinte bolsas. {ej-h} Hache cero: la media es uno. Bilateral, con alfa cinco por ciento.
+
+{lim} Primera parte, los límites. {lim-se} El error estándar es cero coma cero dos sobre raíz de veinte, cero coma cero cero cuatro cinco. {lim-f} Los límites son uno, más y menos uno coma noventa y seis por ese error estándar. {lim-r} Se rechaza si la media muestral es menor que cero coma nueve nueve uno dos, o mayor que uno coma cero cero ocho ocho.
+
+{lim-ojo} Ojo con algo: estos límites se calculan siempre con el valor de hache cero, con la media uno.
+
+{b} Segunda parte. Si la media verdadera fuera uno coma cero cero cinco, ¿qué tan probable es no rechazar? {b-f} Es la probabilidad de que la media muestral caiga entre los dos límites, {b-mu} pero ahora calculada con una normal centrada en uno coma cero cero cinco. {b-r} Da cerca de cero coma ochenta. {b-lee} O sea, ocho de cada diez veces, la prueba no detectaría que la máquina está llenando de más.
+
+{b-q} Es un beta muy alto. ¿Qué se podría hacer para bajarlo?
+
+[pausa 3]
+
+{b-qr} Tomar más bolsas. Con ochenta en vez de veinte, beta baja a cero coma treinta y nueve. {b-dif} Y lo mismo pasaría si la diferencia real fuera más grande: con una media verdadera de uno coma cero uno, también baja a cero coma treinta y nueve.
+
+{var} La misma lógica sirve para varianzas. {var-ej} En la ayudantía, con diez datos y hache cero, varianza cuatro, se rechaza si la varianza muestral es menor a uno coma dos o mayor a ocho coma cuatro seis. {var-b} Si la varianza real fuera cinco, la probabilidad de no rechazar es cero coma noventa. {var-r} La prueba casi no detecta esa diferencia.
+
+{r} En erre, los límites salen con qnorm o qchisq, y beta con pnorm o pchisq. {r-resta} Y como beta es la probabilidad de caer entre dos límites, se calcula como la acumulada en el límite de arriba menos la acumulada en el de abajo.
+
+## Para cerrar
+
+{c} En resumen: {c1} el error tipo uno es rechazar una hache cero verdadera, con probabilidad alfa. {c2} El tipo dos es no rechazar una falsa, con probabilidad beta, y la potencia es uno menos beta. {c3} Beta baja con más datos, con un alfa mayor, con una diferencia real más grande y con menos variabilidad. {c4} Y para calcularlo: límites con hache cero, probabilidad con el valor verdadero.
+
+{fin} Eso fue el módulo siete.
