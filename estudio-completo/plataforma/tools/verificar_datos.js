@@ -48,8 +48,22 @@ D.audio.forEach((a) => {
   req(a, ["id", "modulo", "titulo", "archivo", "duracion", "capitulos"]);
   if (!idModulo[a.modulo]) err(a, `audio de un módulo que no existe «${a.modulo}»`);
   if (a.archivo && !fs.existsSync(path.join(RAIZ, a.archivo))) err(a, `no existe ${a.archivo}: corre tools/generar_audio.py`);
-  const guion = path.join(RAIZ, "tools", "guiones", a.modulo + ".txt");
-  if (!fs.existsSync(guion)) err(a, `no existe su guion tools/guiones/${a.modulo}.txt`);
+  const nombre = String(a.id).replace(/^audio-/, "");
+  const guion = path.join(RAIZ, "tools", "guiones", nombre + ".txt");
+  if (!fs.existsSync(guion)) err(a, `no existe su guion tools/guiones/${nombre}.txt`);
+  if (a.pregunta && !D.pregunta.some((q) => q.id === a.pregunta)) err(a, `pregunta inexistente «${a.pregunta}»`);
+});
+/* ── Pizarras animadas (data/escenas/*.js las genera tools/generar_escenas.js) ─ */
+(D.escena || []).forEach((e) => {
+  const a = D.audio.find((x) => x.id === e.audio);
+  if (!a) { err(e, `animación de una clase que no existe «${e.audio}»`); return; }
+  const marcas = a.marcas || {};
+  const usadas = new Set();
+  e.escenas.forEach((x) => {
+    if (x.en) usadas.add(x.en);
+    for (const m of x.html.matchAll(/data-(?:en|fuera|hl)="([^"]+)"/g)) m[1].split(/\s+/).forEach((y) => usadas.add(y));
+  });
+  usadas.forEach((m) => { if (!(m in marcas)) err(e, `la marca «${m}» no tiene tiempo en ${a.id}: corre tools/generar_audio.py`); });
 });
 
 /* ── Pruebas y temario ──────────────────────────────────────────────── */
@@ -151,7 +165,7 @@ D.pregunta.forEach((q) => {
 });
 
 /* ── Memorizar, Laboratorio R, diferencias ──────────────────────────── */
-const CATS = ["formula", "umbral", "decision", "funcion-R", "salida", "flashcard"];
+const CATS = ["formula", "tabla", "umbral", "decision", "funcion-R", "salida", "flashcard"];
 D.memorizar.forEach((x) => {
   req(x, ["id", "modulo", "categoria"]); fuenteOk(x);
   if (!CATS.includes(x.categoria)) err(x, `categoría inválida «${x.categoria}»`);

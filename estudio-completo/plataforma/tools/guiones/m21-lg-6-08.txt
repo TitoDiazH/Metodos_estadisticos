@@ -1,0 +1,47 @@
+# Ejercicio 6.8: viscosidad de una bebida de chocolate
+@modulo m21-factorial-2k
+@ejercicio Libro guía · Cap. 6, ej. 8
+@pregunta m21-d009
+@orden 3
+
+## Qué pide el ejercicio
+
+{inicio} El ejercicio ocho del capítulo seis viene de una empresa lechera con problemas de viscosidad en su bebida de chocolate.
+
+{enun} Se cree que tres ingredientes, que se agregan en pequeñas cantidades, pueden resolverlo. {clave1} Se corre un dos al cubo con dos réplicas: dieciséis corridas. {clave2} Y se desea minimizar la viscosidad.
+
+## Todos los efectos
+
+{signos} Con tres factores hay siete efectos: a, be, ce, las tres interacciones dobles y la triple. Cada uno tiene su columna de signos. {tot} Los totales de los ocho tratamientos van de veintisiete coma dos, en uno, a treinta y ocho coma uno, en a be ce.
+
+{formula} Con dos réplicas, el efecto es el contraste dividido en ocho, {formula-sc} y la suma de cuadrados es el contraste al cuadrado dividido en dieciséis.
+
+{ef-c} El efecto más grande es el de ce: dos coma ocho nueve. {ef-abc} Le siguen la interacción triple, con uno coma dos seis, {ef-b} y be, con uno coma uno nueve. {ef-bc} Después vienen be ce, con cero coma setenta y nueve, y a be, con cero coma cincuenta y uno. {ef-a} Los más chicos son a y a ce, casi cero.
+
+{pareto} Ordenados de mayor a menor, forman el diagrama de Pareto de efectos.
+
+## Tabla ANOVA
+
+{anova} La suma de cuadrados total es cuarenta y nueve coma cuatro ocho. Restando los siete efectos, el error queda en cero coma cinco, con ocho grados de libertad, que salen de dos al cubo por ene menos uno.
+
+{crit} Cada efecto tiene un grado de libertad, así que todos se comparan con el mismo crítico: efe con uno y ocho grados de libertad, cinco coma treinta y dos.
+
+{activos} Superan ese valor be, a be, ce, be ce y a be ce. {inactivos} No lo superan a ni a ce. {r2} El modelo explica el noventa y nueve por ciento de la variabilidad.
+
+## Interpretar
+
+{interp} Ce es el que más mueve la viscosidad: al pasar de bajo a alto, la sube casi tres unidades. Be también la sube. {interp-int} Y las interacciones activas dicen que esos efectos dependen de los otros ingredientes.
+
+{jerarquia} Un detalle: aunque a no es significativo por sí solo, se deja en el modelo porque participa en interacciones activas. Eso se llama respetar la jerarquía.
+
+## El tratamiento ganador
+
+{mejor} ¿Hay un tratamiento ganador para minimizar?
+
+[pausa 3]
+
+{mejor-r} Sí: el tratamiento uno, con los tres ingredientes en nivel bajo. {pred} El modelo predice trece coma seis cuatro, y la media observada de esa celda es trece coma seis. Es la viscosidad más baja de todo el experimento.
+
+{sup} En los residuos, Shapiro Wilk da pe igual a cero coma cero tres, así que se rechaza la normalidad. Conviene revisar los gráficos de residuos antes de confiar del todo en los pe valores.
+
+{fin} El método general de un dos a la ka: tabla de signos, contrastes, efectos, sumas de cuadrados con un grado de libertad cada una, y el error por diferencia.

@@ -233,6 +233,78 @@ summary(modelo)
 model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
 interaction.plot(A, B, y)
 shapiro.test(resid(modelo))`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1   0.05    0.05   0.802 0.396647    
+B            1   5.64    5.64  89.356 1.29e-05 ***
+C            1  33.35   33.35 528.327 1.36e-08 ***
+A:B          1   1.05    1.05  16.644 0.003536 ** 
+A:C          1   0.03    0.03   0.485 0.505830    
+B:C          1   2.48    2.48  39.297 0.000241 ***
+A:B:C        1   6.38    6.38 101.000 8.18e-06 ***
+Residuals    8   0.51    0.06                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of effects
+
+ A 
+A
+      -1        1 
+-0.05625  0.05625 
+
+ B 
+B
+     -1       1 
+-0.5938  0.5938 
+
+ C 
+C
+     -1       1 
+-1.4437  1.4437 
+
+ A:B 
+    B
+A    -1       1       
+  -1  0.25625 -0.25625
+  1  -0.25625  0.25625
+
+ A:C 
+    C
+A    -1       1       
+  -1 -0.04375  0.04375
+  1   0.04375 -0.04375
+
+ B:C 
+    C
+B    -1      1      
+  -1  0.3937 -0.3937
+  1  -0.3937  0.3937
+
+ A:B:C 
+, , C = -1
+
+    B
+A    -1      1      
+  -1 -0.6312  0.6312
+  1   0.6313 -0.6312
+
+, , C = 1
+
+    B
+A    -1      1      
+  -1  0.6313 -0.6312
+  1  -0.6313  0.6312
+
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.87343, p-value = 0.0307`,
+    salidaDe: `y <- c(13.3, 13.9, 14.7, 14.4, 14.6, 14.9, 14.3, 14.1, 16.9, 17.2, 15.5, 15.1, 17.4, 17.1, 18.9, 19.2); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 2)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 2)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 2)])
+modelo <- aov(y ~ A * B * C)
+summary(modelo)
+model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
+interaction.plot(A, B, y)
+shapiro.test(resid(modelo))`,
     partes: [
       { titulo: "a) Efectos estimados", puntos: 1.5, solucion: String.raw`<div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Trat.</th><th>A</th><th>B</th><th>AB</th><th>C</th><th>AC</th><th>BC</th><th>ABC</th><th>Total</th></tr></thead><tbody><tr><td>(1)</td><td>−</td><td>−</td><td>+</td><td>−</td><td>+</td><td>+</td><td>−</td><td>$27{,}2$</td></tr><tr><td>a</td><td>+</td><td>−</td><td>−</td><td>−</td><td>−</td><td>+</td><td>+</td><td>$29{,}1$</td></tr><tr><td>b</td><td>−</td><td>+</td><td>−</td><td>−</td><td>+</td><td>−</td><td>+</td><td>$29{,}5$</td></tr><tr><td>ab</td><td>+</td><td>+</td><td>+</td><td>−</td><td>−</td><td>−</td><td>−</td><td>$28{,}4$</td></tr><tr><td>c</td><td>−</td><td>−</td><td>+</td><td>+</td><td>−</td><td>−</td><td>+</td><td>$34{,}1$</td></tr><tr><td>ac</td><td>+</td><td>−</td><td>−</td><td>+</td><td>+</td><td>−</td><td>−</td><td>$30{,}6$</td></tr><tr><td>bc</td><td>−</td><td>+</td><td>−</td><td>+</td><td>−</td><td>+</td><td>−</td><td>$34{,}5$</td></tr><tr><td>abc</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td><td>$38{,}1$</td></tr></tbody></table></div><p>$\text{Efecto}=\dfrac{\text{Contraste}}{n\,2^{k-1}}=\dfrac{\text{Contraste}}{8}$ y $SC=\dfrac{\text{Contraste}^2}{n\,2^k}=\dfrac{\text{Contraste}^2}{16}$:</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Efecto</th><th>Contraste</th><th>Efecto estimado</th><th>SC</th></tr></thead><tbody><tr><td>A</td><td>$0{,}9$</td><td>$0{,}1125$</td><td>$0{,}0506$</td></tr><tr><td>B</td><td>$9{,}5$</td><td>$1{,}1875$</td><td>$5{,}6406$</td></tr><tr><td>AB</td><td>$4{,}1$</td><td>$0{,}5125$</td><td>$1{,}0506$</td></tr><tr><td>C</td><td>$23{,}1$</td><td>$2{,}8875$</td><td>$33{,}3506$</td></tr><tr><td>AC</td><td>$-0{,}7$</td><td>$-0{,}0875$</td><td>$0{,}0306$</td></tr><tr><td>BC</td><td>$6{,}3$</td><td>$0{,}7875$</td><td>$2{,}4806$</td></tr><tr><td>ABC</td><td>$10{,}1$</td><td>$1{,}2625$</td><td>$6{,}3756$</td></tr></tbody></table></div><p>Pareto de efectos (de mayor a menor $|\text{efecto}|$): C $(2{,}888)$, ABC $(1{,}263)$, B $(1{,}188)$, BC $(0{,}788)$, AB $(0{,}513)$, A $(0{,}113)$, AC $(-0{,}088)$.</p>` },
       { titulo: "b) ANOVA y conclusiones", puntos: 1.5, solucion: String.raw`<p>$SC_T=49{,}4844$, $SC_E=SC_T-\sum SC_{\text{efectos}}=0{,}505$ con $2^3(n-1)=8$ gl.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>$F_0$</th><th>Valor-p</th></tr></thead><tbody><tr><td>A</td><td>$0{,}051$</td><td>$1$</td><td>$0{,}051$</td><td>$0{,}8$</td><td>$0{,}3966$</td></tr><tr><td>B</td><td>$5{,}641$</td><td>$1$</td><td>$5{,}641$</td><td>$89{,}36$</td><td>$\lt 0{,}0001$</td></tr><tr><td>AB</td><td>$1{,}051$</td><td>$1$</td><td>$1{,}051$</td><td>$16{,}64$</td><td>$0{,}0035$</td></tr><tr><td>C</td><td>$33{,}351$</td><td>$1$</td><td>$33{,}351$</td><td>$528{,}33$</td><td>$\lt 0{,}0001$</td></tr><tr><td>AC</td><td>$0{,}031$</td><td>$1$</td><td>$0{,}031$</td><td>$0{,}49$</td><td>$0{,}5058$</td></tr><tr><td>BC</td><td>$2{,}481$</td><td>$1$</td><td>$2{,}481$</td><td>$39{,}3$</td><td>$0{,}0002$</td></tr><tr><td>ABC</td><td>$6{,}376$</td><td>$1$</td><td>$6{,}376$</td><td>$101$</td><td>$\lt 0{,}0001$</td></tr><tr><td>Error</td><td>$0{,}505$</td><td>$8$</td><td>$0{,}063$</td><td></td><td></td></tr><tr><td>Total</td><td>$49{,}484$</td><td>$15$</td><td></td><td></td><td></td></tr></tbody></table></div><p>$F_{0{,}05;1,8}=5{,}32$. Efectos activos ($p\lt 0{,}05$): <strong>B, AB, C, BC, ABC</strong>. $R^2=SC_{\text{modelo}}/SC_T=99\,\%$.</p>` },
@@ -266,6 +338,78 @@ shapiro.test(resid(modelo))`,
     titulo: "MODIFICADA-LIBRO GUIA · Cap. 6, ej. 8 · Factorial 2³ con 2 réplicas: viscosidad de una bebida",
     enunciado: String.raw`<p><strong>MODIFICADA-LIBRO GUIA</strong> — variante del Cap. 6, ej. 8 del libro guía. Cambio respecto del original: el tratamiento ac dio 16,0 y 15,6 y el abc dio 17,9 y 18,2.</p><p>En una empresa lechera hay problemas con la viscosidad de una bebida de chocolate. Se cree que tres ingredientes que se agregan en pequeñas cantidades pueden resolverlo, y se corre un experimento 2³ con 2 réplicas. Se desea <strong>minimizar</strong> la viscosidad. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Ingrediente A</th><th>Ingrediente B</th><th>Ingrediente C</th><th>Código</th><th>Respuesta (réplicas)</th></tr></thead><tbody><tr><td>−</td><td>−</td><td>−</td><td>(1)</td><td>13{,}3; 13{,}9</td></tr><tr><td>+</td><td>−</td><td>−</td><td>a</td><td>14{,}7; 14{,}4</td></tr><tr><td>−</td><td>+</td><td>−</td><td>b</td><td>14{,}6; 14{,}9</td></tr><tr><td>+</td><td>+</td><td>−</td><td>ab</td><td>14{,}3; 14{,}1</td></tr><tr><td>−</td><td>−</td><td>+</td><td>c</td><td>16{,}9; 17{,}2</td></tr><tr><td>+</td><td>−</td><td>+</td><td>ac</td><td>16; 15{,}6</td></tr><tr><td>−</td><td>+</td><td>+</td><td>bc</td><td>17{,}4; 17{,}1</td></tr><tr><td>+</td><td>+</td><td>+</td><td>abc</td><td>17{,}9; 18{,}2</td></tr></tbody></table></div><ol type="a"><li>Estime todos los posibles efectos y diga cuáles son significativos.</li><li>Realice un análisis de varianza y obtenga conclusiones generales.</li><li>Interprete a detalle los efectos significativos.</li><li>¿Hay un tratamiento ganador para minimizar?</li><li>Verifique residuos.</li></ol>`,
     codigoR: `y <- c(13.3, 13.9, 14.7, 14.4, 14.6, 14.9, 14.3, 14.1, 16.9, 17.2, 16, 15.6, 17.4, 17.1, 17.9, 18.2); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 2)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 2)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 2)])
+modelo <- aov(y ~ A * B * C)
+summary(modelo)
+model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
+interaction.plot(A, B, y)
+shapiro.test(resid(modelo))`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  0.001   0.001   0.010 0.923187    
+B            1  2.641   2.641  41.832 0.000195 ***
+C            1 30.526  30.526 483.574 1.93e-08 ***
+A:B          1  0.076   0.076   1.198 0.305574    
+A:C          1  0.181   0.181   2.861 0.129191    
+B:C          1  0.681   0.681  10.782 0.011127 *  
+A:B:C        1  3.151   3.151  49.911 0.000106 ***
+Residuals    8  0.505   0.063                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of effects
+
+ A 
+A
+      -1        1 
+ 0.00625 -0.00625 
+
+ B 
+B
+     -1       1 
+-0.4063  0.4063 
+
+ C 
+C
+     -1       1 
+-1.3813  1.3813 
+
+ A:B 
+    B
+A    -1       1       
+  -1  0.06875 -0.06875
+  1  -0.06875  0.06875
+
+ A:C 
+    C
+A    -1       1       
+  -1 -0.10625  0.10625
+  1   0.10625 -0.10625
+
+ B:C 
+    C
+B    -1       1       
+  -1  0.20625 -0.20625
+  1  -0.20625  0.20625
+
+ A:B:C 
+, , C = -1
+
+    B
+A    -1      1      
+  -1 -0.4438  0.4438
+  1   0.4438 -0.4438
+
+, , C = 1
+
+    B
+A    -1      1      
+  -1  0.4437 -0.4437
+  1  -0.4438  0.4438
+
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.87343, p-value = 0.0307`,
+    salidaDe: `y <- c(13.3, 13.9, 14.7, 14.4, 14.6, 14.9, 14.3, 14.1, 16.9, 17.2, 16, 15.6, 17.4, 17.1, 17.9, 18.2); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 2)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 2)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 2)])
 modelo <- aov(y ~ A * B * C)
 summary(modelo)
 model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
@@ -309,6 +453,78 @@ summary(modelo)
 model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
 interaction.plot(A, B, y)
 shapiro.test(resid(modelo))`,
+    salidaR: `            Df Sum Sq Mean Sq  F value   Pr(>F)    
+A            1   0.07    0.07    2.195    0.158    
+B            1   8.52    8.52  265.571 2.19e-11 ***
+C            1  49.59   49.59 1545.779  < 2e-16 ***
+A:B          1   1.45    1.45   45.208 4.89e-06 ***
+A:C          1   0.05    0.05    1.571    0.228    
+B:C          1   3.76    3.76  117.208 9.00e-09 ***
+A:B:C        1   9.50    9.50  296.117 9.59e-12 ***
+Residuals   16   0.51    0.03                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of effects
+
+ A 
+A
+      -1        1 
+-0.05417  0.05417 
+
+ B 
+B
+     -1       1 
+-0.5958  0.5958 
+
+ C 
+C
+     -1       1 
+-1.4375  1.4375 
+
+ A:B 
+    B
+A    -1       1       
+  -1  0.24583 -0.24583
+  1  -0.24583  0.24583
+
+ A:C 
+    C
+A    -1       1       
+  -1 -0.04583  0.04583
+  1   0.04583 -0.04583
+
+ B:C 
+    C
+B    -1      1      
+  -1  0.3958 -0.3958
+  1  -0.3958  0.3958
+
+ A:B:C 
+, , C = -1
+
+    B
+A    -1      1      
+  -1 -0.6292  0.6292
+  1   0.6292 -0.6292
+
+, , C = 1
+
+    B
+A    -1      1      
+  -1  0.6292 -0.6292
+  1  -0.6292  0.6292
+
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.97522, p-value = 0.7942`,
+    salidaDe: `y <- c(13.3, 13.9, 13.6, 14.7, 14.4, 14.6, 14.6, 14.9, 14.8, 14.3, 14.1, 14.2, 16.9, 17.2, 17, 15.5, 15.1, 15.3, 17.4, 17.1, 17.3, 18.9, 19.2, 19); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 3)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 3)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 3)])
+modelo <- aov(y ~ A * B * C)
+summary(modelo)
+model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
+interaction.plot(A, B, y)
+shapiro.test(resid(modelo))`,
     partes: [
       { titulo: "a) Efectos estimados", puntos: 1.5, solucion: String.raw`<div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Trat.</th><th>A</th><th>B</th><th>AB</th><th>C</th><th>AC</th><th>BC</th><th>ABC</th><th>Total</th></tr></thead><tbody><tr><td>(1)</td><td>−</td><td>−</td><td>+</td><td>−</td><td>+</td><td>+</td><td>−</td><td>$40{,}8$</td></tr><tr><td>a</td><td>+</td><td>−</td><td>−</td><td>−</td><td>−</td><td>+</td><td>+</td><td>$43{,}7$</td></tr><tr><td>b</td><td>−</td><td>+</td><td>−</td><td>−</td><td>+</td><td>−</td><td>+</td><td>$44{,}3$</td></tr><tr><td>ab</td><td>+</td><td>+</td><td>+</td><td>−</td><td>−</td><td>−</td><td>−</td><td>$42{,}6$</td></tr><tr><td>c</td><td>−</td><td>−</td><td>+</td><td>+</td><td>−</td><td>−</td><td>+</td><td>$51{,}1$</td></tr><tr><td>ac</td><td>+</td><td>−</td><td>−</td><td>+</td><td>+</td><td>−</td><td>−</td><td>$45{,}9$</td></tr><tr><td>bc</td><td>−</td><td>+</td><td>−</td><td>+</td><td>−</td><td>+</td><td>−</td><td>$51{,}8$</td></tr><tr><td>abc</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td><td>$57{,}1$</td></tr></tbody></table></div><p>$\text{Efecto}=\dfrac{\text{Contraste}}{n\,2^{k-1}}=\dfrac{\text{Contraste}}{12}$ y $SC=\dfrac{\text{Contraste}^2}{n\,2^k}=\dfrac{\text{Contraste}^2}{24}$:</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Efecto</th><th>Contraste</th><th>Efecto estimado</th><th>SC</th></tr></thead><tbody><tr><td>A</td><td>$1{,}3$</td><td>$0{,}1083$</td><td>$0{,}0704$</td></tr><tr><td>B</td><td>$14{,}3$</td><td>$1{,}1917$</td><td>$8{,}5204$</td></tr><tr><td>AB</td><td>$5{,}9$</td><td>$0{,}4917$</td><td>$1{,}4504$</td></tr><tr><td>C</td><td>$34{,}5$</td><td>$2{,}875$</td><td>$49{,}5938$</td></tr><tr><td>AC</td><td>$-1{,}1$</td><td>$-0{,}0917$</td><td>$0{,}0504$</td></tr><tr><td>BC</td><td>$9{,}5$</td><td>$0{,}7917$</td><td>$3{,}7604$</td></tr><tr><td>ABC</td><td>$15{,}1$</td><td>$1{,}2583$</td><td>$9{,}5004$</td></tr></tbody></table></div><p>Pareto de efectos (de mayor a menor $|\text{efecto}|$): C $(2{,}875)$, ABC $(1{,}258)$, B $(1{,}192)$, BC $(0{,}792)$, AB $(0{,}492)$, A $(0{,}108)$, AC $(-0{,}092)$.</p>` },
       { titulo: "b) ANOVA y conclusiones", puntos: 1.5, solucion: String.raw`<p>$SC_T=73{,}4596$, $SC_E=SC_T-\sum SC_{\text{efectos}}=0{,}5133$ con $2^3(n-1)=16$ gl.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>$F_0$</th><th>Valor-p</th></tr></thead><tbody><tr><td>A</td><td>$0{,}07$</td><td>$1$</td><td>$0{,}07$</td><td>$2{,}19$</td><td>$0{,}1579$</td></tr><tr><td>B</td><td>$8{,}52$</td><td>$1$</td><td>$8{,}52$</td><td>$265{,}57$</td><td>$\lt 0{,}0001$</td></tr><tr><td>AB</td><td>$1{,}45$</td><td>$1$</td><td>$1{,}45$</td><td>$45{,}21$</td><td>$\lt 0{,}0001$</td></tr><tr><td>C</td><td>$49{,}594$</td><td>$1$</td><td>$49{,}594$</td><td>$1545{,}78$</td><td>$\lt 0{,}0001$</td></tr><tr><td>AC</td><td>$0{,}05$</td><td>$1$</td><td>$0{,}05$</td><td>$1{,}57$</td><td>$0{,}228$</td></tr><tr><td>BC</td><td>$3{,}76$</td><td>$1$</td><td>$3{,}76$</td><td>$117{,}21$</td><td>$\lt 0{,}0001$</td></tr><tr><td>ABC</td><td>$9{,}5$</td><td>$1$</td><td>$9{,}5$</td><td>$296{,}12$</td><td>$\lt 0{,}0001$</td></tr><tr><td>Error</td><td>$0{,}513$</td><td>$16$</td><td>$0{,}032$</td><td></td><td></td></tr><tr><td>Total</td><td>$73{,}46$</td><td>$23$</td><td></td><td></td><td></td></tr></tbody></table></div><p>$F_{0{,}05;1,16}=4{,}49$. Efectos activos ($p\lt 0{,}05$): <strong>B, AB, C, BC, ABC</strong>. $R^2=SC_{\text{modelo}}/SC_T=99{,}3\,\%$.</p>` },
@@ -339,6 +555,78 @@ shapiro.test(resid(modelo))`,
     titulo: "ORIGINAL-LIBRO GUIA · Cap. 6, ej. 10 · Factorial 2³ con 3 réplicas: resistencia al rasgado",
     enunciado: String.raw`<p><strong>ORIGINAL-LIBRO GUIA</strong> — Cap. 6, ej. 10 del libro guía (Gutiérrez y de la Vara, 2.ª ed.), con los datos del libro.</p><p>Un fabricante de bolsas de papel analiza la resistencia al rasgamiento (Y, mayor es mejor). Examina tres factores con dos niveles: A = papel, B = humedad, C = dirección del rasguño, con 3 réplicas por combinación. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>x1 (papel)</th><th>x2 (humedad)</th><th>x3 (dirección)</th><th>Código</th><th>Respuesta (réplicas)</th></tr></thead><tbody><tr><td>−</td><td>−</td><td>−</td><td>(1)</td><td>3{,}8; 3{,}1; 2{,}2</td></tr><tr><td>+</td><td>−</td><td>−</td><td>a</td><td>6{,}6; 8; 6{,}8</td></tr><tr><td>−</td><td>+</td><td>−</td><td>b</td><td>3{,}4; 1{,}7; 3{,}8</td></tr><tr><td>+</td><td>+</td><td>−</td><td>ab</td><td>6{,}8; 8{,}2; 6</td></tr><tr><td>−</td><td>−</td><td>+</td><td>c</td><td>2{,}3; 3{,}1; 0{,}7</td></tr><tr><td>+</td><td>−</td><td>+</td><td>ac</td><td>4{,}7; 3{,}5; 4{,}4</td></tr><tr><td>−</td><td>+</td><td>+</td><td>bc</td><td>2{,}1; 1{,}1; 3{,}6</td></tr><tr><td>+</td><td>+</td><td>+</td><td>abc</td><td>4{,}2; 4{,}7; 2{,}9</td></tr></tbody></table></div><ol type="a"><li>Haga el análisis de varianza.</li><li>Interprete los efectos significativos y encuentre el mejor tratamiento.</li><li>Verifique los supuestos del modelo.</li></ol>`,
     codigoR: `y <- c(3.8, 3.1, 2.2, 6.6, 8, 6.8, 3.4, 1.7, 3.8, 6.8, 8.2, 6, 2.3, 3.1, 0.7, 4.7, 3.5, 4.4, 2.1, 1.1, 3.6, 4.2, 4.7, 2.9); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 3)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 3)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 3)])
+modelo <- aov(y ~ A * B * C)
+summary(modelo)
+model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
+interaction.plot(A, B, y)
+shapiro.test(resid(modelo))`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  53.70   53.70  53.500 1.74e-06 ***
+B            1   0.02    0.02   0.020 0.888371    
+C            1  22.23   22.23  22.151 0.000238 ***
+A:B          1   0.12    0.12   0.120 0.733583    
+A:C          1   6.93    6.93   6.908 0.018260 *  
+B:C          1   0.01    0.01   0.010 0.920125    
+A:B:C        1   0.07    0.07   0.070 0.794495    
+Residuals   16  16.06    1.00                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of effects
+
+ A 
+A
+     -1       1 
+-1.4958  1.4958 
+
+ B 
+B
+       -1         1 
+ 0.029167 -0.029167 
+
+ C 
+C
+     -1       1 
+ 0.9625 -0.9625 
+
+ A:B 
+    B
+A    -1       1       
+  -1 -0.07083  0.07083
+  1   0.07083 -0.07083
+
+ A:C 
+    C
+A    -1      1      
+  -1 -0.5375  0.5375
+  1   0.5375 -0.5375
+
+ B:C 
+    C
+B    -1        1        
+  -1  0.020833 -0.020833
+  1  -0.020833  0.020833
+
+ A:B:C 
+, , C = -1
+
+    B
+A    -1       1       
+  -1  0.05417 -0.05417
+  1  -0.05417  0.05417
+
+, , C = 1
+
+    B
+A    -1       1       
+  -1 -0.05417  0.05417
+  1   0.05417 -0.05417
+
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.94698, p-value = 0.2329`,
+    salidaDe: `y <- c(3.8, 3.1, 2.2, 6.6, 8, 6.8, 3.4, 1.7, 3.8, 6.8, 8.2, 6, 2.3, 3.1, 0.7, 4.7, 3.5, 4.4, 2.1, 1.1, 3.6, 4.2, 4.7, 2.9); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 3)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 3)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 3)])
 modelo <- aov(y ~ A * B * C)
 summary(modelo)
 model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
@@ -380,6 +668,78 @@ summary(modelo)
 model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
 interaction.plot(A, B, y)
 shapiro.test(resid(modelo))`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  42.58   42.58  64.084 4.35e-05 ***
+B            1   0.53    0.53   0.791  0.39971    
+C            1  15.80   15.80  23.783  0.00123 ** 
+A:B          1   1.63    1.63   2.447  0.15639    
+A:C          1   5.18    5.18   7.790  0.02352 *  
+B:C          1   0.00    0.00   0.001  0.97628    
+A:B:C        1   0.03    0.03   0.046  0.83537    
+Residuals    8   5.31    0.66                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of effects
+
+ A 
+A
+     -1       1 
+-1.6313  1.6313 
+
+ B 
+B
+      -1        1 
+ 0.18125 -0.18125 
+
+ C 
+C
+     -1       1 
+ 0.9937 -0.9937 
+
+ A:B 
+    B
+A    -1      1      
+  -1  0.3187 -0.3187
+  1  -0.3187  0.3187
+
+ A:C 
+    C
+A    -1      1      
+  -1 -0.5688  0.5688
+  1   0.5688 -0.5688
+
+ B:C 
+    C
+B    -1       1       
+  -1 -0.00625  0.00625
+  1   0.00625 -0.00625
+
+ A:B:C 
+, , C = -1
+
+    B
+A    -1       1       
+  -1 -0.04375  0.04375
+  1   0.04375 -0.04375
+
+, , C = 1
+
+    B
+A    -1       1       
+  -1  0.04375 -0.04375
+  1  -0.04375  0.04375
+
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.89596, p-value = 0.06926`,
+    salidaDe: `y <- c(3.8, 3.1, 6.6, 8, 3.4, 1.7, 6.8, 8.2, 2.3, 3.1, 4.7, 3.5, 2.1, 1.1, 4.2, 4.7); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 2)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 2)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 2)])
+modelo <- aov(y ~ A * B * C)
+summary(modelo)
+model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
+interaction.plot(A, B, y)
+shapiro.test(resid(modelo))`,
     partes: [
       { titulo: "a) Efectos y tabla ANOVA", puntos: 2.5, solucion: String.raw`<p>$\text{Efecto}=\dfrac{\text{Contraste}}{n\,2^{k-1}}=\dfrac{\text{Contraste}}{8}$ y $SC=\dfrac{\text{Contraste}^2}{n\,2^k}=\dfrac{\text{Contraste}^2}{16}$:</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Efecto</th><th>Contraste</th><th>Efecto estimado</th><th>SC</th></tr></thead><tbody><tr><td>A</td><td>$26{,}1$</td><td>$3{,}2625$</td><td>$42{,}5756$</td></tr><tr><td>B</td><td>$-2{,}9$</td><td>$-0{,}3625$</td><td>$0{,}5256$</td></tr><tr><td>AB</td><td>$5{,}1$</td><td>$0{,}6375$</td><td>$1{,}6256$</td></tr><tr><td>C</td><td>$-15{,}9$</td><td>$-1{,}9875$</td><td>$15{,}8006$</td></tr><tr><td>AC</td><td>$-9{,}1$</td><td>$-1{,}1375$</td><td>$5{,}1756$</td></tr><tr><td>BC</td><td>$-0{,}1$</td><td>$-0{,}0125$</td><td>$0{,}0006$</td></tr><tr><td>ABC</td><td>$0{,}7$</td><td>$0{,}0875$</td><td>$0{,}0306$</td></tr></tbody></table></div><p>$SC_T=71{,}0494$; $SC_E=5{,}315$ con 8 gl.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>$F_0$</th><th>Valor-p</th></tr></thead><tbody><tr><td>A</td><td>$42{,}576$</td><td>$1$</td><td>$42{,}576$</td><td>$64{,}08$</td><td>$\lt 0{,}0001$</td></tr><tr><td>B</td><td>$0{,}526$</td><td>$1$</td><td>$0{,}526$</td><td>$0{,}79$</td><td>$0{,}3997$</td></tr><tr><td>AB</td><td>$1{,}626$</td><td>$1$</td><td>$1{,}626$</td><td>$2{,}45$</td><td>$0{,}1564$</td></tr><tr><td>C</td><td>$15{,}801$</td><td>$1$</td><td>$15{,}801$</td><td>$23{,}78$</td><td>$0{,}0012$</td></tr><tr><td>AC</td><td>$5{,}176$</td><td>$1$</td><td>$5{,}176$</td><td>$7{,}79$</td><td>$0{,}0235$</td></tr><tr><td>BC</td><td>$0{,}001$</td><td>$1$</td><td>$0{,}001$</td><td>$0$</td><td>$0{,}9763$</td></tr><tr><td>ABC</td><td>$0{,}031$</td><td>$1$</td><td>$0{,}031$</td><td>$0{,}05$</td><td>$0{,}8354$</td></tr><tr><td>Error</td><td>$5{,}315$</td><td>$8$</td><td>$0{,}664$</td><td></td><td></td></tr><tr><td>Total</td><td>$71{,}049$</td><td>$15$</td><td></td><td></td><td></td></tr></tbody></table></div><p>$F_{0{,}05;1,8}=5{,}32$. Efectos activos ($p\lt 0{,}05$): <strong>A, C, AC</strong>. $R^2=SC_{\text{modelo}}/SC_T=92{,}5\,\%$.</p>` },
       { titulo: "b) Interpretación y mejor tratamiento", puntos: 2.5, solucion: String.raw`<p>A: efecto $3{,}263$. C: efecto $-1{,}988$. AC: efecto $-1{,}138$. El tipo de papel (A) es el efecto dominante.</p><p>Modelo con los efectos activos (y los principales que contienen, por jerarquía): $\hat Y=4{,}2063+1{,}6313\,x_{A}-0{,}9938\,x_{C}-0{,}5688\,x_{AC}$, con $x=\pm1$ (el coeficiente es la mitad del efecto).</p><p>Para maximizar: tratamiento <strong>a</strong> (x1 (papel) +, x2 (humedad) −, x3 (dirección) −), con $\hat Y=7{,}4$ (media observada de esa celda: $7{,}3$). x2 (humedad) no influye: se fija en el nivel más económico.</p>` },
@@ -411,6 +771,78 @@ shapiro.test(resid(modelo))`,
     titulo: "MODIFICADA-LIBRO GUIA · Cap. 6, ej. 10 · Factorial 2³ con 3 réplicas: resistencia al rasgado",
     enunciado: String.raw`<p><strong>MODIFICADA-LIBRO GUIA</strong> — variante del Cap. 6, ej. 10 del libro guía. Cambio respecto del original: con x1 en + y x2, x3 en − se midió 6,1; 7,5; 6,9 y con x1, x3 en + y x2 en − se midió 5,2; 4,0; 4,9.</p><p>Un fabricante de bolsas de papel analiza la resistencia al rasgamiento (Y, mayor es mejor). Examina tres factores con dos niveles: A = papel, B = humedad, C = dirección del rasguño, con 3 réplicas por combinación. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>x1 (papel)</th><th>x2 (humedad)</th><th>x3 (dirección)</th><th>Código</th><th>Respuesta (réplicas)</th></tr></thead><tbody><tr><td>−</td><td>−</td><td>−</td><td>(1)</td><td>3{,}8; 3{,}1; 2{,}2</td></tr><tr><td>+</td><td>−</td><td>−</td><td>a</td><td>6{,}1; 7{,}5; 6{,}9</td></tr><tr><td>−</td><td>+</td><td>−</td><td>b</td><td>3{,}4; 1{,}7; 3{,}8</td></tr><tr><td>+</td><td>+</td><td>−</td><td>ab</td><td>6{,}8; 8{,}2; 6</td></tr><tr><td>−</td><td>−</td><td>+</td><td>c</td><td>2{,}3; 3{,}1; 0{,}7</td></tr><tr><td>+</td><td>−</td><td>+</td><td>ac</td><td>5{,}2; 4; 4{,}9</td></tr><tr><td>−</td><td>+</td><td>+</td><td>bc</td><td>2{,}1; 1{,}1; 3{,}6</td></tr><tr><td>+</td><td>+</td><td>+</td><td>abc</td><td>4{,}2; 4{,}7; 2{,}9</td></tr></tbody></table></div><ol type="a"><li>Haga el análisis de varianza.</li><li>Interprete los efectos significativos y encuentre el mejor tratamiento.</li><li>Verifique los supuestos del modelo.</li></ol>`,
     codigoR: `y <- c(3.8, 3.1, 2.2, 6.1, 7.5, 6.9, 3.4, 1.7, 3.8, 6.8, 8.2, 6, 2.3, 3.1, 0.7, 5.2, 4, 4.9, 2.1, 1.1, 3.6, 4.2, 4.7, 2.9); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 3)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 3)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 3)])
+modelo <- aov(y ~ A * B * C)
+summary(modelo)
+model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2
+interaction.plot(A, B, y)
+shapiro.test(resid(modelo))`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  55.51   55.51  55.860 1.32e-06 ***
+B            1   0.07    0.07   0.071 0.793489    
+C            1  17.85   17.85  17.966 0.000626 ***
+A:B          1   0.22    0.22   0.222 0.644027    
+A:C          1   4.59    4.59   4.623 0.047189 *  
+B:C          1   0.15    0.15   0.151 0.702365    
+A:B:C        1   0.57    0.57   0.574 0.459686    
+Residuals   16  15.90    0.99                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of effects
+
+ A 
+A
+     -1       1 
+-1.5208  1.5208 
+
+ B 
+B
+      -1        1 
+ 0.05417 -0.05417 
+
+ C 
+C
+     -1       1 
+ 0.8625 -0.8625 
+
+ A:B 
+    B
+A    -1       1       
+  -1 -0.09583  0.09583
+  1   0.09583 -0.09583
+
+ A:C 
+    C
+A    -1      1      
+  -1 -0.4375  0.4375
+  1   0.4375 -0.4375
+
+ B:C 
+    C
+B    -1       1       
+  -1 -0.07917  0.07917
+  1   0.07917 -0.07917
+
+ A:B:C 
+, , C = -1
+
+    B
+A    -1       1       
+  -1  0.15417 -0.15417
+  1  -0.15417  0.15417
+
+, , C = 1
+
+    B
+A    -1       1       
+  -1 -0.15417  0.15417
+  1   0.15417 -0.15417
+
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.94169, p-value = 0.1779`,
+    salidaDe: `y <- c(3.8, 3.1, 2.2, 6.1, 7.5, 6.9, 3.4, 1.7, 3.8, 6.8, 8.2, 6, 2.3, 3.1, 0.7, 5.2, 4, 4.9, 2.1, 1.1, 3.6, 4.2, 4.7, 2.9); A <- factor(rep(rep(c(-1, 1), each = 1), 4)[rep(1:8, each = 3)]); B <- factor(rep(rep(c(-1, 1), each = 2), 2)[rep(1:8, each = 3)]); C <- factor(rep(rep(c(-1, 1), each = 4), 1)[rep(1:8, each = 3)])
 modelo <- aov(y ~ A * B * C)
 summary(modelo)
 model.tables(modelo, "effects")   # cada efecto aparece como ±efecto/2

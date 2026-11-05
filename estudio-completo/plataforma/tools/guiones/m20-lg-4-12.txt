@@ -1,0 +1,61 @@
+# Ejercicio 4.12: detergentes y lavadoras
+@modulo m20-dbca
+@ejercicio Libro guía · Cap. 4, ej. 12
+@pregunta m20-d012
+@orden 4
+
+## Qué pide el ejercicio
+
+{inicio} El ejercicio doce del capítulo cuatro compara cuatro detergentes.
+
+{enun} Se midió la blancura de doce cargas de lavado, repartidas en tres modelos de lavadora. {clave1} Lo primero que pide es el nombre del diseño. {clave2} La pista está en cómo se reparten las cargas: cada lavadora lava una carga con cada detergente. {clave3} Y el enunciado aclara que mayor blancura es mejor.
+
+{dis} ¿Qué diseño es, entonces?
+
+[pausa 3]
+
+{dis-r} Es un diseño en bloques completos al azar. El factor de interés es el detergente, con cuatro niveles, y la lavadora es el bloque, con tres. No queremos elegir una lavadora: solo queremos que sus diferencias no ensucien la comparación entre detergentes.
+
+{modelo} El modelo: media global, más efecto del detergente, más efecto de la lavadora, más el error. {h0t} La hipótesis principal dice que los cuatro detergentes dan la misma blancura media. {h0b} Y la de bloques, que las tres lavadoras dan lo mismo.
+
+## Totales
+
+{tot} Los totales. {tot-i} Por detergente: ciento treinta y nueve, ciento cuarenta y tres, ciento cincuenta y seis y ciento veintiocho. {tot-j} Por lavadora: ciento ochenta y cuatro, ciento setenta y tres y doscientos nueve. {tot-g} El gran total es quinientos sesenta y seis.
+
+## Sumas de cuadrados
+
+{corr} La corrección es quinientos sesenta y seis al cuadrado sobre doce: veintiséis mil seiscientos noventa y seis coma tres tres.
+
+{sct} Los datos al cuadrado suman veintisiete mil ocho, así que la suma de cuadrados total es trescientos once coma seis siete.
+
+{sctr} Para los detergentes, los totales al cuadrado se dividen por tres lavadoras. Menos la corrección, queda ciento treinta y tres coma seis siete.
+
+{scb} Para las lavadoras, los totales al cuadrado se dividen por cuatro detergentes. Queda ciento setenta coma uno siete.
+
+{sce} Y el error, por diferencia, es apenas siete coma ocho tres. Mira lo grande que era la suma de las lavadoras: si no hubiéramos bloqueado, todo eso habría ido a parar al error.
+
+## Tabla ANOVA
+
+{gl} Grados de libertad: tres para detergentes, dos para lavadoras y seis para el error.
+
+{cm} Los cuadrados medios: cuarenta y cuatro coma cinco seis, ochenta y cinco coma cero ocho, y uno coma tres uno para el error.
+
+{ft} El efe de los detergentes es treinta y cuatro coma uno tres. {ftc} El crítico con tres y seis grados de libertad es cuatro coma setenta y seis, y el pe valor, cero coma cero cero cero cuatro. {conc-t} Se rechaza con mucha claridad: los detergentes no dan todos la misma blancura.
+
+{fb} Las lavadoras tienen un efe de sesenta y cinco coma uno siete, con pe valor menor que cero coma cero cero cero uno. {conc-b} El bloque es muy significativo: las lavadoras sí son distintas, y bloquear fue clave.
+
+## Comparaciones y recomendación
+
+{lsd} Para comparar los detergentes, la ele ese de usa te con seis grados de libertad, dos coma cuatro cuatro siete, {lsd-n} por la raíz de dos por uno coma tres uno, dividido en tres. Da dos coma dos ocho.
+
+{medias} Las medias son: ce, cincuenta y dos; be, cuarenta y siete coma siete; a, cuarenta y seis coma tres; y de, cuarenta y dos coma siete.
+
+{pares} De las seis comparaciones, solo una no supera la ele ese de: a contra be, que difieren en uno coma tres. Todas las demás son significativas.
+
+{mejor} Como mayor blancura es mejor, el detergente ce es significativamente superior a todos los demás. Y el de es el peor.
+
+## En erre y cierre
+
+{r} En erre: a o ve con la blancura, tilde, detergente más lavadora, y después ele ese de punto test sobre el detergente.
+
+{fin} Lo que más enseña este ejercicio es la tabla: el bloque se llevó más variabilidad que el propio tratamiento. Sin él, el error habría sido enorme.

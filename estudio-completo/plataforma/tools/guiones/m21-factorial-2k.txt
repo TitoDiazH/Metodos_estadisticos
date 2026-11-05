@@ -1,0 +1,95 @@
+# Factorial dos a la ka y bloqueo
+
+## Todo a dos niveles
+
+{inicio} Ahora toca el módulo veintidós: los diseños factoriales dos a la ka, y cómo se bloquean.
+
+{dosniv} Es un caso especial del factorial: todos los factores tienen solo dos niveles, uno bajo, que se anota menos uno, y uno alto, más uno. {ocho} Con tres factores hay dos al cubo, o sea ocho tratamientos. {cubo} Una forma linda de imaginarlos es como los ocho vértices de un cubo, donde cada eje es un factor.
+
+{yates} Para nombrar los tratamientos se usa la notación de Yates: se escriben las letras minúsculas de los factores que están en nivel alto. {y-a} Si solo el factor a está alto, el tratamiento se llama a. {y-ac} Si están altos a y ce, se llama a ce. {y-abc} Si están todos altos, a be ce. {y-q} ¿Y cuando están todos bajos, que no queda ninguna letra?
+
+[pausa 3]
+
+{y-1} Se escribe uno entre paréntesis. {y-todos} Así que los ocho son: uno, a, be, a be, ce, a ce, be ce y a be ce.
+
+## Signos y contrastes
+
+{signos} Para cada efecto se arma una columna de signos. Para el factor a, un más en los tratamientos con a alto y un menos en los demás. Lo mismo para be y para ce.
+
+{s-int} ¿Y para las interacciones? No hay que inventar nada. El signo de la interacción a be es el signo de a multiplicado por el de be. {s-q} Piensa en el tratamiento a: ahí a está alto y be está bajo. ¿Qué signo lleva en la columna a be?
+
+[pausa 4]
+
+{s-r} Menos. Más por menos da menos.
+
+{contraste} Con esas columnas se calcula el contraste de cada efecto: se suman los totales que llevan más y se restan los que llevan menos. {c-a} Por ejemplo, el contraste de a es a, más a be, más a ce, más a be ce, menos los otros cuatro.
+
+## Efectos, sumas de cuadrados y la tabla
+
+{ef} Del contraste salen dos cosas. {ef-f} El efecto, dividiendo el contraste por ene por dos elevado a ka menos uno. {sc-f} Y la suma de cuadrados, elevando el contraste al cuadrado y dividiendo por ene por dos elevado a ka. Ene es el número de réplicas.
+
+{recordar} Los divisores se parecen, y por eso se confunden fácil. Una forma de recordarlos: la suma de cuadrados divide por el doble que el efecto, y además el contraste va al cuadrado.
+
+{gl} Cada efecto tiene un solo grado de libertad. En un dos al cubo hay siete efectos, y el error tiene ocho por ene menos uno grados de libertad. Cada efecto se prueba con su cuadrado medio dividido por el cuadrado medio del error.
+
+## El ejercicio de la viscosidad
+
+{v} El ejercicio de la prueba fue un dos al cuadrado con dos réplicas. El factor a es la concentración del reactivo, quince o veinticinco por ciento. El factor be es la tasa de alimentación, veinte o treinta libras por hora. Y la respuesta es la viscosidad.
+
+{v-tot} Los totales son: uno, doscientos noventa y dos; a, trescientos cuatro; be, doscientos sesenta y nueve; y a be, trescientos uno.
+
+{v-ca} El contraste de a es a más a be, menos uno, menos be. Eso da cuarenta y cuatro. {v-ea} Con dos factores y dos réplicas, el efecto se divide por cuatro: once. {v-scq} Y la suma de cuadrados es cuarenta y cuatro al cuadrado dividido por ocho. ¿Cuánto da?
+
+[pausa 5]
+
+{v-sca} Doscientos cuarenta y dos.
+
+{v-b} Siguiendo igual, el efecto de be es menos seis coma cinco, con suma de cuadrados ochenta y cuatro coma cinco. {v-ab} Y la interacción tiene efecto cinco y suma de cuadrados cincuenta. {v-e} El total es cuatrocientos tres coma cinco, así que el error, por diferencia, queda en veintisiete, con cuatro grados de libertad. Su cuadrado medio es seis coma setenta y cinco.
+
+{v-f} Los efe son: treinta y cinco coma ochenta y cinco para a, doce coma cincuenta y dos para be, y siete coma cuarenta y uno para la interacción. {v-crit} El crítico al cinco por ciento, con uno y cuatro grados de libertad, es siete coma setenta y uno.
+
+{v-q} ¿Qué pasa entonces con la interacción?
+
+[pausa 4]
+
+{v-ab-r} Siete coma cuarenta y uno no alcanza a siete coma setenta y uno. No es significativa al cinco por ciento, aunque queda muy cerca, con pe valor cero coma cero cincuenta y tres. {v-conc} Los factores a y be sí son significativos. La concentración es el efecto más grande y aumenta la viscosidad; la tasa de alimentación la disminuye.
+
+## Un dos al cubo en erre
+
+{r} El ejemplo de la clase en erre es la resistencia de un material compuesto. Tres factores: temperatura, presión y aditivo, con dos réplicas. Dieciséis corridas.
+
+{r-aov} Se crean los tres factores con factor, y se ajusta a o ve con la resistencia, tilde, los tres factores unidos con asteriscos. {r-ast} El asterisco genera todo: los tres efectos principales, las tres interacciones dobles y la triple. Si solo quisiera los efectos principales, los uniría con signos más.
+
+{r-tabla} ¿Qué dice la tabla? {r-a} La temperatura es, por lejos, el efecto más grande. {r-b} La presión también es significativa. {r-c} El aditivo, por sí solo, no. {r-ac} Pero la interacción entre temperatura y aditivo sí es muy significativa: el efecto de la temperatura depende de qué aditivo se use. {r-gl} El error tiene ocho grados de libertad.
+
+## model tables y las gráficas
+
+{mt} Para ver los efectos estimados se usa model punto tables, con type igual a effects. Hay que tener cuidado con cómo se lee. {mt-lee} Lo que muestra es cuánto se aleja la media de cada nivel respecto de la media general. Para la temperatura, más o menos once coma tres.
+
+{mt-q} Entonces, si defino el efecto como la media en nivel alto menos la media en nivel bajo, ¿cuánto vale el efecto de la temperatura?
+
+[pausa 4]
+
+{mt-r} El doble: veintidós coma seis. En un dos a la ka, el número que entrega model tables es la mitad del efecto.
+
+{mt-b} Para la presión, el nivel alto queda unos dos coma siete por debajo de la media general. Es decir, más presión, menos resistencia.
+
+{graf} Las gráficas se hacen con dos funciones. {pd} Plot punto design muestra la media en cada nivel de cada factor, y ahí se ve que la temperatura tiene el mayor recorrido. {ip} E interaction punto plot recibe primero el factor del eje horizontal, después el factor que define las líneas, y al final la respuesta. {ip-par} En la resistencia, temperatura con presión y presión con aditivo dan líneas casi paralelas. {ip-ac} Temperatura con aditivo, en cambio, da pendientes muy distintas: con temperatura alta, el aditivo marca una gran diferencia.
+
+## Bloquear un dos a la ka
+
+{bl} A veces no se pueden correr todos los tratamientos en las mismas condiciones. Tal vez no alcanza un solo día, o hay distintos turnos, lotes u operadores. Entonces los tratamientos se reparten en bloques.
+
+{jer} La idea es repartirlos sin estropear la estimación de los efectos importantes. {jer-1} Y hay una jerarquía: lo que más se cuida son los efectos principales, {jer-2} luego las interacciones dobles, {jer-3} y si hay que sacrificar algo, se sacrifican las triples y las de orden mayor.
+
+{ideal} El caso ideal es que cada bloque contenga una réplica completa. Así, ningún efecto queda confundido con los bloques.
+
+{dias} El ejemplo de la clase es un dos al cuadrado, temperatura y presión, corrido en dos días, con una réplica completa por día. {dias-r} En erre, el bloque se suma al modelo: la respuesta, tilde, temperatura asterisco presión, más bloque. El bloque va sumado, sin interacciones con los factores.
+
+{dias-q} ¿Y qué sale? {dias-ab} La temperatura y la presión son significativas, con la temperatura dominando. {dias-int} La interacción no lo es, así que los efectos son aditivos y las líneas se ven paralelas. {dias-bl} Y el bloque sale significativo, con pe valor cero coma cero cero tres: los días sí eran distintos, y bloquear fue útil.
+
+## Para cerrar
+
+{cierre} Lo esencial de este módulo cabe en pocas frases. {c1} Los tratamientos se nombran con Yates. {c2} El signo de una interacción es el producto de los signos de sus factores. {c3} El efecto es el contraste dividido por ene por dos elevado a ka menos uno, y la suma de cuadrados es el contraste al cuadrado dividido por ene por dos elevado a ka, con un grado de libertad por efecto. {c4} Model tables entrega la mitad del efecto. {c5} Y cuando hay que bloquear, el bloque se suma al modelo y se sacrifican primero las interacciones más altas.
+
+{fin} Eso fue el módulo veintidós.

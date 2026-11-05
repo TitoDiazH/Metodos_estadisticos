@@ -71,7 +71,8 @@
 
   /* ── LaTeX: se llama al montar cada vista y tras cada cambio dinámico ── */
   U.tex = function (raiz) {
-    if (!raiz || typeof window.renderMathInElement !== "function") return;
+    if (!raiz) return;
+    if (typeof window.renderMathInElement !== "function") { if (P.siglas) P.siglas.marcar(raiz); return; }
     try {
       window.renderMathInElement(raiz, {
         delimiters: [
@@ -84,6 +85,7 @@
         throwOnError: false
       });
     } catch (e) { /* una fórmula mala no debe botar la vista */ }
+    if (P.siglas) P.siglas.marcar(raiz);
   };
 
   /* ── Bloques de código y salida de R ───────────────────────────────── */

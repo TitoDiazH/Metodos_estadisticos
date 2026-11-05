@@ -103,23 +103,30 @@ Para un tipo nuevo: `F.tipo("nombre", function (lienzo, parámetros, estado) { �
 
 ### Clases en audio (🎧)
 
-Cada clase es un guion de texto en `tools/guiones/<id del módulo>.txt` que `tools/generar_audio.py` convierte en `audio/<id>.mp3` con **Piper**, un TTS local (sin internet ni GPU; unos 80 s por clase de 18 min). El mismo script escribe `data/audio/<id>.js` con la duración y los capítulos.
+Cada clase es un guion de texto en `tools/guiones/<id del módulo>.txt` que `tools/generar_audio.py` convierte en `audio/<id>.mp3` con **VoiceStudio** (TTS local en Windows, backend en `127.0.0.1:3900`, voz diseñada `narrador-es`). Desde WSL el script llega a VoiceStudio con `curl.exe`. Se genera **frase a frase** (corta en `.`, `?`, `!`) y cada frase se revisa (duración plausible y transcripción con el propio VoiceStudio); si falla se regenera con otra semilla, y las frases buenas quedan en `tools/.cache-tts/` (ignorada por git), así que cambiar una frase solo regenera esa. Al final lista las frases que no pasaron. El mismo script escribe `data/audio/<id>.js` con la duración y los capítulos. Solo necesita `python3`, `ffmpeg` y VoiceStudio abierto.
 
 ```bash
-# una sola vez
-python3 -m venv tools/.venv-tts && tools/.venv-tts/bin/pip install piper-tts
-tools/.venv-tts/bin/python -m piper.download_voices --data-dir tools/voces es_MX-claude-high
 # cada vez que se escribe o cambia un guion (solo regenera los que cambiaron)
-tools/.venv-tts/bin/python tools/generar_audio.py && node tools/generar_manifiesto.js && node tools/verificar_datos.js
+python3 tools/generar_audio.py m20 m21 && node tools/generar_manifiesto.js && node tools/verificar_datos.js
 ```
 
-Cómo escribir un guion (modelo: `tools/guiones/m05-hipotesis-una-poblacion.txt`):
+Cómo escribir un guion (modelo: `tools/guiones/m20-dbca.txt`):
 
 - Primera línea `# Título`; cada `## Capítulo` es un punto de salto en el reproductor; párrafos separados por una línea en blanco; `[pausa 3]` deja 3 s de silencio.
-- Por cada concepto: **en simple → con detalle (fórmula dicha en palabras, ejemplo de la clase, R) → pregunta + `[pausa]` + respuesta → otra vez en simple**. Cerrar con un repaso de preguntas rápidas.
-- Se escribe **como se dice**: «equis barra», «ji cuadrado», «pe valor», «te punto test», «en erre». El script rechaza símbolos (`$`, `=`, `μ`, `²`…).
+- Abrir con «Ahora toca el módulo N: …» (sin introducción) y cerrar con «Eso fue el módulo N.».
+- **Un narrador que conversa**, no una plantilla: nada de muletillas fijas («En simple…», «Con detalle…», «Pregunta.»). Partir de un caso concreto, explicar la idea, volver a ella con otras palabras cuando haga falta.
+- Las preguntas van dentro del hilo («¿Qué tendría de malo eso?», «Te dejo el de la temperatura…») seguidas de `[pausa]` y la respuesta; no como cuestionario. El cierre es un resumen hablado, no un repaso de preguntas.
+- Se escribe **como se dice**: «equis barra», «ji cuadrado», «pe valor», «a o ve», «en erre»; letras sueltas como «be», «ce». El script rechaza símbolos (`$`, `=`, `μ`, `²`…).
 - Solo contenido del módulo ya redactado en `data/modulos/` (mismos ejemplos y números, redondeados para el oído).
-- La voz, el ritmo, las pausas y el bitrate son constantes al inicio de `generar_audio.py`.
+- La voz, la velocidad, la semilla, las pausas y el bitrate son constantes al inicio de `generar_audio.py`.
+
+#### Pizarra animada (🎬) y clases de ejercicios
+
+- **Marcas.** En el guion, `{marca}` (minúsculas, números y guiones) marca el instante en que se dice esa palabra; no se lee en voz alta ni cambia el audio en caché. `[ver marca]` en su propia línea marca un punto entre párrafos. `generar_audio.py` guarda los tiempos en `data/audio/<id>.js` (`marcas`) junto con el inicio de cada frase (`frases`, para los subtítulos).
+- **Clases de ejercicios.** Un guion puede declarar `@modulo m20-dbca`, `@ejercicio Libro guía · Cap. 4, ej. 9`, `@pregunta m20-d002` y `@orden 1`: aparece bajo su módulo en 🎧 Clases en audio y la pregunta de Desarrollo enlaza a ella. Nombre: `tools/guiones/mNN-lg-<cap>-<ej>.txt`.
+- **Escenas.** `tools/escenas/<guion>.js` exporta `{ escenas: [{ en, html }] }`; cada escena empieza en una marca y dentro del HTML `data-en`, `data-fuera`, `data-hl="m1 m2"` y `data-contar` animan cada elemento (ver `js/animacion.js`). Ayudas: `tools/escenas/_lib.js` (tablas, fórmulas, gráficas, cálculos DBCA / factorial / 2^k), `_ej.js` (constructores por tipo de ejercicio) y `_2k.js`. Los números de las pizarras de ejercicios se calculan desde los datos, no se escriben a mano.
+- **Compilar:** `node tools/generar_escenas.js` (valida que cada marca exista en el guion) → `python3 tools/generar_audio.py` (tiempos de las marcas) → `node tools/generar_manifiesto.js` → `node tools/verificar_datos.js`.
+- `python3 tools/cache_faltante.py m20` dice cuántas frases de un guion no están en la caché (sirve para comprobar que agregar marcas no cambió el texto).
 
 ### Preguntas (Fase 6)
 

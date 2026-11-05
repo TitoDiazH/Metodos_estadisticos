@@ -1,0 +1,55 @@
+# Ejercicio 4.11: temperatura de los silos de leche
+@modulo m20-dbca
+@ejercicio Libro guía · Cap. 4, ej. 11
+@pregunta m20-d009
+@orden 3
+
+## Qué pide el ejercicio
+
+{inicio} Vamos con el ejercicio once del capítulo cuatro: los silos de una empresa lechera.
+
+{enun} Se sospecha que en algunos silos hay problemas de temperatura, así que durante cinco días se registra la temperatura de cada uno a cierta hora crítica. {clave1} La pregunta central es si hay diferencia entre los silos. {clave2} Y el enunciado agrega una frase importante: «la temperatura de un día a otro es una fuente de variabilidad que podría impactar la variabilidad total».
+
+{dis} Entonces, ¿cuál es el tratamiento y cuál el bloque?
+
+[pausa 3]
+
+{dis-r} El tratamiento es el silo, porque es lo que queremos comparar. El bloque es el día: una fuente de variación conocida, que no nos interesa estudiar, pero que controlamos para que no infle el error. Son cinco silos y cinco días, veinticinco datos.
+
+{modelo} El modelo es el de bloques al azar: media global, más efecto del silo, más efecto del día, más el error. {h0t} La hipótesis de tratamientos dice que los cinco silos tienen la misma temperatura media. {h0b} Y la de bloques, que los cinco días dan lo mismo.
+
+## Totales
+
+{tot} Los totales. {tot-i} Por silo: dieciséis coma cinco, veintiuno, diecisiete, veintiuno coma cinco y diecisiete coma cinco. {tot-j} Por día: veinte el lunes, veintidós el martes, veinte coma cinco el miércoles, trece el jueves y dieciocho el viernes. {tot-g} El gran total es noventa y tres coma cinco.
+
+## Sumas de cuadrados
+
+{corr} La corrección es noventa y tres coma cinco al cuadrado, dividido en veinticinco: trescientos cuarenta y nueve coma sesenta y nueve.
+
+{sct} Los datos al cuadrado suman trescientos ochenta y nueve coma setenta y cinco, así que la suma de cuadrados total es cuarenta coma cero seis.
+
+{sctr} Para los silos, los totales al cuadrado divididos en cinco días, menos la corrección: cuatro coma cuarenta y seis.
+
+{scb} Para los días, los totales al cuadrado divididos en cinco silos, menos la corrección: nueve coma setenta y seis.
+
+{sce} El error, por diferencia, queda en veinticinco coma ochenta y cuatro. Fíjate que se lleva la mayor parte de la variabilidad.
+
+## Tabla ANOVA
+
+{gl} Grados de libertad: cuatro para silos, cuatro para días y dieciséis para el error.
+
+{cm} Los cuadrados medios: uno coma uno dos para silos, dos coma cuarenta y cuatro para días, y uno coma seis dos para el error.
+
+{ft} El efe de los silos es cero coma sesenta y nueve. {ftc} Ni siquiera llega a uno, y el crítico con cuatro y dieciséis grados de libertad es tres coma cero uno. El pe valor es cero coma sesenta y uno. {conc-t} No se rechaza: no hay evidencia de que los silos tengan temperaturas medias distintas.
+
+{fb} El efe de los días es uno coma cincuenta y uno, con pe valor cero coma veinticinco. {conc-b} Tampoco se rechaza: la temperatura de un día a otro no resultó significativamente distinta.
+
+## Revisar los residuos
+
+{res} La última parte pide revisar los residuos. En el de be ce a, el residuo es el dato, menos la media de su tratamiento, menos la media de su bloque, más la media global.
+
+{res-max} El residuo más grande en valor absoluto es el del silo be el miércoles: menos dos coma cinco seis. {res-d} Si lo divido por la raíz del cuadrado medio del error, queda menos dos coma cero uno. Como ningún residuo estandarizado pasa de dos coma cinco en valor absoluto, no hay datos atípicos evidentes.
+
+{sup-sw} Además, Shapiro Wilk da pe igual a cero coma quince, así que se acepta la normalidad, {sup-lev} y Levene entre silos da cero coma ochenta y nueve, así que las varianzas se ven parecidas.
+
+{fin} En resumen: en este ejercicio nada sale significativo, y eso también es una conclusión válida. Lo importante es saber identificar el bloque, armar bien la tabla y revisar los residuos antes de confiar en ella.

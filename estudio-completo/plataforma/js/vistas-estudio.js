@@ -237,6 +237,7 @@
   /* ════════════════════════════ MEMORIZAR ═════════════════════════════ */
   var CATEGORIAS = [
     { id: "formula", txt: "Fórmulas", icono: "📐" },
+    { id: "tabla", txt: "Cómo armar las tablas", icono: "🧱" },
     { id: "umbral", txt: "Umbrales y criterios de decisión", icono: "🎚️" },
     { id: "decision", txt: "Tablas de decisión", icono: "🧭" },
     { id: "funcion-R", txt: "Funciones de R y qué devuelven", icono: "💻" },
@@ -269,6 +270,13 @@
       CATEGORIAS.forEach(function (cat) {
         var de = items.filter(function (x) { return x.categoria === cat.id; });
         if (!de.length) return;
+        if (cat.id === "tabla") {
+          h += '<section class="mem-seccion"><h2>' + cat.icono + " " + cat.txt + '</h2><p class="tenue">Pasa el mouse (o toca) las siglas y fórmulas para ver qué significan.</p>' + de.map(function (x) {
+            var m = P.modulo(x.modulo);
+            return '<article class="mem-visual"><h3>' + x.titulo + ' <small class="tenue">' + U.esc(m ? m.titulo : "") + "</small></h3>" + x.contenido + U.fuentes(x.fuente) + "</article>";
+          }).join("") + "</section>";
+          return;
+        }
         h += '<section class="mem-seccion"><h2>' + cat.icono + " " + cat.txt + '</h2><table class="tabla tabla-mem"><tbody>' + de.map(function (x) {
           var m = P.modulo(x.modulo);
           return "<tr><th scope=\"row\">" + x.titulo + '<small class="tenue">' + U.esc(m ? m.titulo : "") + "</small></th><td>" + x.contenido + U.fuentes(x.fuente) + "</td></tr>";

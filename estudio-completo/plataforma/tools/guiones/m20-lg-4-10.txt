@@ -1,0 +1,57 @@
+# Ejercicio 4.10: atomizadores y el efecto del día
+@modulo m20-dbca
+@ejercicio Libro guía · Cap. 4, ej. 10
+@pregunta m20-d006
+@orden 2
+
+## Qué pide el ejercicio
+
+{inicio} Ahora el ejercicio diez del capítulo cuatro: tres marcas de atomizador para matar moscas.
+
+{enun} Cada producto se aplica a un grupo de cien moscas, y se registra el porcentaje de moscas muertas. {clave1} Fíjate en esta frase: «se hicieron seis réplicas en días diferentes, por lo que se sospecha un efecto del día». {clave2} Ahí está la clave del diseño. El día no nos interesa, pero puede mover la respuesta. Entonces el día es el bloque. {clave3} Y como queremos matar más moscas, mayor es mejor.
+
+{dis} Las piezas quedan así: el tratamiento es la marca, con tres niveles, y el bloque es el día, con seis. Son dieciocho datos.
+
+{modelo} El modelo es el de bloques: media global, más efecto de la marca, más efecto del día, más el error. {h0t} La hipótesis de tratamientos dice que las tres marcas tienen la misma efectividad promedio. {h0b} Y la de bloques, que los seis días dan lo mismo.
+
+## Totales
+
+{tot} Vamos con los totales. {tot-i} La marca uno suma cuatrocientos catorce, la dos, trescientos cincuenta y cinco, y la tres, trescientos setenta y siete. {tot-j} Por día, los totales van de ciento sesenta y seis, el día cinco, a doscientos tres, el día cuatro. {tot-g} Y el gran total es mil ciento cuarenta y seis.
+
+## Sumas de cuadrados
+
+{corr} La corrección es mil ciento cuarenta y seis al cuadrado, dividido en dieciocho: setenta y dos mil novecientos sesenta y dos.
+
+{sct} La suma de los datos al cuadrado es setenta y cuatro mil cincuenta y cuatro, así que la suma de cuadrados total es mil noventa y dos.
+
+{sctr} Para las marcas, los totales al cuadrado se dividen por seis, el número de días. Queda doscientos noventa y seis coma tres tres tres.
+
+{scb} Para los días, los totales al cuadrado se dividen por tres, el número de marcas. Queda doscientos ochenta y uno coma tres tres tres.
+
+{sce} Y el error, por diferencia, es quinientos catorce coma tres tres tres. Ojo con ese número: es el más grande de los tres.
+
+## Tabla ANOVA
+
+{gl} Los grados de libertad son dos para las marcas, cinco para los días y diez para el error.
+
+{cm} Los cuadrados medios: ciento cuarenta y ocho coma uno siete para las marcas, cincuenta y seis coma dos siete para los días, y cincuenta y uno coma cuatro tres para el error.
+
+{ft} El efe de las marcas es dos coma ochenta y ocho. {ftc} El crítico con dos y diez grados de libertad es cuatro coma diez. No lo alcanza, y el pe valor es cero coma diez. {conc-t} No se rechaza: con estos datos no hay evidencia de que las marcas difieran en efectividad promedio.
+
+{fb} El efe de los días es uno coma cero nueve, contra un crítico de tres coma treinta y tres, con pe valor cero coma cuarenta y dos. {conc-b} Tampoco se rechaza: no se detecta efecto del día. Bloquear no era indispensable, aunque tampoco hizo mucho daño: solo costó cinco grados de libertad del error.
+
+## ¿Hay un atomizador mejor?
+
+{lsd} El ejercicio pregunta si hay un atomizador mejor. Si igual calculo la ele ese de, con te de dos coma dos dos ocho {lsd-n} y el cuadrado medio del error dividido en seis días, da nueve coma dos dos seis.
+
+{medias} Las medias son: marca uno, sesenta y nueve por ciento; marca tres, sesenta y dos coma ocho; y marca dos, cincuenta y nueve coma dos.
+
+{pares} La uno contra la dos difieren en nueve coma ocho, que apenas pasa la ele ese de. Las otras comparaciones no la alcanzan.
+
+{mejor} Pero cuidado con la trampa. Como el ANOVA no rechazó, en rigor no podemos declarar un atomizador mejor. La ele ese de solo se mira después de un ANOVA significativo; aquí se informa solo como ejercicio.
+
+## Supuestos
+
+{sup} Por último, los supuestos. {sup-sw} La normalidad se revisa sobre los residuos del modelo con bloque: el test de Shapiro Wilk da pe igual a cero coma cincuenta y cinco, así que no se rechaza la normalidad. {sup-lev} Y la igualdad de varianzas entre marcas, con el test de Levene, da pe igual a cero coma sesenta. Tampoco hay problema.
+
+{fin} La lección de este ejercicio: identificar el bloque en el enunciado, y no salir a buscar «el mejor» cuando el ANOVA no detectó diferencias.

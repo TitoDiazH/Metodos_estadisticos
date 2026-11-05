@@ -1,0 +1,107 @@
+# Diseño en bloques completos al azar
+
+## Un factor que molesta
+
+{inicio} Ahora toca el módulo veinte: el diseño en bloques completos al azar, que vamos a llamar de be ce a.
+
+{problema} Imagina que quieres comparar cuatro métodos de ensamble para ver cuál es más rápido, y tienes cuatro operadores. {mal} Lo más intuitivo sería darle un método a cada operador. {lento} Pero piensa en esto: si el operador uno es más lento que los demás, ¿cómo sabes si su método es malo o si simplemente él es lento?
+
+[pausa 3]
+
+{confundido} No puedes saberlo. El efecto del método queda confundido con el efecto del operador.
+
+{bien} La salida es que cada operador pruebe los cuatro métodos. Así, las diferencias entre operadores se pueden separar de las diferencias entre métodos. {bloque} En este diseño, el operador es lo que llamamos un bloque.
+
+{def} Un bloque es justamente eso: un factor que no nos interesa estudiar, pero que sabemos que mueve la respuesta. {def-para} No lo incluimos porque queramos saber cuál operador es mejor, sino para que su variabilidad no se mezcle con la del factor que sí nos importa, y así bajar el error experimental. {ejemplos} Otros bloques típicos son el día, el lote de material o el sector de un terreno.
+
+## Cómo se arma el diseño
+
+{diseno} ¿Por qué se llama bloques completos al azar? {completo} Completos, porque en cada bloque se prueban todos los tratamientos. {azar} Y al azar, porque el orden en que se prueban se sortea. {dentro} Pero ojo: se sortea dentro de cada bloque.
+
+{dca} Esa es la gran diferencia con el diseño completamente al azar, el ce a. Ahí se aleatorizaban todas las corridas juntas. {noentre} Acá no: cada operador tiene su propio sorteo, y lo que no se puede hacer es aleatorizar de un bloque a otro.
+
+{modelo} El modelo es el del ANOVA de un factor, con un término más. {mod-mu} Cada observación es la media global, {mod-tau} más el efecto del tratamiento, {mod-gamma} más el efecto del bloque, {mod-eps} más un error aleatorio. {sup-normal} Los errores se suponen independientes y normales, con media cero y varianza constante.
+
+{aditivo} Hay un supuesto adicional que conviene tener muy presente: el modelo es aditivo. No hay interacción entre tratamiento y bloque. Es decir, se asume que un método es más rápido o más lento de la misma manera para todos los operadores.
+
+{h0t} La hipótesis que más interesa es que los efectos de todos los tratamientos son cero. {h0b} Y en la prueba suelen pedir también la del bloque: que los efectos de los bloques son todos cero.
+
+## La tabla ANOVA, paso a paso
+
+{tabla} La tabla ANOVA del de be ce a tiene una fila más que la del ANOVA de un factor: {fila-bloque} la del bloque. Quedan tratamientos, bloques, error y total.
+
+{totales} Para calcularla a mano se trabaja con totales. {corr} Primero viene el término de corrección: el gran total al cuadrado, dividido por el número total de datos. Ese término se resta en todas las sumas de cuadrados.
+
+{sct-f} La suma de cuadrados total es la suma de todos los datos al cuadrado, menos la corrección. {sctr-f} La de tratamientos se obtiene sumando cada total de tratamiento al cuadrado, dividido por el número de bloques, y restando la corrección. {scb-f} La de bloques es igual, pero con los totales de bloque al cuadrado, divididos por el número de tratamientos. {sce-f} Y la del error sale por diferencia.
+
+{divisor} Detente un momento en eso. ¿Por qué el total de un tratamiento se divide por el número de bloques, y no por el de tratamientos?
+
+[pausa 4]
+
+{divisor-r} Porque cada total de tratamiento suma un dato por cada bloque. Si hay cuatro operadores, ese total junta cuatro datos, y por eso se divide por cuatro. Confundir esos divisores es de los errores más comunes en la prueba.
+
+{gl} Los grados de libertad son: tratamientos, ka menos uno; bloques, be menos uno; y el error, ka menos uno por be menos uno.
+
+{ens} Veamos los números del ensamble. {e-corr} El gran total es ciento sesenta minutos, con dieciséis datos, así que la corrección es ciento sesenta al cuadrado sobre dieciséis: mil seiscientos. {e-sct} La suma de cuadrados total da ciento ocho. {e-sctr} La de métodos, sesenta y uno coma cinco. {e-scb} La de operadores, veintiocho coma cinco. {e-sce} Y el error, por diferencia, dieciocho.
+
+{e-glq} ¿Cuántos grados de libertad tiene ese error, con cuatro métodos y cuatro operadores?
+
+[pausa 3]
+
+{e-gl} Nueve: tres por tres. {e-cme} Así que el cuadrado medio del error es dieciocho dividido en nueve, o sea dos. {e-fm} El efe de los métodos es veinte coma cinco dividido en dos, diez coma veinticinco, con un pe valor de cero coma cero cero tres. {e-fo} Y el de los operadores es nueve coma cinco dividido en dos, cuatro coma setenta y cinco, con pe valor cero coma cero tres. {e-conc} Los dos son significativos: los métodos difieren, y el operador también influye en el tiempo.
+
+## En erre
+
+{r} En erre esto es muy directo. Se crean el método y el operador como factores, {r-aov} y se ajusta a o ve con la respuesta, tilde, método más operador.
+
+{r-factor} Un detalle importante: si el operador viene codificado con números, hay que pasarlo por factor. Si no, erre lo trata como una variable numérica y le da un solo grado de libertad.
+
+{r-mas} Y otro detalle: en la fórmula va un signo más, no un asterisco. ¿Por qué no se pone el asterisco, que agregaría la interacción?
+
+[pausa 4]
+
+{r-mas-r} Por dos razones. El modelo del de be ce a supone que no hay interacción. {r-celda} Y con una sola observación por celda, no quedarían datos para estimar el error.
+
+{r-lsd} Para las comparaciones se usa la función ele ese de punto test, del paquete agricolae, dándole el modelo y el nombre del tratamiento. {r-grupos} En la salida, los tratamientos se agrupan con letras: si dos comparten una letra, no difieren. {r-medias} En el ensamble, el método ce tiene la media más alta, unos doce coma ocho minutos, y el método a la más baja, siete coma cinco. {r-dif} Ce difiere de a y de be, y de difiere de a.
+
+## Leer el efecto de bloque
+
+{bl} ¿Y qué hago con el resultado del bloque? {bl-si} Si sale significativo, el bloqueo valió la pena: ese factor sí movía la respuesta y fue bueno controlarlo. {bl-no} Si no sale significativo, los bloques son parecidos entre sí, y eso es un argumento para no controlar ese factor en experimentos futuros.
+
+{bl-elegir} Hay algo que conviene tener claro. Con los tratamientos uno busca el mejor. Con los bloques, no. No se trata de elegir al mejor operador, sino de tomar decisiones, por ejemplo, darle más entrenamiento a alguno. {bl-ens} En el ensamble, el operador uno es el que se diferencia del operador dos.
+
+## La diferencia mínima significativa
+
+{lsd} La ele ese de, o diferencia mínima significativa, es la distancia mínima que tiene que haber entre dos medias para decir que son distintas.
+
+{lsd-f} En el de be ce a se calcula como el te de Student, con alfa medio y los grados de libertad del error, multiplicado por la raíz de dos veces el cuadrado medio del error, dividido por el número de bloques. {lsd-gl} Fíjate en dos cosas. Los grados de libertad son los del error del de be ce a, no los del ce a. {lsd-b} Y el número de bloques cumple el papel de las réplicas.
+
+{lsd-num} En el ensamble, el te con nueve grados de libertad es dos coma doscientos sesenta y dos, y la raíz de dos por dos sobre cuatro es uno. {lsd-val} Así que la ele ese de vale dos coma doscientos sesenta y dos. {lsd-si} Con eso, a contra ce, a contra de, y be contra ce son distintos. {lsd-no} En cambio, a con be, be con de, y ce con de, no.
+
+## El ejercicio de la prueba
+
+{f} El ejercicio típico de prueba fue con fertilizantes. Tres fertilizantes, y el rendimiento en kilos por parcela. {f-sect} Como la fertilidad del suelo no es pareja, el terreno se divide en cuatro sectores, y esos sectores son los bloques.
+
+{f-tot} Los totales de los fertilizantes son ochenta y ocho, cien y ciento doce, y el gran total, trescientos. {f-sc} Las sumas de cuadrados quedan así: total, ciento cincuenta y seis; {f-sctr} fertilizantes, setenta y dos; {f-scb} sectores, sesenta; {f-sce} y el error, por diferencia, veinticuatro, con seis grados de libertad. {f-cme} El cuadrado medio del error es cuatro.
+
+{f-ft} El efe de los fertilizantes es treinta y seis sobre cuatro, nueve. {f-ftc} El valor crítico con dos y seis grados de libertad es cinco coma catorce, así que se rechaza: los fertilizantes difieren. {f-fb} El efe del sector es veinte sobre cuatro, cinco, contra un crítico de cuatro coma setenta y seis. También significativo, aunque por poco.
+
+{f-lsd} La ele ese de da tres coma cuarenta y seis. {f-medias} Las medias de los fertilizantes son veintidós, veinticinco y veintiocho. ¿Qué par supera esa diferencia?
+
+[pausa 4]
+
+{f-par} Solo el fertilizante tres contra el uno, que difieren en seis. Así que se recomienda el fertilizante tres.
+
+{f-dca} Y ahora viene la parte que más enseña de este ejercicio. ¿Qué habría pasado si no se hubiera bloqueado, y se analizara todo como un ce a?
+
+[pausa 4]
+
+{f-mueve} La suma de cuadrados del sector, esos sesenta, se iría al error. {f-err} El error pasaría a ochenta y cuatro con nueve grados de libertad, y su cuadrado medio subiría de cuatro a más de nueve. {f-dcaf} El efe de los fertilizantes caería a tres coma ochenta y seis, que no alcanza el crítico de cuatro coma veintiséis. {f-nada} Sin bloque, no habríamos visto ninguna diferencia entre fertilizantes.
+
+{f-moraleja} Por eso, aunque el efe del bloque apenas pase el crítico, no se puede decir que el bloqueo no sirvió. Fue justamente lo que permitió ver el efecto del fertilizante.
+
+## Para cerrar
+
+{c} Para ubicarte: {c-dca} si tienes un solo factor y unidades parejas, usas el ce a. {c-dbca} Si además hay un factor que molesta, como el operador, el día o el sector, lo bloqueas, y en erre lo agregas con un signo más. {c-fact} Y si todos los factores te interesan, ya no es bloqueo: es un diseño factorial, que es lo que viene en los próximos módulos.
+
+{fin} Eso fue el módulo veinte.

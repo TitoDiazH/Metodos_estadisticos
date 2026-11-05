@@ -1,0 +1,45 @@
+# Ejercicio 5.20: pegamento y temperatura de curado
+@modulo m25-factorial-general
+@ejercicio Libro guía · Cap. 5, ej. 20
+@pregunta m25-d008
+@orden 3
+
+## Qué pide el ejercicio
+
+{inicio} El ejercicio veinte del capítulo cinco busca mejorar la resistencia a la torsión de componentes electrónicos pegados sobre placas.
+
+{enun} Se prueban dos tipos de pegamento y tres temperaturas de curado: sesenta, ochenta y cien grados. {clave1} En cada combinación se analizan dos componentes, o sea, dos réplicas. {clave2} Y se busca la mayor resistencia.
+
+{dis} Es un factorial dos por tres con dos réplicas: doce corridas.
+
+{modelo} El modelo: media, efecto del pegamento, efecto de la temperatura, interacción y error. {h0a} Hipótesis: el pegamento no influye, {h0b} la temperatura no influye, {h0ab} y no hay interacción.
+
+## Totales y sumas de cuadrados
+
+{tot} Los totales de celda, para el pegamento uno, son cinco coma tres, siete coma dos y ocho coma dos. {tot-ij} Para el pegamento dos: dos coma ocho dos, seis y nueve. {tot-g} El gran total es treinta y ocho coma cinco dos.
+
+{sct} La suma de cuadrados total es doce coma siete nueve. {sca} La del pegamento, cero coma sesenta y nueve. {scb} La de la temperatura, diez coma tres cinco. {scab} La interacción, por diferencia desde las celdas, uno coma tres siete. {sce} Y el error, apenas cero coma tres ocho, con seis grados de libertad.
+
+## Tabla ANOVA
+
+{fa} El pegamento tiene un efe de diez coma nueve nueve, contra un crítico de cinco coma noventa y nueve: es significativo. {fb} La temperatura, ochenta y dos coma tres cinco: muy significativa. {fab} Y la interacción, diez coma ocho siete, contra un crítico de cinco coma catorce, con pe valor cero coma cero uno.
+
+{conc} Los tres efectos están activos. Y como la interacción es significativa, cambia la forma de concluir. ¿Puedo elegir el mejor pegamento mirando solo su media?
+
+[pausa 3]
+
+{conc-r} No. Con interacción, el efecto de un factor depende del nivel del otro. Hay que mirar las seis medias de celda, no los promedios por separado.
+
+## Gráficas y mejor tratamiento
+
+{graf} En la gráfica de interacción se ve claro. A sesenta grados, el pegamento uno resiste más: dos coma sesenta y cinco contra uno coma cuarenta y uno. Pero a cien grados se invierten: el pegamento dos llega a cuatro coma cinco, y el uno se queda en cuatro coma uno. Las líneas se cruzan.
+
+{efectos} Si solo mirara los efectos principales, diría que el pegamento uno es mejor, porque su media general es tres coma cuarenta y cinco contra dos coma noventa y siete. Y sería un error.
+
+{mejor} El mejor tratamiento es el pegamento dos con curado a cien grados. {pred} Con interacción activa, la predicción es simplemente la media de esa celda: cuatro coma cinco. Y un intervalo aproximado le suma y le resta cero coma cuatro tres.
+
+## Residuos
+
+{sup} Al revisar los residuos hay problemas. {sup-sw} Shapiro Wilk rechaza la normalidad, con pe cero coma cero cero cinco, {sup-lev} y Levene detecta varianzas distintas entre tratamientos. Con solo dos réplicas por celda, conviene tomar estas conclusiones con cautela.
+
+{fin} La idea que se lleva este ejercicio: cuando la interacción es activa, el mejor tratamiento se elige celda por celda, nunca combinando los mejores niveles de cada factor por separado.

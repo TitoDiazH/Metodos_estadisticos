@@ -1,0 +1,57 @@
+# Ejercicio 6.3: un dos al cuadrado sin software
+@modulo m21-factorial-2k
+@ejercicio Libro guía · Cap. 6, ej. 3
+@pregunta m21-d002
+@orden 1
+
+## Qué pide el ejercicio
+
+{inicio} Empezamos los diseños dos a la ka con el ejercicio tres del capítulo seis.
+
+{enun} Nos muestran una tabla con dos factores, a y be, cada uno con un signo menos o más, y tres columnas de resultados. {clave1} La consigna dice «conteste sin usar software», así que todo va a mano. {clave2} Y nos dan los totales de cada tratamiento ya calculados.
+
+{dis} ¿Qué nombre recibe este diseño?
+
+[pausa 3]
+
+{dis-r} Es un factorial dos al cuadrado: dos factores, con dos niveles cada uno. Eso da cuatro tratamientos, que en notación de Yates son uno, a, be y a be. {rep} Y las tres columnas son tres réplicas, así que hay doce corridas.
+
+{orden} ¿En qué orden se deben correr? Al azar: se sortean las doce. Así, cualquier factor que no controlamos, como el desgaste o la hora del día, se reparte entre los tratamientos y no se confunde con a, be o la interacción.
+
+{estudia} Con este diseño se estudian dos efectos principales, a y be, y la interacción a be. Y gracias a las réplicas, también se puede estimar el error.
+
+## Contrastes
+
+{signos} Para los contrastes se arma la tabla de signos. La columna de a tiene más donde a está alto. La de be, donde be está alto. {signos-ab} Y la de a be se obtiene multiplicando las dos: queda más en uno y en a be, y menos en a y en be.
+
+{tot} Los totales son: uno, doscientos cuarenta y seis; a, doscientos treinta y nueve; be, doscientos siete; y a be, doscientos setenta.
+
+{ca} El contraste de a suma los totales con signo más y resta los otros: a más a be, menos be, menos uno. Doscientos treinta y nueve más doscientos setenta, menos doscientos siete, menos doscientos cuarenta y seis. Da cincuenta y seis.
+
+{cb} El de be: be más a be, menos a, menos uno. Da menos ocho.
+
+{cab} Y el de a be: uno más a be, menos a, menos be. Da setenta.
+
+## Efectos
+
+{ef} El efecto es el contraste dividido por ene por dos elevado a ka menos uno. Con tres réplicas y dos factores, eso es dividir por seis. {ef-a} El efecto de a es nueve coma tres tres. {ef-b} El de be, menos uno coma tres tres. {ef-ab} Y el de la interacción, once coma seis siete.
+
+{ef-mira} Fíjate en algo raro: la interacción es el efecto más grande de los tres.
+
+## Gráficas
+
+{medias} Las medias de cada tratamiento son: uno, ochenta y dos; a, setenta y nueve coma seis siete; be, sesenta y nueve; y a be, noventa.
+
+{gef} En la gráfica de efectos principales, a sube de setenta y cinco coma cinco a ochenta y cuatro coma ocho, una pendiente clara. Be, en cambio, casi no se mueve: de ochenta coma ocho a setenta y nueve coma cinco.
+
+{gint} En la gráfica de interacción la historia cambia. Con be bajo, subir a baja la respuesta de ochenta y dos a setenta y nueve coma siete. Pero con be alto, la sube de sesenta y nueve a noventa. {gint-cruce} Las líneas se cruzan: el efecto de a depende totalmente del nivel de be.
+
+## ¿Be influye o no?
+
+{binf} La última pregunta: ¿el factor be parece tener influencia?
+
+[pausa 4]
+
+{binf-r} Sí, aunque su efecto principal sea chico. Con a bajo, subir be baja la respuesta en trece. Con a alto, la sube en diez coma tres. Los dos cambios se cancelan en el promedio, y por eso el efecto principal sale casi cero.
+
+{fin} La moraleja: un efecto principal pequeño no significa que el factor no importe. Si participa en una interacción fuerte, sí importa, y mucho.

@@ -1,0 +1,61 @@
+# Ejercicio 4.9: bloques con tres tratamientos
+@modulo m20-dbca
+@ejercicio Libro guía · Cap. 4, ej. 9
+@pregunta m20-d002
+@orden 1
+
+## Qué pide el ejercicio
+
+{inicio} Vamos con el ejercicio nueve del capítulo cuatro del libro guía.
+
+{enun} El enunciado nos entrega una tabla con tres tratamientos, a, be y ce, medidos en cuatro bloques. {clave1} La primera pista está en las palabras «diseño en bloques al azar»: ya nos dicen qué modelo usar. {clave2} La segunda es que nos piden totales, sumas de cuadrados, la tabla ANOVA y la ele ese de, en ese orden. {clave3} Y hay que trabajar con alfa igual a cero coma cero cinco.
+
+{dis} Antes de calcular, ubiquemos las piezas. Los tratamientos son tres, así que ka vale tres. Los bloques son cuatro, así que be vale cuatro. En total hay doce datos.
+
+{modelo} El modelo es el del de be ce a: cada dato es la media global, más el efecto del tratamiento, más el efecto del bloque, más el error. {h0t} La hipótesis nula de tratamientos dice que los tres efectos son cero, {h0b} y la de bloques, que los cuatro efectos de bloque son cero.
+
+## Totales
+
+{tot} Partimos por los totales, que son la base de todo. {tot-i} Sumando cada fila: el tratamiento a suma quince, el be suma veintinueve, y el ce, veinte. {tot-j} Sumando cada columna, los bloques suman catorce, diecinueve, ocho y veintitrés. {tot-g} Y el gran total es sesenta y cuatro. Una buena costumbre es comprobar que filas y columnas sumen lo mismo. Aquí ambas dan sesenta y cuatro, así que vamos bien.
+
+## Sumas de cuadrados
+
+{corr} El término de corrección es el gran total al cuadrado sobre el número de datos: sesenta y cuatro al cuadrado, dividido en doce, da trescientos cuarenta y uno coma tres tres tres.
+
+{sct} Para la suma de cuadrados total, elevo cada dato al cuadrado y los sumo. Eso da cuatrocientos catorce. Menos la corrección, quedan setenta y dos coma seis seis siete.
+
+{sctr} Para tratamientos, elevo al cuadrado los totales de fila, quince, veintinueve y veinte, y los sumo: mil cuatrocientos sesenta y seis. ¿Por cuánto divido ese número?
+
+[pausa 3]
+
+{sctr-div} Por cuatro, el número de bloques, porque cada total junta cuatro datos. Queda trescientos sesenta y seis coma cinco, y al restar la corrección, veinticinco coma uno seis siete.
+
+{scb} Con los bloques es lo mismo, pero dividiendo por tres. Los totales de columna al cuadrado suman mil ciento cincuenta; dividido en tres y menos la corrección, da cuarenta y dos exactos.
+
+{sce} Y el error sale por diferencia: setenta y dos coma seis seis siete, menos veinticinco coma uno seis siete, menos cuarenta y dos. Queda cinco coma cinco.
+
+## Tabla ANOVA
+
+{gl} Los grados de libertad son dos para tratamientos, tres para bloques, y dos por tres, seis, para el error.
+
+{cm} Dividiendo cada suma por sus grados de libertad, los cuadrados medios quedan en doce coma cinco ocho, catorce, y cero coma nueve uno siete para el error.
+
+{ft} El efe de tratamientos es doce coma cinco ocho dividido en cero coma nueve uno siete: trece coma setenta y tres. {ftc} El crítico con dos y seis grados de libertad es cinco coma catorce. Trece coma siete lo supera de lejos, y el pe valor es cero coma cero cero seis. {conc-t} Se rechaza la hipótesis nula: los tratamientos no tienen todos la misma media.
+
+{fb} Para los bloques, catorce dividido en cero coma nueve uno siete da quince coma veintisiete, contra un crítico de cuatro coma setenta y seis. {conc-b} También se rechaza. O sea, los bloques sí eran distintos, y bloquear sirvió: esa variabilidad no quedó metida en el error.
+
+## Comparaciones con la ele ese de
+
+{lsd} Falta ver qué tratamientos difieren. La ele ese de usa el te de Student con seis grados de libertad, que vale dos coma cuatro cuatro siete, {lsd-n} multiplicado por la raíz de dos por cero coma nueve uno siete, dividido en cuatro bloques. Da uno coma seis cinco siete.
+
+{medias} Las medias son: a, tres coma setenta y cinco; be, siete coma veinticinco; y ce, cinco.
+
+{pares} Ahora comparo cada par con uno coma seis cinco siete. A contra be difieren en tres coma cinco: sí son distintos. A contra ce, uno coma veinticinco: no alcanza. Be contra ce, dos coma veinticinco: sí.
+
+{mejor} El enunciado no dice si conviene una respuesta alta o baja. Si suponemos que mayor es mejor, el tratamiento be es significativamente superior a los otros dos.
+
+## En erre y cierre
+
+{r} En erre se ajusta a o ve con la respuesta, tilde, tratamiento más bloque, con los dos como factor. Y la ele ese de sale con la función ele ese de punto test, del paquete agricolae.
+
+{fin} Resumiendo: totales, corrección, sumas de cuadrados con los divisores correctos, el error por diferencia, y recién ahí la tabla. Ese orden te sirve para cualquier ejercicio de bloques.

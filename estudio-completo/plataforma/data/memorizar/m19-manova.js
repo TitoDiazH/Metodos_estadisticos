@@ -17,5 +17,15 @@ PLATAFORMA.registrar("memorizar", [
     fuente: [{ id: "C7.2", loc: "slide 34" }, { id: "CMAN", loc: "páginas 5–7" }] },
   { id: "m19-mem-06", modulo: "m19-manova", categoria: "funcion-R", titulo: "<code>manova</code> · <code>summary(…, test = …)</code> · <code>summary.aov</code>",
     contenido: "<code>manova(cbind(y1, y2) ~ g)</code> · <code>summary(fit, test = \"Wilks\")</code> (o <code>\"Pillai\"</code>, <code>\"Hotelling-Lawley\"</code>, <code>\"Roy\"</code>) · <code>summary.aov(fit)</code> (post hoc) · <code>TukeyHSD(aov(y ~ g))</code> · <code>biotools::boxM</code> · <code>MVN::mvn(…, \"mardia\")</code>.",
-    fuente: [{ id: "C7.2", loc: "slides 30–33" }] }
+    fuente: [{ id: "C7.2", loc: "slides 30–33" }] },
+  { id: "m19-mem-07", modulo: "m19-manova", categoria: "tabla", titulo: "MANOVA = la tabla ANOVA, pero con matrices",
+    contenido: String.raw`<div class="tz"><table class="armar">
+<tr><th>Fila</th><th>ANOVA (1 respuesta)</th><th>MANOVA ($p$ respuestas)</th></tr>
+<tr class="r-f"><td>Entre grupos</td><td>$SC_{TRAT}$ (un número)</td><td>$B$: matriz $p\times p$ de SC y productos <strong>entre</strong></td></tr>
+<tr class="r-e"><td>Dentro (error)</td><td>$SC_E$</td><td>$W$: matriz $p\times p$ <strong>dentro</strong> de grupos</td></tr>
+<tr class="r-t"><td>Total</td><td>$SC_T=SC_{TRAT}+SC_E$</td><td>$T=W+B$</td></tr>
+<tr class="r-d"><td>Estadístico</td><td>$F_0=CM_{TRAT}/CM_E$ — <strong>grande</strong> ⇒ rechazo</td><td>$\Lambda=\dfrac{|W|}{|W+B|}$ — <strong>pequeña</strong> ⇒ rechazo</td></tr>
+</table></div>
+<p class="regla">🧠 Cambia «suma de cuadrados» por «matriz», y «dividir» por «determinante». Ojo con la dirección: la $F$ se rechaza cuando es grande; la $\Lambda$ de Wilks, cuando es <strong>cercana a 0</strong>.</p>`,
+    fuente: [{ id: "C7.2", loc: "slides 29–30" }] }
 ]);

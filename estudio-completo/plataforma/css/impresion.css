@@ -28,3 +28,7 @@ pre.codigo span { color: #000 !important; }
 .katex-display { overflow: visible; }
 .pie { margin-top: 18pt; font-size: 8pt; }
 @page { margin: 14mm; }
+#tipSigla { display: none !important; }
+abbr.sigla { text-decoration: none; }
+.katex.sigla-formula { border-bottom: none; }
+.mem-visual { break-inside: avoid; box-shadow: none; }

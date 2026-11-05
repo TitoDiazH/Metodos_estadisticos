@@ -1,0 +1,51 @@
+# Ejercicio 5.19: hinchamiento del catalizador
+@modulo m25-factorial-general
+@ejercicio Libro guía · Cap. 5, ej. 19
+@pregunta m25-d005
+@orden 2
+
+## Qué pide el ejercicio
+
+{inicio} El ejercicio diecinueve del capítulo cinco viene de la fabricación de botellas de polietileno.
+
+{enun} Se estudia el hinchamiento del catalizador después de la extrusión. {clave1} Hay dos factores: el molde, con dos niveles, y el catalizador, con tres. {clave2} Cada combinación se repitió diez veces, así que son sesenta corridas. {clave3} Y un dato clave para el final: se desea un hinchamiento bajo.
+
+{dis} Es un factorial dos por tres con diez réplicas. Con tantos datos, aquí no tiene sentido sumar a mano: lo razonable es leer la tabla que entrega erre.
+
+{modelo} El modelo es el del factorial: media, efecto del molde, efecto del catalizador, interacción y error. {h0a} Las hipótesis: el molde no influye, {h0b} el catalizador no influye, {h0ab} y no hay interacción.
+
+## Tabla ANOVA
+
+{tabla} En la tabla, el error tiene cincuenta y cuatro grados de libertad, que salen de seis tratamientos por nueve, y un cuadrado medio de uno coma seis dos.
+
+{fa} El molde tiene un efe de ciento once. {fb} El catalizador, de cuarenta y siete. Los dos con pe valor prácticamente cero. {fab} La interacción, en cambio, tiene un efe de uno coma cero seis, con pe valor cero coma treinta y cinco.
+
+{conc} Así que los efectos activos son el molde y el catalizador, y la interacción no. De nuevo, eso nos permite mirar cada factor por separado.
+
+## LSD y Tukey
+
+{medias} Las medias por molde son noventa y dos coma cinco siete para el uno, y ochenta y nueve coma uno para el dos. Por catalizador: ochenta y nueve coma tres cinco, noventa coma uno, y noventa y tres coma cero cinco.
+
+{lsd} La ele ese de para el molde, con treinta datos por media, es cero coma seis seis. {lsd-b} Para el catalizador, con veinte datos por media, es cero coma ocho uno.
+
+{tukey} Tukey, en cambio, usa el rango estudentizado en vez del te de Student. Para el catalizador da cero coma nueve siete, más que la ele ese de. ¿Por qué Tukey exige una diferencia mayor?
+
+[pausa 3]
+
+{tukey-r} Porque controla el error tipo uno de todas las comparaciones a la vez. Es más conservador: si algo es significativo con Tukey, también lo es con la ele ese de.
+
+{pares} Con cualquiera de los dos métodos, el catalizador tres es distinto de los otros dos. En cambio el uno y el dos difieren solo en cero coma setenta y cinco, que no alcanza.
+
+## Interacción y mejor tratamiento
+
+{graf} En la gráfica de interacción, las líneas de los dos moldes van casi paralelas: el molde dos queda siempre unos tres puntos más abajo, sea cual sea el catalizador.
+
+{mejor} Como queremos hinchamiento bajo, conviene el molde dos y el catalizador uno. {pred} Sin interacción, la predicción se arma sumando a la media global los efectos de cada factor: noventa coma ocho tres, menos uno coma siete tres por el molde, menos uno coma cuatro ocho por el catalizador. Da ochenta y siete coma seis dos.
+
+## Supuestos
+
+{sup} Al revisar los supuestos, aparece un detalle. {sup-sw} Shapiro Wilk rechaza la normalidad de los residuos, con pe valor menor que cero coma cero cero cero uno. {sup-lev} En cambio Levene no detecta varianzas distintas, con pe cero coma cincuenta y cinco.
+
+{disp} Y la última pregunta: ¿en qué molde es menor la dispersión? La desviación de los residuos es uno coma uno en el molde uno, y uno coma tres cuatro en el molde dos. Entonces la dispersión es menor en el molde uno.
+
+{fin} Fíjate en la tensión que deja el ejercicio: el molde dos da menor hinchamiento promedio, pero el molde uno es un poco más parejo. Elegir bien es pesar las dos cosas.

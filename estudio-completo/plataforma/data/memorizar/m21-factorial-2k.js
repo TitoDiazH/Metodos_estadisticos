@@ -20,5 +20,26 @@ PLATAFORMA.registrar("memorizar", [
     fuente: [{ id: "C7.4", loc: "slides 11, 20 y 26" }] },
   { id: "m21-mem-07", modulo: "m21-factorial-2k", categoria: "funcion-R", titulo: "<code>model.tables</code> · <code>interaction.plot</code> · <code>plot.design</code>",
     contenido: "<code>model.tables(modelo, type = \"effects\")</code> (o <code>\"means\"</code>) · <code>interaction.plot(datos$A, datos$B, datos$Y)</code> · <code>par(mfrow = c(1, 3))</code> · <code>plot.design(datos[, 2:4])</code> (sin bloques) · <code>FrF2::IAPlot(modelo)</code>.",
-    fuente: [{ id: "S7.4" }, { id: "C7.4", loc: "slides 12–15 y 22" }] }
+    fuente: [{ id: "S7.4" }, { id: "C7.4", loc: "slides 12–15 y 22" }] },
+  { id: "m21-mem-08", modulo: "m21-factorial-2k", categoria: "tabla", titulo: "Construir la tabla de signos del 2³ (y del 2²)",
+    contenido: String.raw`<div class="tz"><table class="signos">
+<tr><th>Total</th><th class="fa">A</th><th class="fa">B</th><th class="fa">C</th><th class="in">AB</th><th class="in">AC</th><th class="in">BC</th><th class="in">ABC</th></tr>
+<tr><th>(1)</th><td class="m">−</td><td class="m">−</td><td class="m">−</td><td class="p">+</td><td class="p">+</td><td class="p">+</td><td class="m">−</td></tr>
+<tr><th>a</th><td class="p">+</td><td class="m">−</td><td class="m">−</td><td class="m">−</td><td class="m">−</td><td class="p">+</td><td class="p">+</td></tr>
+<tr><th>b</th><td class="m">−</td><td class="p">+</td><td class="m">−</td><td class="m">−</td><td class="p">+</td><td class="m">−</td><td class="p">+</td></tr>
+<tr><th>ab</th><td class="p">+</td><td class="p">+</td><td class="m">−</td><td class="p">+</td><td class="m">−</td><td class="m">−</td><td class="m">−</td></tr>
+<tr><th>c</th><td class="m">−</td><td class="m">−</td><td class="p">+</td><td class="p">+</td><td class="m">−</td><td class="m">−</td><td class="p">+</td></tr>
+<tr><th>ac</th><td class="p">+</td><td class="m">−</td><td class="p">+</td><td class="m">−</td><td class="p">+</td><td class="m">−</td><td class="m">−</td></tr>
+<tr><th>bc</th><td class="m">−</td><td class="p">+</td><td class="p">+</td><td class="m">−</td><td class="m">−</td><td class="p">+</td><td class="m">−</td></tr>
+<tr><th>abc</th><td class="p">+</td><td class="p">+</td><td class="p">+</td><td class="p">+</td><td class="p">+</td><td class="p">+</td><td class="p">+</td></tr>
+</table></div>
+<ol class="pasos">
+<li><b>Filas en notación de Yates</b>: empieza con (1); cada letra nueva se escribe sola y luego multiplicada por todo lo anterior: (1), a → b, ab → c, ac, bc, abc.</li>
+<li><b>Nombre de la fila = factores en nivel alto</b>: si la letra está, ese factor va en +; si no, en −. (1) = todos bajos.</li>
+<li><b>Columnas de factores</b> (fíjate en el patrón): A alterna de a 1 (− + − +…), B de a 2 (− − + +…), C de a 4.</li>
+<li><b>Columnas de interacción</b>: multiplica los signos de la fila: AB = A × B, ABC = A × B × C.</li>
+<li><b>Contraste</b> = suma de los totales con el signo de su columna ⇒ Efecto $=\dfrac{\text{Contraste}}{n\,2^{k-1}}$ · $SC=\dfrac{\text{Contraste}^2}{n\,2^k}$.</li>
+</ol>
+<p class="regla">🧠 Para un 2² basta con las 4 primeras filas y las columnas A, B, AB. En la tabla ANOVA del $2^k$ cada efecto tiene <strong>1 gl</strong>; el Error tiene $2^k(n-1)$ gl y el Total $n\,2^k-1$.</p>`,
+    fuente: [{ id: "C7.4", loc: "slides 4–5 y 7–8" }] }
 ]);

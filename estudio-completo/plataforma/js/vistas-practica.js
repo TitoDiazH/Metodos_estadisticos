@@ -145,6 +145,13 @@
      "partes" que se desbloquean una a una. Cada parte parte oculta; al abrirla se ve
      su solución y se responde «¿la tuviste correcta?». Recién entonces se habilita
      la siguiente. Puntaje = puntos de las partes marcadas como correctas. */
+  /* Si el ejercicio tiene una clase en audio con pizarra animada (tools/guiones con @pregunta), se enlaza. */
+  function claseAnimada(q) {
+    var a = (P.datos.audio || []).filter(function (x) { return x.pregunta === q.id; })[0];
+    if (!a) return "";
+    return '<p class="fila-botones"><a class="btn btn-sec" href="#/audio/' + a.id + '">🎬 Ver la explicación animada paso a paso (' +
+      Math.round(a.duracion / 60) + " min)</a></p>";
+  }
   function estadoDes(id) { return S.e.desarrollo[id] || { r: [], vista: 0 }; }
   function tocarDes(id) { return S.e.desarrollo[id] || (S.e.desarrollo[id] = { r: [], vista: 0 }); }
   function puntosDes(q, g) {
@@ -229,6 +236,7 @@
       var i = lista.indexOf(q), ant = i > 0 ? lista[i - 1] : null, sig = i >= 0 && i < lista.length - 1 ? lista[i + 1] : null;
       var h = '<nav class="migas"><a href="#/desarrollo">✍️ Desarrollo</a> › ' + U.esc(q.id) + "</nav><h1>" + U.esc(q.titulo || "Pregunta de desarrollo") + "</h1>" +
         '<article class="pregunta" data-qid="' + q.id + '">' + M.cabecera(q, U.chipOrigen(q.origen)) + M.cuerpo(q) + "</article>" +
+        claseAnimada(q) +
         '<section class="tarjeta partes"><h2>Corrección por partes</h2>' +
         '<p class="ayuda">Desarrolla en papel. Abre una parte solo cuando ya la tengas resuelta: verás su solución y marcarás si la tuviste correcta.</p>' +
         '<ol class="lista-partes">' + q.partes.map(function (_, k) { return htmlParte(q, g, k); }).join("") + "</ol>" +

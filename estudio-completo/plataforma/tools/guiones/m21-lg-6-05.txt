@@ -1,0 +1,45 @@
+# Ejercicio 6.5: un dos al cubo desordenado
+@modulo m21-factorial-2k
+@ejercicio Libro guía · Cap. 6, ej. 5
+@pregunta m21-d006
+@orden 2
+
+## Qué pide el ejercicio
+
+{inicio} El ejercicio cinco del capítulo seis es un dos al cubo sin réplicas.
+
+{enun} Nos dan ocho filas con los signos de a, be y ce, y una respuesta. {clave1} La primera trampa está en el enunciado: «las filas no están en orden estándar». {clave2} Y otra vez se pide contestar sin software.
+
+## Notación de Yates
+
+{yates} Lo primero es ponerle nombre a cada fila. La regla de Yates: se escriben las letras de los factores que están en nivel alto. {yates-1} La primera fila tiene a bajo, be alto y ce bajo: entonces es be. {yates-2} La segunda tiene todo alto: a be ce. {yates-3} La tercera, todo bajo: uno. {yates-resto} Y siguiendo igual: a ce, ce, a be, be ce y a.
+
+{ordenar} Con eso ya se pueden reordenar mentalmente: uno vale treinta, a diecisiete, be veinticinco, a be catorce, ce diez, a ce diez, be ce treinta y uno, y a be ce doce.
+
+## Efectos de a y be
+
+{ca} El contraste de a suma los tratamientos que tienen la letra a y resta los que no: a, a be, a ce y a be ce, menos uno, be, ce y be ce. Diecisiete más catorce más diez más doce son cincuenta y tres. Treinta más veinticinco más diez más treinta y uno son noventa y seis. {ef-a} La diferencia es menos cuarenta y tres. Sin réplicas, el efecto se divide por cuatro: menos diez coma setenta y cinco.
+
+{cb} Para be se hace lo mismo con la letra be: el contraste da quince, {ef-b} y el efecto, tres coma setenta y cinco.
+
+{gef} En la gráfica de efectos principales, a baja de veinticuatro a trece coma veinticinco: una pendiente fuerte. Be sube de dieciséis coma setenta y cinco a veinte coma cinco: bastante menos.
+
+## La interacción a be
+
+{cab} Para la interacción, el signo de cada tratamiento es el producto de los signos de a y de be. Llevan más los que tienen las dos letras o ninguna: uno, a be, ce y a be ce. {ef-ab} El contraste da menos diecisiete, y el efecto, menos cuatro coma veinticinco.
+
+{gint} En la gráfica de interacción, promediando sobre ce: con be bajo, a baja la respuesta de veinte a trece coma cinco. Con be alto, de veintiocho a trece. {gint-r} Las pendientes son distintas, así que hay indicios de interacción.
+
+## ¿Son significativos?
+
+{sig} El ejercicio pregunta qué haría para saber si estos efectos son significativos. ¿Qué problema tiene este diseño?
+
+[pausa 4]
+
+{sig-r} No tiene réplicas, así que no hay grados de libertad para el error. {sig-1} Una salida es graficar los efectos en papel normal: los que se alejan de la recta son los activos. {sig-2} Otra, suponer que las interacciones de orden alto son despreciables y usarlas como error. {sig-3} Y la más directa: replicar el experimento.
+
+## Sumas de cuadrados
+
+{sc} Por último, las sumas de cuadrados. Con un dos al cubo sin réplicas, se divide el contraste al cuadrado por ocho. {sc-a} La de a: cuarenta y tres al cuadrado sobre ocho, doscientos treinta y uno coma uno dos cinco. {sc-ab} Y la de a be: diecisiete al cuadrado sobre ocho, treinta y seis coma uno dos cinco.
+
+{fin} El paso que no hay que saltarse en este ejercicio es el primero: nombrar bien cada tratamiento. Con un solo código mal puesto, todos los contrastes salen mal.

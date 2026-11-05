@@ -1,0 +1,99 @@
+# Diseño factorial
+
+## Cuando todos los factores importan
+
+{inicio} Ahora toca el módulo veintiuno: el diseño factorial.
+
+{mirada} En el módulo de bloques, el bloque era un factor que molestaba. Ahora cambia la mirada: tenemos varios factores y todos nos interesan por igual. Puede ser la temperatura y la presión, o el tipo de material y la máquina. {todas} La idea del factorial es probar todas las combinaciones de sus niveles, en orden aleatorio.
+
+{para} ¿Para qué? Normalmente, para encontrar la combinación en la que el proceso funciona mejor. {tipos} Los factores pueden ser cualitativos, como el operador o el tipo de material, o cuantitativos, como la temperatura, la velocidad o la concentración. {niveles} Lo único que se exige es que cada factor tenga al menos dos niveles.
+
+## El efecto principal
+
+{ej} Partamos con el ejemplo más chico posible: dos factores, cada uno con dos niveles. El primero es la levadura, y el segundo, la temperatura, veintidós o treinta grados. La respuesta es el rendimiento.
+
+{datos} Con los dos factores en nivel bajo, el rendimiento es veintiocho. {d-a} Con solo la levadura alta, cuarenta y uno. {d-b} Con solo la temperatura alta, sesenta y tres. {d-ab} Y con los dos altos, cuarenta y cinco.
+
+{def} El efecto principal de un factor es cuánto cambia, en promedio, la respuesta al pasar de su nivel bajo a su nivel alto. {ef-a} Para la levadura: el promedio cuando está alta es cuarenta y tres, y cuando está baja, cuarenta y cinco y medio. Su efecto es menos dos coma cinco.
+
+{ef-b-q} Te dejo el de la temperatura. Con temperatura alta los rendimientos son sesenta y tres y cuarenta y cinco, y con temperatura baja, veintiocho y cuarenta y uno.
+
+[pausa 5]
+
+{ef-b} Con temperatura alta el promedio es cincuenta y cuatro, y con temperatura baja, treinta y cuatro y medio. El efecto es diecinueve coma cinco. {abs} Así que la temperatura pesa mucho más que la levadura. Y eso se juzga por el valor absoluto, no por el signo.
+
+## La interacción
+
+{raro} Pero hay algo raro en esos números. {raro-1} Mira lo que hace la levadura con temperatura baja: el rendimiento pasa de veintiocho a cuarenta y uno, sube trece. {raro-2} Y con temperatura alta pasa de sesenta y tres a cuarenta y cinco: baja dieciocho.
+
+{int-def} O sea, subir la levadura ayuda o perjudica dependiendo de la temperatura. Eso es justamente una interacción: el efecto de un factor depende del nivel del otro.
+
+{int-f} El efecto de interacción se calcula como el promedio de las dos esquinas donde los factores coinciden, menos el promedio de las otras dos. {int-n} Aquí: veintiocho más cuarenta y cinco, partido en dos, menos cuarenta y uno más sesenta y tres, partido en dos. Da menos quince coma cinco, un valor grande. {max} Y el rendimiento máximo se logra con levadura baja y temperatura alta.
+
+{graf} ¿Cómo se ve esto en un gráfico? En la gráfica de interacción se pone un factor en el eje horizontal y se dibuja una línea por cada nivel del otro. {paralelas} Si las líneas son paralelas, no hay interacción, y cada factor se puede analizar por separado. {cruzan} Si se cruzan, o tienen pendientes muy distintas, hay interacción, y la mejor elección de un factor depende del otro. {r-plot} En erre se hace con interaction punto plot.
+
+{anova-hace-falta} Eso sí, el tamaño de un efecto dice cuán importante parece, pero para saber si es estadísticamente significativo hace falta el ANOVA.
+
+## El factorial a por be
+
+{ab} Generalicemos. Un factor con a niveles y otro con be niveles dan a por be tratamientos. {rep} Y si todo el arreglo se repite ene veces, cada repetición es una réplica.
+
+{modelo} El modelo tiene la media global, el efecto del primer factor, el del segundo, la interacción entre ambos y el error. {hip} Y hay tres pares de hipótesis: que no hay efecto del primero, que no hay efecto del segundo, y que no hay interacción.
+
+{gl} Los grados de libertad son: para el primer factor, a menos uno; para el segundo, be menos uno; para la interacción, el producto de esos dos; y para el error, a por be por ene menos uno.
+
+{gl-q} Mira ese último término. ¿Qué le pasa al error si hago una sola réplica?
+
+[pausa 4]
+
+{gl-r} Se queda con cero grados de libertad. No hay con qué estimarlo. Por eso, para tener la tabla ANOVA completa con interacción, se necesitan al menos dos réplicas.
+
+## Ejemplo: el acabado del metal
+
+{metal} El ejemplo de la clase es el acabado de una pieza de metal, que se quiere minimizar. Dos factores: la profundidad de corte, con cuatro niveles, y la velocidad de alimentación, con tres. Tres réplicas, treinta y seis pruebas en total.
+
+{m-tabla} La tabla ANOVA muestra los tres efectos significativos. {m-b} La velocidad tiene un efe de cincuenta y cinco; {m-a} la profundidad, de casi veinticinco; {m-ab} y la interacción, de tres coma veintitrés, con pe valor cero coma cero dieciocho. {m-e} El error tiene veinticuatro grados de libertad, con un cuadrado medio de veintiocho coma siete.
+
+{m-conc} ¿Qué se concluye? Que a mayor velocidad y mayor profundidad, peor es el acabado. Así que la condición recomendada es profundidad baja y velocidad baja.
+
+{m-r} En erre, la tabla sale con a o ve, poniendo el acabado, tilde, profundidad asterisco velocidad. El asterisco incluye los dos efectos y también su interacción.
+
+## Comparar medias, con y sin interacción
+
+{lsd} Para comparar niveles se vuelve a usar la ele ese de, pero hay que fijarse primero en si la interacción importa.
+
+{sin} Si no hay interacción, se comparan las medias de cada factor por separado, las medias marginales. {sin-r} En la fórmula, el número de observaciones de cada media es be por ene para el primer factor, y a por ene para el segundo. En el acabado, cada media de profundidad junta nueve datos.
+
+{con} Pero si la interacción es significativa, comparar medias marginales puede engañar. En ese caso se comparan los tratamientos dentro de cada nivel del otro factor, y cada media tiene solo ene observaciones.
+
+{dif} Y se nota la diferencia. {dif-marg} En el acabado, mirando las medias marginales, las profundidades uno y dos no difieren y todas las demás sí. {dif-dentro} Pero dentro de la velocidad media, solo resultan distintas la profundidad uno contra la tres, y la uno contra la cuatro. Las conclusiones cambian según el nivel del otro factor.
+
+## Tres factores
+
+{tres} Con tres factores el modelo crece: tres efectos principales, tres interacciones dobles y una triple. Siete efectos en total. En erre basta con a o ve y los tres factores unidos con asteriscos.
+
+{sed} El ejemplo de la clase es de sedimentación, que también se quiere minimizar. Tipo de suspensión, con tres niveles; abertura de malla, con dos; y temperatura de ciclaje, con dos. Seis réplicas, setenta y dos corridas.
+
+{sed-gl} ¿Cuántos grados de libertad tendría el error?
+
+[pausa 4]
+
+{sed-gl-r} Tres por dos por dos es doce, y eso por seis menos uno, que es cinco: sesenta.
+
+{sed-sig} En el ANOVA salen significativos la abertura, la temperatura, la interacción entre suspensión y abertura, y también la de abertura con temperatura. {sed-no} El tipo de suspensión por sí solo no es significativo, y tampoco su interacción con la temperatura ni la triple. Esos términos se pueden sacar del modelo y mandar al error.
+
+{trampa} Y aquí hay una trampa. Si la suspensión no es significativa por sí sola, ¿la puedo dejar en cualquier nivel?
+
+[pausa 4]
+
+{trampa-r} No. Participa en una interacción significativa con la abertura, así que igual importa qué nivel elijo. {sed-mejor} El mejor tratamiento resulta ser suspensión intermedia, abertura baja y temperatura alta.
+
+## Muchos factores
+
+{muchos} Con más factores, el número de interacciones crece muy rápido. {escasez} Pero en la práctica, las interacciones de orden alto casi nunca resultan importantes. Eso se llama el principio de escasez de efectos, y es la idea que motiva los diseños fraccionados, en los que no se corren todas las combinaciones.
+
+## Para cerrar
+
+{cierre} Una forma ordenada de leer cualquier factorial es esta. {c1} Primero el ANOVA, buscando la interacción de mayor orden que salga significativa. {c2} Si hay interacción, eliges los niveles con la gráfica de interacción y comparas dentro de cada nivel del otro factor. {c3} Si no la hay, miras cada factor por separado, con sus medias marginales. {c4} Y los términos que no son significativos se pueden mandar al error.
+
+{fin} Eso fue el módulo veintiuno.

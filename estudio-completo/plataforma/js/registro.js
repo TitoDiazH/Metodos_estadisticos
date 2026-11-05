@@ -9,7 +9,7 @@
   "use strict";
   var P = (typeof window !== "undefined" ? window : globalThis).PLATAFORMA;
 
-  var TIPOS = ["prueba", "fuente", "modulo", "pregunta", "memorizar", "rlab", "diferencia", "audio"];
+  var TIPOS = ["prueba", "fuente", "modulo", "pregunta", "memorizar", "rlab", "diferencia", "audio", "escena"];
   /* Tipos de pregunta que la app sabe mostrar y corregir. */
   P.TIPOS_PREGUNTA = {
     "alternativas":     { nombre: "Alternativas",            icono: "🔘" },
@@ -52,13 +52,19 @@
   var idx = null;
   P.indexar = function () {
     idx = { modulo: {}, pregunta: {}, fuente: {}, prueba: {}, rlab: {}, memorizar: {},
-            pregPorModulo: {}, conceptos: {}, audio: {} };
+            pregPorModulo: {}, conceptos: {}, audio: {}, audioPorId: {}, audiosPorModulo: {}, escena: {} };
     datos.modulo.sort(function (a, b) { return (a.orden || 0) - (b.orden || 0); });
     datos.prueba.forEach(function (x) { idx.prueba[x.id] = x; });
     datos.fuente.forEach(function (x) { idx.fuente[x.id] = x; });
     datos.rlab.forEach(function (x) { idx.rlab[x.id] = x; });
     datos.memorizar.forEach(function (x) { idx.memorizar[x.id] = x; });
-    datos.audio.forEach(function (x) { idx.audio[x.modulo] = x; });
+    datos.audio.sort(function (a, b) { return (a.orden || 0) - (b.orden || 0) || (a.id < b.id ? -1 : 1); });
+    datos.audio.forEach(function (x) {
+      idx.audioPorId[x.id] = x;
+      if (!x.ejercicio) idx.audio[x.modulo] = x;
+      (idx.audiosPorModulo[x.modulo] = idx.audiosPorModulo[x.modulo] || []).push(x);
+    });
+    datos.escena.forEach(function (x) { idx.escena[x.audio] = x; });
     datos.modulo.forEach(function (m) {
       idx.modulo[m.id] = m;
       (m.conceptos || []).forEach(function (c) { idx.conceptos[c.id] = { concepto: c, modulo: m }; });
@@ -77,6 +83,14 @@
   P.prueba = function (id) { return idx.prueba[id] || null; };
   /* Clase en audio de un módulo (o null si todavía no se generó). */
   P.audioDe = function (moduloId) { return idx.audio[moduloId] || null; };
+  /* Una clase por su id («audio-…»); acepta también el id de un módulo (su clase principal). */
+  P.audioPorId = function (id) { return idx.audioPorId[id] || idx.audio[id] || null; };
+  /* Todas las clases de un módulo: la del módulo primero y luego sus ejercicios. */
+  P.audiosDe = function (moduloId) {
+    return (idx.audiosPorModulo[moduloId] || []).slice().sort(function (a, b) { return (a.ejercicio ? 1 : 0) - (b.ejercicio ? 1 : 0); });
+  };
+  /* Animación sincronizada de una clase (o null). */
+  P.escenaDe = function (audioId) { return idx.escena[audioId] || null; };
 
   /* Temario de una prueba: sus módulos + (si es acumulativa) los de las anteriores. */
   P.temario = function (pruebaId) {

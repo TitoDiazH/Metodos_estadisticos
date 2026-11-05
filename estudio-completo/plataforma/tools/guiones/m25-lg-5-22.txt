@@ -1,0 +1,45 @@
+# Ejercicio 5.22: blanqueo de aceite comestible
+@modulo m25-factorial-general
+@ejercicio Libro guía · Cap. 5, ej. 22
+@pregunta m25-d014
+@orden 5
+
+## Qué pide el ejercicio
+
+{inicio} El último factorial del capítulo cinco, el ejercicio veintidós, viene de una fábrica de aceites comestibles.
+
+{enun} Las impurezas del aceite se eliminan en el proceso de blanqueo, y su eficacia se mide con el color. {clave1} Un dato fundamental: un valor menor de color indica un aceite más claro, o sea, mejor. {clave2} Se estudian tres temperaturas, noventa, cien y ciento diez grados, y cuatro porcentajes de arcilla, de cero coma ocho a uno coma uno. {clave3} Y en planta hoy se usa uno coma uno por ciento de arcilla con cien grados.
+
+{dis} Es un factorial tres por cuatro con dos réplicas: veinticuatro corridas, completamente al azar.
+
+{modelo} El modelo: media, efecto de la temperatura, efecto de la arcilla, interacción y error. {h0a} Hipótesis: la temperatura no influye, {h0b} la arcilla no influye, {h0ab} y no hay interacción.
+
+{niveles} ¿Por qué se habrán elegido esos niveles? Porque rodean las condiciones actuales: se explora hacia ambos lados en temperatura, y hacia abajo en arcilla, que cuesta dinero. La idea es ver si se puede ahorrar arcilla sin perder calidad.
+
+## Tabla ANOVA
+
+{tabla} El error tiene doce grados de libertad y un cuadrado medio muy chico: cero coma cero cero ocho.
+
+{fa} La temperatura tiene un efe de doscientos cuarenta y dos. {fb} La arcilla, de ciento cuarenta y ocho. {fab} Y la interacción, cuatro coma siete dos, contra un crítico de tres, con pe valor cero coma cero uno.
+
+{conc} Los tres efectos están activos. Y como hay interacción, las conclusiones finas se sacan de las doce medias de celda.
+
+## Gráficas
+
+{efectos} Las gráficas de efectos principales muestran la tendencia general: al subir la arcilla, el color baja de cinco coma uno cinco a cuatro coma uno. Y al subir la temperatura, baja de cinco coma diecinueve a cuatro coma diecinueve. Más arcilla y más temperatura dan un aceite más claro.
+
+{graf} En la gráfica de interacción, las tres líneas bajan, pero no son paralelas. A noventa grados, pasar de la menor a la mayor arcilla baja el color en uno coma cuatro. A cien grados, solo en cero coma setenta y cinco. Y a ciento diez, en uno.
+
+{nolineal} ¿Habrá un efecto no lineal? Con cuatro niveles de arcilla se puede mirar si los saltos entre niveles seguidos son parecidos. Si no lo son, la línea se curva.
+
+## Elegir el tratamiento
+
+{limite} Ahora la parte práctica. El nivel aceptable de color es a lo más cuatro coma ocho. ¿Qué tratamiento usarías?
+
+[pausa 4]
+
+{cumplen} Varias celdas cumplen: ocho en total. {elige} Entre ellas conviene la que usa menos arcilla, porque es el insumo caro. Eso lleva a ciento diez grados con cero coma ocho por ciento de arcilla, que da un color medio de cuatro coma seis cinco.
+
+{real} ¿Vale la pena llevar el estudio a condiciones reales? Sí: el laboratorio muestra efectos claros, pero en planta hay más fuentes de variación. {cambios} Habría que usar pocos niveles alrededor del tratamiento elegido, repetir en distintos lotes o días como bloques, y medir también el costo.
+
+{fin} Este ejercicio junta todo: leer bien qué significa «mejor» en la respuesta, respetar la interacción, y usar una restricción práctica para decidir.

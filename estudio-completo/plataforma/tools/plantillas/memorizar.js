@@ -1,7 +1,8 @@
 /* ============================================================================
    PLANTILLA · Memorizar  →  copiar a  data/memorizar/mNN-slug.js
-   categoria: "formula" | "umbral" | "decision" | "funcion-R" | "salida" | "flashcard"
-   Las cinco primeras usan titulo + contenido; "flashcard" usa frente + reverso.
+   categoria: "formula" | "tabla" | "umbral" | "decision" | "funcion-R" | "salida" | "flashcard"
+   "tabla" se muestra como tarjeta ancha (HTML visual: .matriz, .armar, .signos, .pasos, .regla).
+   Todas salvo flashcard usan titulo + contenido; "flashcard" usa frente + reverso.
    ========================================================================== */
 PLATAFORMA.registrar("memorizar", [
   {

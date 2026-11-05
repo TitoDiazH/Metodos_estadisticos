@@ -19,6 +19,50 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1 1440.1  1440.1  52.792 9.93e-06 ***
+B            2  785.4   392.7  14.397 0.000648 ***
+A:B          2   81.4    40.7   1.493 0.263644    
+Residuals   12  327.3    27.3                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+55.61111 
+
+ A 
+A
+    1     2 
+46.67 64.56 
+
+ B 
+B
+    1     2     3 
+47.33 56.00 63.50 
+
+ A:B 
+   B
+A   1     2     3    
+  1 36.00 46.67 57.33
+  2 58.67 65.33 69.67
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.97394, p-value = 0.8676
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  5  0.2474 0.9332
+      12`,
+    salidaDe: `y <- c(44, 34, 30, 49, 48, 43, 52, 58, 62, 62, 56, 58, 68, 70, 58, 69, 75, 65); A <- factor(rep(1:2, each = 9)); B <- factor(rep(rep(1:3, each = 3), 2))   # A = A, B = B
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Totales", puntos: 1, solucion: String.raw`<div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>A \ B</th><th>B1</th><th>B2</th><th>B3</th><th>$Y_{i\cdot\cdot}$</th></tr></thead><tbody><tr><td>A1</td><td>$Y_{11\cdot}=108$</td><td>$Y_{12\cdot}=140$</td><td>$Y_{13\cdot}=172$</td><td>$420$</td></tr><tr><td>A2</td><td>$Y_{21\cdot}=176$</td><td>$Y_{22\cdot}=196$</td><td>$Y_{23\cdot}=209$</td><td>$581$</td></tr><tr><td>$Y_{\cdot j\cdot}$</td><td>$284$</td><td>$336$</td><td>$381$</td><td>$Y_{\cdot\cdot\cdot}=1001$</td></tr></tbody></table></div>` },
       { titulo: "b) Sumas de cuadrados", puntos: 1.5, solucion: String.raw`<p>$N=abn=18$, $\;Y_{\cdot\cdot\cdot}^2/N=55666{,}722$, $\;\sum Y_{ijk}^2=58301$.</p><p>$SC_T=58301-55666{,}722=2634{,}278$</p><p>$SC_A=\dfrac{\sum Y_{i\cdot\cdot}^2}{bn}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{513961}{9}-55666{,}722=1440{,}056$</p><p>$SC_B=\dfrac{\sum Y_{\cdot j\cdot}^2}{an}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{338713}{6}-55666{,}722=785{,}444$</p><p>$SC_{AB}=\dfrac{\sum\sum Y_{ij\cdot}^2}{n}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}-SC_A-SC_B=2306{,}944-1440{,}056-785{,}444=81{,}444$</p><p>$SC_E=SC_T-SC_A-SC_B-SC_{AB}=327{,}333$</p>` },
@@ -52,6 +96,50 @@ car::leveneTest(y ~ A:B)`,
     titulo: "MODIFICADA-LIBRO GUIA · Cap. 5, ej. 18 · Factorial 2×3 a mano: totales, SC, ANOVA y LSD (otra celda A2B3)",
     enunciado: String.raw`<p><strong>MODIFICADA-LIBRO GUIA</strong> — variante del Cap. 5, ej. 18 del libro guía. Cambio respecto del original: la celda A2B3 dio 60, 58 y 62 (en vez de 69, 75 y 65).</p><p>En la siguiente tabla están los datos de un diseño factorial 2 × 3 con 3 réplicas. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>A \ B</th><th>B1</th><th>B2</th><th>B3</th></tr></thead><tbody><tr><td>A1</td><td>44; 34; 30</td><td>49; 48; 43</td><td>52; 58; 62</td></tr><tr><td>A2</td><td>62; 56; 58</td><td>68; 70; 58</td><td>60; 58; 62</td></tr></tbody></table></div><ol type="a"><li>Complete los totales $Y_{ij\cdot}$, $Y_{i\cdot\cdot}$, $Y_{\cdot j\cdot}$ y $Y_{\cdot\cdot\cdot}$.</li><li>Calcule las sumas de cuadrados $SC_A$, $SC_B$, $SC_{AB}$, $SC_T$ y $SC_E$.</li><li>Obtenga la tabla de análisis de varianza y anote las principales conclusiones.</li><li>Sin tomar en cuenta el posible efecto de interacción, obtenga la LSD para comparar las medias de los niveles del factor A y la LSD para los niveles del factor B.</li><li>¿Cuál sería la LSD exacta tomando en cuenta la interacción?</li></ol>`,
     codigoR: `y <- c(44, 34, 30, 49, 48, 43, 52, 58, 62, 62, 56, 58, 68, 70, 58, 60, 58, 62); A <- factor(rep(1:2, each = 9)); B <- factor(rep(rep(1:3, each = 3), 2))   # A = A, B = B
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  968.0   968.0  40.806 3.46e-05 ***
+B            2  421.3   210.7   8.881  0.00430 ** 
+A:B          2  336.0   168.0   7.082  0.00931 ** 
+Residuals   12  284.7    23.7                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+   
+54 
+
+ A 
+A
+    1     2 
+46.67 61.33 
+
+ B 
+B
+    1     2     3 
+47.33 56.00 58.67 
+
+ A:B 
+   B
+A   1     2     3    
+  1 36.00 46.67 57.33
+  2 58.67 65.33 60.00
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.98459, p-value = 0.9849
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  5  0.4124 0.8312
+      12`,
+    salidaDe: `y <- c(44, 34, 30, 49, 48, 43, 52, 58, 62, 62, 56, 58, 68, 70, 58, 60, 58, 62); A <- factor(rep(1:2, each = 9)); B <- factor(rep(rep(1:3, each = 3), 2))   # A = A, B = B
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)
@@ -97,6 +185,52 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1 1102.1  1102.1  62.089 0.000221 ***
+B            2  437.2   218.6  12.315 0.007517 ** 
+A:B          2    7.2     3.6   0.202 0.822526    
+Residuals    6  106.5    17.8                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+57.08333 
+
+ A 
+A
+    1     2 
+47.50 66.67 
+
+ B 
+B
+    1     2     3 
+49.00 58.75 63.50 
+
+ A:B 
+   B
+A   1    2    3   
+  1 39.0 48.5 55.0
+  2 59.0 69.0 72.0
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.94751, p-value = 0.6009
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  5 1.8793e+30 < 2.2e-16 ***
+       6                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(44, 34, 49, 48, 52, 58, 62, 56, 68, 70, 69, 75); A <- factor(rep(1:2, each = 6)); B <- factor(rep(rep(1:3, each = 2), 2))   # A = A, B = B
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Totales", puntos: 1, solucion: String.raw`<div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>A \ B</th><th>B1</th><th>B2</th><th>B3</th><th>$Y_{i\cdot\cdot}$</th></tr></thead><tbody><tr><td>A1</td><td>$Y_{11\cdot}=78$</td><td>$Y_{12\cdot}=97$</td><td>$Y_{13\cdot}=110$</td><td>$285$</td></tr><tr><td>A2</td><td>$Y_{21\cdot}=118$</td><td>$Y_{22\cdot}=138$</td><td>$Y_{23\cdot}=144$</td><td>$400$</td></tr><tr><td>$Y_{\cdot j\cdot}$</td><td>$196$</td><td>$235$</td><td>$254$</td><td>$Y_{\cdot\cdot\cdot}=685$</td></tr></tbody></table></div>` },
       { titulo: "b) Sumas de cuadrados", puntos: 1.5, solucion: String.raw`<p>$N=abn=12$, $\;Y_{\cdot\cdot\cdot}^2/N=39102{,}083$, $\;\sum Y_{ijk}^2=40755$.</p><p>$SC_T=40755-39102{,}083=1652{,}917$</p><p>$SC_A=\dfrac{\sum Y_{i\cdot\cdot}^2}{bn}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{241225}{6}-39102{,}083=1102{,}083$</p><p>$SC_B=\dfrac{\sum Y_{\cdot j\cdot}^2}{an}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{158157}{4}-39102{,}083=437{,}167$</p><p>$SC_{AB}=\dfrac{\sum\sum Y_{ij\cdot}^2}{n}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}-SC_A-SC_B=1546{,}417-1102{,}083-437{,}167=7{,}167$</p><p>$SC_E=SC_T-SC_A-SC_B-SC_{AB}=106{,}5$</p>` },
@@ -136,6 +270,50 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1 1281.3  1281.3  45.357 0.000147 ***
+B            1  225.3   225.3   7.976 0.022347 *  
+A:B          1   12.0    12.0   0.425 0.532835    
+Residuals    8  226.0    28.3                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+51.66667 
+
+ A 
+A
+    1     2 
+41.33 62.00 
+
+ B 
+B
+    1     2 
+47.33 56.00 
+
+ A:B 
+   B
+A   1     2    
+  1 36.00 46.67
+  2 58.67 65.33
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.98125, p-value = 0.9881
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  3  0.3523 0.7889
+       8`,
+    salidaDe: `y <- c(44, 34, 30, 49, 48, 43, 62, 56, 58, 68, 70, 58); A <- factor(rep(1:2, each = 6)); B <- factor(rep(rep(1:2, each = 3), 2))   # A = A, B = B
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Totales", puntos: 1, solucion: String.raw`<div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>A \ B</th><th>B1</th><th>B2</th><th>$Y_{i\cdot\cdot}$</th></tr></thead><tbody><tr><td>A1</td><td>$Y_{11\cdot}=108$</td><td>$Y_{12\cdot}=140$</td><td>$248$</td></tr><tr><td>A2</td><td>$Y_{21\cdot}=176$</td><td>$Y_{22\cdot}=196$</td><td>$372$</td></tr><tr><td>$Y_{\cdot j\cdot}$</td><td>$284$</td><td>$336$</td><td>$Y_{\cdot\cdot\cdot}=620$</td></tr></tbody></table></div>` },
       { titulo: "b) Sumas de cuadrados", puntos: 1.5, solucion: String.raw`<p>$N=abn=12$, $\;Y_{\cdot\cdot\cdot}^2/N=32033{,}333$, $\;\sum Y_{ijk}^2=33778$.</p><p>$SC_T=33778-32033{,}333=1744{,}667$</p><p>$SC_A=\dfrac{\sum Y_{i\cdot\cdot}^2}{bn}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{199888}{6}-32033{,}333=1281{,}333$</p><p>$SC_B=\dfrac{\sum Y_{\cdot j\cdot}^2}{an}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{193552}{6}-32033{,}333=225{,}333$</p><p>$SC_{AB}=\dfrac{\sum\sum Y_{ij\cdot}^2}{n}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}-SC_A-SC_B=1518{,}667-1281{,}333-225{,}333=12$</p><p>$SC_E=SC_T-SC_A-SC_B-SC_{AB}=226$</p>` },
@@ -166,6 +344,50 @@ car::leveneTest(y ~ A:B)`,
     titulo: "ORIGINAL-LIBRO GUIA · Cap. 5, ej. 19 · Factorial 3×2 con 10 réplicas: hinchamiento del catalizador",
     enunciado: String.raw`<p><strong>ORIGINAL-LIBRO GUIA</strong> — Cap. 5, ej. 19 del libro guía (Gutiérrez y de la Vara, 2.ª ed.), con los datos del libro.</p><p>Se corre un diseño factorial con 10 réplicas para investigar el hinchamiento del catalizador después de la extrusión en la fabricación de botellas de polietileno de alta densidad. Los factores son A: molde (2 niveles) y B: catalizador (3 niveles). Se desea un hinchamiento bajo. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Molde \ Catalizador</th><th>B1</th><th>B2</th><th>B3</th></tr></thead><tbody><tr><td>A1</td><td>93; 92; 93; 92; 91; 90; 90; 90; 91; 91</td><td>92; 90; 92; 94; 91; 91; 90; 92; 91; 92</td><td>95; 94; 94; 94; 97; 96; 94; 95; 94; 96</td></tr><tr><td>A2</td><td>88; 88; 87; 88; 87; 88; 87; 87; 87; 87</td><td>90; 89; 88; 88; 90; 89; 88; 89; 88; 88</td><td>91; 97; 91; 90; 89; 91; 92; 90; 90; 91</td></tr></tbody></table></div><ol type="a"><li>Plantee las hipótesis de interés y el modelo estadístico correspondiente.</li><li>Construya la tabla de análisis de varianza y determine cuáles efectos están activos.</li><li>Compare las medias de los efectos principales con los métodos LSD y de Tukey.</li><li>Describa la gráfica de interacción.</li><li>Determine cuál es el mejor tratamiento. ¿Cuál es el hinchamiento predicho en el mejor tratamiento?</li><li>Verifique los supuestos de normalidad y varianza constante.</li><li>Con los residuos por factor, ¿en cuál molde parece que es menor la dispersión?</li></ol>`,
     codigoR: `y <- c(93, 92, 93, 92, 91, 90, 90, 90, 91, 91, 92, 90, 92, 94, 91, 91, 90, 92, 91, 92, 95, 94, 94, 94, 97, 96, 94, 95, 94, 96, 88, 88, 87, 88, 87, 88, 87, 87, 87, 87, 90, 89, 88, 88, 90, 89, 88, 89, 88, 88, 91, 97, 91, 90, 89, 91, 92, 90, 90, 91); A <- factor(rep(1:2, each = 30)); B <- factor(rep(rep(1:3, each = 10), 2))   # A = molde, B = catalizador
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1 180.27  180.27 111.123 1.02e-14 ***
+B            2 153.03   76.52  47.168 1.42e-12 ***
+A:B          2   3.43    1.72   1.058    0.354    
+Residuals   54  87.60    1.62                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+90.83333 
+
+ A 
+A
+    1     2 
+92.57 89.10 
+
+ B 
+B
+    1     2     3 
+89.35 90.10 93.05 
+
+ A:B 
+   B
+A   1    2    3   
+  1 91.3 91.5 94.9
+  2 87.4 88.7 91.2
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.86234, p-value = 7.186e-06
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  5  0.8068 0.5499
+      54`,
+    salidaDe: `y <- c(93, 92, 93, 92, 91, 90, 90, 90, 91, 91, 92, 90, 92, 94, 91, 91, 90, 92, 91, 92, 95, 94, 94, 94, 97, 96, 94, 95, 94, 96, 88, 88, 87, 88, 87, 88, 87, 87, 87, 87, 90, 89, 88, 88, 90, 89, 88, 89, 88, 88, 91, 97, 91, 90, 89, 91, 92, 90, 90, 91); A <- factor(rep(1:2, each = 30)); B <- factor(rep(rep(1:3, each = 10), 2))   # A = molde, B = catalizador
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)
@@ -212,6 +434,50 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  93.63   93.63  35.783 3.56e-06 ***
+B            2  63.27   31.63  12.089 0.000234 ***
+A:B          2   4.47    2.23   0.854 0.438447    
+Residuals   24  62.80    2.62                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+91.16667 
+
+ A 
+A
+    1     2 
+92.93 89.40 
+
+ B 
+B
+   1    2    3 
+89.9 90.4 93.2 
+
+ A:B 
+   B
+A   1    2    3   
+  1 92.2 91.8 94.8
+  2 87.6 89.0 91.6
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.86872, p-value = 0.001569
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  5  0.7299  0.608
+      24`,
+    salidaDe: `y <- c(93, 92, 93, 92, 91, 92, 90, 92, 94, 91, 95, 94, 94, 94, 97, 88, 88, 87, 88, 87, 90, 89, 88, 88, 90, 91, 97, 91, 90, 89); A <- factor(rep(1:2, each = 15)); B <- factor(rep(rep(1:3, each = 5), 2))   # A = molde, B = catalizador
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Hipótesis y modelo", puntos: 1, solucion: String.raw`<p>Diseño factorial 2 × 3 con $n=5$ réplicas (30 corridas en orden aleatorio). Modelo de efectos fijos: $Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk}$, $i=1,\dots,2$ (Molde), $j=1,\dots,3$ (Catalizador), $k=1,\dots,5$, $\varepsilon_{ijk}\sim N(0,\sigma^2)$ independientes.</p><p>$H_0:\alpha_1=\dots=\alpha_2=0$ (Molde no influye); $\;H_0:\beta_1=\dots=\beta_3=0$ (Catalizador no influye); $\;H_0:(\alpha\beta)_{ij}=0\ \forall i,j$ (no hay interacción). Cada una contra $H_1$: al menos un efecto $\neq0$.</p>` },
       { titulo: "b) ANOVA y efectos activos", puntos: 1.5, solucion: String.raw`<div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>$F_0$</th><th>Valor-p</th></tr></thead><tbody><tr><td>Molde (A)</td><td>$93{,}633$</td><td>$1$</td><td>$93{,}633$</td><td>$35{,}78$</td><td>$\lt 0{,}0001$</td></tr><tr><td>Catalizador (B)</td><td>$63{,}267$</td><td>$2$</td><td>$31{,}633$</td><td>$12{,}09$</td><td>$0{,}0002$</td></tr><tr><td>AB</td><td>$4{,}467$</td><td>$2$</td><td>$2{,}233$</td><td>$0{,}85$</td><td>$0{,}4384$</td></tr><tr><td>Error</td><td>$62{,}8$</td><td>$24$</td><td>$2{,}617$</td><td></td><td></td></tr><tr><td>Total</td><td>$224{,}167$</td><td>$29$</td><td></td><td></td><td></td></tr></tbody></table></div><p>Molde: $F_0=35{,}78$ &gt; $F_{0{,}05;1,24}=4{,}26$ ($p\lt 0{,}0001$) ⇒ <strong>activo</strong> (significativo).</p><p>Catalizador: $F_0=12{,}09$ &gt; $F_{0{,}05;2,24}=3{,}4$ ($p=0{,}0002$) ⇒ <strong>activo</strong> (significativo).</p><p>Interacción Molde × Catalizador: $F_0=0{,}85$ &lt; $F_{0{,}05;2,24}=3{,}4$ ($p=0{,}4384$) ⇒ no significativo.</p><p>Como la interacción no es significativa, los efectos principales se interpretan por separado (gráficas de efectos principales).</p>` },
@@ -246,6 +512,50 @@ car::leveneTest(y ~ A:B)`,
     titulo: "MODIFICADA-LIBRO GUIA · Cap. 5, ej. 19 · Factorial 3×2 con 10 réplicas: hinchamiento del catalizador",
     enunciado: String.raw`<p><strong>MODIFICADA-LIBRO GUIA</strong> — variante del Cap. 5, ej. 19 del libro guía. Cambio respecto del original: la celda A2B3 sin los valores extremos 97 y 89 (se midieron 92 y 91).</p><p>Se corre un diseño factorial con 10 réplicas para investigar el hinchamiento del catalizador después de la extrusión en la fabricación de botellas de polietileno de alta densidad. Los factores son A: molde (2 niveles) y B: catalizador (3 niveles). Se desea un hinchamiento bajo. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Molde \ Catalizador</th><th>B1</th><th>B2</th><th>B3</th></tr></thead><tbody><tr><td>A1</td><td>93; 92; 93; 92; 91; 90; 90; 90; 91; 91</td><td>92; 90; 92; 94; 91; 91; 90; 92; 91; 92</td><td>95; 94; 94; 94; 97; 96; 94; 95; 94; 96</td></tr><tr><td>A2</td><td>88; 88; 87; 88; 87; 88; 87; 87; 87; 87</td><td>90; 89; 88; 88; 90; 89; 88; 89; 88; 88</td><td>91; 92; 91; 90; 91; 91; 92; 90; 90; 91</td></tr></tbody></table></div><ol type="a"><li>Plantee las hipótesis de interés y el modelo estadístico correspondiente.</li><li>Construya la tabla de análisis de varianza y determine cuáles efectos están activos.</li><li>Compare las medias de los efectos principales con los métodos LSD y de Tukey.</li><li>Describa la gráfica de interacción.</li><li>Determine cuál es el mejor tratamiento. ¿Cuál es el hinchamiento predicho en el mejor tratamiento?</li><li>Verifique los supuestos de normalidad y varianza constante.</li><li>Con los residuos por factor, ¿en cuál molde parece que es menor la dispersión?</li></ol>`,
     codigoR: `y <- c(93, 92, 93, 92, 91, 90, 90, 90, 91, 91, 92, 90, 92, 94, 91, 91, 90, 92, 91, 92, 95, 94, 94, 94, 97, 96, 94, 95, 94, 96, 88, 88, 87, 88, 87, 88, 87, 87, 87, 87, 90, 89, 88, 88, 90, 89, 88, 89, 88, 88, 91, 92, 91, 90, 91, 91, 92, 90, 90, 91); A <- factor(rep(1:2, each = 30)); B <- factor(rep(rep(1:3, each = 10), 2))   # A = molde, B = catalizador
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value Pr(>F)    
+A            1 190.82  190.82 210.718 <2e-16 ***
+B            2 140.03   70.02  77.319 <2e-16 ***
+A:B          2   4.43    2.22   2.448  0.096 .  
+Residuals   54  48.90    0.91                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+90.78333 
+
+ A 
+A
+    1     2 
+92.57 89.00 
+
+ B 
+B
+    1     2     3 
+89.35 90.10 92.90 
+
+ A:B 
+   B
+A   1    2    3   
+  1 91.3 91.5 94.9
+  2 87.4 88.7 90.9
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.96093, p-value = 0.05224
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  5  1.3277 0.2665
+      54`,
+    salidaDe: `y <- c(93, 92, 93, 92, 91, 90, 90, 90, 91, 91, 92, 90, 92, 94, 91, 91, 90, 92, 91, 92, 95, 94, 94, 94, 97, 96, 94, 95, 94, 96, 88, 88, 87, 88, 87, 88, 87, 87, 87, 87, 90, 89, 88, 88, 90, 89, 88, 89, 88, 88, 91, 92, 91, 90, 91, 91, 92, 90, 90, 91); A <- factor(rep(1:2, each = 30)); B <- factor(rep(rep(1:3, each = 10), 2))   # A = molde, B = catalizador
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)
@@ -289,6 +599,52 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  0.691   0.691   10.99   0.0161 *  
+B            2 10.354   5.177   82.35 4.34e-05 ***
+A:B          2  1.366   0.683   10.87   0.0101 *  
+Residuals    6  0.377   0.063                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+     
+3.21 
+
+ A 
+A
+   1    2 
+3.45 2.97 
+
+ B 
+B
+   1    2    3 
+2.03 3.30 4.30 
+
+ A:B 
+   B
+A   1    2    3   
+  1 2.65 3.60 4.10
+  2 1.41 3.00 4.50
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.77302, p-value = 0.004698
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  5 3.9133e+28 < 2.2e-16 ***
+       6                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(2.5, 2.8, 3.8, 3.4, 4, 4.2, 1.6, 1.22, 3.2, 2.8, 4.3, 4.7); A <- factor(rep(1:2, each = 6)); B <- factor(rep(rep(1:3, each = 2), 2))   # A = pegamento, B = curado
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Hipótesis y modelo", puntos: 1, solucion: String.raw`<p>Diseño factorial 2 × 3 con $n=2$ réplicas (12 corridas en orden aleatorio). Modelo de efectos fijos: $Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk}$, $i=1,\dots,2$ (Pegamento), $j=1,\dots,3$ (Curado), $k=1,\dots,2$, $\varepsilon_{ijk}\sim N(0,\sigma^2)$ independientes.</p><p>$H_0:\alpha_1=\dots=\alpha_2=0$ (Pegamento no influye); $\;H_0:\beta_1=\dots=\beta_3=0$ (Curado no influye); $\;H_0:(\alpha\beta)_{ij}=0\ \forall i,j$ (no hay interacción). Cada una contra $H_1$: al menos un efecto $\neq0$.</p>` },
       { titulo: "b) ANOVA y efectos activos", puntos: 2, solucion: String.raw`<p>$N=abn=12$, $\;Y_{\cdot\cdot\cdot}^2/N=123{,}649$, $\;\sum Y_{ijk}^2=136{,}438$.</p><p>$SC_T=136{,}438-123{,}649=12{,}789$</p><p>$SC_A=\dfrac{\sum Y_{i\cdot\cdot}^2}{bn}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{746{,}042}{6}-123{,}649=0{,}691$</p><p>$SC_B=\dfrac{\sum Y_{\cdot j\cdot}^2}{an}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{536{,}014}{4}-123{,}649=10{,}354$</p><p>$SC_{AB}=\dfrac{\sum\sum Y_{ij\cdot}^2}{n}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}-SC_A-SC_B=12{,}412-0{,}691-10{,}354=1{,}366$</p><p>$SC_E=SC_T-SC_A-SC_B-SC_{AB}=0{,}377$</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>$F_0$</th><th>Valor-p</th></tr></thead><tbody><tr><td>Pegamento (A)</td><td>$0{,}691$</td><td>$1$</td><td>$0{,}691$</td><td>$10{,}99$</td><td>$0{,}0161$</td></tr><tr><td>Curado (B)</td><td>$10{,}354$</td><td>$2$</td><td>$5{,}177$</td><td>$82{,}35$</td><td>$\lt 0{,}0001$</td></tr><tr><td>AB</td><td>$1{,}366$</td><td>$2$</td><td>$0{,}683$</td><td>$10{,}87$</td><td>$0{,}0101$</td></tr><tr><td>Error</td><td>$0{,}377$</td><td>$6$</td><td>$0{,}063$</td><td></td><td></td></tr><tr><td>Total</td><td>$12{,}789$</td><td>$11$</td><td></td><td></td><td></td></tr></tbody></table></div><p>Pegamento: $F_0=10{,}99$ &gt; $F_{0{,}05;1,6}=5{,}99$ ($p=0{,}0161$) ⇒ <strong>activo</strong> (significativo).</p><p>Curado: $F_0=82{,}35$ &gt; $F_{0{,}05;2,6}=5{,}14$ ($p\lt 0{,}0001$) ⇒ <strong>activo</strong> (significativo).</p><p>Interacción Pegamento × Curado: $F_0=10{,}87$ &gt; $F_{0{,}05;2,6}=5{,}14$ ($p=0{,}0101$) ⇒ <strong>activo</strong> (significativo).</p><p>Como la interacción es significativa, el efecto de un factor depende del nivel del otro: las conclusiones se sacan mirando las 6 medias de tratamiento (gráfica de interacción), no los efectos principales por separado.</p>` },
@@ -320,6 +676,52 @@ car::leveneTest(y ~ A:B)`,
     titulo: "MODIFICADA-LIBRO GUIA · Cap. 5, ej. 20 · Factorial 2×3: resistencia a la torsión (pegamento × curado)",
     enunciado: String.raw`<p><strong>MODIFICADA-LIBRO GUIA</strong> — variante del Cap. 5, ej. 20 del libro guía. Cambio respecto del original: el dato 1,22 se leyó como 1,2 y A2 a 100 °C dio 4,6 y 4,9.</p><p>Para mejorar la resistencia a la torsión de las adhesiones de componentes electrónicos sobre placas se estudiaron 2 tipos de pegamento y 3 temperaturas de curado. En cada combinación se analizaron 2 componentes. Se busca la mayor resistencia. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Pegamento \ Curado</th><th>60 °C</th><th>80 °C</th><th>100 °C</th></tr></thead><tbody><tr><td>A1</td><td>2{,}5; 2{,}8</td><td>3{,}8; 3{,}4</td><td>4; 4{,}2</td></tr><tr><td>A2</td><td>1{,}6; 1{,}2</td><td>3{,}2; 2{,}8</td><td>4{,}6; 4{,}9</td></tr></tbody></table></div><ol type="a"><li>Plantee las hipótesis de interés y el modelo estadístico correspondiente.</li><li>Construya el ANOVA y decida cuáles efectos están activos.</li><li>Con las gráficas de efectos, determine el mejor tratamiento.</li><li>Estime la resistencia a la torsión en el mejor tratamiento.</li><li>Verifique residuos.</li></ol>`,
     codigoR: `y <- c(2.5, 2.8, 3.8, 3.4, 4, 4.2, 1.6, 1.2, 3.2, 2.8, 4.6, 4.9); A <- factor(rep(1:2, each = 6)); B <- factor(rep(rep(1:3, each = 2), 2))   # A = pegamento, B = curado
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  0.480   0.480   8.229  0.02848 *  
+B            2 11.535   5.767  98.871 2.55e-05 ***
+A:B          2  1.865   0.932  15.986  0.00395 ** 
+Residuals    6  0.350   0.058                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+     
+3.25 
+
+ A 
+A
+   1    2 
+3.45 3.05 
+
+ B 
+B
+    1     2     3 
+2.025 3.300 4.425 
+
+ A:B 
+   B
+A   1    2    3   
+  1 2.65 3.60 4.10
+  2 1.40 3.00 4.75
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.79434, p-value = 0.008085
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  5 3.7825e+28 < 2.2e-16 ***
+       6                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(2.5, 2.8, 3.8, 3.4, 4, 4.2, 1.6, 1.2, 3.2, 2.8, 4.6, 4.9); A <- factor(rep(1:2, each = 6)); B <- factor(rep(rep(1:3, each = 2), 2))   # A = pegamento, B = curado
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)
@@ -363,6 +765,50 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            1  1.018   1.018   32.23 0.000103 ***
+B            2 15.674   7.837  248.18 1.73e-10 ***
+A:B          2  2.019   1.010   31.98 1.56e-05 ***
+Residuals   12  0.379   0.032                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+3.206667 
+
+ A 
+A
+    1     2 
+3.444 2.969 
+
+ B 
+B
+   1    2    3 
+2.02 3.30 4.30 
+
+ A:B 
+   B
+A   1     2     3    
+  1 2.633 3.600 4.100
+  2 1.407 3.000 4.500
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.88554, p-value = 0.03239
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(>F)
+group  5  0.2037 0.9547
+      12`,
+    salidaDe: `y <- c(2.5, 2.8, 2.6, 3.8, 3.4, 3.6, 4, 4.2, 4.1, 1.6, 1.22, 1.4, 3.2, 2.8, 3, 4.3, 4.7, 4.5); A <- factor(rep(1:2, each = 9)); B <- factor(rep(rep(1:3, each = 3), 2))   # A = pegamento, B = curado
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Hipótesis y modelo", puntos: 1, solucion: String.raw`<p>Diseño factorial 2 × 3 con $n=3$ réplicas (18 corridas en orden aleatorio). Modelo de efectos fijos: $Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk}$, $i=1,\dots,2$ (Pegamento), $j=1,\dots,3$ (Curado), $k=1,\dots,3$, $\varepsilon_{ijk}\sim N(0,\sigma^2)$ independientes.</p><p>$H_0:\alpha_1=\dots=\alpha_2=0$ (Pegamento no influye); $\;H_0:\beta_1=\dots=\beta_3=0$ (Curado no influye); $\;H_0:(\alpha\beta)_{ij}=0\ \forall i,j$ (no hay interacción). Cada una contra $H_1$: al menos un efecto $\neq0$.</p>` },
       { titulo: "b) ANOVA y efectos activos", puntos: 2, solucion: String.raw`<p>$N=abn=18$, $\;Y_{\cdot\cdot\cdot}^2/N=185{,}089$, $\;\sum Y_{ijk}^2=204{,}178$.</p><p>$SC_T=204{,}178-185{,}089=19{,}09$</p><p>$SC_A=\dfrac{\sum Y_{i\cdot\cdot}^2}{bn}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{1674{,}958}{9}-185{,}089=1{,}018$</p><p>$SC_B=\dfrac{\sum Y_{\cdot j\cdot}^2}{an}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}=\dfrac{1204{,}574}{6}-185{,}089=15{,}674$</p><p>$SC_{AB}=\dfrac{\sum\sum Y_{ij\cdot}^2}{n}-\dfrac{Y_{\cdot\cdot\cdot}^2}{N}-SC_A-SC_B=18{,}711-1{,}018-15{,}674=2{,}019$</p><p>$SC_E=SC_T-SC_A-SC_B-SC_{AB}=0{,}379$</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Fuente</th><th>SC</th><th>gl</th><th>CM</th><th>$F_0$</th><th>Valor-p</th></tr></thead><tbody><tr><td>Pegamento (A)</td><td>$1{,}018$</td><td>$1$</td><td>$1{,}018$</td><td>$32{,}23$</td><td>$0{,}0001$</td></tr><tr><td>Curado (B)</td><td>$15{,}674$</td><td>$2$</td><td>$7{,}837$</td><td>$248{,}17$</td><td>$\lt 0{,}0001$</td></tr><tr><td>AB</td><td>$2{,}019$</td><td>$2$</td><td>$1{,}01$</td><td>$31{,}97$</td><td>$\lt 0{,}0001$</td></tr><tr><td>Error</td><td>$0{,}379$</td><td>$12$</td><td>$0{,}032$</td><td></td><td></td></tr><tr><td>Total</td><td>$19{,}09$</td><td>$17$</td><td></td><td></td><td></td></tr></tbody></table></div><p>Pegamento: $F_0=32{,}23$ &gt; $F_{0{,}05;1,12}=4{,}75$ ($p=0{,}0001$) ⇒ <strong>activo</strong> (significativo).</p><p>Curado: $F_0=248{,}17$ &gt; $F_{0{,}05;2,12}=3{,}89$ ($p\lt 0{,}0001$) ⇒ <strong>activo</strong> (significativo).</p><p>Interacción Pegamento × Curado: $F_0=31{,}97$ &gt; $F_{0{,}05;2,12}=3{,}89$ ($p\lt 0{,}0001$) ⇒ <strong>activo</strong> (significativo).</p><p>Como la interacción es significativa, el efecto de un factor depende del nivel del otro: las conclusiones se sacan mirando las 6 medias de tratamiento (gráfica de interacción), no los efectos principales por separado.</p>` },
@@ -391,6 +837,51 @@ car::leveneTest(y ~ A:B)`,
     titulo: "ORIGINAL-LIBRO GUIA · Cap. 5, ej. 21 · Factorial 3×3: resistencia del caucho (tiempo × acelerante)",
     enunciado: String.raw`<p><strong>ORIGINAL-LIBRO GUIA</strong> — Cap. 5, ej. 21 del libro guía (Gutiérrez y de la Vara, 2.ª ed.), con los datos del libro.</p><p>Se desea investigar cómo afectan el tiempo de curado (minutos, a 14 °C) y el tipo de acelerante a la resistencia del caucho vulcanizado (se busca la mayor resistencia). Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Tiempo \ Acelerante</th><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr><td>40 min</td><td>3900; 3600</td><td>4300; 3700</td><td>3700; 4100</td></tr><tr><td>60 min</td><td>4100; 3500</td><td>4200; 3900</td><td>3900; 4000</td></tr><tr><td>80 min</td><td>4000; 3800</td><td>4300; 3600</td><td>3600; 3800</td></tr></tbody></table></div><ol type="a"><li>Señale el nombre del diseño utilizado y su modelo estadístico.</li><li>Formule claramente todas las hipótesis que se pueden probar.</li><li>Realice el análisis estadístico apropiado para probar las hipótesis.</li><li>¿Hay algún tiempo de cura que sea mejor para aumentar la resistencia?</li><li>¿Algún acelerante es mejor?</li><li>¿Hay alguna combinación de tiempo y acelerante que sea mejor?</li><li>Explique de manera gráfica cómo se obtiene el valor-p para el tiempo de cura.</li><li>Verifique los supuestos. Si no se cumpliera la varianza constante para el tiempo de cura, ¿qué significaría y cómo podría corregirse?</li></ol>`,
     codigoR: `y <- c(3900, 3600, 4300, 3700, 3700, 4100, 4100, 3500, 4200, 3900, 3900, 4000, 4000, 3800, 4300, 3600, 3600, 3800); A <- factor(rep(1:3, each = 6)); B <- factor(rep(rep(1:3, each = 2), 3))   # A = tiempo, B = acelerante
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value Pr(>F)
+A            2  21111   10556   0.116  0.892
+B            2 114444   57222   0.628  0.555
+A:B          4  82222   20556   0.226  0.917
+Residuals    9 820000   91111               
+Tables of means
+Grand mean
+         
+3888.889 
+
+ A 
+A
+   1    2    3 
+3883 3933 3850 
+
+ B 
+B
+   1    2    3 
+3817 4000 3850 
+
+ A:B 
+   B
+A   1    2    3   
+  1 3750 4000 3900
+  2 3800 4050 3950
+  3 3900 3950 3700
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.95118, p-value = 0.4438
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  8 1.6823e+31 < 2.2e-16 ***
+       9                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(3900, 3600, 4300, 3700, 3700, 4100, 4100, 3500, 4200, 3900, 3900, 4000, 4000, 3800, 4300, 3600, 3600, 3800); A <- factor(rep(1:3, each = 6)); B <- factor(rep(rep(1:3, each = 2), 3))   # A = tiempo, B = acelerante
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)
@@ -437,6 +928,53 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df  Sum Sq Mean Sq F value  Pr(>F)   
+A            2   17778    8889   0.203 0.82028   
+B            2 1071111  535556  12.203 0.00273 **
+A:B          4   85556   21389   0.487 0.74540   
+Residuals    9  395000   43889                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+4005.556 
+
+ A 
+A
+   1    2    3 
+3983 4050 3983 
+
+ B 
+B
+   1    2    3 
+3817 4350 3850 
+
+ A:B 
+   B
+A   1    2    3   
+  1 3750 4300 3900
+  2 3800 4400 3950
+  3 3900 4350 3700
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.9714, p-value = 0.8237
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  8 7.3952e+30 < 2.2e-16 ***
+       9                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(3900, 3600, 4400, 4200, 3700, 4100, 4100, 3500, 4500, 4300, 3900, 4000, 4000, 3800, 4400, 4300, 3600, 3800); A <- factor(rep(1:3, each = 6)); B <- factor(rep(rep(1:3, each = 2), 3))   # A = tiempo, B = acelerante
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Nombre del diseño y modelo", puntos: 0.75, solucion: String.raw`<p>Diseño <strong>factorial 3 × 3</strong> con 2 réplicas (efectos fijos), completamente al azar.</p><p>Modelo de efectos fijos: $Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk}$, $i=1,\dots,3$ (Tiempo), $j=1,\dots,3$ (Acelerante), $k=1,\dots,2$, $\varepsilon_{ijk}\sim N(0,\sigma^2)$ independientes.</p><p>$H_0:\alpha_1=\dots=\alpha_3=0$ (Tiempo no influye); $\;H_0:\beta_1=\dots=\beta_3=0$ (Acelerante no influye); $\;H_0:(\alpha\beta)_{ij}=0\ \forall i,j$ (no hay interacción). Cada una contra $H_1$: al menos un efecto $\neq0$.</p>` },
       { titulo: "b) Hipótesis", puntos: 0.75, solucion: String.raw`<p>Tiempo: $H_0:\alpha_i=0\ \forall i$; acelerante: $H_0:\beta_j=0\ \forall j$; interacción: $H_0:(\alpha\beta)_{ij}=0\ \forall i,j$; cada una contra «al menos uno distinto de 0».</p>` },
@@ -477,6 +1015,50 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value Pr(>F)
+A            1   3333    3333   0.034  0.860
+B            2  71667   35833   0.364  0.709
+A:B          2  61667   30833   0.314  0.742
+Residuals    6 590000   98333               
+Tables of means
+Grand mean
+         
+3866.667 
+
+ A 
+A
+   1    2 
+3883 3850 
+
+ B 
+B
+   1    2    3 
+3825 3975 3800 
+
+ A:B 
+   B
+A   1    2    3   
+  1 3750 4000 3900
+  2 3900 3950 3700
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.95029, p-value = 0.6413
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  5 2.1235e+32 < 2.2e-16 ***
+       6                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(3900, 3600, 4300, 3700, 3700, 4100, 4000, 3800, 4300, 3600, 3600, 3800); A <- factor(rep(1:2, each = 6)); B <- factor(rep(rep(1:3, each = 2), 2))   # A = tiempo, B = acelerante
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Nombre del diseño y modelo", puntos: 0.75, solucion: String.raw`<p>Diseño <strong>factorial 2 × 3</strong> con 2 réplicas (efectos fijos), completamente al azar.</p><p>Modelo de efectos fijos: $Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk}$, $i=1,\dots,2$ (Tiempo), $j=1,\dots,3$ (Acelerante), $k=1,\dots,2$, $\varepsilon_{ijk}\sim N(0,\sigma^2)$ independientes.</p><p>$H_0:\alpha_1=\dots=\alpha_2=0$ (Tiempo no influye); $\;H_0:\beta_1=\dots=\beta_3=0$ (Acelerante no influye); $\;H_0:(\alpha\beta)_{ij}=0\ \forall i,j$ (no hay interacción). Cada una contra $H_1$: al menos un efecto $\neq0$.</p>` },
       { titulo: "b) Hipótesis", puntos: 0.75, solucion: String.raw`<p>Tiempo: $H_0:\alpha_i=0\ \forall i$; acelerante: $H_0:\beta_j=0\ \forall j$; interacción: $H_0:(\alpha\beta)_{ij}=0\ \forall i,j$; cada una contra «al menos uno distinto de 0».</p>` },
@@ -508,6 +1090,53 @@ car::leveneTest(y ~ A:B)`,
     titulo: "ORIGINAL-LIBRO GUIA · Cap. 5, ej. 22 · Factorial 3×4: color del aceite (temperatura × arcilla)",
     enunciado: String.raw`<p><strong>ORIGINAL-LIBRO GUIA</strong> — Cap. 5, ej. 22 del libro guía (Gutiérrez y de la Vara, 2.ª ed.), con los datos del libro.</p><p>En una fábrica de aceites vegetales comestibles la calidad se ve afectada por las impurezas, que se eliminan en el proceso de «blanqueo»; su eficacia se mide con el color del aceite (un valor menor indica un aceite más claro). Se estudia, a nivel laboratorio, el efecto de la temperatura y del porcentaje de arcilla en el color. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Temperatura \ Arcilla</th><th>0,8 %</th><th>0,9 %</th><th>1,0 %</th><th>1,1 %</th></tr></thead><tbody><tr><td>90</td><td>5{,}8; 5{,}9</td><td>5{,}4; 5{,}5</td><td>4{,}9; 5{,}1</td><td>4{,}5; 4{,}4</td></tr><tr><td>100</td><td>5; 4{,}9</td><td>4{,}8; 4{,}7</td><td>4{,}6; 4{,}4</td><td>4{,}1; 4{,}3</td></tr><tr><td>110</td><td>4{,}7; 4{,}6</td><td>4{,}4; 4{,}4</td><td>4{,}1; 4</td><td>3{,}7; 3{,}6</td></tr></tbody></table></div><ol type="a"><li>Construya el modelo estadístico y formule las hipótesis pertinentes.</li><li>¿Cuál es el nombre del diseño utilizado?</li><li>En condiciones reales se usa 1,1 % de arcilla y 100 grados. ¿Por qué cree que se eligieron esos niveles de prueba?</li><li>Realice un análisis de varianza para probar las hipótesis y obtenga conclusiones.</li><li>Con las gráficas de efectos, ¿cuál es la relación general entre el color y los factores en el rango estudiado?</li><li>A partir de la gráfica de interacción, ¿cree que haya un efecto no lineal?</li><li>Considerando que el nivel mínimo aceptable de blancura es 4,8 (es decir, color de a lo más 4,8), ¿qué tratamiento utilizaría?</li><li>¿Vale la pena plantear el estudio en condiciones reales? ¿Qué cambio le haría al experimento?</li></ol>`,
     codigoR: `y <- c(5.8, 5.9, 5.4, 5.5, 4.9, 5.1, 4.5, 4.4, 5, 4.9, 4.8, 4.7, 4.6, 4.4, 4.1, 4.3, 4.7, 4.6, 4.4, 4.4, 4.1, 4, 3.7, 3.6); A <- factor(rep(1:3, each = 8)); B <- factor(rep(rep(1:4, each = 2), 3))   # A = temperatura, B = arcilla
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            2  4.041  2.0204 242.450 1.98e-10 ***
+B            3  3.702  1.2339 148.067 9.60e-10 ***
+A:B          6  0.236  0.0393   4.717   0.0109 *  
+Residuals   12  0.100  0.0083                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+4.658333 
+
+ A 
+A
+    1     2     3 
+5.188 4.600 4.188 
+
+ B 
+B
+    1     2     3     4 
+5.150 4.867 4.517 4.100 
+
+ A:B 
+   B
+A   1    2    3    4   
+  1 5.85 5.45 5.00 4.45
+  2 4.95 4.75 4.50 4.20
+  3 4.65 4.40 4.05 3.65
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.8784, p-value = 0.007716
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group 11 1.7046e+28 < 2.2e-16 ***
+      12                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(5.8, 5.9, 5.4, 5.5, 4.9, 5.1, 4.5, 4.4, 5, 4.9, 4.8, 4.7, 4.6, 4.4, 4.1, 4.3, 4.7, 4.6, 4.4, 4.4, 4.1, 4, 3.7, 3.6); A <- factor(rep(1:3, each = 8)); B <- factor(rep(rep(1:4, each = 2), 3))   # A = temperatura, B = arcilla
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)
@@ -554,6 +1183,53 @@ interaction.plot(A, B, y)
 model.tables(modelo, "means")
 shapiro.test(resid(modelo))
 car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            2 2.6144  1.3072 138.412 1.74e-07 ***
+B            2 1.7678  0.8839  93.588 9.49e-07 ***
+A:B          4 0.1022  0.0256   2.706    0.099 .  
+Residuals    9 0.0850  0.0094                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+4.494444 
+
+ A 
+A
+    1     2     3 
+4.967 4.483 4.033 
+
+ B 
+B
+    1     2     3 
+4.867 4.517 4.100 
+
+ A:B 
+   B
+A   1    2    3   
+  1 5.45 5.00 4.45
+  2 4.75 4.50 4.20
+  3 4.40 4.05 3.65
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.89133, p-value = 0.04068
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group  8 4.0327e+28 < 2.2e-16 ***
+       9                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(5.4, 5.5, 4.9, 5.1, 4.5, 4.4, 4.8, 4.7, 4.6, 4.4, 4.1, 4.3, 4.4, 4.4, 4.1, 4, 3.7, 3.6); A <- factor(rep(1:3, each = 6)); B <- factor(rep(rep(1:3, each = 2), 3))   # A = temperatura, B = arcilla
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
     partes: [
       { titulo: "a) Modelo e hipótesis", puntos: 0.75, solucion: String.raw`<p>Diseño factorial 3 × 3 con $n=2$ réplicas (18 corridas en orden aleatorio). Modelo de efectos fijos: $Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk}$, $i=1,\dots,3$ (Temperatura), $j=1,\dots,3$ (Arcilla), $k=1,\dots,2$, $\varepsilon_{ijk}\sim N(0,\sigma^2)$ independientes.</p><p>$H_0:\alpha_1=\dots=\alpha_3=0$ (Temperatura no influye); $\;H_0:\beta_1=\dots=\beta_3=0$ (Arcilla no influye); $\;H_0:(\alpha\beta)_{ij}=0\ \forall i,j$ (no hay interacción). Cada una contra $H_1$: al menos un efecto $\neq0$.</p>` },
       { titulo: "b) Nombre del diseño", puntos: 0.5, solucion: "<p>Factorial <strong>3 × 3</strong> (3 temperaturas, 3 porcentajes de arcilla) con 2 réplicas, completamente al azar.</p>" },
@@ -588,6 +1264,53 @@ car::leveneTest(y ~ A:B)`,
     titulo: "MODIFICADA-LIBRO GUIA · Cap. 5, ej. 22 · Factorial 3×4: color del aceite (temperatura × arcilla)",
     enunciado: String.raw`<p><strong>MODIFICADA-LIBRO GUIA</strong> — variante del Cap. 5, ej. 22 del libro guía. Cambio respecto del original: a 110 grados el color salió 0,1–0,3 unidades más alto.</p><p>En una fábrica de aceites vegetales comestibles la calidad se ve afectada por las impurezas, que se eliminan en el proceso de «blanqueo»; su eficacia se mide con el color del aceite (un valor menor indica un aceite más claro). Se estudia, a nivel laboratorio, el efecto de la temperatura y del porcentaje de arcilla en el color. Use $\alpha=0{,}05$.</p><div class="tabla-scroll"><table class="tabla tabla-datos"><thead><tr><th>Temperatura \ Arcilla</th><th>0,8 %</th><th>0,9 %</th><th>1,0 %</th><th>1,1 %</th></tr></thead><tbody><tr><td>90</td><td>5{,}8; 5{,}9</td><td>5{,}4; 5{,}5</td><td>4{,}9; 5{,}1</td><td>4{,}5; 4{,}4</td></tr><tr><td>100</td><td>5; 4{,}9</td><td>4{,}8; 4{,}7</td><td>4{,}6; 4{,}4</td><td>4{,}1; 4{,}3</td></tr><tr><td>110</td><td>4{,}8; 4{,}7</td><td>4{,}6; 4{,}5</td><td>4{,}3; 4{,}2</td><td>4; 3{,}9</td></tr></tbody></table></div><ol type="a"><li>Construya el modelo estadístico y formule las hipótesis pertinentes.</li><li>¿Cuál es el nombre del diseño utilizado?</li><li>En condiciones reales se usa 1,1 % de arcilla y 100 grados. ¿Por qué cree que se eligieron esos niveles de prueba?</li><li>Realice un análisis de varianza para probar las hipótesis y obtenga conclusiones.</li><li>Con las gráficas de efectos, ¿cuál es la relación general entre el color y los factores en el rango estudiado?</li><li>A partir de la gráfica de interacción, ¿cree que haya un efecto no lineal?</li><li>Considerando que el nivel mínimo aceptable de blancura es 4,8 (es decir, color de a lo más 4,8), ¿qué tratamiento utilizaría?</li><li>¿Vale la pena plantear el estudio en condiciones reales? ¿Qué cambio le haría al experimento?</li></ol>`,
     codigoR: `y <- c(5.8, 5.9, 5.4, 5.5, 4.9, 5.1, 4.5, 4.4, 5, 4.9, 4.8, 4.7, 4.6, 4.4, 4.1, 4.3, 4.8, 4.7, 4.6, 4.5, 4.3, 4.2, 4, 3.9); A <- factor(rep(1:3, each = 8)); B <- factor(rep(rep(1:4, each = 2), 3))   # A = temperatura, B = arcilla
+modelo <- aov(y ~ A * B)
+summary(modelo)
+interaction.plot(A, B, y)
+model.tables(modelo, "means")
+shapiro.test(resid(modelo))
+car::leveneTest(y ~ A:B)`,
+    salidaR: `            Df Sum Sq Mean Sq F value   Pr(>F)    
+A            2  2.816  1.4079 160.905 2.16e-09 ***
+B            3  3.255  1.0849 123.984 2.70e-09 ***
+A:B          6  0.284  0.0474   5.413   0.0064 ** 
+Residuals   12  0.105  0.0088                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Tables of means
+Grand mean
+         
+4.720833 
+
+ A 
+A
+    1     2     3 
+5.187 4.600 4.375 
+
+ B 
+B
+    1     2     3     4 
+5.183 4.917 4.583 4.200 
+
+ A:B 
+   B
+A   1    2    3    4   
+  1 5.85 5.45 5.00 4.45
+  2 4.95 4.75 4.50 4.20
+  3 4.75 4.55 4.25 3.95
+
+	Shapiro-Wilk normality test
+
+data:  resid(modelo)
+W = 0.8426, p-value = 0.001598
+
+Levene's Test for Homogeneity of Variance (center = median)
+      Df    F value    Pr(>F)    
+group 11 1.6653e+28 < 2.2e-16 ***
+      12                         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1`,
+    salidaDe: `y <- c(5.8, 5.9, 5.4, 5.5, 4.9, 5.1, 4.5, 4.4, 5, 4.9, 4.8, 4.7, 4.6, 4.4, 4.1, 4.3, 4.8, 4.7, 4.6, 4.5, 4.3, 4.2, 4, 3.9); A <- factor(rep(1:3, each = 8)); B <- factor(rep(rep(1:4, each = 2), 3))   # A = temperatura, B = arcilla
 modelo <- aov(y ~ A * B)
 summary(modelo)
 interaction.plot(A, B, y)

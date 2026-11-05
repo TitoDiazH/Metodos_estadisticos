@@ -33,6 +33,8 @@ const comun = (o, clave, concepto, dificultad, curso) => ({
   fuente: fuenteLG(o, curso)
 });
 function reg(clave, base, q) {
+  /* Como en las pruebas: el código va acompañado de su salida real de R. */
+  if (q.codigoR && !q.salidaR) { q.salidaR = L.Rtxt(q.codigoR).replace(/\s+$/, ""); q.salidaDe = q.codigoR; }
   const o = Object.assign({}, q, { concepto: base.concepto, dificultad: base.dificultad, origen: base.origen, fuente: base.fuente });
   if (base.base) o.base = base.base;
   agregar(clave, o);

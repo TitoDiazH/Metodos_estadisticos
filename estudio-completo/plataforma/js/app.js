@@ -88,6 +88,7 @@
     var cambio = r.vista !== rutaActual.vista || r.args.join("/") !== rutaActual.args.join("/");
     if (actual && actual !== v && typeof actual.salir === "function") actual.salir();
     actual = v; rutaActual = r;
+    if (P.siglas) P.siglas.ocultar();
     var y = window.scrollY, html;
     try { html = v.render(r.args); }
     catch (e) { html = '<div class="aviso aviso-mal"><strong>Error al mostrar esta vista.</strong><br><code>' + U.esc(e && e.message) + "</code></div>"; }

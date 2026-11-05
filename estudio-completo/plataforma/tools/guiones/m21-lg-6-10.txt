@@ -1,0 +1,43 @@
+# Ejercicio 6.10: resistencia de bolsas de papel
+@modulo m21-factorial-2k
+@ejercicio Libro guía · Cap. 6, ej. 10
+@pregunta m21-d012
+@orden 4
+
+## Qué pide el ejercicio
+
+{inicio} El ejercicio diez del capítulo seis lo propone un fabricante de bolsas de papel.
+
+{enun} Se mide la resistencia al rasgamiento. {clave1} Mayor resistencia es mejor. {clave2} Hay tres factores con dos niveles: el tipo de papel, la humedad y la dirección del rasguño. {clave3} Y tres réplicas por combinación: veinticuatro corridas.
+
+## Efectos y sumas de cuadrados
+
+{formula} Con tres réplicas, el efecto es el contraste dividido en doce, {formula-sc} y la suma de cuadrados, el contraste al cuadrado dividido en veinticuatro.
+
+{ef-a} El papel tiene el efecto más grande: contraste treinta y cinco coma nueve, efecto dos coma nueve nueve. {ef-c} La dirección: contraste menos veintitrés coma uno, efecto menos uno coma nueve tres. {ef-ac} Y la interacción entre papel y dirección: efecto menos uno coma cero ocho. {ef-resto} Todos los efectos que involucran la humedad son casi cero.
+
+## Tabla ANOVA
+
+{anova} La suma de cuadrados total es noventa y nueve coma uno cinco, y el error, dieciséis coma cero seis, con dieciséis grados de libertad. El cuadrado medio del error es uno.
+
+{crit} El crítico para todos los efectos es efe con uno y dieciséis grados de libertad: cuatro coma cuarenta y nueve.
+
+{activos} Superan el crítico el papel, con efe cincuenta y tres coma cinco, la dirección, con veintidós, y su interacción, con seis coma nueve. {inactivos} Los efectos de la humedad no se acercan ni de lejos. {r2} El modelo explica cerca del ochenta y cuatro por ciento de la variabilidad.
+
+## Mejor tratamiento
+
+{modelo} Con los efectos activos se arma un modelo de predicción. Cada coeficiente es la mitad del efecto: la media general, cuatro coma cero siete, más uno coma cinco por el papel, menos cero coma nueve seis por la dirección, menos cero coma cinco cuatro por la interacción.
+
+{mejor} Para maximizar la resistencia, ¿qué niveles conviene elegir?
+
+[pausa 4]
+
+{mejor-r} Papel en nivel alto y dirección en nivel bajo: el tratamiento a. Con esos signos, los tres términos suman a favor, y la predicción da siete coma cero siete. La media observada de esa celda es siete coma trece.
+
+{humedad} ¿Y la humedad? Como no influye, se fija en el nivel más económico.
+
+## Supuestos
+
+{sup} Shapiro Wilk da pe igual a cero coma veintitrés, así que se acepta la normalidad. Para la varianza constante y la independencia, se miran los residuos contra los predichos y contra el orden de corrida.
+
+{fin} Lo central de este ejercicio: cuando una interacción está activa, el mejor tratamiento se elige con el modelo completo, mirando los signos de cada término.

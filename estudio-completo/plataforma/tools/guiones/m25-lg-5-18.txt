@@ -1,0 +1,57 @@
+# Ejercicio 5.18: un factorial dos por tres a mano
+@modulo m25-factorial-general
+@ejercicio Libro guía · Cap. 5, ej. 18
+@pregunta m25-d001
+@orden 1
+
+## Qué pide el ejercicio
+
+{inicio} Empezamos los factoriales con el ejercicio dieciocho del capítulo cinco.
+
+{enun} Nos dan los datos de un factorial dos por tres con tres réplicas. {clave1} Dos por tres significa que el factor a tiene dos niveles y el factor be tiene tres. {clave2} Tres réplicas quiere decir que cada combinación se corrió tres veces. {clave3} Y nos piden todo a mano: totales, sumas de cuadrados, tabla ANOVA y las ele ese de.
+
+{dis} Las piezas: a vale dos, be vale tres y ene vale tres. Hay seis tratamientos y dieciocho datos en total.
+
+{modelo} El modelo tiene la media global, el efecto de a, el efecto de be, la interacción entre ambos y el error. {h0a} Con eso hay tres hipótesis: que a no influye, {h0b} que be no influye, {h0ab} y que no hay interacción.
+
+## Totales
+
+{tot} El primer paso es el mismo de siempre: totales. {tot-ij} Primero, el total de cada celda. Para a uno con be uno, cuarenta y cuatro más treinta y cuatro más treinta: ciento ocho. Siguiendo igual, las celdas de a uno suman ciento ocho, ciento cuarenta y ciento setenta y dos, y las de a dos, ciento setenta y seis, ciento noventa y seis y doscientos nueve.
+
+{tot-i} Sumando por fila, a uno da cuatrocientos veinte y a dos, quinientos ochenta y uno. {tot-j} Por columna, be uno da doscientos ochenta y cuatro, be dos, trescientos treinta y seis, y be tres, trescientos ochenta y uno. {tot-g} El gran total es mil uno.
+
+## Sumas de cuadrados
+
+{corr} La corrección: mil uno al cuadrado, dividido en dieciocho, da cincuenta y cinco mil seiscientos sesenta y seis coma siete dos.
+
+{sct} La suma de todos los datos al cuadrado es cincuenta y ocho mil trescientos uno. Menos la corrección, la suma de cuadrados total queda en dos mil seiscientos treinta y cuatro coma dos ocho.
+
+{sca} Para a, los totales de fila al cuadrado se dividen por be por ene, o sea por nueve, porque cada total de fila junta nueve datos. Menos la corrección: mil cuatrocientos cuarenta coma cero seis.
+
+{scb} Para be, los totales de columna al cuadrado se dividen por a por ene, o sea por seis. Menos la corrección: setecientos ochenta y cinco coma cuatro cuatro.
+
+{scsub} La interacción es la parte más delicada. Primero se calcula la suma de cuadrados de las celdas: los seis totales de celda al cuadrado, divididos por ene, que es tres, menos la corrección. Eso da dos mil trescientos seis coma nueve cuatro. {scab} A eso le resto lo que ya explicaron a y be, y lo que sobra es la interacción: ochenta y uno coma cuatro cuatro.
+
+{sce} El error es lo que queda del total: trescientos veintisiete coma tres tres.
+
+## Tabla ANOVA
+
+{gl} Los grados de libertad son: uno para a, dos para be, uno por dos, o sea dos, para la interacción, y doce para el error, que salen de a por be por ene menos uno.
+
+{fa} El cuadrado medio del error es veintisiete coma dos ocho. El efe de a es cincuenta y dos coma siete nueve, muy por encima del crítico de cuatro coma setenta y cinco. {fb} El efe de be es catorce coma cuatro, también sobre su crítico de tres coma ochenta y nueve. {fab} Y la interacción tiene un efe de uno coma cuarenta y nueve, con pe valor cero coma veintiséis.
+
+{conc} Conclusión: a y be influyen, y la interacción no es significativa. Eso tiene una consecuencia práctica: los efectos principales se pueden interpretar por separado.
+
+{graf} En la gráfica de interacción, las dos líneas suben y van casi paralelas: el efecto de be es parecido en los dos niveles de a.
+
+## Las ele ese de
+
+{lsd} Como no hay interacción, se comparan medias marginales. Cada media de a junta nueve datos, así que su ele ese de es dos coma uno siete nueve por la raíz de dos por veintisiete coma dos ocho, dividido en nueve: cinco coma tres seis. {lsd-b} Cada media de be junta seis datos, y su ele ese de da seis coma cinco siete.
+
+{lsd-ab} Y si quisiéramos tomar en cuenta la interacción, compararíamos medias de celda, de solo tres datos cada una. La ele ese de sube a nueve coma dos nueve. ¿Por qué es más grande?
+
+[pausa 3]
+
+{lsd-ab-r} Porque cada media de celda se basa en menos datos, así que es menos precisa, y hace falta una diferencia mayor para declararla significativa.
+
+{fin} El camino para cualquier factorial a mano: totales de celda, de fila, de columna y gran total; corrección; sumas de cuadrados de a, de be y de celdas; la interacción por diferencia; y el error al final.
