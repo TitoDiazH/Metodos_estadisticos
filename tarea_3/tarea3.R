@@ -32,7 +32,7 @@ distancia <- c(
   # 30°, 0 cm
   12, 12, 13,   # 20 cm
   15, 12, 20,   # 25 cm
-  17, 26, 27,   # 30 cm (si, dio 17)
+  16, 26, 27,   # 30 cm (el 16 es el atípico, corrida 22)
 
   # 30°, 5 cm
   17, 15, 15,   # 20 cm
@@ -49,8 +49,8 @@ distancia <- c(
   14, 14, 13,   # 25 cm
   18, 17, 16    # 30 cm
 )
-# Sobre el 17 outlier, pudimos haber repetido el lanzamiento,
-# pero solo repetíamos cuando estaba mal heco (si chocaba con alguna esquina,
+# Sobre el 16 outlier, pudimos haber repetido el lanzamiento,
+# pero solo repetíamos cuando estaba mal hecho (si chocaba con alguna esquina,
 # o otros problemas así) pero como salió bien, aunque no sepamos
 # por qué salió tan bajo, lo dejamos como está.
 
@@ -131,7 +131,7 @@ TukeyHSD(modelo, "altura")
 
 
 ############################################################
-# 6. SUPERFICIE DE RESPUESTA (modelo de 2.º orden)
+# 6. SUPERFICIE DE RESPUESTA
 ############################################################
 
 # Variables codificadas: -1 = nivel bajo, 0 = medio, 1 = alto
@@ -160,6 +160,13 @@ shapiro.test(residuals(sr))
 
 # Selección de variables por AIC
 step(sr, direction = "both")
+# step elimina x2x3 y I(x3^2) (no significativos) -> modelo reducido
+sr2 <- lm(distancia ~ x1 + x2 + x3 + x1x2 + x1x3, data = datos)
+summary(sr2)
+
+# ¿Se puede eliminar x2x3 e I(x3^2) a la vez? H0: sus coeficientes son 0
+anova(sr2, sr)
+# p > 0.05: no empeora el ajuste, se adopta el modelo reducido
 
 
 ############################################################
@@ -167,10 +174,11 @@ step(sr, direction = "both")
 ############################################################
 
 # Distancia predicha en las 12 combinaciones de la región experimental
-datos$prediccion <- predict(sr, datos)
+datos$prediccion <- predict(sr2, datos)
 datos[seq(1, 36, by = 3), c("angulo", "plataforma", "altura", "prediccion")]
 
-# Pendiente respecto de la altura (x3) en el óptimo: b3 + b13*x1 + b23*x2 + 2*b33*x3
+# Pendiente respecto de la altura (x3) en el óptimo, con el modelo completo
+# (el que tiene curvatura): b3 + b13*x1 + b23*x2 + 2*b33*x3
 b <- coef(sr)
 b["x3"] + b["x1x3"] * (-1) + b["x2x3"] * 1 + 2 * b["I(x3^2)"] * 1
 # Pendiente positiva en x3 = 1: la distancia sigue subiendo al llegar a 30 cm,
@@ -186,7 +194,12 @@ par(mfrow = c(1, 1))
 
 # Combinación óptima: 30°, plataforma a 5 cm, lanzamiento desde 30 cm
 optimo <- data.frame(x1 = -1, x2 = 1, x3 = 1, x1x2 = -1, x1x3 = -1, x2x3 = 1)
-predict(sr, optimo)
+predict(sr, optimo)    # modelo completo
+predict(sr2, optimo)   # modelo reducido (adoptado)
+
+# Intervalos al 95 %: de la media (confidence) y de una corrida nueva (prediction)
+predict(sr2, optimo, interval = "confidence")
+predict(sr2, optimo, interval = "prediction")
 
 
 ############################################################
@@ -202,6 +215,7 @@ sd(confirmacion)
 datos$distancia[datos$angulo == 30 & datos$plataforma == 5 & datos$altura == 30]
 
 # H0: la media real en el óptimo es igual al valor predicho por el modelo
-t.test(confirmacion, mu = predict(sr, optimo))
+t.test(confirmacion, mu = predict(sr2, optimo))
 # p-valor > 0.05: no se rechaza H0, las corridas confirman la predicción...
 # ...del modelo y la combinación óptima.
+# Además las 3 corridas (27, 25, 27) caen dentro del intervalo de predicción.
