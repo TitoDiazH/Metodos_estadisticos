@@ -182,7 +182,7 @@ step(sr, direction = "both")
 sr2 <- lm(distancia ~ x1 + x2 + x3 + x1x2 + x1x3, data = datos)
 summary(sr2)
 # R^2 ajustado: 0.855 (completo) -> 0.862 (reducido), se usaría el reducido
-
+shapiro.test(residuals(sr2))   # p ≈ 0.155
 
 ############################################################
 # 7. OPTIMIZACIÓN
