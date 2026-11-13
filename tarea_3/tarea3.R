@@ -1,12 +1,3 @@
-# == POSIBLE MEJORA (pendiente) =====================================
-# Los gráficos de residuos del ANOVA muestran embudo (la varianza crece con
-# la distancia y es mayor con 30° que con 45°) y colas pesadas en el Q-Q
-# (Shapiro p = 0,0016). La clase 8.1 (slide 29) sugiere transformar y con log.
-# Probado: aov(log(distancia) ~ angulo * plataforma * altura) da
-# Shapiro p = 0,39 y Levene p = 0,85; las conclusiones se mantienen, salvo
-# que angulo:altura deja de ser significativa (p = 0,15).
-# Idea: agregarlo como verificación en la sección 4 (supuestos).
-
 # == Librerías ======================================================
 # Paquetes necesarios (instalar una sola vez, luego dejar comentado):
 # install.packages(c("psych", "dplyr", "cluster", "MASS", "e1071", "MVN", "biotools", "agricolae", "car"))
@@ -62,15 +53,35 @@ datos
 # 2. GRÁFICOS DE EFECTOS E INTERACCIONES
 ############################################################
 
-# Distancia por tratamiento
-boxplot(distancia ~ angulo * plataforma * altura, data = datos, las = 2)
+# Figura 3: distancia por tratamiento (etiqueta = altura.plataforma.ángulo)
+boxplot(distancia ~ altura * plataforma * angulo, data = datos, las = 2,
+        col = rep(c("lightblue", "orange"), each = 6),
+        xlab = "", ylab = "Distancia (cm)")
 
-plot.design(datos[, c(1, 2, 3, 5)])
-
+# Figura 4: efectos principales (media de la distancia en cada nivel)
 par(mfrow = c(1, 3))
-interaction.plot(datos$altura, datos$angulo, datos$distancia)       # C x A
-interaction.plot(datos$altura, datos$plataforma, datos$distancia)   # C x B
-interaction.plot(datos$angulo, datos$plataforma, datos$distancia)   # A x B
+plot.design(distancia ~ angulo, data = datos, xlab = "", ylab = "Distancia media (cm)")
+plot.design(distancia ~ plataforma, data = datos, xlab = "", ylab = "Distancia media (cm)")
+plot.design(distancia ~ altura, data = datos, xlab = "", ylab = "Distancia media (cm)")
+par(mfrow = c(1, 1))
+
+# Figura 5: interacciones dobles
+par(mfrow = c(1, 3))
+interaction.plot(
+  datos$altura, datos$angulo, datos$distancia,   # C x A
+  xlab = "Altura lanzamiento (cm)", ylab = "Distancia media (cm)",
+  trace.label = "Ángulo", col = c("blue", "red")
+)
+interaction.plot(
+  datos$altura, datos$plataforma, datos$distancia,   # C x B
+  xlab = "Altura lanzamiento (cm)", ylab = "Distancia media (cm)",
+  trace.label = "Plataf.", col = c("blue", "red")
+)
+interaction.plot(
+  datos$plataforma, datos$angulo, datos$distancia,   # B x A
+  xlab = "Altura plataforma (cm)", ylab = "Distancia media (cm)",
+  trace.label = "Ángulo", col = c("blue", "red")
+)
 par(mfrow = c(1, 1))
 
 
@@ -82,6 +93,7 @@ modelo <- aov(distancia ~ angulo * plataforma * altura, data = datos)
 summary(modelo)
 
 # Medias de cada nivel y de cada combinación
+# (efecto principal = diferencia entre las medias de los niveles)
 model.tables(modelo, type = "means")
 
 
@@ -91,29 +103,35 @@ model.tables(modelo, type = "means")
 
 # Normalidad
 shapiro.test(residuals(modelo))
-# 0.0016 -> se rechaz, resultado malo, no es normal
+# p = 0.0016 -> se rechaza, los residuos no son normales
 
 # Homocedasticidad
 leveneTest(distancia ~ angulo * plataforma * altura, data = datos)
-# 0.6193 -> no se rechaza, resultado bueno, varianzas homogéneas
+# p = 0.6193 -> no se rechaza, varianzas homogéneas
 
-# Gráficos AOV
-par(mfrow = c(2, 2))
-plot(modelo)
-par(mfrow = c(1, 1))
-# residuos vs predichos -> se ve embudo, mal resultado, no es normal
-# QQ plot -> el centro si sigue una diagonal pero los extremos se...
-# ...mueven, mal resultado, no es normal
-# scale-location -> la linea roja baja y sube, mal resultado, la...
-# ...varianza no es constante
-# constant leverage -> los puntos al inicio están mas dispersos, mal...
-# ...resultado
-
-# Independencia
-plot(datos$orden, residuals(modelo))
+par(mfrow = c(1, 3))
+plot(modelo, which = 1)
+plot(modelo, which = 2)
+plot(datos$orden, residuals(modelo), pch = 19,
+     xlab = "Orden de ejecución", ylab = "Residuos", main = "Residuos vs orden")
 abline(h = 0, lty = 2)
-# Los puntos se mueven al azar, no hay tendencia, resultado bueno...
-# ...son independientes
+par(mfrow = c(1, 1))
+# residuos vs ajustados -> mayor dispersión con 30° y plataforma a 0 cm
+# Q-Q -> el centro sigue la diagonal, pero las colas se separan
+# residuos vs orden -> sin tendencias ni rachas, se cumple la independencia
+
+# Observación atípica
+max(cooks.distance(modelo))
+cooks.distance(modelo)[datos$orden == 22]
+# D = 0.51 < 1 -> no es un punto influyente, se mantiene
+
+# Como hay embudo y falta de normalidad, se transforma y con log
+modelo_log <- aov(log(distancia) ~ angulo * plataforma * altura, data = datos)
+summary(modelo_log)
+shapiro.test(residuals(modelo_log))
+leveneTest(log(distancia) ~ angulo * plataforma * altura, data = datos)
+# Con log se cumplen normalidad (p = 0.385) y homocedasticidad (p = 0.851).
+# Siguen significativos A, B, C y A x B; A x C deja de serlo (p = 0.150).
 
 
 ############################################################
@@ -163,10 +181,7 @@ step(sr, direction = "both")
 # step elimina x2x3 y I(x3^2) (no significativos) -> modelo reducido
 sr2 <- lm(distancia ~ x1 + x2 + x3 + x1x2 + x1x3, data = datos)
 summary(sr2)
-
-# ¿Se puede eliminar x2x3 e I(x3^2) a la vez? H0: sus coeficientes son 0
-anova(sr2, sr)
-# p > 0.05: no empeora el ajuste, se adopta el modelo reducido
+# R^2 ajustado: 0.855 (completo) -> 0.862 (reducido), se usaría el reducido
 
 
 ############################################################
@@ -178,26 +193,37 @@ datos$prediccion <- predict(sr2, datos)
 datos[seq(1, 36, by = 3), c("angulo", "plataforma", "altura", "prediccion")]
 
 # Pendiente respecto de la altura (x3) en el óptimo, con el modelo completo
-# (el que tiene curvatura): b3 + b13*x1 + b23*x2 + 2*b33*x3
+# (el que tiene curvatura): b_3 + b_13*x1 + b_23*x2 + 2*b_33*x3
 b <- coef(sr)
 b["x3"] + b["x1x3"] * (-1) + b["x2x3"] * 1 + 2 * b["I(x3^2)"] * 1
 # Pendiente positiva en x3 = 1: la distancia sigue subiendo al llegar a 30 cm,
 # por lo que el máximo dentro de la región está en el borde.
 
-# Superficie ajustada: distancia predicha vs altura, para cada ángulo
 par(mfrow = c(1, 2))
 d30 <- datos[datos$angulo == 30, ]
-interaction.plot(d30$altura, d30$plataforma, d30$prediccion, main = "Ángulo 30°")
+interaction.plot(
+  d30$altura, d30$plataforma,
+  d30$prediccion, main = "Ángulo 30°",
+  xlab = "Altura lanzamiento (cm)", ylab = "Distancia predicha (cm)",
+  trace.label = "Plataf.", col = c("blue", "red"), ylim = c(4, 26)
+)
 d45 <- datos[datos$angulo == 45, ]
-interaction.plot(d45$altura, d45$plataforma, d45$prediccion, main = "Ángulo 45°")
+interaction.plot(
+  d45$altura, d45$plataforma,
+  d45$prediccion, main = "Ángulo 45°",
+  xlab = "Altura lanzamiento (cm)", ylab = "Distancia predicha (cm)",
+  trace.label = "Plataf.", col = c("blue", "red"), ylim = c(4, 26)
+)
 par(mfrow = c(1, 1))
 
-# Combinación óptima: 30°, plataforma a 5 cm, lanzamiento desde 30 cm
+# Combinación óptima (30°, 5 cm, 30 cm)
 optimo <- data.frame(x1 = -1, x2 = 1, x3 = 1, x1x2 = -1, x1x3 = -1, x2x3 = 1)
-predict(sr, optimo)    # modelo completo
-predict(sr2, optimo)   # modelo reducido (adoptado)
+predict(sr, optimo)
+predict(sr2, optimo)
 
-# Intervalos al 95 %: de la media (confidence) y de una corrida nueva (prediction)
+# Intervalos al 95 % (de la media y de una corrida nueva)
+predict(sr, optimo, interval = "confidence")
+predict(sr, optimo, interval = "prediction")
 predict(sr2, optimo, interval = "confidence")
 predict(sr2, optimo, interval = "prediction")
 
