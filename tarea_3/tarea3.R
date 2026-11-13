@@ -168,7 +168,7 @@ step(sr, direction = "both")
 
 # Distancia predicha en las 12 combinaciones de la región experimental
 datos$prediccion <- predict(sr, datos)
-datos[seq(1, 36, by = 3), c("angulo", "plataforma", "altura", "prediccion")]   # una fila por tratamiento
+datos[seq(1, 36, by = 3), c("angulo", "plataforma", "altura", "prediccion")]
 
 # Pendiente respecto de la altura (x3) en el óptimo: b3 + b13*x1 + b23*x2 + 2*b33*x3
 b <- coef(sr)
@@ -193,8 +193,15 @@ predict(sr, optimo)
 # 8. CORRIDAS DE CONFIRMACIÓN
 ############################################################
 
-# PENDIENTE: anotar las 3 distancias medidas en el óptimo
-# confirmacion <- c(, , )
-# mean(confirmacion)
-# t.test(confirmacion, mu = predict(sr, optimo))   # H0: media real = valor predicho
+# Distancias medidas en 3 lanzamientos nuevos en el óptimo (30°, 5 cm, 30 cm)
+confirmacion <- c(27, 25, 27)
+mean(confirmacion)
+sd(confirmacion)
 
+# Comparación con lo observado en el experimento para ese tratamiento
+datos$distancia[datos$angulo == 30 & datos$plataforma == 5 & datos$altura == 30]
+
+# H0: la media real en el óptimo es igual al valor predicho por el modelo
+t.test(confirmacion, mu = predict(sr, optimo))
+# p-valor > 0.05: no se rechaza H0, las corridas confirman la predicción...
+# ...del modelo y la combinación óptima.
