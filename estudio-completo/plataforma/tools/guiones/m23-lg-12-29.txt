@@ -1,0 +1,41 @@
+# Ejercicio 12.29: el sabor del queso panela
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 29
+@pregunta m23-d022
+@orden 8
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veintinueve, el último: el sabor del queso panela.
+
+{enun} Cinco jueces calificaron el sabor. {clave1} Los factores son la sal y el cuajo. {clave2} Hay solo ocho quesos. {clave3} Se pide un modelo de segundo orden, cuánto explica, y la combinación de sal y cuajo con el mejor sabor.
+
+## El diseño
+
+{dis} Si codificamos la sal como sal menos cinco, y el cuajo como cuajo menos cero coma tres, dividido en cero coma uno, los seis puntos externos quedan sobre un círculo de radio uno, formando un hexágono. Más dos centros. {cod} Ocho corridas para seis coeficientes: quedan solo dos grados de libertad para el error.
+
+## El modelo
+
+{sal} El modelo. {ecuacion} La ecuación. {lin} Lineales, {cuad} cuadráticos {inter} e interacción, que sale exactamente cero por la simetría del hexágono.
+
+{sig} Ningún término es significativo al cinco por ciento; el cuadrático del cuajo queda cerca, con pe cero coma cero cinco ocho. Y los cuadráticos tienen signos opuestos: negativo para la sal, positivo para el cuajo.
+
+## ¿Es adecuado?
+
+{f} {fcalc} La efe global da cinco coma cinco, con pe cero coma uno seis: no es significativo. {rcuad} El erre cuadrado es cero coma nueve tres, que parece alto, pero el ajustado cae a cero coma siete seis. Con seis parámetros y ocho datos, cualquier modelo ajusta bien. {lof} La falta de ajuste no es significativa, pero eso tampoco salva al modelo. Lo que hay que decir: explica el noventa y tres por ciento de la variación observada, pero con tan pocos datos no es confiable.
+
+## Punto estacionario
+
+{deriv} De todos modos, el procedimiento. {d1} Derivada respecto de la sal. {d2} Respecto del cuajo. Como la interacción es cero, cada ecuación tiene una sola variable. {sist} Se despeja directo: equis igual a menos be i dividido en dos be i i. {sol} Menos cero coma uno ocho y menos cero coma cero cinco. {real} Sal cuatro coma ocho y cuajo cero coma dos nueve cinco.
+
+## Clasificar
+
+{hes} La hessiana es diagonal. {det} Su determinante: menos cero coma nueve nueve por dos coma tres nueve, negativo. {ev} Los valores propios son los propios cuadráticos, menos cero coma cinco y uno coma dos. {clas} Signos opuestos: punto silla.
+
+## El mejor sabor
+
+{opt} Queremos el mejor sabor, y una silla no es un máximo. El mejor punto está en el borde del hexágono. {mejor} Evaluando el modelo en la región, el mayor sabor predicho está con sal cerca de cuatro coma ocho y el cuajo más alto del diseño, cero coma tres ocho cinco: un sabor de siete coma cinco. Coincide con lo observado: los quesos con más cuajo fueron los mejor evaluados. Pero con un modelo no significativo, esta recomendación hay que confirmarla.
+
+## Cierre
+
+{fin} Un erre cuadrado alto con pocos datos engaña: mira el ajustado y el efe. Y sin interacción, cada factor se optimiza por separado, con equis igual a menos be i sobre dos be i i.
