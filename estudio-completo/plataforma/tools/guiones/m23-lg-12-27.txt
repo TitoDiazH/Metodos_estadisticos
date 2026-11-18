@@ -1,0 +1,41 @@
+# Ejercicio 12.27: hojuelas de soya, Box-Behnken
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 27
+@pregunta m23-d016
+@orden 6
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veintisiete: hojuelas de soya. Es el mismo problema del ejercicio que vimos en clase, pero con los datos del libro, y da un resultado distinto.
+
+{enun} Se estudia la elaboración de hojuelas de soya por extrusión. {clave1} Factores: temperatura de ciento veinte a ciento setenta grados, humedad de veinticinco a cuarenta y cinco por ciento, y velocidad de tornillo de ochocientas a mil revoluciones. {clave2} Diseño Box Behnken de quince corridas. {clave3} Interesa minimizar la respuesta.
+
+## El diseño
+
+{dis} Box Behnken con tres factores: doce puntos en las aristas y tres centros. {cod} Codificación: temperatura menos ciento cuarenta y cinco sobre veinticinco, humedad menos treinta y cinco sobre diez, velocidad menos novecientos sobre cien.
+
+## El modelo
+
+{sal} El modelo. {ecuacion} La ecuación de segundo orden. {lin} Lineales, {cuad} cuadráticos, {inter} interacciones.
+
+{sig} Significativos: temperatura y humedad lineales, el cuadrático de humedad y la interacción temperatura humedad. A diferencia del ejercicio de clase, aquí sí hay una interacción importante: menos seis coma ocho. El efecto de la temperatura depende de la humedad.
+
+## ¿Es adecuado?
+
+{f} {fcalc} Efe ocho coma siete, pe cero coma cero uno cuatro: significativo. {rcuad} Erre cuadrado cero coma nueve cuatro, ajustado cero coma ocho tres. {lof} Sin falta de ajuste al cinco por ciento, pe cero coma cero siete.
+
+## Punto estacionario
+
+{deriv} Derivamos. {d1} Respecto de temperatura. {d2} De humedad. {d3} De velocidad. {sist} Con la interacción, el sistema ya no se separa por factor: hay que resolverlo junto. {sol} La solución: menos cero coma cero nueve, menos cero coma seis siete, y cero coma cero siete. {real} Dentro de la región: unos ciento cuarenta y tres grados, veintiocho por ciento de humedad y novecientas siete revoluciones.
+
+## Clasificar
+
+{hes} Valores propios. {ev} Ocho coma nueve, dos coma tres, y menos dos coma seis. {clas} Signos mezclados: es un punto silla. Es justo lo que pregunta el libro: si queremos minimizar, ¿es el tipo de superficie deseado? No. Una silla no es un mínimo.
+
+## El mejor punto
+
+{opt} Entonces hay que buscar en la frontera de la región. {mejor} El menor valor predicho está con temperatura alta, ciento setenta grados, humedad cerca de treinta y tres por ciento y velocidad cerca de novecientas quince. Ojo: el modelo predice ahí un valor negativo, que es imposible. Eso dice que en ese borde el modelo cuadrático ya no es confiable, y que la recomendación hay que confirmarla con corridas reales.
+
+## Cierre
+
+{fin} Con interacciones, el punto estacionario se obtiene resolviendo el sistema completo. Si sale una silla cuando buscas un mínimo, se busca en la frontera, y una predicción imposible es una alarma para no confiar ciegamente en el modelo.
