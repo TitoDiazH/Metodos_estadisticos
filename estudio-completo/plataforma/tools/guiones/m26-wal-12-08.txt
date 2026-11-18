@@ -1,0 +1,47 @@
+# Ejercicio 12.8: resistencia de una aleación y falta de ajuste
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.8
+@pregunta m26-d023
+@orden 8
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto ocho: resistencia a la compresión de una aleación.
+
+{enun} Se probaron cinco concentraciones de un aditivo. {clave1} La respuesta es la resistencia a la compresión. {clave2} Y hay tres réplicas en cada concentración. {clave3} Se pide un modelo cuadrático y probar la falta de ajuste. Las réplicas son las que lo hacen posible.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Ye gorro igual a diecinueve, más uno coma cero uno por equis, menos cero coma cero dos cero cuatro por equis al cuadrado.
+
+{interp} Interpretación. {i1} Cuadrático negativo: parábola hacia abajo, con un máximo. {i2} La resistencia sube con el aditivo, pero cada vez menos, hasta empezar a bajar. {i3} El intercepto, concentración cero, está fuera del rango.
+
+{deriv} Derivada: uno coma cero uno menos cero coma cero cuatro uno por equis. {tang1} En quince vale cero coma cuatro: todavía conviene agregar aditivo. {tang2} En veinticinco ya es casi cero. {vert} Igualando a cero, el máximo está en veinticuatro coma siete, con una resistencia predicha de treinta y uno coma cinco.
+
+## Pruebas te
+
+{pt} Doce grados de libertad. {t1} Lineal: te dos coma ocho tres, pe cero coma cero uno cinco, se rechaza. {t2} Cuadrático: te menos dos coma tres uno, pe cero coma cero tres nueve, se rechaza: hay curvatura.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Nueve coma cinco, pe cero coma cero cero tres: se rechaza, el modelo sirve.
+
+{rcuad} Erre cuadrado cero coma seis uno. {r2aj} Ajustado cero coma cinco cinco. Parece poco, pero veamos por qué.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin forma. {sw} Shapiro: cero coma cero nueve seis, no se rechaza al cinco por ciento, aunque está cerca.
+
+{hat} Apalancamiento bajo el corte de cero coma cuatro. {cook} Y ningún Cook pasa de uno.
+
+## Falta de ajuste
+
+{lof} Ahora lo propio del ejercicio. Como hay tres réplicas por concentración, la suma de cuadrados del error se separa en dos. El error puro: cuánto varían entre sí las réplicas de una misma concentración, que no depende del modelo. Y la falta de ajuste: cuánto se alejan las medias de cada concentración de la curva.
+
+{lofcalc} El error total es veinticuatro coma cinco. El error puro es veinticuatro coma cuatro, con diez grados de libertad. La falta de ajuste es apenas cero coma uno, con dos grados de libertad. El efe es cero coma cero dos.
+
+{lofdec} Con pe igual a cero coma nueve ocho, no se rechaza la hipótesis de que el modelo cuadrático es adecuado. Y ahora se entiende el erre cuadrado modesto: casi todo lo que el modelo no explica es variación entre réplicas, que ningún modelo podría explicar.
+
+## Cierre
+
+{fin} La prueba de falta de ajuste necesita réplicas. Separa el error en puro y falta de ajuste, y compara los dos. Si no es significativa, el modelo describe bien la forma, aunque el erre cuadrado no sea alto.
