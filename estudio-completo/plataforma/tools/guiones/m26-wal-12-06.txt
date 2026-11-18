@@ -1,0 +1,49 @@
+# Ejercicio 12.6: distancia de frenado, el primer polinomio
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.6 (polinomio explicado)
+@pregunta m26-d017
+@orden 6
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto seis. Es el primer modelo polinomial, así que nos vamos a detener en lo que cambia: la interpretación con derivadas.
+
+{enun} Se midió la distancia de frenado de un auto a seis velocidades. {clave1} La respuesta es la distancia de frenado, en metros. {clave2} Y el modelo pedido es cuadrático: be cero más be uno por la velocidad, más be dos por la velocidad al cuadrado. {clave3} Además, estimar la distancia a setenta kilómetros por hora.
+
+## El modelo ajustado
+
+{sal} ¿Por qué esto sigue siendo regresión lineal? Porque es lineal en los parámetros: la velocidad al cuadrado es simplemente otra columna. En erre se escribe con i mayúscula y paréntesis, para que el sombrerito se entienda como potencia. {ecuacion} El modelo ajustado: de gorro igual a trece coma tres seis, menos cero coma tres tres nueve por ve, más cero coma cero uno uno ocho por ve al cuadrado.
+
+{interp} Ahora, cómo se interpreta. {i1} El coeficiente de ve, menos cero coma tres tres nueve, ya no es el efecto de la velocidad. Ojo con esto, porque es el error típico. {i2} En un polinomio, el efecto de subir la velocidad depende de a qué velocidad vas. {i3} El intercepto sería la distancia a cero kilómetros por hora, fuera del rango, así que no se interpreta.
+
+{deriv} El efecto se obtiene con la derivada. La derivada de be uno por ve es be uno, y la de be dos por ve al cuadrado es dos be dos ve. Queda: menos cero coma tres tres nueve, más cero coma cero dos tres siete por ve. Es una recta: la pendiente de la curva cambia con la velocidad.
+
+{tang1} A cincuenta kilómetros por hora, la derivada vale cero coma ocho cuatro: cada kilómetro por hora extra agrega casi un metro de frenado. {tang2} A cien kilómetros por hora vale dos coma cero tres: más del doble. Eso es lo que dice el término cuadrático positivo: la distancia crece cada vez más rápido.
+
+{vert} Si igualamos la derivada a cero, el vértice de la parábola queda en catorce kilómetros por hora. Está fuera de los datos, que parten en treinta y cinco, así que en el rango observado la curva solo sube.
+
+## Pruebas te
+
+{pt} Seis datos menos tres parámetros: tres grados de libertad, y el crítico es tres coma uno ocho.
+
+{t1} El término lineal: te menos quince coma ocho, se rechaza. {t2} El cuadrático: te ochenta coma ocho, pe cero coma cero cero cero cero cuatro. Se rechaza: hay curvatura. La distancia no crece en línea recta con la velocidad.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Noventa y cinco mil, con un pe minúsculo: el modelo explica la distancia.
+
+{rcuad} El erre cuadrado es prácticamente uno. {r2aj} El ajustado también. Un modelo cuadrático describe casi perfecto estos seis puntos, lo que tiene sentido físico: la energía que hay que disipar crece con el cuadrado de la velocidad.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} En los residuos, el último punto aparece marcado. {sw} Shapiro da cero coma cinco uno: no se rechaza la normalidad.
+
+{hat} En un polinomio no se usa el ve i efe para decidir: ve y ve al cuadrado están correlacionados por construcción. Pasamos al apalancamiento: el corte es uno, nadie lo pasa. {cook} Pero la distancia de Cook de la velocidad ciento diez es dos coma cuatro: es influyente. Con solo seis datos, el punto del extremo pesa mucho en la forma de la curva.
+
+## Predicción
+
+{pred} La distancia a setenta. {predcalc} Trece coma tres seis, menos cero coma tres tres nueve por setenta, más cero coma cero uno uno ocho por setenta al cuadrado. Da cuarenta y siete coma cinco metros. {predint} El intervalo para la media es angosto, de cuarenta y siete coma uno a cuarenta y siete coma nueve, porque el modelo ajusta casi perfecto. Setenta está dentro del rango: la predicción es confiable. A ciento cincuenta no lo sería.
+
+## Cierre
+
+{fin} Lo que hay que llevarse de los polinomios: el coeficiente lineal solo no es el efecto, el efecto es la derivada y cambia con equis, el signo del término cuadrático dice si la curva se acelera o se frena, y el vértice sale de igualar la derivada a cero.
