@@ -1,0 +1,43 @@
+# Ejercicio 12.26: rendimiento, experimentación secuencial
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 26
+@pregunta m23-d013
+@orden 5
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veintiséis: muestra la estrategia completa de superficie de respuesta.
+
+{enun} Se busca maximizar el rendimiento de un proceso, moviendo tiempo y temperatura. {clave1} Primero se exploró alrededor de setenta y cinco minutos y ciento treinta grados, y siguiendo la trayectoria de máximo ascenso se llegó a noventa minutos y ciento cuarenta y cinco grados. {clave2} Ahí se corrió un factorial dos por dos con dos centros. {clave3} Como el modelo de primer orden no describía bien la zona, se agregaron puntos axiales para completar un central compuesto. Analizamos ese diseño final.
+
+## El diseño
+
+{dis} El central compuesto final: cuatro esquinas, cuatro axiales a uno coma cuatro uno, y cuatro centros. {cod} Tiempo menos noventa, dividido en diez. Temperatura menos ciento cuarenta y cinco, dividido en cinco.
+
+¿Por qué no bastaba el primer orden en la segunda zona? Porque cerca del óptimo la superficie ya no es un plano: se curva. Un plano ahí da un erre cuadrado bajísimo. Por eso se agregan niveles.
+
+## El modelo
+
+{sal} El modelo de segundo orden. {ecuacion} La ecuación. {lin} Lineales, {cuad} cuadráticos {inter} e interacción.
+
+{sig} Significativos: los dos cuadráticos, negativos, y la interacción, también negativa y grande. Ahora sí, el segundo orden describe la superficie.
+
+## ¿Es adecuado?
+
+{f} {fcalc} Efe nueve coma tres, pe cero coma cero cero nueve: significativo. {rcuad} Erre cuadrado cero coma ocho nueve. {lof} Y sin falta de ajuste, pe cero coma dos ocho.
+
+## Punto estacionario
+
+{deriv} Derivamos. {d1} Respecto del tiempo. {d2} Respecto de la temperatura. {sist} Resolvemos el sistema. {sol} Equis uno, menos tres coma seis seis; equis dos, dos coma nueve tres. {real} Muy fuera de la región.
+
+## Clasificar
+
+{hes} La hessiana. {det} Determinante positivo y primer elemento negativo. {ev} Valores propios menos cero coma uno cuatro y menos cinco coma uno. {clas} Los dos negativos: es un máximo. Pero uno casi cero: la superficie es una cresta alargada, una cordillera, que sube muy lentamente hacia afuera. Por eso el máximo exacto se va lejos.
+
+## El óptimo
+
+{opt} Queremos maximizar, y es un máximo, pero fuera de la región. No se extrapola. El mejor punto se busca en la frontera. {mejor} En la región del factorial, el mayor rendimiento está en equis uno igual a menos uno y equis dos cerca de cero coma ocho cinco: unos ochenta minutos y ciento cuarenta y nueve grados, con un rendimiento predicho de ochenta y ocho coma ocho. Como la cresta sigue subiendo hacia allá, valdría la pena un nuevo experimento en esa dirección.
+
+## Cierre
+
+{fin} La estrategia completa: primer orden y máximo ascenso para acercarse, y cuando aparece la curvatura, un central compuesto y un modelo de segundo orden. Un valor propio casi cero indica una cordillera: muchas combinaciones dan casi el mismo resultado.
