@@ -64,7 +64,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora el ejercicio dieciocho del capítulo tres: cuatro clonas de agave tequilero."
+      "Ahora el ejercicio 18 del capítulo tres: cuatro clonas de agave tequilero."
     ],
     [
       5.35,
@@ -88,7 +88,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       28.15,
-      "Veinte datos en total."
+      "20 datos en total."
     ],
     [
       30.26,
@@ -100,39 +100,39 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       40.85,
-      "Los totales: la clona uno suma treinta y ocho coma nueve, la dos, sesenta y tres coma cuatro, la tres, setenta y nueve coma dos, y la cuatro, cuarenta y dos coma cuatro."
+      "Los totales: la clona uno suma 38,9, la dos, 63,4, la tres, 79,2, y la cuatro, 42,4."
     ],
     [
       51.11,
-      "El gran total es doscientos veintitrés coma nueve."
+      "El gran total es 223,9."
     ],
     [
       54.6,
-      "Con la corrección y la suma de los datos al cuadrado, la suma de cuadrados total da trescientos cuatro coma cinco cinco."
+      "Con la corrección y la suma de los datos al cuadrado, la suma de cuadrados total da 304,55."
     ],
     [
       61.47,
-      "La de clonas, con los totales al cuadrado divididos en cinco, da doscientos trece coma seis tres."
+      "La de clonas, con los totales al cuadrado divididos en cinco, da 213,63."
     ],
     [
       67.53,
-      "Y el error, por diferencia, noventa coma nueve tres."
+      "Y el error, por diferencia, 90,93."
     ],
     [
       72.82,
-      "Los grados de libertad son tres para las clonas y dieciséis para el error."
+      "Los grados de libertad son tres para las clonas y 16 para el error."
     ],
     [
       77.34,
-      "Los cuadrados medios: setenta y uno coma dos uno y cinco coma seis ocho."
+      "Los cuadrados medios: 71,21 y 5,68."
     ],
     [
       82.42,
-      "El efe es doce coma cinco tres."
+      "El F es 12,53."
     ],
     [
       84.75,
-      "El crítico con tres y dieciséis grados de libertad es tres coma dos cuatro, y el pe valor, cero coma cero cero cero dos."
+      "El crítico con tres y 16 grados de libertad es 3,24, y el valor p, 0,0002."
     ],
     [
       91.91,
@@ -140,15 +140,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       96.79,
-      "La ele ese de usa te con dieciséis grados de libertad, dos coma uno dos, por la raíz de dos por cinco coma seis ocho, dividido en cinco."
+      "La LSD usa te con 16 grados de libertad, 2,12, por la raíz de 2 · 5,68, dividido en cinco."
     ],
     [
       104.94,
-      "Da tres coma dos."
+      "Da 3,2."
     ],
     [
       106.89,
-      "Las medias, de mayor a menor, son: clona tres, quince coma ocho cuatro; clona dos, doce coma seis siete; clona cuatro, ocho coma cuatro nueve; y clona uno, siete coma siete nueve."
+      "Las medias, de mayor a menor, son: clona tres, 15,84; clona dos, 12,67; clona cuatro, 8,49; y clona uno, 7,79."
     ],
     [
       118.26,
@@ -156,7 +156,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       121.42,
-      "Pero contra la clona dos, la diferencia es tres coma uno siete, y la ele ese de es tres coma dos."
+      "Pero contra la clona dos, la diferencia es 3,17, y la LSD es 3,2."
     ],
     [
       127.22,
@@ -184,7 +184,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       156.82,
-      "En los residuos, Shapiro Wilk da pe igual a cero coma ocho, y Bartlett, cero coma tres cinco."
+      "En los residuos, Shapiro Wilk da p = 0,8, y Bartlett, 0,35."
     ],
     [
       162.58,
@@ -196,8 +196,44 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       169.96,
-      "Antes de elegir, siempre hay que mirar la ele ese de."
+      "Antes de elegir, siempre hay que mirar la LSD."
     ]
   ],
-  "huella": "1efaf5f7af5b"
+  "huella": "1efaf5f7af5b",
+  "frasesHabladas": [
+    "Ahora el ejercicio dieciocho del capítulo tres: cuatro clonas de agave tequilero.",
+    "Las cuatro clonas se cultivaron bajo el mismo manejo, y se midió el porcentaje de azúcares reductores.",
+    "Hay cinco plantas por clona.",
+    "Se quiere saber cuál responde mejor, o sea, más azúcar es mejor.",
+    "Y hay una pregunta poco común: qué hacer si hay un empate estadístico.",
+    "Es un diseño completamente al azar con un factor, la clona, con cuatro niveles y cinco réplicas.",
+    "Veinte datos en total.",
+    "El modelo: media global, más efecto de la clona, más error.",
+    "La hipótesis nula dice que las cuatro clonas tienen el mismo porcentaje medio de azúcares.",
+    "Los totales: la clona uno suma treinta y ocho coma nueve, la dos, sesenta y tres coma cuatro, la tres, setenta y nueve coma dos, y la cuatro, cuarenta y dos coma cuatro.",
+    "El gran total es doscientos veintitrés coma nueve.",
+    "Con la corrección y la suma de los datos al cuadrado, la suma de cuadrados total da trescientos cuatro coma cinco cinco.",
+    "La de clonas, con los totales al cuadrado divididos en cinco, da doscientos trece coma seis tres.",
+    "Y el error, por diferencia, noventa coma nueve tres.",
+    "Los grados de libertad son tres para las clonas y dieciséis para el error.",
+    "Los cuadrados medios: setenta y uno coma dos uno y cinco coma seis ocho.",
+    "El efe es doce coma cinco tres.",
+    "El crítico con tres y dieciséis grados de libertad es tres coma dos cuatro, y el pe valor, cero coma cero cero cero dos.",
+    "Se rechaza: las clonas no responden igual.",
+    "La ele ese de usa te con dieciséis grados de libertad, dos coma uno dos, por la raíz de dos por cinco coma seis ocho, dividido en cinco.",
+    "Da tres coma dos.",
+    "Las medias, de mayor a menor, son: clona tres, quince coma ocho cuatro; clona dos, doce coma seis siete; clona cuatro, ocho coma cuatro nueve; y clona uno, siete coma siete nueve.",
+    "La clona tres supera a la uno y a la cuatro por mucho.",
+    "Pero contra la clona dos, la diferencia es tres coma uno siete, y la ele ese de es tres coma dos.",
+    "¿Qué significa eso?",
+    "Que no alcanza.",
+    "Estadísticamente, la tres y la dos están empatadas: no podemos decir que la tres sea mejor que la dos, aunque su media sea más alta.",
+    "¿Cómo se desempata?",
+    "Con más réplicas de esas dos clonas, para ganar precisión.",
+    "O usando otros criterios: costo, rendimiento en campo, o cuál es más estable, con menor variabilidad.",
+    "En los residuos, Shapiro Wilk da pe igual a cero coma ocho, y Bartlett, cero coma tres cinco.",
+    "No hay problemas con los supuestos.",
+    "La lección de este ejercicio: la media más alta no es automáticamente la mejor.",
+    "Antes de elegir, siempre hay que mirar la ele ese de."
+  ]
 });

@@ -124,7 +124,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       3.82,
-      "Piensa en un cuestionario de satisfacción laboral con veinte preguntas."
+      "Piensa en un cuestionario de satisfacción laboral con 20 preguntas."
     ],
     [
       7.94,
@@ -188,7 +188,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       78.38,
-      "La comunalidad, hache dos: la parte de la varianza de la variable que explican los factores."
+      "La comunalidad, h²: la parte de la varianza de la variable que explican los factores."
     ],
     [
       84.06,
@@ -196,7 +196,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       87.52,
-      "Y la especificidad, psi: lo que queda, uno menos hache dos."
+      "Y la especificidad, psi: lo que queda, 1 − h²."
     ],
     [
       91.72,
@@ -204,11 +204,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       94.41,
-      "Matemáticas tiene cargas cero coma ocho y cero coma dos."
+      "Matemáticas tiene cargas 0,8 y 0,2."
     ],
     [
       97.81,
-      "Su comunalidad es cero coma ocho al cuadrado, más cero coma dos al cuadrado."
+      "Su comunalidad es 0,8² + 0,2²."
     ],
     [
       102.48,
@@ -216,15 +216,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       107.87,
-      "Cero coma sesenta y cuatro, más cero coma cero cuatro: cero coma sesenta y ocho."
+      "0,64 + 0,04: 0,68."
     ],
     [
       113.01,
-      "Su especificidad es cero coma treinta y dos."
+      "Su especificidad es 0,32."
     ],
     [
       115.95,
-      "El sesenta y ocho por ciento de la varianza de matemáticas lo explican los factores, y el treinta y dos es propio."
+      "El 68 % de la varianza de matemáticas lo explican los factores, y el 32 es propio."
     ],
     [
       123.19,
@@ -268,23 +268,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       166.75,
-      "Sobre cero coma setenta y cinco, bien."
+      "Sobre 0,75, bien."
     ],
     [
       169.39,
-      "Sobre cero coma cinco, aceptable."
+      "Sobre 0,5, aceptable."
     ],
     [
       171.84,
-      "Bajo cero coma cinco, no conviene hacer el análisis."
+      "Bajo 0,5, no conviene hacer el análisis."
     ],
     [
       175.81,
-      "En la clase, con las notas de varias materias, el KMO global daba cero coma treinta y cinco."
+      "En la clase, con las notas de varias materias, el KMO global daba 0,35."
     ],
     [
       181.5,
-      "Al sacar las materias poco correlacionadas con las demás, lenguaje, música y educación física, subió a cero coma sesenta y uno."
+      "Al sacar las materias poco correlacionadas con las demás, lenguaje, música y educación física, subió a 0,61."
     ],
     [
       191.4,
@@ -296,7 +296,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       198.66,
-      "La regla es que ka sea a lo más pe menos uno, dividido en dos."
+      "La regla es que k sea a lo más p − 1, dividido en dos."
     ],
     [
       202.29,
@@ -328,7 +328,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       232.36,
-      "Explicar entre setenta y cinco y ochenta por ciento de la varianza."
+      "Explicar entre 75 y 80 % de la varianza."
     ],
     [
       236.41,
@@ -340,7 +340,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       244.92,
-      "En la pauta de una prueba pasada se eligieron dos factores con tres argumentos: solo dos valores propios mayores que uno, un codo después del segundo, y entre los dos, dos coma cinco uno más uno coma siete cuatro, dividido en seis variables: setenta coma nueve por ciento."
+      "En la pauta de una prueba pasada se eligieron dos factores con tres argumentos: solo dos valores propios mayores que uno, un codo después del segundo, y entre los dos, 2,51 + 1,74, dividido en seis variables: 70,9 %."
     ],
     [
       263.35,
@@ -372,11 +372,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       297.25,
-      "En la clase, al girar cuarenta y cinco grados, matemáticas pasa de cero coma ocho y cero coma dos a cero coma cuatro dos y cero coma siete uno."
+      "En la clase, al girar 45 grados, matemáticas pasa de 0,8 y 0,2 a 0,42 y 0,71."
     ],
     [
       306.04,
-      "Y su comunalidad sigue siendo cero coma sesenta y ocho."
+      "Y su comunalidad sigue siendo 0,68."
     ],
     [
       310.0,
@@ -392,7 +392,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       323.03,
-      "Para interpretar, se miran las cargas grandes, mayores que cero coma cuatro o cero coma cinco."
+      "Para interpretar, se miran las cargas grandes, mayores que 0,4 o 0,5."
     ],
     [
       328.99,
@@ -404,7 +404,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       340.61,
-      "En erre, con el paquete psych: se estandarizan los datos, se revisan KMO y cortest punto bartlett, se decide el número con fa punto parallel, y se ajusta con fa, indicando nfactors y rotate."
+      "En R, con el paquete psych: se estandarizan los datos, se revisan KMO y cortest punto bartlett, se decide el número con fa punto parallel, y se ajusta con fa, indicando nfactors y rotate."
     ],
     [
       352.54,
@@ -412,11 +412,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       356.12,
-      "Hache dos, la comunalidad."
+      "h², la comunalidad."
     ],
     [
       358.28,
-      "U dos, la especificidad."
+      "u², la especificidad."
     ],
     [
       360.21,
@@ -432,7 +432,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       368.77,
-      "Con USArrests, el KMO global es cero coma sesenta y cinco."
+      "Con USArrests, el KMO global es 0,65."
     ],
     [
       372.61,
@@ -468,12 +468,103 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       411.26,
-      "Y en la salida de erre: hache dos, u dos y com."
+      "Y en la salida de R: h², u² y com."
     ],
     [
       414.62,
       "Eso fue el módulo diez."
     ]
   ],
-  "huella": "ad116ed5b57f"
+  "huella": "ad116ed5b57f",
+  "frasesHabladas": [
+    "Ahora toca el módulo diez: el análisis factorial.",
+    "Piensa en un cuestionario de satisfacción laboral con veinte preguntas.",
+    "Seguramente las respuestas se agrupan: las preguntas sobre el sueldo se parecen entre sí, las del ambiente de trabajo también.",
+    "El análisis factorial propone que detrás de esas correlaciones hay unos pocos factores latentes, que no se observan directamente, y que explican por qué unas variables se parecen más a otras.",
+    "Algo que lo distingue de la regresión: acá no hay variable dependiente.",
+    "Todas las variables cumplen el mismo papel.",
+    "La idea central es que la varianza de cada variable tiene tres partes.",
+    "Una común, que comparte con las demás.",
+    "Una específica, que es solo suya.",
+    "Y un error.",
+    "El análisis factorial se concentra en la parte común.",
+    "¿En qué se diferencia de componentes principales?",
+    "Componentes principales analiza toda la varianza de las variables.",
+    "El análisis factorial por factores comunes analiza solo la parte compartida.",
+    "El modelo escribe cada variable estandarizada como una suma ponderada de los factores, más un término propio.",
+    "Los pesos se llaman cargas, y se ordenan en una matriz, a.",
+    "De ahí salen dos números clave.",
+    "La comunalidad, hache dos: la parte de la varianza de la variable que explican los factores.",
+    "Se calcula sumando las cargas de esa variable al cuadrado.",
+    "Y la especificidad, psi: lo que queda, uno menos hache dos.",
+    "En la clase hay seis materias y dos factores.",
+    "Matemáticas tiene cargas cero coma ocho y cero coma dos.",
+    "Su comunalidad es cero coma ocho al cuadrado, más cero coma dos al cuadrado.",
+    "¿Cuánto da?",
+    "Cero coma sesenta y cuatro, más cero coma cero cuatro: cero coma sesenta y ocho.",
+    "Su especificidad es cero coma treinta y dos.",
+    "El sesenta y ocho por ciento de la varianza de matemáticas lo explican los factores, y el treinta y dos es propio.",
+    "Un error típico es calcular la comunalidad con un solo factor.",
+    "Se suman los cuadrados de toda la fila.",
+    "Antes de hacer un análisis factorial, hay que comprobar que las variables estén correlacionadas.",
+    "El test de Bartlett, que ya vimos en el módulo dos, prueba si la matriz de correlación es la identidad.",
+    "Si se rechaza, hay correlación.",
+    "Y la otra herramienta es el KMO.",
+    "Compara las correlaciones simples con las parciales.",
+    "La correlación parcial es la que queda entre dos variables cuando se controla el efecto de todas las demás.",
+    "Si las variables comparten factores, las parciales deberían ser chicas comparadas con las simples, y el KMO es alto.",
+    "Va de cero a uno.",
+    "Sobre cero coma setenta y cinco, bien.",
+    "Sobre cero coma cinco, aceptable.",
+    "Bajo cero coma cinco, no conviene hacer el análisis.",
+    "En la clase, con las notas de varias materias, el KMO global daba cero coma treinta y cinco.",
+    "Al sacar las materias poco correlacionadas con las demás, lenguaje, música y educación física, subió a cero coma sesenta y uno.",
+    "Extraer los factores es encontrar la matriz de cargas.",
+    "Primer cuidado: no se pueden pedir demasiados factores.",
+    "La regla es que ka sea a lo más pe menos uno, dividido en dos.",
+    "Con cuatro variables, a lo más un factor.",
+    "Hay tres métodos clásicos.",
+    "El de componentes principales, que siempre da solución, pero analiza toda la varianza.",
+    "El de ejes principales, que reemplaza los unos de la diagonal por comunalidades e itera.",
+    "Y el de máxima verosimilitud, que supone normalidad, y a cambio entrega una prueba chi cuadrado de qué tan bien ajusta el modelo.",
+    "¿Cuántos factores?",
+    "Kaiser, valores propios mayores que uno, aunque tiende a quedarse corto.",
+    "Explicar entre setenta y cinco y ochenta por ciento de la varianza.",
+    "El codo del gráfico de sedimentación.",
+    "Y el análisis paralelo, que compara los valores propios reales con los de datos simulados al azar.",
+    "En la pauta de una prueba pasada se eligieron dos factores con tres argumentos: solo dos valores propios mayores que uno, un codo después del segundo, y entre los dos, dos coma cinco uno más uno coma siete cuatro, dividido en seis variables: setenta coma nueve por ciento.",
+    "La solución inicial muchas veces es difícil de leer: varias variables cargan en varios factores a la vez.",
+    "Pero la solución no es única: si se giran los ejes, se obtiene otra solución igual de válida.",
+    "Eso es rotar.",
+    "Se busca una estructura simple: que cada variable cargue fuerte en un solo factor.",
+    "Y al rotar, ¿cambian las comunalidades?",
+    "No.",
+    "Cambia cómo se reparte la varianza entre los factores, pero la comunalidad de cada variable y la varianza total explicada quedan iguales.",
+    "En la clase, al girar cuarenta y cinco grados, matemáticas pasa de cero coma ocho y cero coma dos a cero coma cuatro dos y cero coma siete uno.",
+    "Y su comunalidad sigue siendo cero coma sesenta y ocho.",
+    "Hay dos familias.",
+    "Las ortogonales mantienen los factores sin correlación: varimax, la más usada, quartimax y equamax.",
+    "Las oblicuas permiten que los factores se correlacionen: oblimin y promax.",
+    "Para interpretar, se miran las cargas grandes, mayores que cero coma cuatro o cero coma cinco.",
+    "En las materias, el primer factor reúne matemáticas, física y química: aptitud científica.",
+    "El segundo, inglés, historia y dibujo: aptitud humanística.",
+    "En erre, con el paquete psych: se estandarizan los datos, se revisan KMO y cortest punto bartlett, se decide el número con fa punto parallel, y se ajusta con fa, indicando nfactors y rotate.",
+    "En la salida hay tres columnas que se preguntan siempre.",
+    "Hache dos, la comunalidad.",
+    "U dos, la especificidad.",
+    "Ojo con no confundirlas.",
+    "Y com, la complejidad: en cuántos factores carga cada variable.",
+    "Cerca de uno, en uno solo.",
+    "Con USArrests, el KMO global es cero coma sesenta y cinco.",
+    "Con varimax, el primer factor reúne asesinatos y asaltos, y el segundo, la población urbana.",
+    "Las violaciones cargan en los dos, y su complejidad es dos.",
+    "Un último detalle: el signo de un factor es arbitrario.",
+    "Si en otra muestra todas las cargas de un factor salen con el signo invertido, es el mismo factor.",
+    "En resumen: el análisis factorial explica las correlaciones con pocos factores latentes.",
+    "La comunalidad es la suma de las cargas al cuadrado, y la especificidad, uno menos eso.",
+    "Antes, Bartlett y KMO.",
+    "Se rota para interpretar, y la rotación no cambia las comunalidades.",
+    "Y en la salida de erre: hache dos, u dos y com.",
+    "Eso fue el módulo diez."
+  ]
 });

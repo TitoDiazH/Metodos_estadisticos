@@ -68,7 +68,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       12.4,
-      "Y de la tabla solo conocemos dos números: la suma de cuadrados de tratamientos, ochocientos, y la del error, cuatrocientos."
+      "Y de la tabla solo conocemos dos números: la suma de cuadrados de tratamientos, 800, y la del error, 400."
     ],
     [
       20.4,
@@ -76,7 +76,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       23.44,
-      "Ka vale cinco, ene vale cuatro, así que hay veinte datos en total."
+      "k vale cinco, n vale cuatro, así que hay 20 datos en total."
     ],
     [
       29.59,
@@ -84,23 +84,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       32.05,
-      "Para tratamientos, ka menos uno: cuatro."
+      "Para tratamientos, k − 1: cuatro."
     ],
     [
       34.78,
-      "Para el error, el total de datos menos ka: veinte menos cinco, quince."
+      "Para el error, el total de datos menos k: 20 − 5, 15."
     ],
     [
       39.3,
-      "Y para el total, veinte menos uno, diecinueve."
+      "Y para el total, 20 − 1, 19."
     ],
     [
       42.27,
-      "Fíjate que cuatro más quince dan diecinueve: siempre se cumple."
+      "Fíjate que 4 + 15 dan 19: siempre se cumple."
     ],
     [
       46.77,
-      "La suma de cuadrados total también es una suma: ochocientos más cuatrocientos, mil doscientos."
+      "La suma de cuadrados total también es una suma: 800 + 400, 1200."
     ],
     [
       53.17,
@@ -108,15 +108,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       57.29,
-      "Para tratamientos, ochocientos dividido en cuatro: doscientos."
+      "Para tratamientos, 800 dividido en cuatro: 200."
     ],
     [
       61.33,
-      "Para el error, cuatrocientos dividido en quince: veintiséis coma sesenta y siete."
+      "Para el error, 400 / 15: 26,67."
     ],
     [
       66.97,
-      "Y el efe es el cuadrado medio de tratamientos sobre el del error: doscientos dividido en veintiséis coma sesenta y siete."
+      "Y el F es el cuadrado medio de tratamientos sobre el del error: 200 / 26,67."
     ],
     [
       74.13,
@@ -124,7 +124,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       78.52,
-      "Siete coma cinco."
+      "7,5."
     ],
     [
       82.03,
@@ -132,19 +132,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       85.62,
-      "Bajo la hipótesis nula, ese efe sigue una distribución efe con cuatro y quince grados de libertad."
+      "Bajo la hipótesis nula, ese F sigue una distribución F con cuatro y 15 grados de libertad."
     ],
     [
       91.58,
-      "Se marca siete coma cinco en el eje, y el valor-p es el área bajo la curva a la derecha de ese punto."
+      "Se marca 7,5 en el eje, y el valor-p es el área bajo la curva a la derecha de ese punto."
     ],
     [
       97.78,
-      "Aquí da cero coma cero cero dieciséis."
+      "Aquí da 0,0016."
     ],
     [
       100.86,
-      "En erre, ese número sale con la función pe efe, con siete coma cinco, cuatro y quince, pidiendo la cola superior."
+      "En R, ese número sale con la función p F, con 7,5, 4 y 15, pidiendo la cola superior."
     ],
     [
       109.83,
@@ -156,11 +156,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       113.09,
-      "El crítico al cinco por ciento, con cuatro y quince grados de libertad, es tres coma cero seis."
+      "El crítico al 5 %, con cuatro y 15 grados de libertad, es 3,06."
     ],
     [
       118.86,
-      "Siete coma cinco lo supera, así que se rechaza la igualdad de medias."
+      "7,5 lo supera, así que se rechaza la igualdad de medias."
     ],
     [
       123.73,
@@ -172,7 +172,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       129.31,
-      "Para eso harían falta las medias y una comparación múltiple, como la ele ese de o Tukey."
+      "Para eso harían falta las medias y una comparación múltiple, como la LSD o Tukey."
     ],
     [
       135.09,
@@ -191,5 +191,41 @@ PLATAFORMA.registrar("audio", {
       "El truco de este tipo de pregunta es recordar que los grados de libertad y las sumas de cuadrados se suman, y que todo lo demás sale dividiendo."
     ]
   ],
-  "huella": "fd6c4677ad81"
+  "huella": "fd6c4677ad81",
+  "frasesHabladas": [
+    "Este es un clásico de prueba: el ejercicio cinco del capítulo tres, completar una tabla ANOVA.",
+    "Nos dan una tabla a medias.",
+    "Se comparan cinco tratamientos, con cuatro réplicas cada uno.",
+    "Y de la tabla solo conocemos dos números: la suma de cuadrados de tratamientos, ochocientos, y la del error, cuatrocientos.",
+    "Antes de tocar la tabla, saquemos las piezas.",
+    "Ka vale cinco, ene vale cuatro, así que hay veinte datos en total.",
+    "Empecemos por los grados de libertad.",
+    "Para tratamientos, ka menos uno: cuatro.",
+    "Para el error, el total de datos menos ka: veinte menos cinco, quince.",
+    "Y para el total, veinte menos uno, diecinueve.",
+    "Fíjate que cuatro más quince dan diecinueve: siempre se cumple.",
+    "La suma de cuadrados total también es una suma: ochocientos más cuatrocientos, mil doscientos.",
+    "Los cuadrados medios son cada suma dividida por sus grados de libertad.",
+    "Para tratamientos, ochocientos dividido en cuatro: doscientos.",
+    "Para el error, cuatrocientos dividido en quince: veintiséis coma sesenta y siete.",
+    "Y el efe es el cuadrado medio de tratamientos sobre el del error: doscientos dividido en veintiséis coma sesenta y siete.",
+    "¿Cuánto da?",
+    "Siete coma cinco.",
+    "La segunda parte pide explicar cómo se calcula el valor-p.",
+    "Bajo la hipótesis nula, ese efe sigue una distribución efe con cuatro y quince grados de libertad.",
+    "Se marca siete coma cinco en el eje, y el valor-p es el área bajo la curva a la derecha de ese punto.",
+    "Aquí da cero coma cero cero dieciséis.",
+    "En erre, ese número sale con la función pe efe, con siete coma cinco, cuatro y quince, pidiendo la cola superior.",
+    "¿Se puede concluir algo con esta tabla?",
+    "Sí.",
+    "El crítico al cinco por ciento, con cuatro y quince grados de libertad, es tres coma cero seis.",
+    "Siete coma cinco lo supera, así que se rechaza la igualdad de medias.",
+    "Pero ojo con lo que no se puede decir.",
+    "La tabla no dice cuáles tratamientos difieren.",
+    "Para eso harían falta las medias y una comparación múltiple, como la ele ese de o Tukey.",
+    "La última parte pide el modelo y la hipótesis.",
+    "El modelo: cada dato es la media global, más el efecto de su tratamiento, más un error normal con media cero.",
+    "Y la hipótesis nula dice que las cinco medias son iguales.",
+    "El truco de este tipo de pregunta es recordar que los grados de libertad y las sumas de cuadrados se suman, y que todo lo demás sale dividiendo."
+  ]
 });

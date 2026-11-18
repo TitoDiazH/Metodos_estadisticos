@@ -52,20 +52,13 @@ PLATAFORMA.registrar("prueba", [
     ]
   },
   {
-    id: "P4", orden: 4, nombre: "Prueba 4", estado: "parcial", acumulativa: null,
-    nota: "<strong>Supuesto, sin confirmar:</strong> lo que no entró en el temario de P3 (regresión lineal, clase 8.1) y los temas que aún no tienen clase subida (abajo, «observado»). Se ajusta cuando el profesor publique el temario de P4. <strong>Pregunta adicional confirmada</strong> (anuncio docente, 2026-11-05): análisis factorial y componentes principales, cuya nota se promedia con P1 ⇒ se agregan M09 y M10 (con las preguntas de la P1 de este semestre).",
+    id: "P4", orden: 4, nombre: "Prueba 4", estado: "definida", acumulativa: false,
+    nota: "Temario oficial (Instructivo P4, 2026-11-18): <strong>regresión lineal múltiple</strong> (interpretar coeficientes y ∂y/∂xᵢ, pruebas t incluso con $H_0:\\beta_i=\\alpha_i$, F global, R² y R² ajustado, supuestos, VIF, Cook y apalancamiento) y <strong>superficie de respuesta</strong> (modelo de 2.º orden en R, punto estacionario a mano y su clasificación con la hessiana). Ejercicios recomendados: Walpole 12.1–12.11 y 12.36; libro guía cap. 12 ej. 22–29 (en Desarrollo, ORIGINAL/MODIFICADA, con clase en video). Cada respuesta debe llevar estadístico o valor-p, decisión y conclusión en contexto. <strong>Pregunta adicional</strong> (anuncio docente, 2026-11-05): análisis factorial y componentes principales, cuya nota se promedia con P1 ⇒ M09 y M10.",
     modulos: [
       { id: "m26-regresion-lineal", codigo: "M26", titulo: "Regresión lineal simple, múltiple y polinomial", prioridad: "alta" },
+      { id: "m23-superficie-respuesta", codigo: "M23", titulo: "Metodología de superficie de respuesta", prioridad: "alta" },
       { id: "m09-pca", codigo: "M09", titulo: "Componentes principales (pregunta adicional: se promedia con P1)", prioridad: "alta" },
       { id: "m10-analisis-factorial", codigo: "M10", titulo: "Análisis factorial (pregunta adicional: se promedia con P1)", prioridad: "alta" }
-    ],
-    /* Temas que aparecieron en pruebas pasadas pero aún NO tienen clase subida.
-       No son temario: cuando se suban las clases (Fase 7) pasan a "modulos".
-       (Antes estaban en P3; el temario oficial de P3 no los incluye.) */
-    observado: [
-      { codigo: "M22", titulo: "Factorial fraccionado 2^(k−p)", fuente: [{ id: "PR-EX-E", loc: "pregunta 3.1" }, { id: "PR-EX-Q3" }] },
-      { codigo: "M23", titulo: "Metodología de superficie de respuesta (Box–Behnken)", fuente: [{ id: "PR-EX-E", loc: "pregunta 3.2" }, { id: "PR-EX-Q3" }] },
-      { codigo: "M24", titulo: "Árboles de regresión y bosques aleatorios", fuente: [{ id: "PR-P3-E", loc: "pregunta 3" }, { id: "PR-P3-Q3" }] }
     ]
   }
 ]);

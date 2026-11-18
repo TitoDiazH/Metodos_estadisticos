@@ -130,6 +130,12 @@ Cómo escribir un guion (modelo: `tools/guiones/m20-dbca.txt`):
 - **Compilar:** `node tools/generar_escenas.js` (valida que cada marca exista en el guion) → `python3 tools/generar_audio.py` (tiempos de las marcas) → `node tools/generar_manifiesto.js` → `node tools/verificar_datos.js`.
 - `python3 tools/cache_faltante.py m20` dice cuántas frases de un guion no están en la caché (sirve para comprobar que agregar marcas no cambió el texto).
 
+#### Prueba 4 (regresión y superficie de respuesta)
+
+- `tools/generadores/p4calc.js` ajusta en R y devuelve coeficientes, t, F, R², Shapiro, VIF, hᵢᵢ, Cook, predicción, falta de ajuste y punto estacionario (con `b`, `B`, valores propios). Lo usan a la vez `p4.js` (desarrollos) y `tools/escenas/_p4.js` (pizarras), así la pauta y el video muestran los mismos números.
+- `tools/escenas/_p4.js`: `regEj(cfg)` y `rsmEj(cfg)` arman un video completo de un ejercicio con marcas estándar (ver el comentario de cada uno); los guiones `m26-wal-*` y `m23-lg-*` las usan.
+- Para revisar una pizarra sin audio: crear marcas simuladas (≈ 2,6 palabras/s) y capturar con Chromium headless.
+
 ### Preguntas (Fase 6)
 
 1. Copia `tools/plantillas/preguntas.js` a `data/preguntas/mNN-slug.js` (lotes de 10–15; si el archivo crece, `mNN-slug-b.js`). Desarrollo: `tools/plantillas/desarrollo.js` → `data/desarrollo/`; se resuelve en papel y se escribe como `partes` (título + solución + puntos) que la app desbloquea una a una, así que cada parte debe ser un paso que la pauta puntúe por separado.

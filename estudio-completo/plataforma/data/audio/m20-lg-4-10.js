@@ -77,7 +77,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       5.86,
-      "Cada producto se aplica a un grupo de cien moscas, y se registra el porcentaje de moscas muertas."
+      "Cada producto se aplica a un grupo de 100 moscas, y se registra el porcentaje de moscas muertas."
     ],
     [
       11.61,
@@ -105,7 +105,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       35.54,
-      "Son dieciocho datos."
+      "Son 18 datos."
     ],
     [
       37.73,
@@ -125,43 +125,43 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       56.02,
-      "La marca uno suma cuatrocientos catorce, la dos, trescientos cincuenta y cinco, y la tres, trescientos setenta y siete."
+      "La marca uno suma 414, la dos, 355, y la tres, 377."
     ],
     [
       63.43,
-      "Por día, los totales van de ciento sesenta y seis, el día cinco, a doscientos tres, el día cuatro."
+      "Por día, los totales van de 166, el día cinco, a 203, el día cuatro."
     ],
     [
       69.49,
-      "Y el gran total es mil ciento cuarenta y seis."
+      "Y el gran total es 1146."
     ],
     [
       74.23,
-      "La corrección es mil ciento cuarenta y seis al cuadrado, dividido en dieciocho: setenta y dos mil novecientos sesenta y dos."
+      "La corrección es 1146² / 18: 72962."
     ],
     [
       82.0,
-      "La suma de los datos al cuadrado es setenta y cuatro mil cincuenta y cuatro, así que la suma de cuadrados total es mil noventa y dos."
+      "La suma de los datos al cuadrado es 74054, así que la suma de cuadrados total es 1092."
     ],
     [
       90.41,
-      "Para las marcas, los totales al cuadrado se dividen por seis, el número de días."
+      "Para las marcas, los totales al cuadrado se dividen por 6, el número de días."
     ],
     [
       95.53,
-      "Queda doscientos noventa y seis coma tres tres tres."
+      "Queda 296,333."
     ],
     [
       99.26,
-      "Para los días, los totales al cuadrado se dividen por tres, el número de marcas."
+      "Para los días, los totales al cuadrado se dividen por 3, el número de marcas."
     ],
     [
       104.31,
-      "Queda doscientos ochenta y uno coma tres tres tres."
+      "Queda 281,333."
     ],
     [
       108.18,
-      "Y el error, por diferencia, es quinientos catorce coma tres tres tres."
+      "Y el error, por diferencia, es 514,333."
     ],
     [
       112.56,
@@ -173,19 +173,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       123.27,
-      "Los cuadrados medios: ciento cuarenta y ocho coma uno siete para las marcas, cincuenta y seis coma dos siete para los días, y cincuenta y uno coma cuatro tres para el error."
+      "Los cuadrados medios: 148,17 para las marcas, 56,27 para los días, y 51,43 para el error."
     ],
     [
       134.08,
-      "El efe de las marcas es dos coma ochenta y ocho."
+      "El F de las marcas es 2,88."
     ],
     [
       137.0,
-      "El crítico con dos y diez grados de libertad es cuatro coma diez."
+      "El crítico con dos y diez grados de libertad es 4,10."
     ],
     [
       141.01,
-      "No lo alcanza, y el pe valor es cero coma diez."
+      "No lo alcanza, y el valor p es 0,10."
     ],
     [
       143.83,
@@ -193,7 +193,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       150.2,
-      "El efe de los días es uno coma cero nueve, contra un crítico de tres coma treinta y tres, con pe valor cero coma cuarenta y dos."
+      "El F de los días es 1,09, contra un crítico de 3,33, con valor p 0,42."
     ],
     [
       157.73,
@@ -209,15 +209,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       172.82,
-      "Si igual calculo la ele ese de, con te de dos coma dos dos ocho y el cuadrado medio del error dividido en seis días, da nueve coma dos dos seis."
+      "Si igual calculo la LSD, con te de 2,228 y el cuadrado medio del error dividido en seis días, da 9,226."
     ],
     [
       181.72,
-      "Las medias son: marca uno, sesenta y nueve por ciento; marca tres, sesenta y dos coma ocho; y marca dos, cincuenta y nueve coma dos."
+      "Las medias son: marca uno, 69 %; marca tres, 62,8; y marca dos, 59,2."
     ],
     [
       190.12,
-      "La uno contra la dos difieren en nueve coma ocho, que apenas pasa la ele ese de."
+      "La uno contra la dos difieren en 9,8, que apenas pasa la LSD."
     ],
     [
       194.92,
@@ -233,7 +233,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       204.33,
-      "La ele ese de solo se mira después de un ANOVA significativo; aquí se informa solo como ejercicio."
+      "La LSD solo se mira después de un ANOVA significativo; aquí se informa solo como ejercicio."
     ],
     [
       212.32,
@@ -241,11 +241,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       214.28,
-      "La normalidad se revisa sobre los residuos del modelo con bloque: el test de Shapiro Wilk da pe igual a cero coma cincuenta y cinco, así que no se rechaza la normalidad."
+      "La normalidad se revisa sobre los residuos del modelo con bloque: el test de Shapiro Wilk da p = 0,55, así que no se rechaza la normalidad."
     ],
     [
       224.44,
-      "Y la igualdad de varianzas entre marcas, con el test de Levene, da pe igual a cero coma sesenta."
+      "Y la igualdad de varianzas entre marcas, con el test de Levene, da p = 0,60."
     ],
     [
       230.12,
@@ -256,5 +256,53 @@ PLATAFORMA.registrar("audio", {
       "La lección de este ejercicio: identificar el bloque en el enunciado, y no salir a buscar «el mejor» cuando el ANOVA no detectó diferencias."
     ]
   ],
-  "huella": "6a4b0daaa17e"
+  "huella": "6a4b0daaa17e",
+  "frasesHabladas": [
+    "Ahora el ejercicio diez del capítulo cuatro: tres marcas de atomizador para matar moscas.",
+    "Cada producto se aplica a un grupo de cien moscas, y se registra el porcentaje de moscas muertas.",
+    "Fíjate en esta frase: «se hicieron seis réplicas en días diferentes, por lo que se sospecha un efecto del día».",
+    "Ahí está la clave del diseño.",
+    "El día no nos interesa, pero puede mover la respuesta.",
+    "Entonces el día es el bloque.",
+    "Y como queremos matar más moscas, mayor es mejor.",
+    "Las piezas quedan así: el tratamiento es la marca, con tres niveles, y el bloque es el día, con seis.",
+    "Son dieciocho datos.",
+    "El modelo es el de bloques: media global, más efecto de la marca, más efecto del día, más el error.",
+    "La hipótesis de tratamientos dice que las tres marcas tienen la misma efectividad promedio.",
+    "Y la de bloques, que los seis días dan lo mismo.",
+    "Vamos con los totales.",
+    "La marca uno suma cuatrocientos catorce, la dos, trescientos cincuenta y cinco, y la tres, trescientos setenta y siete.",
+    "Por día, los totales van de ciento sesenta y seis, el día cinco, a doscientos tres, el día cuatro.",
+    "Y el gran total es mil ciento cuarenta y seis.",
+    "La corrección es mil ciento cuarenta y seis al cuadrado, dividido en dieciocho: setenta y dos mil novecientos sesenta y dos.",
+    "La suma de los datos al cuadrado es setenta y cuatro mil cincuenta y cuatro, así que la suma de cuadrados total es mil noventa y dos.",
+    "Para las marcas, los totales al cuadrado se dividen por seis, el número de días.",
+    "Queda doscientos noventa y seis coma tres tres tres.",
+    "Para los días, los totales al cuadrado se dividen por tres, el número de marcas.",
+    "Queda doscientos ochenta y uno coma tres tres tres.",
+    "Y el error, por diferencia, es quinientos catorce coma tres tres tres.",
+    "Ojo con ese número: es el más grande de los tres.",
+    "Los grados de libertad son dos para las marcas, cinco para los días y diez para el error.",
+    "Los cuadrados medios: ciento cuarenta y ocho coma uno siete para las marcas, cincuenta y seis coma dos siete para los días, y cincuenta y uno coma cuatro tres para el error.",
+    "El efe de las marcas es dos coma ochenta y ocho.",
+    "El crítico con dos y diez grados de libertad es cuatro coma diez.",
+    "No lo alcanza, y el pe valor es cero coma diez.",
+    "No se rechaza: con estos datos no hay evidencia de que las marcas difieran en efectividad promedio.",
+    "El efe de los días es uno coma cero nueve, contra un crítico de tres coma treinta y tres, con pe valor cero coma cuarenta y dos.",
+    "Tampoco se rechaza: no se detecta efecto del día.",
+    "Bloquear no era indispensable, aunque tampoco hizo mucho daño: solo costó cinco grados de libertad del error.",
+    "El ejercicio pregunta si hay un atomizador mejor.",
+    "Si igual calculo la ele ese de, con te de dos coma dos dos ocho y el cuadrado medio del error dividido en seis días, da nueve coma dos dos seis.",
+    "Las medias son: marca uno, sesenta y nueve por ciento; marca tres, sesenta y dos coma ocho; y marca dos, cincuenta y nueve coma dos.",
+    "La uno contra la dos difieren en nueve coma ocho, que apenas pasa la ele ese de.",
+    "Las otras comparaciones no la alcanzan.",
+    "Pero cuidado con la trampa.",
+    "Como el ANOVA no rechazó, en rigor no podemos declarar un atomizador mejor.",
+    "La ele ese de solo se mira después de un ANOVA significativo; aquí se informa solo como ejercicio.",
+    "Por último, los supuestos.",
+    "La normalidad se revisa sobre los residuos del modelo con bloque: el test de Shapiro Wilk da pe igual a cero coma cincuenta y cinco, así que no se rechaza la normalidad.",
+    "Y la igualdad de varianzas entre marcas, con el test de Levene, da pe igual a cero coma sesenta.",
+    "Tampoco hay problema.",
+    "La lección de este ejercicio: identificar el bloque en el enunciado, y no salir a buscar «el mejor» cuando el ANOVA no detectó diferencias."
+  ]
 });

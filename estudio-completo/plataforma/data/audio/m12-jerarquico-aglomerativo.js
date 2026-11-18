@@ -83,7 +83,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo doce: el clastering jerárquico aglomerativo."
+      "Ahora toca el módulo 12: el clastering jerárquico aglomerativo."
     ],
     [
       4.7,
@@ -95,7 +95,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       18.14,
-      "Si parten con todo en un solo grupo y lo van dividiendo, se llaman desagregativos, como DIANA, que viene en el módulo catorce."
+      "Si parten con todo en un solo grupo y lo van dividiendo, se llaman desagregativos, como DIANA, que viene en el módulo 14."
     ],
     [
       26.34,
@@ -103,7 +103,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       28.85,
-      "Se parte con ene clústeres de un dato."
+      "Se parte con n clústeres de un dato."
     ],
     [
       31.38,
@@ -131,7 +131,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       54.66,
-      "En erre eso lo hace cutree, dándole el árbol y el número de grupos."
+      "En R eso lo hace cutree, dándole el árbol y el número de grupos."
     ],
     [
       59.28,
@@ -171,11 +171,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       101.27,
-      "El par más cercano es E siete con E ocho, a cero coma cuarenta y dos, y se unen primero."
+      "El par más cercano es E siete con E ocho, a 0,42, y se unen primero."
     ],
     [
       106.5,
-      "Después E uno con E dos, a cero coma sesenta y cinco."
+      "Después E uno con E dos, a 0,65."
     ],
     [
       109.89,
@@ -183,7 +183,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       113.91,
-      "E cinco está a uno coma sesenta y cuatro de E uno, y a uno coma noventa y siete de E dos."
+      "E cinco está a 1,64 de E uno, y a 1,97 de E dos."
     ],
     [
       119.14,
@@ -191,7 +191,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       124.22,
-      "El mínimo: uno coma sesenta y cuatro."
+      "El mínimo: 1,64."
     ],
     [
       126.65,
@@ -199,7 +199,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       128.65,
-      "La última unión queda a dos coma veintiocho."
+      "La última unión queda a 2,28."
     ],
     [
       131.78,
@@ -219,7 +219,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       158.96,
-      "Pero E cinco ahora queda a uno coma noventa y siete del grupo, el máximo, y la última unión sube a tres coma veintidós."
+      "Pero E cinco ahora queda a 1,97 del grupo, el máximo, y la última unión sube a 3,22."
     ],
     [
       166.0,
@@ -235,15 +235,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       185.71,
-      "Las más cercanas son ce y e, a tres, y se unen primero."
+      "Las más cercanas son c y e, a tres, y se unen primero."
     ],
     [
       189.22,
-      "Después, la distancia de la tienda a a ese grupo: a está a cinco de ce y a cuatro de e."
+      "Después, la distancia de la tienda a a ese grupo: a está a cinco de c y a cuatro de e."
     ],
     [
       194.32,
-      "Single toma cuatro, complete toma cinco, y average, el promedio: cuatro coma cinco."
+      "Single toma cuatro, complete toma cinco, y average, el promedio: 4,5."
     ],
     [
       201.7,
@@ -263,7 +263,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       217.47,
-      "Con las ocho empresas pasa: las últimas alturas son uno coma tres ocho cinco, uno coma cinco uno, y de nuevo uno coma tres ocho tres, más abajo."
+      "Con las ocho empresas pasa: las últimas alturas son 1,385, 1,51, y de nuevo 1,383, más abajo."
     ],
     [
       226.75,
@@ -279,7 +279,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       238.88,
-      "En erre se pide como ward punto de dos, y se usa con distancias euclídeas."
+      "En R se pide como ward punto de dos, y se usa con distancias euclídeas."
     ],
     [
       244.09,
@@ -295,7 +295,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       256.82,
-      "En erre, todos salen con la misma función, hclust, dándole la matriz de distancias y el método: single, complete, average, centroid o ward punto de dos."
+      "En R, todos salen con la misma función, hclust, dándole la matriz de distancias y el método: single, complete, average, centroid o ward punto de dos."
     ],
     [
       266.29,
@@ -319,8 +319,70 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       294.56,
-      "Eso fue el módulo doce."
+      "Eso fue el módulo 12."
     ]
   ],
-  "huella": "e7be9037c0f8"
+  "huella": "e7be9037c0f8",
+  "frasesHabladas": [
+    "Ahora toca el módulo doce: el clastering jerárquico aglomerativo.",
+    "Los métodos jerárquicos no entregan una sola partición, sino un árbol completo de uniones.",
+    "Si parten con cada observación como su propio clúster, y los van uniendo de a dos, se llaman aglomerativos: van de abajo hacia arriba.",
+    "Si parten con todo en un solo grupo y lo van dividiendo, se llaman desagregativos, como DIANA, que viene en el módulo catorce.",
+    "El algoritmo aglomerativo es muy simple.",
+    "Se parte con ene clústeres de un dato.",
+    "Se unen los dos más cercanos.",
+    "Se recalculan las distancias del clúster nuevo a los demás.",
+    "Y se repite, hasta que queda uno solo.",
+    "Todo eso se dibuja en un dendrograma.",
+    "La altura de cada unión es la distancia a la que se unieron esos dos clústeres.",
+    "Y para obtener los grupos se corta el árbol a cierta altura: el número de ramas que cruza la línea de corte es el número de clústeres.",
+    "En erre eso lo hace cutree, dándole el árbol y el número de grupos.",
+    "¿Hay que decidir el número de clústeres antes de construir el árbol?",
+    "No.",
+    "Se construye el árbol entero, y el número de grupos se decide después, al cortarlo.",
+    "Ahora, hay un detalle que cambia todo.",
+    "Entre dos observaciones, la distancia es clara.",
+    "Pero, ¿cuál es la distancia entre dos clústeres que tienen varios puntos?",
+    "Hay varias respuestas, y cada una es un método distinto.",
+    "La primera es single linkage, o vecino más cercano: la distancia entre dos clústeres es la de sus dos puntos más cercanos, el mínimo.",
+    "Veámoslo con cinco de las empresas de la clase, ya estandarizadas.",
+    "El par más cercano es E siete con E ocho, a cero coma cuarenta y dos, y se unen primero.",
+    "Después E uno con E dos, a cero coma sesenta y cinco.",
+    "Ahora, ¿a qué distancia queda E cinco del clúster E uno, E dos?",
+    "E cinco está a uno coma sesenta y cuatro de E uno, y a uno coma noventa y siete de E dos.",
+    "¿Qué número usa single?",
+    "El mínimo: uno coma sesenta y cuatro.",
+    "Y E cinco se une a ese grupo.",
+    "La última unión queda a dos coma veintiocho.",
+    "Single tiene un problema conocido: el efecto cadena.",
+    "Como basta con que un punto esté cerca de uno solo de los miembros, los clústeres van creciendo como una cadena, largos y filamentosos.",
+    "La alternativa es complete linkage, o vecino más lejano: la distancia entre clústeres es la de sus dos puntos más lejanos, el máximo.",
+    "Con las mismas empresas, las dos primeras uniones son iguales, porque con clústeres de un solo punto no hay diferencia.",
+    "Pero E cinco ahora queda a uno coma noventa y siete del grupo, el máximo, y la última unión sube a tres coma veintidós.",
+    "Complete es más conservador: une a mayor altura, y forma clústeres compactos.",
+    "Entre los dos está el average linkage, o promedio: la distancia entre dos clústeres es el promedio de todas las distancias entre pares, un punto de cada clúster.",
+    "En la ayudantía cinco había cinco tiendas, con distancia Manhattan.",
+    "Las más cercanas son ce y e, a tres, y se unen primero.",
+    "Después, la distancia de la tienda a a ese grupo: a está a cinco de ce y a cuatro de e.",
+    "Single toma cuatro, complete toma cinco, y average, el promedio: cuatro coma cinco.",
+    "Quedan dos métodos más.",
+    "El del centroide mide la distancia entre los puntos medios de cada clúster.",
+    "Es barato de calcular, pero tiene una rareza.",
+    "Puede producir inversiones en el dendrograma: una unión posterior que queda más abajo que una anterior.",
+    "Con las ocho empresas pasa: las últimas alturas son uno coma tres ocho cinco, uno coma cinco uno, y de nuevo uno coma tres ocho tres, más abajo.",
+    "Y el de Ward, que es probablemente el más usado.",
+    "Une los dos clústeres cuya fusión aumenta lo menos posible la variabilidad interna.",
+    "El resultado son clústeres compactos y de tamaños parecidos.",
+    "En erre se pide como ward punto de dos, y se usa con distancias euclídeas.",
+    "De estos cinco métodos, ¿cuál es el único que puede mostrar inversiones?",
+    "El del centroide.",
+    "Single, complete, average y Ward siempre suben.",
+    "En erre, todos salen con la misma función, hclust, dándole la matriz de distancias y el método: single, complete, average, centroid o ward punto de dos.",
+    "Con plot se dibuja el dendrograma, y con cutree se obtienen los grupos.",
+    "En resumen: el aglomerativo une de a dos, de abajo hacia arriba, y el dendrograma muestra a qué altura.",
+    "Single usa el mínimo y produce cadenas; complete, el máximo, y da grupos compactos; average, el promedio.",
+    "El centroide puede tener inversiones, y Ward busca grupos compactos y parejos.",
+    "Y el número de clústeres se decide al final, cortando el árbol.",
+    "Eso fue el módulo doce."
+  ]
 });

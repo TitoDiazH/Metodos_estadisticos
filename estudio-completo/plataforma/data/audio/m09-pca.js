@@ -107,7 +107,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo nueve: el análisis de componentes principales, o pe ce a."
+      "Ahora toca el módulo nueve: el análisis de componentes principales, o PCA."
     ],
     [
       5.42,
@@ -119,7 +119,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       20.69,
-      "Un detalle importante, que se pregunta mucho: pe ce a no elimina variables."
+      "Un detalle importante, que se pregunta mucho: PCA no elimina variables."
     ],
     [
       25.36,
@@ -207,15 +207,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       111.61,
-      "Las dos medias son uno coma sesenta y siete."
+      "Las dos medias son 1,67."
     ],
     [
       114.77,
-      "Después de centrar, la matriz de covarianza tiene dos coma tres tres en la diagonal, y cero coma tres tres fuera."
+      "Después de centrar, la matriz de covarianza tiene 2,33 en la diagonal, y 0,33 fuera."
     ],
     [
       121.48,
-      "Sus valores propios son dos coma seis seis siete y dos."
+      "Sus valores propios son 2,667 y dos."
     ],
     [
       125.16,
@@ -223,7 +223,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       131.43,
-      "El segundo es uno menos uno, dividido por raíz de dos: un contraste, una variable menos la otra."
+      "El segundo es 1 − 1, dividido por raíz de dos: un contraste, una variable menos la otra."
     ],
     [
       137.95,
@@ -231,7 +231,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       145.84,
-      "Dos coma seis seis siete sobre la suma, cuatro coma seis seis siete: cincuenta y siete por ciento."
+      "2,667 sobre la suma, 4,667: 57 %."
     ],
     [
       153.91,
@@ -255,7 +255,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       177.64,
-      "Si el pe ce a se hizo con variables estandarizadas, para calcular el score de una observación nueva hay que estandarizarla primero, con la media y la desviación de la muestra."
+      "Si el PCA se hizo con variables estandarizadas, para calcular el score de una observación nueva hay que estandarizarla primero, con la media y la desviación de la muestra."
     ],
     [
       188.14,
@@ -271,7 +271,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       199.31,
-      "La primera: acumular al menos el ochenta por ciento de la varianza."
+      "La primera: acumular al menos el 80 % de la varianza."
     ],
     [
       203.37,
@@ -287,7 +287,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       217.73,
-      "En la salida de erre hay una trampa."
+      "En la salida de R hay una trampa."
     ],
     [
       219.87,
@@ -299,11 +299,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       229.54,
-      "En la ayudantía dos: las desviaciones son uno coma cuatro seis, cero coma nueve nueve, cero coma ocho seis y cero coma tres siete."
+      "En la ayudantía dos: las desviaciones son 1,46, 0,99, 0,86 y 0,37."
     ],
     [
       237.62,
-      "Al cuadrado: dos coma catorce, cero coma noventa y ocho, cero coma setenta y cuatro y cero coma catorce."
+      "Al cuadrado: 2,14, 0,98, 0,74 y 0,14."
     ],
     [
       244.05,
@@ -315,11 +315,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       249.51,
-      "Pero el acumulado es cincuenta y tres, setenta y ocho, y noventa y siete por ciento."
+      "Pero el acumulado es 53, 78, y 97 %."
     ],
     [
       254.65,
-      "Con la regla del ochenta, hacen falta tres."
+      "Con la regla del 80, hacen falta tres."
     ],
     [
       257.41,
@@ -327,7 +327,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       264.02,
-      "En erre, todo sale con prcomp, con scale punto igual a TRUE para estandarizar."
+      "En R, todo sale con prcomp, con scale punto igual a TRUE para estandarizar."
     ],
     [
       268.79,
@@ -335,19 +335,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       274.5,
-      "El ejemplo de la clase es mtcars: treinta y dos autos, once variables."
+      "El ejemplo de la clase es mtcars: 32 autos, 11 variables."
     ],
     [
       278.75,
-      "El primer componente explica el sesenta por ciento, y el segundo, el veinticuatro."
+      "El primer componente explica el 60 %, y el segundo, el 24."
     ],
     [
       283.71,
-      "Juntos, ochenta y cuatro por ciento."
+      "Juntos, 84 %."
     ],
     [
       286.71,
-      "Para interpretar, la regla de la clase: un loading de cero coma tres o más en valor absoluto es relevante, y de cero coma cuatro o más, fuerte."
+      "Para interpretar, la regla de la clase: un loading de 0,3 o más en valor absoluto es relevante, y de 0,4 o más, fuerte."
     ],
     [
       295.77,
@@ -383,7 +383,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       334.68,
-      "En resumen: pe ce a crea combinaciones lineales perpendiculares, ordenadas por varianza."
+      "En resumen: PCA crea combinaciones lineales perpendiculares, ordenadas por varianza."
     ],
     [
       340.38,
@@ -391,7 +391,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       345.87,
-      "Para decidir cuántos, ochenta por ciento, Kaiser o el codo, recordando que la desviación de erre se eleva al cuadrado."
+      "Para decidir cuántos, 80 %, Kaiser o el codo, recordando que la desviación de R se eleva al cuadrado."
     ],
     [
       353.16,
@@ -402,5 +402,81 @@ PLATAFORMA.registrar("audio", {
       "Eso fue el módulo nueve."
     ]
   ],
-  "huella": "99c8b137dc67"
+  "huella": "99c8b137dc67",
+  "frasesHabladas": [
+    "Ahora toca el módulo nueve: el análisis de componentes principales, o pe ce a.",
+    "Cuando tienes muchas variables, y varias de ellas están correlacionadas, en parte están diciendo lo mismo.",
+    "Componentes principales aprovecha eso: crea unas pocas variables nuevas, los componentes, que resumen la mayor parte de la información.",
+    "Un detalle importante, que se pregunta mucho: pe ce a no elimina variables.",
+    "Cada componente es una combinación lineal de todas las variables originales.",
+    "Los componentes se ordenan por cuánta variabilidad capturan.",
+    "El primero captura lo máximo posible.",
+    "El segundo, lo máximo de lo que queda, y es perpendicular al primero.",
+    "Y así sucesivamente.",
+    "¿Y qué no hace?",
+    "No te dice por sí solo qué variables son importantes.",
+    "No garantiza que cada componente tenga una interpretación clara.",
+    "Y no sirve si las relaciones entre variables no son lineales.",
+    "La construcción tiene tres pasos.",
+    "Primero se centran los datos: a cada variable se le resta su media.",
+    "¿Para qué?",
+    "Para que el primer componente apunte hacia donde los datos varían más, y no simplemente hacia donde está su media.",
+    "Segundo, se calcula la matriz de covarianza.",
+    "Y tercero, se buscan sus valores y vectores propios.",
+    "Cada vector propio es una dirección: un componente.",
+    "Y su valor propio es la varianza de los datos en esa dirección.",
+    "Formalmente, el primer componente es la dirección de largo uno que maximiza la varianza de los datos proyectados.",
+    "Resolviendo ese problema, sale que es el vector propio con el mayor valor propio, y que su varianza es justamente ese valor propio.",
+    "El ejemplo de la clase es chico: tres observaciones y dos variables.",
+    "Los puntos son dos cero, cero dos, y tres tres.",
+    "Las dos medias son uno coma sesenta y siete.",
+    "Después de centrar, la matriz de covarianza tiene dos coma tres tres en la diagonal, y cero coma tres tres fuera.",
+    "Sus valores propios son dos coma seis seis siete y dos.",
+    "El primer vector propio es uno uno, dividido por raíz de dos: las dos variables pesan igual y se suman.",
+    "El segundo es uno menos uno, dividido por raíz de dos: un contraste, una variable menos la otra.",
+    "¿Qué porcentaje de la varianza explica el primer componente?",
+    "Dos coma seis seis siete sobre la suma, cuatro coma seis seis siete: cincuenta y siete por ciento.",
+    "Hay dos palabras que hay que tener claras.",
+    "Los loadings son los pesos con que cada variable entra en un componente: los elementos del vector propio.",
+    "Y los scores son los valores que toma cada observación en los componentes: sus nuevas coordenadas.",
+    "El score de una observación es la suma de cada variable centrada, por su loading.",
+    "Y aquí hay un error típico, que apareció en la ayudantía dos.",
+    "Si el pe ce a se hizo con variables estandarizadas, para calcular el score de una observación nueva hay que estandarizarla primero, con la media y la desviación de la muestra.",
+    "Si se reemplazan los valores crudos, la variable con números más grandes domina el resultado.",
+    "¿Con cuántos componentes nos quedamos?",
+    "Hay tres reglas.",
+    "La primera: acumular al menos el ochenta por ciento de la varianza.",
+    "La segunda, el criterio de Kaiser: quedarse con los de valor propio mayor que uno.",
+    "Esto vale con datos estandarizados.",
+    "Y la tercera: mirar el codo del gráfico de sedimentación, donde los valores propios dejan de caer rápido.",
+    "En la salida de erre hay una trampa.",
+    "Summary no entrega los valores propios, sino las desviaciones estándar de los componentes.",
+    "Para obtener el valor propio, hay que elevar al cuadrado.",
+    "En la ayudantía dos: las desviaciones son uno coma cuatro seis, cero coma nueve nueve, cero coma ocho seis y cero coma tres siete.",
+    "Al cuadrado: dos coma catorce, cero coma noventa y ocho, cero coma setenta y cuatro y cero coma catorce.",
+    "Con Kaiser, solo el primero supera uno: un componente.",
+    "El codo también sugiere uno.",
+    "Pero el acumulado es cincuenta y tres, setenta y ocho, y noventa y siete por ciento.",
+    "Con la regla del ochenta, hacen falta tres.",
+    "Las reglas no siempre coinciden, y lo que se pide es justificar la elección.",
+    "En erre, todo sale con prcomp, con scale punto igual a TRUE para estandarizar.",
+    "Summary da la varianza explicada, rotation da los loadings, y equis, los scores.",
+    "El ejemplo de la clase es mtcars: treinta y dos autos, once variables.",
+    "El primer componente explica el sesenta por ciento, y el segundo, el veinticuatro.",
+    "Juntos, ochenta y cuatro por ciento.",
+    "Para interpretar, la regla de la clase: un loading de cero coma tres o más en valor absoluto es relevante, y de cero coma cuatro o más, fuerte.",
+    "En el primer componente, pesan positivo los cilindros, la cilindrada, la potencia y el peso.",
+    "Y negativo, el rendimiento en millas por galón.",
+    "¿Cómo lo llamarías?",
+    "Tamaño y potencia, contra eficiencia.",
+    "Autos grandes y potentes a un lado, autos económicos al otro.",
+    "En el segundo pesan las marchas, la transmisión manual y los carburadores, contra el tiempo de aceleración: una configuración deportiva.",
+    "Y un detalle: el signo de un componente completo es arbitrario.",
+    "Si se invierten todos los loadings, es el mismo componente.",
+    "En resumen: pe ce a crea combinaciones lineales perpendiculares, ordenadas por varianza.",
+    "Los vectores propios son las direcciones, y los valores propios, la varianza en cada una.",
+    "Para decidir cuántos, ochenta por ciento, Kaiser o el codo, recordando que la desviación de erre se eleva al cuadrado.",
+    "Y se interpreta por los loadings más grandes y sus signos.",
+    "Eso fue el módulo nueve."
+  ]
 });

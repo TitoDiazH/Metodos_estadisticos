@@ -113,7 +113,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       11.14,
-      "Eso se responde con la prueba efe."
+      "Eso se responde con la prueba F."
     ],
     [
       13.27,
@@ -169,7 +169,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       61.62,
-      "La prueba efe compara las varianzas con un cociente: la varianza de un grupo dividida por la del otro."
+      "La prueba F compara las varianzas con un cociente: la varianza de un grupo dividida por la del otro."
     ],
     [
       67.49,
@@ -181,7 +181,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       73.22,
-      "Se compara con una distribución efe, con ene uno menos uno y ene dos menos uno grados de libertad."
+      "Se compara con una distribución F, con n 1 − 1 y n 2 − 1 grados de libertad."
     ],
     [
       79.93,
@@ -189,19 +189,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       84.33,
-      "La pregunta es si la máquina a tiene mayor varianza que la be."
+      "La pregunta es si la máquina a tiene mayor varianza que la b."
     ],
     [
       88.0,
-      "Las varianzas son dos coma veintitrés y uno coma cero siete."
+      "Las varianzas son 2,24 coma cero siete."
     ],
     [
       91.83,
-      "El cociente da dos coma cero nueve, con nueve y nueve grados de libertad."
+      "El cociente da 2,09, con nueve y nueve grados de libertad."
     ],
     [
       96.21,
-      "El crítico es tres coma dieciocho."
+      "El crítico es 3,18."
     ],
     [
       98.44,
@@ -213,7 +213,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       103.76,
-      "Aunque una varianza es el doble de la otra, con diez datos no alcanza: el pe valor es cero coma catorce."
+      "Aunque una varianza es el doble de la otra, con diez datos no alcanza: el valor p es 0,14."
     ],
     [
       110.06,
@@ -225,7 +225,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       118.26,
-      "En erre, var punto test, con los dos grupos."
+      "En R, var punto test, con los dos grupos."
     ],
     [
       122.93,
@@ -233,7 +233,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       126.66,
-      "El estadístico es la diferencia de medias, menos la diferencia de la hipótesis, dividido por la raíz de ese uno al cuadrado sobre ene uno, más ese dos al cuadrado sobre ene dos."
+      "El estadístico es la diferencia de medias, menos la diferencia de la hipótesis, dividido por la raíz de ese 1² / n 1, más ese 2² / n 2."
     ],
     [
       137.54,
@@ -245,39 +245,39 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       147.09,
-      "En enero, la media es mil novecientos treinta y ocho pesos, con trece datos."
+      "En enero, la media es 1938 pesos, con 13 datos."
     ],
     [
       151.8,
-      "En abril, tres mil quinientos sesenta, con quince datos."
+      "En abril, 3560, con 15 datos."
     ],
     [
       155.39,
-      "La pregunta es si el precio subió más de mil quinientos pesos."
+      "La pregunta es si el precio subió más de 1500 pesos."
     ],
     [
       158.94,
-      "Así que la diferencia de la hipótesis no es cero, es mil quinientos."
+      "Así que la diferencia de la hipótesis no es cero, es 1500."
     ],
     [
       163.62,
-      "El numerador: tres mil quinientos sesenta menos mil novecientos treinta y ocho, menos mil quinientos."
+      "El numerador: 3560 − 1938 − 1500."
     ],
     [
       169.93,
-      "Da ciento veintidós."
+      "Da 122."
     ],
     [
       171.6,
-      "Dividido por el error estándar, te sale cero coma noventa y tres."
+      "Dividido por el error estándar, te sale 0,93."
     ],
     [
       175.67,
-      "Los grados de libertad de Welch son veintiuno coma seis, y el crítico, uno coma setenta y dos."
+      "Los grados de libertad de Welch son 21,6, y el crítico, 1,72."
     ],
     [
       181.65,
-      "No se rechaza: no se puede afirmar que el aumento supere los mil quinientos pesos."
+      "No se rechaza: no se puede afirmar que el aumento supere los 1500 pesos."
     ],
     [
       187.17,
@@ -285,11 +285,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       190.3,
-      "En erre, eso se indica con el argumento mu."
+      "En R, eso se indica con el argumento μ."
     ],
     [
       193.07,
-      "Welch es t punto test con los dos grupos, y var punto equal igual a FALSE, que es lo que hace erre por defecto."
+      "Welch es t punto test con los dos grupos, y var punto equal igual a FALSE, que es lo que hace R por defecto."
     ],
     [
       201.63,
@@ -297,27 +297,27 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       208.11,
-      "Es un promedio ponderado de las dos varianzas, con pesos ene menos uno de cada grupo."
+      "Es un promedio ponderado de las dos varianzas, con pesos n − 1 de cada grupo."
     ],
     [
       213.29,
-      "La prueba queda con ene uno más ene dos menos dos grados de libertad, más que Welch."
+      "La prueba queda con n 1 + n 2 − 2 grados de libertad, más que Welch."
     ],
     [
       218.63,
-      "En la clase, de nuevo con el limón, pero otro año: dieciocho datos en enero y diez en abril, y la pregunta es si la diferencia es distinta de mil."
+      "En la clase, de nuevo con el limón, pero otro año: 18 datos en enero y diez en abril, y la pregunta es si la diferencia es distinta de 1000."
     ],
     [
       227.37,
-      "La varianza combinada da veintidós mil ochocientos diecinueve."
+      "La varianza combinada da 22819."
     ],
     [
       231.17,
-      "Te da uno coma cuarenta y seis, con veintiséis grados de libertad."
+      "Te da 1,46, con 26 grados de libertad."
     ],
     [
       235.33,
-      "Con alfa diez por ciento y bilateral, el crítico es uno coma setenta y uno."
+      "Con α 10 % y bilateral, el crítico es 1,71."
     ],
     [
       240.01,
@@ -325,7 +325,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       242.16,
-      "En erre, t punto test con var punto equal igual a TRUE."
+      "En R, t punto test con var punto equal igual a TRUE."
     ],
     [
       247.42,
@@ -333,7 +333,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       250.25,
-      "En la clase, se mide el colesterol de once pacientes, antes y después de un medicamento."
+      "En la clase, se mide el colesterol de 11 pacientes, antes y después de un medicamento."
     ],
     [
       255.81,
@@ -349,15 +349,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       272.96,
-      "Lo que se hace es calcular la diferencia de cada paciente, antes menos después, y hacer una prueba te de una sola muestra sobre esas diferencias, con ene menos uno grados de libertad."
+      "Lo que se hace es calcular la diferencia de cada paciente, antes menos después, y hacer una prueba te de una sola muestra sobre esas diferencias, con n − 1 grados de libertad."
     ],
     [
       283.96,
-      "En el ejemplo, la diferencia media es diecinueve."
+      "En el ejemplo, la diferencia media es 19."
     ],
     [
       286.9,
-      "Te da nueve coma cero seis, con diez grados de libertad, y un pe valor muy chico."
+      "Te da 9,06, con diez grados de libertad, y un valor p muy chico."
     ],
     [
       291.91,
@@ -369,7 +369,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       299.84,
-      "En erre, t punto test con paired igual a TRUE."
+      "En R, t punto test con paired igual a TRUE."
     ],
     [
       302.57,
@@ -377,7 +377,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       311.51,
-      "En resumen: la prueba efe compara varianzas con un cociente."
+      "En resumen: la prueba F compara varianzas con un cociente."
     ],
     [
       315.52,
@@ -385,7 +385,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       322.26,
-      "Si la hipótesis no es diferencia cero, se indica con mu."
+      "Si la hipótesis no es diferencia cero, se indica con μ."
     ],
     [
       325.64,
@@ -396,5 +396,81 @@ PLATAFORMA.registrar("audio", {
       "Eso fue el módulo seis."
     ]
   ],
-  "huella": "e6a2b6d42e9e"
+  "huella": "e6a2b6d42e9e",
+  "frasesHabladas": [
+    "Ahora toca el módulo seis: las pruebas de hipótesis para comparar dos poblaciones.",
+    "Cuando hay dos grupos, se pueden hacer tres preguntas.",
+    "¿Tienen la misma variabilidad?",
+    "Eso se responde con la prueba efe.",
+    "¿Tienen la misma media?",
+    "Con una prueba te, que tiene dos versiones según las varianzas.",
+    "Y si son los mismos sujetos medidos dos veces, ¿cambió la media?",
+    "Eso es una prueba pareada.",
+    "El árbol de decisión de la clase es así.",
+    "Primero: ¿son los mismos sujetos medidos dos veces, como pacientes antes y después de un tratamiento?",
+    "Si es así, prueba pareada.",
+    "Si son grupos independientes: ¿las varianzas son iguales?",
+    "Si se sabe que sí, se usa la versión combinada, o pooled.",
+    "Y si no se sabe, o son distintas, se usa Welch.",
+    "La recomendación actual es usar Welch por defecto, salvo que haya certeza de que las varianzas son iguales.",
+    "En una prueba: si el enunciado dice suponga varianzas iguales, pooled.",
+    "Si no dice nada, Welch.",
+    "La prueba efe compara las varianzas con un cociente: la varianza de un grupo dividida por la del otro.",
+    "Si el cociente es cercano a uno, son parecidas.",
+    "Si es muy grande o muy chico, difieren.",
+    "Se compara con una distribución efe, con ene uno menos uno y ene dos menos uno grados de libertad.",
+    "En la ayudantía dos se comparan dos máquinas, con diez datos cada una.",
+    "La pregunta es si la máquina a tiene mayor varianza que la be.",
+    "Las varianzas son dos coma veintitrés y uno coma cero siete.",
+    "El cociente da dos coma cero nueve, con nueve y nueve grados de libertad.",
+    "El crítico es tres coma dieciocho.",
+    "¿Se rechaza?",
+    "No.",
+    "Aunque una varianza es el doble de la otra, con diez datos no alcanza: el pe valor es cero coma catorce.",
+    "No hay evidencia de que a varíe más.",
+    "Un detalle: en una prueba unilateral hacia la derecha, la varianza más grande va arriba.",
+    "En erre, var punto test, con los dos grupos.",
+    "Welch compara dos medias sin suponer varianzas iguales.",
+    "El estadístico es la diferencia de medias, menos la diferencia de la hipótesis, dividido por la raíz de ese uno al cuadrado sobre ene uno, más ese dos al cuadrado sobre ene dos.",
+    "Y los grados de libertad se calculan con una fórmula especial, que casi nunca da un número entero.",
+    "El ejemplo de la clase es el precio del limón.",
+    "En enero, la media es mil novecientos treinta y ocho pesos, con trece datos.",
+    "En abril, tres mil quinientos sesenta, con quince datos.",
+    "La pregunta es si el precio subió más de mil quinientos pesos.",
+    "Así que la diferencia de la hipótesis no es cero, es mil quinientos.",
+    "El numerador: tres mil quinientos sesenta menos mil novecientos treinta y ocho, menos mil quinientos.",
+    "Da ciento veintidós.",
+    "Dividido por el error estándar, te sale cero coma noventa y tres.",
+    "Los grados de libertad de Welch son veintiuno coma seis, y el crítico, uno coma setenta y dos.",
+    "No se rechaza: no se puede afirmar que el aumento supere los mil quinientos pesos.",
+    "Fíjate en el detalle de la diferencia de la hipótesis.",
+    "En erre, eso se indica con el argumento mu.",
+    "Welch es t punto test con los dos grupos, y var punto equal igual a FALSE, que es lo que hace erre por defecto.",
+    "Si se puede suponer que las varianzas son iguales, se juntan en una sola estimación: la varianza combinada.",
+    "Es un promedio ponderado de las dos varianzas, con pesos ene menos uno de cada grupo.",
+    "La prueba queda con ene uno más ene dos menos dos grados de libertad, más que Welch.",
+    "En la clase, de nuevo con el limón, pero otro año: dieciocho datos en enero y diez en abril, y la pregunta es si la diferencia es distinta de mil.",
+    "La varianza combinada da veintidós mil ochocientos diecinueve.",
+    "Te da uno coma cuarenta y seis, con veintiséis grados de libertad.",
+    "Con alfa diez por ciento y bilateral, el crítico es uno coma setenta y uno.",
+    "No se rechaza.",
+    "En erre, t punto test con var punto equal igual a TRUE.",
+    "El último caso es el de las muestras pareadas.",
+    "En la clase, se mide el colesterol de once pacientes, antes y después de un medicamento.",
+    "¿Por qué no se pueden tratar como dos grupos independientes?",
+    "Porque son las mismas personas.",
+    "Cada dato de antes está unido a uno de después, y gran parte de la variación entre pacientes se repite en las dos mediciones.",
+    "Lo que se hace es calcular la diferencia de cada paciente, antes menos después, y hacer una prueba te de una sola muestra sobre esas diferencias, con ene menos uno grados de libertad.",
+    "En el ejemplo, la diferencia media es diecinueve.",
+    "Te da nueve coma cero seis, con diez grados de libertad, y un pe valor muy chico.",
+    "Se rechaza: el medicamento cambia el colesterol.",
+    "Y como la diferencia es antes menos después, y es positiva, lo baja.",
+    "En erre, t punto test con paired igual a TRUE.",
+    "Y ojo con el orden: si pones después antes que antes, el signo se invierte, y hay que leer la conclusión al revés.",
+    "En resumen: la prueba efe compara varianzas con un cociente.",
+    "Para medias de grupos independientes, Welch por defecto, y pooled solo si se sabe que las varianzas son iguales.",
+    "Si la hipótesis no es diferencia cero, se indica con mu.",
+    "Y si son los mismos sujetos, se trabaja con las diferencias, en una prueba pareada.",
+    "Eso fue el módulo seis."
+  ]
 });

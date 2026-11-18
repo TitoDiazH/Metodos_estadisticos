@@ -65,11 +65,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       7.33,
-      "Una empresa de comercio electrónico encuestó a trescientos clientes sobre diez criterios del servicio de entrega."
+      "Una empresa de comercio electrónico encuestó a 300 clientes sobre 10 criterios del servicio de entrega."
     ],
     [
       14.62,
-      "Nos dan dos salidas de erre: la prueba KMO, y un análisis con tres factores y rotación varimax."
+      "Nos dan dos salidas de R: la prueba KMO, y un análisis con tres factores y rotación varimax."
     ],
     [
       20.55,
@@ -93,11 +93,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       50.82,
-      "El KMO global es cero coma sesenta y cuatro."
+      "El KMO global es 0,64."
     ],
     [
       53.73,
-      "Como supera cero coma cinco, la adecuación es aceptable."
+      "Como supera 0,5, la adecuación es aceptable."
     ],
     [
       57.83,
@@ -105,7 +105,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       59.97,
-      "Soporte técnico tiene cero coma diecisiete, y comunicación, cero coma veintitrés."
+      "Soporte técnico tiene 0,17, y comunicación, 0,23."
     ],
     [
       65.45,
@@ -113,19 +113,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       73.45,
-      "Para saber qué variable está mejor representada se mira la columna hache dos, la comunalidad: la parte de la varianza de cada variable que explican los factores."
+      "Para saber qué variable está mejor representada se mira la columna h², la comunalidad: la parte de la varianza de cada variable que explican los factores."
     ],
     [
       83.65,
-      "La más alta es flexibilidad, con cero coma noventa y siete."
+      "La más alta es flexibilidad, con 0,97."
     ],
     [
       87.53,
-      "Los factores explican el noventa y siete por ciento de su varianza."
+      "Los factores explican el 97 % de su varianza."
     ],
     [
       92.25,
-      "La más baja es soporte técnico, con cero coma sesenta y cinco."
+      "La más baja es soporte técnico, con 0,65."
     ],
     [
       96.65,
@@ -133,15 +133,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       98.64,
-      "La pauta oficial dice que la comunalidad de soporte técnico es cero coma treinta y cinco."
+      "La pauta oficial dice que la comunalidad de soporte técnico es 0,35."
     ],
     [
       104.31,
-      "Pero ese número es u dos, la especificidad: la parte que los factores no explican."
+      "Pero ese número es u², la especificidad: la parte que los factores no explican."
     ],
     [
       109.55,
-      "La comunalidad es cero coma sesenta y cinco."
+      "La comunalidad es 0,65."
     ],
     [
       112.3,
@@ -173,7 +173,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       143.89,
-      "Sumando los diez valores y dividiendo en diez, da uno coma dos uno."
+      "Sumando los diez valores y dividiendo en diez, da 1,21."
     ],
     [
       148.62,
@@ -189,12 +189,48 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       161.35,
-      "La más compleja es confiabilidad, con uno coma siete, porque carga en el primer y en el tercer factor."
+      "La más compleja es confiabilidad, con 1,7, porque carga en el primer y en el tercer factor."
     ],
     [
       168.06,
-      "Para esta pregunta, lo que hay que tener claro es qué columna mirar en cada caso: el KMO por variable, hache dos para la comunalidad, el tipo de rotación, y la columna com."
+      "Para esta pregunta, lo que hay que tener claro es qué columna mirar en cada caso: el KMO por variable, h² para la comunalidad, el tipo de rotación, y la columna com."
     ]
   ],
-  "huella": "33ee9401b551"
+  "huella": "33ee9401b551",
+  "frasesHabladas": [
+    "Ahora la pregunta tres punto dos de la Prueba uno de este semestre: leer la salida de un análisis factorial.",
+    "Una empresa de comercio electrónico encuestó a trescientos clientes sobre diez criterios del servicio de entrega.",
+    "Nos dan dos salidas de erre: la prueba KMO, y un análisis con tres factores y rotación varimax.",
+    "Y hay cuatro preguntas cortas: KMO, comunalidades, si los factores están correlacionados, y el «mean item complexity».",
+    "¿Qué hace la prueba KMO?",
+    "Compara las correlaciones simples con las correlaciones parciales.",
+    "La correlación parcial es la que queda entre dos variables cuando se controla el efecto de todas las demás.",
+    "Si las parciales son chicas comparadas con las simples, las variables comparten una estructura común, y tiene sentido buscar factores.",
+    "El KMO global es cero coma sesenta y cuatro.",
+    "Como supera cero coma cinco, la adecuación es aceptable.",
+    "Pero mira las variables una por una.",
+    "Soporte técnico tiene cero coma diecisiete, y comunicación, cero coma veintitrés.",
+    "Son muy bajos: esas variables se relacionan poco con el resto y podrían perjudicar la solución.",
+    "Para saber qué variable está mejor representada se mira la columna hache dos, la comunalidad: la parte de la varianza de cada variable que explican los factores.",
+    "La más alta es flexibilidad, con cero coma noventa y siete.",
+    "Los factores explican el noventa y siete por ciento de su varianza.",
+    "La más baja es soporte técnico, con cero coma sesenta y cinco.",
+    "Y aquí un detalle importante.",
+    "La pauta oficial dice que la comunalidad de soporte técnico es cero coma treinta y cinco.",
+    "Pero ese número es u dos, la especificidad: la parte que los factores no explican.",
+    "La comunalidad es cero coma sesenta y cinco.",
+    "La conclusión no cambia, porque sigue siendo la peor representada, pero no confundas las dos columnas.",
+    "¿Los factores están correlacionados?",
+    "No.",
+    "Se usó varimax, que es una rotación ortogonal: mantiene los factores sin correlación.",
+    "Si se hubiera usado una rotación oblicua, como oblimin o promax, sí podrían estar correlacionados.",
+    "Lo último es el «mean item complexity».",
+    "Es el promedio de la última columna de la salida, la columna com.",
+    "Sumando los diez valores y dividiendo en diez, da uno coma dos uno.",
+    "¿Qué significa?",
+    "En cuántos factores carga, en promedio, cada variable.",
+    "Un valor cerca de uno quiere decir que cada variable carga en un solo factor: una estructura simple, fácil de interpretar.",
+    "La más compleja es confiabilidad, con uno coma siete, porque carga en el primer y en el tercer factor.",
+    "Para esta pregunta, lo que hay que tener claro es qué columna mirar en cada caso: el KMO por variable, hache dos para la comunalidad, el tipo de rotación, y la columna com."
+  ]
 });

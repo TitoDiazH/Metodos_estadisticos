@@ -56,7 +56,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "El último factorial del capítulo cinco, el ejercicio veintidós, viene de una fábrica de aceites comestibles."
+      "El último factorial del capítulo cinco, el ejercicio 22, viene de una fábrica de aceites comestibles."
     ],
     [
       7.1,
@@ -68,15 +68,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       18.35,
-      "Se estudian tres temperaturas, noventa, cien y ciento diez grados, y cuatro porcentajes de arcilla, de cero coma ocho a uno coma uno."
+      "Se estudian tres temperaturas, 90, 100 y 110 grados, y cuatro porcentajes de arcilla, de 0,8 a 1,1."
     ],
     [
       26.8,
-      "Y en planta hoy se usa uno coma uno por ciento de arcilla con cien grados."
+      "Y en planta hoy se usa 1,1 % de arcilla con 100 grados."
     ],
     [
       31.58,
-      "Es un factorial tres por cuatro con dos réplicas: veinticuatro corridas, completamente al azar."
+      "Es un factorial 3 · 4 con dos réplicas: 24 corridas, completamente al azar."
     ],
     [
       38.03,
@@ -100,19 +100,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       64.84,
-      "El error tiene doce grados de libertad y un cuadrado medio muy chico: cero coma cero cero ocho."
+      "El error tiene 12 grados de libertad y un cuadrado medio muy chico: 0,008."
     ],
     [
       71.01,
-      "La temperatura tiene un efe de doscientos cuarenta y dos."
+      "La temperatura tiene un F de 242."
     ],
     [
       74.34,
-      "La arcilla, de ciento cuarenta y ocho."
+      "La arcilla, de 148."
     ],
     [
       76.74,
-      "Y la interacción, cuatro coma siete dos, contra un crítico de tres, con pe valor cero coma cero uno."
+      "Y la interacción, 4,72, contra un crítico de tres, con valor p 0,01."
     ],
     [
       83.28,
@@ -120,15 +120,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       85.45,
-      "Y como hay interacción, las conclusiones finas se sacan de las doce medias de celda."
+      "Y como hay interacción, las conclusiones finas se sacan de las 12 medias de celda."
     ],
     [
       92.51,
-      "Las gráficas de efectos principales muestran la tendencia general: al subir la arcilla, el color baja de cinco coma uno cinco a cuatro coma uno."
+      "Las gráficas de efectos principales muestran la tendencia general: al subir la arcilla, el color baja de 5,15 a 4,1."
     ],
     [
       101.17,
-      "Y al subir la temperatura, baja de cinco coma diecinueve a cuatro coma diecinueve."
+      "Y al subir la temperatura, baja de 5,19 a 4,19."
     ],
     [
       106.24,
@@ -140,15 +140,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       114.52,
-      "A noventa grados, pasar de la menor a la mayor arcilla baja el color en uno coma cuatro."
+      "A 90 grados, pasar de la menor a la mayor arcilla baja el color en 1,4."
     ],
     [
       119.71,
-      "A cien grados, solo en cero coma setenta y cinco."
+      "A 100 grados, solo en 0,75."
     ],
     [
       122.87,
-      "Y a ciento diez, en uno."
+      "Y a 110, en uno."
     ],
     [
       125.51,
@@ -168,7 +168,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       139.28,
-      "El nivel aceptable de color es a lo más cuatro coma ocho."
+      "El nivel aceptable de color es a lo más 4,8."
     ],
     [
       142.81,
@@ -184,7 +184,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       155.92,
-      "Eso lleva a ciento diez grados con cero coma ocho por ciento de arcilla, que da un color medio de cuatro coma seis cinco."
+      "Eso lleva a 110 grados con 0,8 % de arcilla, que da un color medio de 4,65."
     ],
     [
       163.7,
@@ -203,5 +203,44 @@ PLATAFORMA.registrar("audio", {
       "Este ejercicio junta todo: leer bien qué significa «mejor» en la respuesta, respetar la interacción, y usar una restricción práctica para decidir."
     ]
   ],
-  "huella": "6a92673a1c6d"
+  "huella": "6a92673a1c6d",
+  "frasesHabladas": [
+    "El último factorial del capítulo cinco, el ejercicio veintidós, viene de una fábrica de aceites comestibles.",
+    "Las impurezas del aceite se eliminan en el proceso de blanqueo, y su eficacia se mide con el color.",
+    "Un dato fundamental: un valor menor de color indica un aceite más claro, o sea, mejor.",
+    "Se estudian tres temperaturas, noventa, cien y ciento diez grados, y cuatro porcentajes de arcilla, de cero coma ocho a uno coma uno.",
+    "Y en planta hoy se usa uno coma uno por ciento de arcilla con cien grados.",
+    "Es un factorial tres por cuatro con dos réplicas: veinticuatro corridas, completamente al azar.",
+    "El modelo: media, efecto de la temperatura, efecto de la arcilla, interacción y error.",
+    "Hipótesis: la temperatura no influye, la arcilla no influye, y no hay interacción.",
+    "¿Por qué se habrán elegido esos niveles?",
+    "Porque rodean las condiciones actuales: se explora hacia ambos lados en temperatura, y hacia abajo en arcilla, que cuesta dinero.",
+    "La idea es ver si se puede ahorrar arcilla sin perder calidad.",
+    "El error tiene doce grados de libertad y un cuadrado medio muy chico: cero coma cero cero ocho.",
+    "La temperatura tiene un efe de doscientos cuarenta y dos.",
+    "La arcilla, de ciento cuarenta y ocho.",
+    "Y la interacción, cuatro coma siete dos, contra un crítico de tres, con pe valor cero coma cero uno.",
+    "Los tres efectos están activos.",
+    "Y como hay interacción, las conclusiones finas se sacan de las doce medias de celda.",
+    "Las gráficas de efectos principales muestran la tendencia general: al subir la arcilla, el color baja de cinco coma uno cinco a cuatro coma uno.",
+    "Y al subir la temperatura, baja de cinco coma diecinueve a cuatro coma diecinueve.",
+    "Más arcilla y más temperatura dan un aceite más claro.",
+    "En la gráfica de interacción, las tres líneas bajan, pero no son paralelas.",
+    "A noventa grados, pasar de la menor a la mayor arcilla baja el color en uno coma cuatro.",
+    "A cien grados, solo en cero coma setenta y cinco.",
+    "Y a ciento diez, en uno.",
+    "¿Habrá un efecto no lineal?",
+    "Con cuatro niveles de arcilla se puede mirar si los saltos entre niveles seguidos son parecidos.",
+    "Si no lo son, la línea se curva.",
+    "Ahora la parte práctica.",
+    "El nivel aceptable de color es a lo más cuatro coma ocho.",
+    "¿Qué tratamiento usarías?",
+    "Varias celdas cumplen: ocho en total.",
+    "Entre ellas conviene la que usa menos arcilla, porque es el insumo caro.",
+    "Eso lleva a ciento diez grados con cero coma ocho por ciento de arcilla, que da un color medio de cuatro coma seis cinco.",
+    "¿Vale la pena llevar el estudio a condiciones reales?",
+    "Sí: el laboratorio muestra efectos claros, pero en planta hay más fuentes de variación.",
+    "Habría que usar pocos niveles alrededor del tratamiento elegido, repetir en distintos lotes o días como bloques, y medir también el costo.",
+    "Este ejercicio junta todo: leer bien qué significa «mejor» en la respuesta, respetar la interacción, y usar una restricción práctica para decidir."
+  ]
 });

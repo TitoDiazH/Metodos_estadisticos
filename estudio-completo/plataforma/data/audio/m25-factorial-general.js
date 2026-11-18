@@ -115,7 +115,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo veintiuno: el diseño factorial."
+      "Ahora toca el módulo 21: el diseño factorial."
     ],
     [
       3.9,
@@ -155,7 +155,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       49.71,
-      "El primero es la levadura, y el segundo, la temperatura, veintidós o treinta grados."
+      "El primero es la levadura, y el segundo, la temperatura, 22 o 30 grados."
     ],
     [
       54.9,
@@ -163,19 +163,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       57.32,
-      "Con los dos factores en nivel bajo, el rendimiento es veintiocho."
+      "Con los dos factores en nivel bajo, el rendimiento es 28."
     ],
     [
       61.37,
-      "Con solo la levadura alta, cuarenta y uno."
+      "Con solo la levadura alta, 41."
     ],
     [
       64.04,
-      "Con solo la temperatura alta, sesenta y tres."
+      "Con solo la temperatura alta, 63."
     ],
     [
       66.94,
-      "Y con los dos altos, cuarenta y cinco."
+      "Y con los dos altos, 45."
     ],
     [
       69.78,
@@ -183,11 +183,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       76.63,
-      "Para la levadura: el promedio cuando está alta es cuarenta y tres, y cuando está baja, cuarenta y cinco y medio."
+      "Para la levadura: el promedio cuando está alta es 43, y cuando está baja, 45 y medio."
     ],
     [
       83.49,
-      "Su efecto es menos dos coma cinco."
+      "Su efecto es −2,5."
     ],
     [
       86.3,
@@ -195,15 +195,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       88.15,
-      "Con temperatura alta los rendimientos son sesenta y tres y cuarenta y cinco, y con temperatura baja, veintiocho y cuarenta y uno."
+      "Con temperatura alta los rendimientos son 63 y 45, y con temperatura baja, 28 y 41."
     ],
     [
       101.63,
-      "Con temperatura alta el promedio es cincuenta y cuatro, y con temperatura baja, treinta y cuatro y medio."
+      "Con temperatura alta el promedio es 54, y con temperatura baja, 34 y medio."
     ],
     [
       107.93,
-      "El efecto es diecinueve coma cinco."
+      "El efecto es 19,5."
     ],
     [
       110.27,
@@ -219,11 +219,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       120.91,
-      "Mira lo que hace la levadura con temperatura baja: el rendimiento pasa de veintiocho a cuarenta y uno, sube trece."
+      "Mira lo que hace la levadura con temperatura baja: el rendimiento pasa de 28 a 41, sube 13."
     ],
     [
       127.94,
-      "Y con temperatura alta pasa de sesenta y tres a cuarenta y cinco: baja dieciocho."
+      "Y con temperatura alta pasa de 63 a 45: baja 18."
     ],
     [
       133.15,
@@ -239,11 +239,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       151.74,
-      "Aquí: veintiocho más cuarenta y cinco, partido en dos, menos cuarenta y uno más sesenta y tres, partido en dos."
+      "Aquí: 28 + 45, partido en 2 − 41 + 63, partido en dos."
     ],
     [
       158.64,
-      "Da menos quince coma cinco, un valor grande."
+      "Da −15,5, un valor grande."
     ],
     [
       161.52,
@@ -267,7 +267,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       188.29,
-      "En erre se hace con interaction punto plot."
+      "En R se hace con interaction punto plot."
     ],
     [
       191.38,
@@ -279,11 +279,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       203.12,
-      "Un factor con a niveles y otro con be niveles dan a por be tratamientos."
+      "Un factor con a niveles y otro con b niveles dan a por b tratamientos."
     ],
     [
       207.31,
-      "Y si todo el arreglo se repite ene veces, cada repetición es una réplica."
+      "Y si todo el arreglo se repite n veces, cada repetición es una réplica."
     ],
     [
       212.16,
@@ -295,7 +295,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       226.82,
-      "Los grados de libertad son: para el primer factor, a menos uno; para el segundo, be menos uno; para la interacción, el producto de esos dos; y para el error, a por be por ene menos uno."
+      "Los grados de libertad son: para el primer factor, a −1; para el segundo, b − 1; para la interacción, el producto de esos dos; y para el error, a por b · n − 1."
     ],
     [
       238.42,
@@ -327,7 +327,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       270.71,
-      "Tres réplicas, treinta y seis pruebas en total."
+      "Tres réplicas, 36 pruebas en total."
     ],
     [
       274.3,
@@ -335,11 +335,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       277.68,
-      "La velocidad tiene un efe de cincuenta y cinco; la profundidad, de casi veinticinco; y la interacción, de tres coma veintitrés, con pe valor cero coma cero dieciocho."
+      "La velocidad tiene un F de 55; la profundidad, de casi 25; y la interacción, de 3,23, con valor p 0,018."
     ],
     [
       287.83,
-      "El error tiene veinticuatro grados de libertad, con un cuadrado medio de veintiocho coma siete."
+      "El error tiene 24 grados de libertad, con un cuadrado medio de 28,7."
     ],
     [
       293.77,
@@ -355,7 +355,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       303.63,
-      "En erre, la tabla sale con a o ve, poniendo el acabado, tilde, profundidad asterisco velocidad."
+      "En R, la tabla sale con aov, poniendo el acabado, tilde, profundidad asterisco velocidad."
     ],
     [
       309.45,
@@ -363,7 +363,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       315.04,
-      "Para comparar niveles se vuelve a usar la ele ese de, pero hay que fijarse primero en si la interacción importa."
+      "Para comparar niveles se vuelve a usar la LSD, pero hay que fijarse primero en si la interacción importa."
     ],
     [
       322.01,
@@ -371,7 +371,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       327.93,
-      "En la fórmula, el número de observaciones de cada media es be por ene para el primer factor, y a por ene para el segundo."
+      "En la fórmula, el número de observaciones de cada media es b · n para el primer factor, y a por n para el segundo."
     ],
     [
       335.07,
@@ -383,7 +383,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       344.29,
-      "En ese caso se comparan los tratamientos dentro de cada nivel del otro factor, y cada media tiene solo ene observaciones."
+      "En ese caso se comparan los tratamientos dentro de cada nivel del otro factor, y cada media tiene solo n observaciones."
     ],
     [
       351.85,
@@ -411,7 +411,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       380.95,
-      "En erre basta con a o ve y los tres factores unidos con asteriscos."
+      "En R basta con aov y los tres factores unidos con asteriscos."
     ],
     [
       385.52,
@@ -423,7 +423,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       396.36,
-      "Seis réplicas, setenta y dos corridas."
+      "Seis réplicas, 72 corridas."
     ],
     [
       399.51,
@@ -431,7 +431,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       406.56,
-      "Tres por dos por dos es doce, y eso por seis menos uno, que es cinco: sesenta."
+      "3 · 2 · 2 es 12, y eso por 6 − 1, que es cinco: 60."
     ],
     [
       411.69,
@@ -499,8 +499,107 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       499.82,
-      "Eso fue el módulo veintiuno."
+      "Eso fue el módulo 21."
     ]
   ],
-  "huella": "558ebb105983"
+  "huella": "558ebb105983",
+  "frasesHabladas": [
+    "Ahora toca el módulo veintiuno: el diseño factorial.",
+    "En el módulo de bloques, el bloque era un factor que molestaba.",
+    "Ahora cambia la mirada: tenemos varios factores y todos nos interesan por igual.",
+    "Puede ser la temperatura y la presión, o el tipo de material y la máquina.",
+    "La idea del factorial es probar todas las combinaciones de sus niveles, en orden aleatorio.",
+    "¿Para qué?",
+    "Normalmente, para encontrar la combinación en la que el proceso funciona mejor.",
+    "Los factores pueden ser cualitativos, como el operador o el tipo de material, o cuantitativos, como la temperatura, la velocidad o la concentración.",
+    "Lo único que se exige es que cada factor tenga al menos dos niveles.",
+    "Partamos con el ejemplo más chico posible: dos factores, cada uno con dos niveles.",
+    "El primero es la levadura, y el segundo, la temperatura, veintidós o treinta grados.",
+    "La respuesta es el rendimiento.",
+    "Con los dos factores en nivel bajo, el rendimiento es veintiocho.",
+    "Con solo la levadura alta, cuarenta y uno.",
+    "Con solo la temperatura alta, sesenta y tres.",
+    "Y con los dos altos, cuarenta y cinco.",
+    "El efecto principal de un factor es cuánto cambia, en promedio, la respuesta al pasar de su nivel bajo a su nivel alto.",
+    "Para la levadura: el promedio cuando está alta es cuarenta y tres, y cuando está baja, cuarenta y cinco y medio.",
+    "Su efecto es menos dos coma cinco.",
+    "Te dejo el de la temperatura.",
+    "Con temperatura alta los rendimientos son sesenta y tres y cuarenta y cinco, y con temperatura baja, veintiocho y cuarenta y uno.",
+    "Con temperatura alta el promedio es cincuenta y cuatro, y con temperatura baja, treinta y cuatro y medio.",
+    "El efecto es diecinueve coma cinco.",
+    "Así que la temperatura pesa mucho más que la levadura.",
+    "Y eso se juzga por el valor absoluto, no por el signo.",
+    "Pero hay algo raro en esos números.",
+    "Mira lo que hace la levadura con temperatura baja: el rendimiento pasa de veintiocho a cuarenta y uno, sube trece.",
+    "Y con temperatura alta pasa de sesenta y tres a cuarenta y cinco: baja dieciocho.",
+    "O sea, subir la levadura ayuda o perjudica dependiendo de la temperatura.",
+    "Eso es justamente una interacción: el efecto de un factor depende del nivel del otro.",
+    "El efecto de interacción se calcula como el promedio de las dos esquinas donde los factores coinciden, menos el promedio de las otras dos.",
+    "Aquí: veintiocho más cuarenta y cinco, partido en dos, menos cuarenta y uno más sesenta y tres, partido en dos.",
+    "Da menos quince coma cinco, un valor grande.",
+    "Y el rendimiento máximo se logra con levadura baja y temperatura alta.",
+    "¿Cómo se ve esto en un gráfico?",
+    "En la gráfica de interacción se pone un factor en el eje horizontal y se dibuja una línea por cada nivel del otro.",
+    "Si las líneas son paralelas, no hay interacción, y cada factor se puede analizar por separado.",
+    "Si se cruzan, o tienen pendientes muy distintas, hay interacción, y la mejor elección de un factor depende del otro.",
+    "En erre se hace con interaction punto plot.",
+    "Eso sí, el tamaño de un efecto dice cuán importante parece, pero para saber si es estadísticamente significativo hace falta el ANOVA.",
+    "Generalicemos.",
+    "Un factor con a niveles y otro con be niveles dan a por be tratamientos.",
+    "Y si todo el arreglo se repite ene veces, cada repetición es una réplica.",
+    "El modelo tiene la media global, el efecto del primer factor, el del segundo, la interacción entre ambos y el error.",
+    "Y hay tres pares de hipótesis: que no hay efecto del primero, que no hay efecto del segundo, y que no hay interacción.",
+    "Los grados de libertad son: para el primer factor, a menos uno; para el segundo, be menos uno; para la interacción, el producto de esos dos; y para el error, a por be por ene menos uno.",
+    "Mira ese último término.",
+    "¿Qué le pasa al error si hago una sola réplica?",
+    "Se queda con cero grados de libertad.",
+    "No hay con qué estimarlo.",
+    "Por eso, para tener la tabla ANOVA completa con interacción, se necesitan al menos dos réplicas.",
+    "El ejemplo de la clase es el acabado de una pieza de metal, que se quiere minimizar.",
+    "Dos factores: la profundidad de corte, con cuatro niveles, y la velocidad de alimentación, con tres.",
+    "Tres réplicas, treinta y seis pruebas en total.",
+    "La tabla ANOVA muestra los tres efectos significativos.",
+    "La velocidad tiene un efe de cincuenta y cinco; la profundidad, de casi veinticinco; y la interacción, de tres coma veintitrés, con pe valor cero coma cero dieciocho.",
+    "El error tiene veinticuatro grados de libertad, con un cuadrado medio de veintiocho coma siete.",
+    "¿Qué se concluye?",
+    "Que a mayor velocidad y mayor profundidad, peor es el acabado.",
+    "Así que la condición recomendada es profundidad baja y velocidad baja.",
+    "En erre, la tabla sale con a o ve, poniendo el acabado, tilde, profundidad asterisco velocidad.",
+    "El asterisco incluye los dos efectos y también su interacción.",
+    "Para comparar niveles se vuelve a usar la ele ese de, pero hay que fijarse primero en si la interacción importa.",
+    "Si no hay interacción, se comparan las medias de cada factor por separado, las medias marginales.",
+    "En la fórmula, el número de observaciones de cada media es be por ene para el primer factor, y a por ene para el segundo.",
+    "En el acabado, cada media de profundidad junta nueve datos.",
+    "Pero si la interacción es significativa, comparar medias marginales puede engañar.",
+    "En ese caso se comparan los tratamientos dentro de cada nivel del otro factor, y cada media tiene solo ene observaciones.",
+    "Y se nota la diferencia.",
+    "En el acabado, mirando las medias marginales, las profundidades uno y dos no difieren y todas las demás sí.",
+    "Pero dentro de la velocidad media, solo resultan distintas la profundidad uno contra la tres, y la uno contra la cuatro.",
+    "Las conclusiones cambian según el nivel del otro factor.",
+    "Con tres factores el modelo crece: tres efectos principales, tres interacciones dobles y una triple.",
+    "Siete efectos en total.",
+    "En erre basta con a o ve y los tres factores unidos con asteriscos.",
+    "El ejemplo de la clase es de sedimentación, que también se quiere minimizar.",
+    "Tipo de suspensión, con tres niveles; abertura de malla, con dos; y temperatura de ciclaje, con dos.",
+    "Seis réplicas, setenta y dos corridas.",
+    "¿Cuántos grados de libertad tendría el error?",
+    "Tres por dos por dos es doce, y eso por seis menos uno, que es cinco: sesenta.",
+    "En el ANOVA salen significativos la abertura, la temperatura, la interacción entre suspensión y abertura, y también la de abertura con temperatura.",
+    "El tipo de suspensión por sí solo no es significativo, y tampoco su interacción con la temperatura ni la triple.",
+    "Esos términos se pueden sacar del modelo y mandar al error.",
+    "Y aquí hay una trampa.",
+    "Si la suspensión no es significativa por sí sola, ¿la puedo dejar en cualquier nivel?",
+    "No.",
+    "Participa en una interacción significativa con la abertura, así que igual importa qué nivel elijo.",
+    "El mejor tratamiento resulta ser suspensión intermedia, abertura baja y temperatura alta.",
+    "Con más factores, el número de interacciones crece muy rápido.",
+    "Pero en la práctica, las interacciones de orden alto casi nunca resultan importantes.",
+    "Eso se llama el principio de escasez de efectos, y es la idea que motiva los diseños fraccionados, en los que no se corren todas las combinaciones.",
+    "Una forma ordenada de leer cualquier factorial es esta.",
+    "Primero el ANOVA, buscando la interacción de mayor orden que salga significativa.",
+    "Si hay interacción, eliges los niveles con la gráfica de interacción y comparas dentro de cada nivel del otro factor.",
+    "Si no la hay, miras cada factor por separado, con sus medias marginales.",
+    "Y los términos que no son significativos se pueden mandar al error.",
+    "Eso fue el módulo veintiuno."
+  ]
 });

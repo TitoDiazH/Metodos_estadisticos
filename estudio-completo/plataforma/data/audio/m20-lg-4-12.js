@@ -72,11 +72,11 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "El ejercicio doce del capítulo cuatro compara cuatro detergentes."
+      "El ejercicio 12 del capítulo cuatro compara cuatro detergentes."
     ],
     [
       4.54,
-      "Se midió la blancura de doce cargas de lavado, repartidas en tres modelos de lavadora."
+      "Se midió la blancura de 12 cargas de lavado, repartidas en tres modelos de lavadora."
     ],
     [
       9.68,
@@ -124,43 +124,43 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       59.42,
-      "Por detergente: ciento treinta y nueve, ciento cuarenta y tres, ciento cincuenta y seis y ciento veintiocho."
+      "Por detergente: 139, 143, 156 y 128."
     ],
     [
       66.3,
-      "Por lavadora: ciento ochenta y cuatro, ciento setenta y tres y doscientos nueve."
+      "Por lavadora: 184, 173 y 209."
     ],
     [
       71.49,
-      "El gran total es quinientos sesenta y seis."
+      "El gran total es 566."
     ],
     [
       76.18,
-      "La corrección es quinientos sesenta y seis al cuadrado sobre doce: veintiséis mil seiscientos noventa y seis coma tres tres."
+      "La corrección es 566² / 12: 26696,33."
     ],
     [
       84.07,
-      "Los datos al cuadrado suman veintisiete mil ocho, así que la suma de cuadrados total es trescientos once coma seis siete."
+      "Los datos al cuadrado suman 27008, así que la suma de cuadrados total es 311,67."
     ],
     [
       91.93,
-      "Para los detergentes, los totales al cuadrado se dividen por tres lavadoras."
+      "Para los detergentes, los totales al cuadrado se dividen por 3 lavadoras."
     ],
     [
       96.68,
-      "Menos la corrección, queda ciento treinta y tres coma seis siete."
+      "Menos la corrección, queda 133,67."
     ],
     [
       101.06,
-      "Para las lavadoras, los totales al cuadrado se dividen por cuatro detergentes."
+      "Para las lavadoras, los totales al cuadrado se dividen por 4 detergentes."
     ],
     [
       105.92,
-      "Queda ciento setenta coma uno siete."
+      "Queda 170,17."
     ],
     [
       108.72,
-      "Y el error, por diferencia, es apenas siete coma ocho tres."
+      "Y el error, por diferencia, es apenas 7,83."
     ],
     [
       112.62,
@@ -172,15 +172,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       127.05,
-      "Los cuadrados medios: cuarenta y cuatro coma cinco seis, ochenta y cinco coma cero ocho, y uno coma tres uno para el error."
+      "Los cuadrados medios: 44,56, 85,08, y 1,31 para el error."
     ],
     [
       135.16,
-      "El efe de los detergentes es treinta y cuatro coma uno tres."
+      "El F de los detergentes es 34,13."
     ],
     [
       139.04,
-      "El crítico con tres y seis grados de libertad es cuatro coma setenta y seis, y el pe valor, cero coma cero cero cero cuatro."
+      "El crítico con tres y seis grados de libertad es 4,76, y el valor p, 0,0004."
     ],
     [
       146.6,
@@ -188,7 +188,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       152.07,
-      "Las lavadoras tienen un efe de sesenta y cinco coma uno siete, con pe valor menor que cero coma cero cero cero uno."
+      "Las lavadoras tienen un F de 65,17, con valor p menor que 0,0001."
     ],
     [
       158.9,
@@ -196,19 +196,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       166.07,
-      "Para comparar los detergentes, la ele ese de usa te con seis grados de libertad, dos coma cuatro cuatro siete, por la raíz de dos por uno coma tres uno, dividido en tres."
+      "Para comparar los detergentes, la LSD usa te con seis grados de libertad, 2,447, por la raíz de 2 · 1,31, dividido en tres."
     ],
     [
       176.24,
-      "Da dos coma dos ocho."
+      "Da 2,28."
     ],
     [
       178.64,
-      "Las medias son: ce, cincuenta y dos; be, cuarenta y siete coma siete; a, cuarenta y seis coma tres; y de, cuarenta y dos coma siete."
+      "Las medias son: c, 52; b, 47,7; a, 46,3; y de, 42,7."
     ],
     [
       186.66,
-      "De las seis comparaciones, solo una no supera la ele ese de: a contra be, que difieren en uno coma tres."
+      "De las seis comparaciones, solo una no supera la LSD: a contra b, que difieren en 1,3."
     ],
     [
       193.05,
@@ -216,7 +216,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       195.8,
-      "Como mayor blancura es mejor, el detergente ce es significativamente superior a todos los demás."
+      "Como mayor blancura es mejor, el detergente c es significativamente superior a todos los demás."
     ],
     [
       201.55,
@@ -224,7 +224,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       205.0,
-      "En erre: a o ve con la blancura, tilde, detergente más lavadora, y después ele ese de punto test sobre el detergente."
+      "En R: aov con la blancura, tilde, detergente más lavadora, y después LSD punto test sobre el detergente."
     ],
     [
       212.6,
@@ -235,5 +235,48 @@ PLATAFORMA.registrar("audio", {
       "Sin él, el error habría sido enorme."
     ]
   ],
-  "huella": "32c0583476d3"
+  "huella": "32c0583476d3",
+  "frasesHabladas": [
+    "El ejercicio doce del capítulo cuatro compara cuatro detergentes.",
+    "Se midió la blancura de doce cargas de lavado, repartidas en tres modelos de lavadora.",
+    "Lo primero que pide es el nombre del diseño.",
+    "La pista está en cómo se reparten las cargas: cada lavadora lava una carga con cada detergente.",
+    "Y el enunciado aclara que mayor blancura es mejor.",
+    "¿Qué diseño es, entonces?",
+    "Es un diseño en bloques completos al azar.",
+    "El factor de interés es el detergente, con cuatro niveles, y la lavadora es el bloque, con tres.",
+    "No queremos elegir una lavadora: solo queremos que sus diferencias no ensucien la comparación entre detergentes.",
+    "El modelo: media global, más efecto del detergente, más efecto de la lavadora, más el error.",
+    "La hipótesis principal dice que los cuatro detergentes dan la misma blancura media.",
+    "Y la de bloques, que las tres lavadoras dan lo mismo.",
+    "Los totales.",
+    "Por detergente: ciento treinta y nueve, ciento cuarenta y tres, ciento cincuenta y seis y ciento veintiocho.",
+    "Por lavadora: ciento ochenta y cuatro, ciento setenta y tres y doscientos nueve.",
+    "El gran total es quinientos sesenta y seis.",
+    "La corrección es quinientos sesenta y seis al cuadrado sobre doce: veintiséis mil seiscientos noventa y seis coma tres tres.",
+    "Los datos al cuadrado suman veintisiete mil ocho, así que la suma de cuadrados total es trescientos once coma seis siete.",
+    "Para los detergentes, los totales al cuadrado se dividen por tres lavadoras.",
+    "Menos la corrección, queda ciento treinta y tres coma seis siete.",
+    "Para las lavadoras, los totales al cuadrado se dividen por cuatro detergentes.",
+    "Queda ciento setenta coma uno siete.",
+    "Y el error, por diferencia, es apenas siete coma ocho tres.",
+    "Mira lo grande que era la suma de las lavadoras: si no hubiéramos bloqueado, todo eso habría ido a parar al error.",
+    "Grados de libertad: tres para detergentes, dos para lavadoras y seis para el error.",
+    "Los cuadrados medios: cuarenta y cuatro coma cinco seis, ochenta y cinco coma cero ocho, y uno coma tres uno para el error.",
+    "El efe de los detergentes es treinta y cuatro coma uno tres.",
+    "El crítico con tres y seis grados de libertad es cuatro coma setenta y seis, y el pe valor, cero coma cero cero cero cuatro.",
+    "Se rechaza con mucha claridad: los detergentes no dan todos la misma blancura.",
+    "Las lavadoras tienen un efe de sesenta y cinco coma uno siete, con pe valor menor que cero coma cero cero cero uno.",
+    "El bloque es muy significativo: las lavadoras sí son distintas, y bloquear fue clave.",
+    "Para comparar los detergentes, la ele ese de usa te con seis grados de libertad, dos coma cuatro cuatro siete, por la raíz de dos por uno coma tres uno, dividido en tres.",
+    "Da dos coma dos ocho.",
+    "Las medias son: ce, cincuenta y dos; be, cuarenta y siete coma siete; a, cuarenta y seis coma tres; y de, cuarenta y dos coma siete.",
+    "De las seis comparaciones, solo una no supera la ele ese de: a contra be, que difieren en uno coma tres.",
+    "Todas las demás son significativas.",
+    "Como mayor blancura es mejor, el detergente ce es significativamente superior a todos los demás.",
+    "Y el de es el peor.",
+    "En erre: a o ve con la blancura, tilde, detergente más lavadora, y después ele ese de punto test sobre el detergente.",
+    "Lo que más enseña este ejercicio es la tabla: el bloque se llevó más variabilidad que el propio tratamiento.",
+    "Sin él, el error habría sido enorme."
+  ]
 });

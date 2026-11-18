@@ -38,10 +38,12 @@ const L = require("./generadores/lib");
   ["m19", "m19-manova", "MANOVA (P2)", 1],
   ["m20", "m20-dbca", "Diseño en bloques completos al azar — libro guía (P3)", 2],
   ["m21", "m21-factorial-2k", "Factoriales 2^k — libro guía (P3)", 2],
-  ["m25", "m25-factorial-general", "Factorial general a × b — libro guía (P3)", 1]
+  ["m25", "m25-factorial-general", "Factorial general a × b — libro guía (P3)", 1],
+  ["m23", "m23-superficie-respuesta", "Superficie de respuesta — libro guía cap. 12 (P4)", 1],
+  ["m26", "m26-regresion-lineal", "Regresión lineal múltiple — Walpole cap. 12 (P4)", 2]
 ].forEach((m) => L.modulo(...m));
 
-const gens = Object.assign({}, require("./generadores/p1a"), require("./generadores/p1b"), require("./generadores/p2a"), require("./generadores/p2b"), require("./generadores/p3lg"), require("./generadores/refuerzo"));
+const gens = Object.assign({}, require("./generadores/p1a"), require("./generadores/p1b"), require("./generadores/p2a"), require("./generadores/p2b"), require("./generadores/p3lg"), require("./generadores/refuerzo"), (({ m23, m26 }) => ({ m23, m26 }))(require("./generadores/p4")));
 Object.keys(gens).sort().forEach((k) => gens[k]());
 
 const escritos = L.emitir(path.join(__dirname, "..", "data", "desarrollo"));

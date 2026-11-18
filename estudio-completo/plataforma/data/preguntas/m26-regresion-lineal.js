@@ -165,5 +165,31 @@ m <- step(modelo1, direction = "both", steps = 1)`,
     correcta: [0, 1, 2],
     explicacion: "C8.1 s40: step busca el MENOR AIC; Cook > 1 indica punto muy influyente.",
     fuente: [{ id: "C8.1", loc: "slide 40" }]
+  },
+  {
+    id: "m26-q018", modulo: "m26-regresion-lineal", concepto: "m26-c14", tipo: "calculo", dificultad: 2, origen: "variacion",
+    base: [{ id: "WAL", loc: "ej. 12.4" }],
+    enunciado: String.raw`En el modelo del peso final de animales (Walpole 12.4), el peso inicial tiene $b_1=1{,}3957$ con $ee=0{,}5825$ y 7 gl. Calcula el estadístico $t$ para $H_0:\beta_1=1$.`,
+    respuesta: 0.679, tolerancia: 0.002,
+    explicacion: String.raw`$t=(1{,}3957-1)/0{,}5825=0{,}679$. Como $|t|<t_{0{,}975;7}=2{,}365$, no se rechaza: es compatible con que cada kg inicial se traduzca en un kg final.`,
+    verifica: [{ que: "t", js: "(1.3957-1)/0.5825", esperado: 0.6793, tol: 0.001 }],
+    fuente: [{ id: "INST-P4" }, { id: "WAL", loc: "ej. 12.4" }]
+  },
+  {
+    id: "m26-q019", modulo: "m26-regresion-lineal", concepto: "m26-c14", tipo: "calculo", dificultad: 2, origen: "variacion",
+    base: [{ id: "WAL", loc: "ej. 12.6" }],
+    enunciado: String.raw`Distancia de frenado: $\hat d=13{,}359-0{,}3394v+0{,}011825v^2$ ($v$ en km/h). Calcula $\partial\hat d/\partial v$ en $v=80$ km/h.`,
+    respuesta: 1.5526, tolerancia: 0.002,
+    explicacion: String.raw`$\partial\hat d/\partial v=-0{,}3394+2(0{,}011825)v=-0{,}3394+0{,}02365\cdot80=1{,}5526$ m por km/h: a 80 km/h, cada km/h extra agrega ≈ 1,55 m de frenado.`,
+    verifica: [{ que: "derivada", js: "-0.3394+2*0.011825*80", esperado: 1.5526, tol: 1e-4 }],
+    fuente: [{ id: "INST-P4" }, { id: "WAL", loc: "ej. 12.6" }]
+  },
+  {
+    id: "m26-q020", modulo: "m26-regresion-lineal", concepto: "m26-c14", tipo: "alternativas", dificultad: 2, origen: "curso",
+    enunciado: "Ayudantía 10, P3: modelo de consumo con prod, temp, horas y turnos; horas y turnos tienen VIF ≈ 50 y 47 y el coeficiente de turnos sale negativo y no significativo. ¿Cuál es la mejor lectura?",
+    opciones: ["Multicolinealidad severa: horas y turnos miden casi lo mismo, se inflan los errores estándar y el signo de turnos no es confiable; conviene sacar una de las dos", "Más turnos reducen el consumo", "turnos no influye en el consumo bajo ninguna circunstancia", "El modelo no es significativo"],
+    correcta: 0,
+    explicacion: "VIF > 10 ⇒ multicolinealidad severa. Al sacar turnos, todos los VIF ≈ 1, el ee de horas baja de 0,443 a 0,073 y el R²aj casi no cambia (0,9266 → 0,9211).",
+    fuente: [{ id: "AY10-P", loc: "P3" }]
   }
 ]);

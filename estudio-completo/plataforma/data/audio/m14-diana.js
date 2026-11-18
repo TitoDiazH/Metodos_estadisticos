@@ -89,7 +89,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo catorce: DIANA, el clastering jerárquico de arriba hacia abajo."
+      "Ahora toca el módulo 14: DIANA, el clastering jerárquico de arriba hacia abajo."
     ],
     [
       5.71,
@@ -177,11 +177,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       94.38,
-      "Para E ocho: tres coma veintidós, más dos coma noventa y dos, más dos coma sesenta, más cero coma cuarenta y dos, dividido en cuatro: dos coma veintinueve."
+      "Para E ocho: 3,22 + 2,92 + 2,60 + 0,42, dividido en cuatro: 2,29."
     ],
     [
       103.96,
-      "Las otras quedan alrededor de dos: dos coma cero ocho, dos coma cero uno, dos coma doce y dos coma cero cero."
+      "Las otras quedan alrededor de dos: 2,08, 2,01, 2,14 coma cero cero."
     ],
     [
       110.43,
@@ -201,11 +201,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       120.79,
-      "Su distancia promedio a E uno, E dos y E cinco es dos coma ochenta y uno, más dos coma cincuenta y uno, más dos coma veintiocho, dividido en tres, que da dos coma cincuenta y tres."
+      "Su distancia promedio a E uno, E dos y E cinco es 2,81 + 2,51 + 2,28, dividido en tres, que da 2,53."
     ],
     [
       131.32,
-      "Y su distancia a E ocho es solo cero coma cuarenta y dos."
+      "Y su distancia a E ocho es solo 0,42."
     ],
     [
       134.76,
@@ -213,7 +213,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       140.61,
-      "Positiva: dos coma once."
+      "Positiva: 2,11."
     ],
     [
       142.59,
@@ -237,15 +237,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       161.09,
-      "E siete con E ocho tiene una disparidad de cero coma cuarenta y dos."
+      "E siete con E ocho tiene una disparidad de 0,42."
     ],
     [
       165.07,
-      "E uno, E dos y E cinco, de uno coma cuarenta y dos."
+      "E uno, E dos y E cinco, de 1,42."
     ],
     [
       168.14,
-      "Se divide el segundo, y sale E cinco, que tiene la mayor disparidad, uno coma ochenta."
+      "Se divide el segundo, y sale E cinco, que tiene la mayor disparidad, 1,80."
     ],
     [
       173.67,
@@ -261,7 +261,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       188.91,
-      "En erre, DIANA está en el paquete cluster, con la función diana."
+      "En R, DIANA está en el paquete cluster, con la función diana."
     ],
     [
       192.85,
@@ -285,7 +285,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       222.95,
-      "Con dos grupos, single, complete y ka medias dan lo mismo: E uno, E dos y E cinco contra E siete y E ocho."
+      "Con dos grupos, single, complete y k medias dan lo mismo: E uno, E dos y E cinco contra E siete y E ocho."
     ],
     [
       229.31,
@@ -301,11 +301,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       239.59,
-      "Los jerárquicos, con datos pequeños o medianos, para explorar distintos ka con el dendrograma."
+      "Los jerárquicos, con datos pequeños o medianos, para explorar distintos k con el dendrograma."
     ],
     [
       245.73,
-      "Ka medias, con datos grandes y una idea de cuántos grupos hay."
+      "k medias, con datos grandes y una idea de cuántos grupos hay."
     ],
     [
       249.67,
@@ -321,8 +321,69 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       271.13,
-      "Eso fue el módulo catorce."
+      "Eso fue el módulo 14."
     ]
   ],
-  "huella": "067e38b4e526"
+  "huella": "067e38b4e526",
+  "frasesHabladas": [
+    "Ahora toca el módulo catorce: DIANA, el clastering jerárquico de arriba hacia abajo.",
+    "Los métodos aglomerativos partían con cada dato solo y los iban uniendo.",
+    "DIANA hace lo contrario.",
+    "Parte con todos los datos en un solo clúster, y lo va dividiendo.",
+    "El nombre viene del inglés: divisive analysis.",
+    "La pregunta es cómo dividir un grupo en dos.",
+    "La idea de DIANA es bien intuitiva: sacar primero a quien más se aleja del resto, y después ver quién lo quiere seguir.",
+    "Primero se calcula la disparidad de cada observación: su distancia promedio a todas las demás del grupo.",
+    "La que tenga la mayor disparidad sale, y forma un clúster nuevo.",
+    "Eso es la escisión.",
+    "Después viene la reasignación.",
+    "Para cada observación que quedó en el grupo original, se compara: su distancia promedio a los que se quedaron, menos su distancia promedio al grupo nuevo.",
+    "Si esa diferencia es positiva, quiere decir que está más cerca del grupo nuevo, y se cambia.",
+    "Esto se repite hasta que nadie se mueve.",
+    "Y para la siguiente división, se elige el clúster más heterogéneo, el que tiene la mayor disparidad.",
+    "Fíjate que no dice el más grande.",
+    "¿Por qué importa esa diferencia?",
+    "Porque un grupo grande puede ser muy parejo, y uno chico puede tener puntos muy separados.",
+    "Lo que se busca dividir es el que está más desordenado.",
+    "Veámoslo con las cinco empresas de la clase.",
+    "Tenemos la matriz de distancias entre ellas.",
+    "Primero, las disparidades.",
+    "Para E ocho: tres coma veintidós, más dos coma noventa y dos, más dos coma sesenta, más cero coma cuarenta y dos, dividido en cuatro: dos coma veintinueve.",
+    "Las otras quedan alrededor de dos: dos coma cero ocho, dos coma cero uno, dos coma doce y dos coma cero cero.",
+    "E ocho tiene la mayor, así que sale y forma su propio grupo.",
+    "Ahora la reasignación.",
+    "¿Alguna de las otras quiere irse con E ocho?",
+    "Mira E siete.",
+    "Su distancia promedio a E uno, E dos y E cinco es dos coma ochenta y uno, más dos coma cincuenta y uno, más dos coma veintiocho, dividido en tres, que da dos coma cincuenta y tres.",
+    "Y su distancia a E ocho es solo cero coma cuarenta y dos.",
+    "¿La diferencia es positiva o negativa?",
+    "Positiva: dos coma once.",
+    "E siete está mucho más cerca de E ocho, y se cambia de grupo.",
+    "Para E uno, E dos y E cinco la diferencia sale negativa: se quedan.",
+    "En la segunda ronda nadie más se mueve.",
+    "La primera división queda E siete con E ocho, y E uno, E dos y E cinco.",
+    "Para la segunda división se elige el grupo más heterogéneo.",
+    "E siete con E ocho tiene una disparidad de cero coma cuarenta y dos.",
+    "E uno, E dos y E cinco, de uno coma cuarenta y dos.",
+    "Se divide el segundo, y sale E cinco, que tiene la mayor disparidad, uno coma ochenta.",
+    "Nadie la sigue.",
+    "Con tres clústeres quedan: E siete con E ocho, E uno con E dos, y E cinco sola.",
+    "Tiene sentido: E cinco es la empresa de mucha inversión y pocas ventas, un perfil que no se parece a ninguna otra.",
+    "En erre, DIANA está en el paquete cluster, con la función diana.",
+    "Se le dan los datos estandarizados o una matriz de distancias, y para cortar en grupos se transforma con as punto hclust y se usa cutree, igual que antes.",
+    "El dendrograma se lee al revés que el aglomerativo: de la raíz hacia abajo.",
+    "Y un detalle: en DIANA las alturas son el diámetro de cada clúster, la mayor distancia entre dos de sus miembros, no una distancia de fusión.",
+    "Con estas mismas empresas ya usamos varios métodos.",
+    "Todos juntan a E siete con E ocho.",
+    "Con dos grupos, single, complete y ka medias dan lo mismo: E uno, E dos y E cinco contra E siete y E ocho.",
+    "Y con tres, DIANA aísla a E cinco.",
+    "Es lo normal: los métodos coinciden en lo que está muy marcado, y difieren en los casos ambiguos.",
+    "¿Cuándo conviene cada uno?",
+    "Los jerárquicos, con datos pequeños o medianos, para explorar distintos ka con el dendrograma.",
+    "Ka medias, con datos grandes y una idea de cuántos grupos hay.",
+    "Y DIANA, cuando interesa detectar primero las separaciones grandes, por ejemplo aislar un perfil atípico.",
+    "En resumen: DIANA parte del todo y divide.",
+    "Saca a la observación con mayor disparidad, mueve a las que quedan más cerca del grupo nuevo, y en cada paso divide el clúster más heterogéneo, no el más grande.",
+    "Eso fue el módulo catorce."
+  ]
 });

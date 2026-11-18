@@ -99,7 +99,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       8.0,
-      "Dos personas que difieren en treinta años y en un millón de pesos."
+      "Dos personas que difieren en 30 años y en un millón de pesos."
     ],
     [
       11.74,
@@ -111,7 +111,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       22.55,
-      "Un millón pesa muchísimo más que treinta."
+      "Un millón pesa muchísimo más que 30."
     ],
     [
       25.05,
@@ -127,7 +127,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       48.43,
-      "Para ver los métodos, usemos los datos de la clase: diez, doce, quince, veinte y veinticinco."
+      "Para ver los métodos, usemos los datos de la clase: diez, 12, 15, 20 y 25."
     ],
     [
       54.67,
@@ -143,11 +143,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       63.99,
-      "El mínimo es diez y el rango quince."
+      "El mínimo es diez y el rango 15."
     ],
     [
       66.31,
-      "El diez queda en cero, el veinticinco en uno, y el quince queda en cinco quinceavos, cero coma tres tres."
+      "El diez queda en cero, el 25 en uno, y el 15 queda en cinco quinceavos, 0,33."
     ],
     [
       73.33,
@@ -155,11 +155,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       78.88,
-      "Un cero coma cinco corresponde a cero coma cinco por quince, más diez: diecisiete coma cinco."
+      "Un 0,5 corresponde a 0,5 · 15 + 10: 17,5."
     ],
     [
       84.91,
-      "Esto se usa, por ejemplo, para interpretar un centroide de ka medias en las unidades originales."
+      "Esto se usa, por ejemplo, para interpretar un centroide de k medias en las unidades originales."
     ],
     [
       91.04,
@@ -179,11 +179,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       107.76,
-      "Media cero y varianza uno es lo que hace el puntaje zeta."
+      "Media cero y varianza uno es lo que hace el puntaje Z."
     ],
     [
       111.45,
-      "Justamente, el segundo método es el puntaje zeta."
+      "Justamente, el segundo método es el puntaje Z."
     ],
     [
       114.84,
@@ -195,15 +195,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       123.59,
-      "Con los datos de la clase, la media es dieciséis coma cuatro y la desviación seis coma uno."
+      "Con los datos de la clase, la media es 16,4 y la desviación 6,1."
     ],
     [
       128.98,
-      "El diez queda en menos uno coma cero cinco, y el veinticinco en uno coma cuatro uno."
+      "El diez queda en −1,05, y el 25 en 1,41."
     ],
     [
       134.11,
-      "En erre, la función scale."
+      "En R, la función scale."
     ],
     [
       136.66,
@@ -239,7 +239,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       168.46,
-      "Toma dos puntos: a, en dos coma tres, y be, en seis coma ocho."
+      "Toma dos puntos: a, en 2,3, y b, en 6,8."
     ],
     [
       172.29,
@@ -247,11 +247,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       176.83,
-      "La distancia euclídea es la línea recta: la raíz de cuatro al cuadrado más cinco al cuadrado, raíz de cuarenta y uno, seis coma cuatro."
+      "La distancia euclídea es la línea recta: la raíz de 4² + 5², raíz de 41, 6,4."
     ],
     [
       185.58,
-      "La distancia Manhattan es lo que recorrerías por calles en cuadrícula: cuatro más cinco, nueve."
+      "La distancia Manhattan es lo que recorrerías por calles en cuadrícula: 4 + 5, 9."
     ],
     [
       191.15,
@@ -263,7 +263,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       196.17,
-      "En erre, las dos salen con dist, cambiando el método."
+      "En R, las dos salen con dist, cambiando el método."
     ],
     [
       199.45,
@@ -295,11 +295,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       234.97,
-      "Sin centrar, el coseno da cero coma noventa y seis: los vectores apuntan casi igual."
+      "Sin centrar, el coseno da 0,96: los vectores apuntan casi igual."
     ],
     [
       240.41,
-      "Centrados, da cero coma setenta y tres, que es exactamente la correlación."
+      "Centrados, da 0,73, que es exactamente la correlación."
     ],
     [
       245.72,
@@ -319,7 +319,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       271.42,
-      "Min max deja todo entre cero y uno; el puntaje zeta, media cero y desviación uno; el robusto usa mediana y rango intercuartílico."
+      "Min max deja todo entre cero y uno; el puntaje Z, media cero y desviación uno; el robusto usa mediana y rango intercuartílico."
     ],
     [
       279.38,
@@ -334,5 +334,68 @@ PLATAFORMA.registrar("audio", {
       "Eso fue el módulo cuatro."
     ]
   ],
-  "huella": "3d1d814d5c5b"
+  "huella": "3d1d814d5c5b",
+  "frasesHabladas": [
+    "Ahora toca el módulo cuatro: escalamiento, distancias y similitud.",
+    "Imagina que comparas personas por su edad y su ingreso.",
+    "Dos personas que difieren en treinta años y en un millón de pesos.",
+    "Si calculas la distancia entre ellas con esos números tal cual, ¿qué variable crees que manda?",
+    "El ingreso, por lejos.",
+    "Un millón pesa muchísimo más que treinta.",
+    "La edad casi no cuenta, y no porque sea menos importante, sino por sus unidades.",
+    "Por eso se recomienda escalar en tres situaciones: cuando las variables están en unidades distintas, cuando se van a usar distancias, y cuando se va a aplicar componentes principales o clastering.",
+    "Qué método usar depende de lo que viene después, y de si hay valores atípicos.",
+    "Para ver los métodos, usemos los datos de la clase: diez, doce, quince, veinte y veinticinco.",
+    "El primero es min max.",
+    "A cada dato se le resta el mínimo, y se divide por el rango, el máximo menos el mínimo.",
+    "Así todo queda entre cero y uno.",
+    "El mínimo es diez y el rango quince.",
+    "El diez queda en cero, el veinticinco en uno, y el quince queda en cinco quinceavos, cero coma tres tres.",
+    "Y se puede volver atrás: el valor original es el normalizado, por el rango, más el mínimo.",
+    "Un cero coma cinco corresponde a cero coma cinco por quince, más diez: diecisiete coma cinco.",
+    "Esto se usa, por ejemplo, para interpretar un centroide de ka medias en las unidades originales.",
+    "En la prueba uno hubo una afirmación: min max deja los datos con media cero y varianza uno.",
+    "¿Verdadero o falso?",
+    "Falso.",
+    "Los deja entre cero y uno, pero la media y la varianza quedan donde caigan.",
+    "Media cero y varianza uno es lo que hace el puntaje zeta.",
+    "Justamente, el segundo método es el puntaje zeta.",
+    "A cada dato se le resta la media y se divide por la desviación estándar.",
+    "Cada valor queda expresado como cuántas desviaciones está sobre o bajo la media.",
+    "Con los datos de la clase, la media es dieciséis coma cuatro y la desviación seis coma uno.",
+    "El diez queda en menos uno coma cero cinco, y el veinticinco en uno coma cuatro uno.",
+    "En erre, la función scale.",
+    "El tercero es el escalamiento robusto.",
+    "En vez de la media y la desviación, usa la mediana y el rango intercuartílico.",
+    "¿Por qué?",
+    "Porque un valor extremo arrastra a la media y a la desviación, pero casi no mueve a la mediana.",
+    "Es el que conviene cuando hay atípicos.",
+    "Y el cuarto es la normalización ele dos: dividir cada dato por el largo del vector, la raíz de la suma de los cuadrados.",
+    "Sirve cuando importa la dirección y no la magnitud.",
+    "Una vez escalados los datos, se miden distancias.",
+    "Toma dos puntos: a, en dos coma tres, y be, en seis coma ocho.",
+    "Difieren en cuatro en la primera variable y en cinco en la segunda.",
+    "La distancia euclídea es la línea recta: la raíz de cuatro al cuadrado más cinco al cuadrado, raíz de cuarenta y uno, seis coma cuatro.",
+    "La distancia Manhattan es lo que recorrerías por calles en cuadrícula: cuatro más cinco, nueve.",
+    "Siempre con las diferencias en valor absoluto.",
+    "Si no, se pueden cancelar.",
+    "En erre, las dos salen con dist, cambiando el método.",
+    "Y recuerda: si las variables están en escalas distintas, primero se estandariza.",
+    "A veces no importa qué tan lejos están dos observaciones, sino si apuntan hacia el mismo lado.",
+    "Para eso está la similitud.",
+    "La similitud coseno mide el ángulo entre dos vectores: el producto punto, dividido por el producto de sus largos.",
+    "Si apuntan exactamente igual, da uno.",
+    "Y la correlación resulta ser lo mismo, pero con los vectores centrados: primero se les resta su media.",
+    "En la clase: equis es uno, dos, tres, cuatro, y ye es dos, ocho, seis, ocho.",
+    "Sin centrar, el coseno da cero coma noventa y seis: los vectores apuntan casi igual.",
+    "Centrados, da cero coma setenta y tres, que es exactamente la correlación.",
+    "¿Por qué cambia tanto al centrar?",
+    "Porque sin centrar, los dos vectores son todos positivos y apuntan hacia la misma zona solo por estar lejos del origen.",
+    "Al centrar, se mira el patrón: si suben y bajan juntos respecto de su media.",
+    "En resumen: se escala cuando hay unidades distintas, distancias, o componentes principales y clastering.",
+    "Min max deja todo entre cero y uno; el puntaje zeta, media cero y desviación uno; el robusto usa mediana y rango intercuartílico.",
+    "La euclídea es la línea recta; la Manhattan, la suma de las diferencias absolutas.",
+    "Y la correlación es el coseno de los vectores centrados.",
+    "Eso fue el módulo cuatro."
+  ]
 });

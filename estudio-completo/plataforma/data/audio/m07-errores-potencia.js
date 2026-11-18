@@ -111,23 +111,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       25.44,
-      "El error tipo uno es rechazar hache cero cuando es verdadera: la falsa alarma."
+      "El error tipo uno es rechazar H₀ cuando es verdadera: la falsa alarma."
     ],
     [
       30.24,
-      "Su probabilidad es alfa."
+      "Su probabilidad es α."
     ],
     [
       32.11,
-      "El error tipo dos es no rechazar hache cero cuando es falsa: no detectar algo que sí existe."
+      "El error tipo dos es no rechazar H₀ cuando es falsa: no detectar algo que sí existe."
     ],
     [
       37.74,
-      "Su probabilidad se llama beta."
+      "Su probabilidad se llama β."
     ],
     [
       39.91,
-      "Y la potencia es uno menos beta: la probabilidad de detectar un efecto que de verdad está."
+      "Y la potencia es 1 − β: la probabilidad de detectar un efecto que de verdad está."
     ],
     [
       45.83,
@@ -135,7 +135,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       47.89,
-      "Si bajas alfa para tener menos falsas alarmas, la prueba se vuelve más exigente, y aumenta beta: se escapan más efectos reales."
+      "Si bajas α para tener menos falsas alarmas, la prueba se vuelve más exigente, y aumenta β: se escapan más efectos reales."
     ],
     [
       55.85,
@@ -147,19 +147,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       62.12,
-      "La primera: con alfa igual a cero coma cero uno, a mayor tamaño de muestra, menor probabilidad de error tipo uno."
+      "La primera: con α = 0,01, a mayor tamaño de muestra, menor probabilidad de error tipo uno."
     ],
     [
       69.18,
-      "Falso: la probabilidad de error tipo uno es alfa, cero coma cero uno, sin importar ene."
+      "Falso: la probabilidad de error tipo uno es α, 0,01, sin importar n."
     ],
     [
       74.75,
-      "Lo que baja con más datos es beta."
+      "Lo que baja con más datos es β."
     ],
     [
       76.87,
-      "La segunda: si no rechazo hache cero, puedo estar seguro de que es verdadera."
+      "La segunda: si no rechazo H₀, puedo estar seguro de que es verdadera."
     ],
     [
       81.77,
@@ -167,11 +167,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       87.44,
-      "Para calcular beta hay un detalle clave."
+      "Para calcular β hay un detalle clave."
     ],
     [
       90.03,
-      "Hache uno dice, por ejemplo, que la media no es uno."
+      "H₁ dice, por ejemplo, que la media no es uno."
     ],
     [
       93.17,
@@ -179,35 +179,35 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       98.33,
-      "Hay que fijar un valor verdadero concreto, por ejemplo uno coma cero cero cinco."
+      "Hay que fijar un valor verdadero concreto, por ejemplo 1,005."
     ],
     [
       103.15,
-      "Sin ese valor, beta no se puede calcular."
+      "Sin ese valor, β no se puede calcular."
     ],
     [
       105.95,
-      "Y mientras más lejos esté el valor verdadero del de hache cero, más fácil es detectarlo, y más chico es beta."
+      "Y mientras más lejos esté el valor verdadero del de H₀, más fácil es detectarlo, y más chico es β."
     ],
     [
       113.01,
-      "Beta depende de cuatro cosas."
+      "β depende de cuatro cosas."
     ],
     [
       115.21,
-      "Del tamaño de muestra: más datos, menor beta."
+      "Del tamaño de muestra: más datos, menor β."
     ],
     [
       118.26,
-      "De alfa: si alfa baja, beta sube."
+      "De α: si α baja, β sube."
     ],
     [
       120.63,
-      "De la diferencia real con el valor de hache cero: más diferencia, menor beta."
+      "De la diferencia real con el valor de H₀: más diferencia, menor β."
     ],
     [
       125.49,
-      "Y de la variabilidad: más dispersión, mayor beta."
+      "Y de la variabilidad: más dispersión, mayor β."
     ],
     [
       130.52,
@@ -215,7 +215,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       133.51,
-      "Primero: ¿para qué valores de la media muestral se rechaza hache cero?"
+      "Primero: ¿para qué valores de la media muestral se rechaza H₀?"
     ],
     [
       138.14,
@@ -223,19 +223,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       143.81,
-      "Esa segunda probabilidad es beta."
+      "Esa segunda probabilidad es β."
     ],
     [
       146.63,
-      "El de la ayudantía dos: una máquina que llena bolsas de un kilo, con desviación conocida de cero coma cero dos kilos, y veinte bolsas."
+      "El de la ayudantía dos: una máquina que llena bolsas de un kilo, con desviación conocida de 0,02 kilos, y 20 bolsas."
     ],
     [
       154.82,
-      "Hache cero: la media es uno."
+      "H₀: la media es uno."
     ],
     [
       157.13,
-      "Bilateral, con alfa cinco por ciento."
+      "Bilateral, con α 5 %."
     ],
     [
       159.97,
@@ -243,19 +243,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       162.12,
-      "El error estándar es cero coma cero dos sobre raíz de veinte, cero coma cero cero cuatro cinco."
+      "El error estándar es 0,02 sobre raíz de 20, 0,0045."
     ],
     [
       168.19,
-      "Los límites son uno, más y menos uno coma noventa y seis por ese error estándar."
+      "Los límites son uno, más y −1,96 por ese error estándar."
     ],
     [
       173.08,
-      "Se rechaza si la media muestral es menor que cero coma nueve nueve uno dos, o mayor que uno coma cero cero ocho ocho."
+      "Se rechaza si la media muestral es menor que 0,9912, o mayor que 1,0088."
     ],
     [
       180.63,
-      "Ojo con algo: estos límites se calculan siempre con el valor de hache cero, con la media uno."
+      "Ojo con algo: estos límites se calculan siempre con el valor de H₀, con la media uno."
     ],
     [
       186.87,
@@ -263,15 +263,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       188.11,
-      "Si la media verdadera fuera uno coma cero cero cinco, ¿qué tan probable es no rechazar?"
+      "Si la media verdadera fuera 1,005, ¿qué tan probable es no rechazar?"
     ],
     [
       193.46,
-      "Es la probabilidad de que la media muestral caiga entre los dos límites, pero ahora calculada con una normal centrada en uno coma cero cero cinco."
+      "Es la probabilidad de que la media muestral caiga entre los dos límites, pero ahora calculada con una normal centrada en 1,005."
     ],
     [
       202.75,
-      "Da cerca de cero coma ochenta."
+      "Da cerca de 0,80."
     ],
     [
       204.81,
@@ -279,7 +279,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       210.68,
-      "Es un beta muy alto."
+      "Es un β muy alto."
     ],
     [
       212.35,
@@ -291,11 +291,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       219.65,
-      "Con ochenta en vez de veinte, beta baja a cero coma treinta y nueve."
+      "Con 80 en vez de 20, β baja a 0,39."
     ],
     [
       223.6,
-      "Y lo mismo pasaría si la diferencia real fuera más grande: con una media verdadera de uno coma cero uno, también baja a cero coma treinta y nueve."
+      "Y lo mismo pasaría si la diferencia real fuera más grande: con una media verdadera de 1,01, también baja a 0,39."
     ],
     [
       232.62,
@@ -303,11 +303,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       235.21,
-      "En la ayudantía, con diez datos y hache cero, varianza cuatro, se rechaza si la varianza muestral es menor a uno coma dos o mayor a ocho coma cuatro seis."
+      "En la ayudantía, con diez datos y H₀, varianza cuatro, se rechaza si la varianza muestral es menor a 1,2 o mayor a 8,46."
     ],
     [
       244.45,
-      "Si la varianza real fuera cinco, la probabilidad de no rechazar es cero coma noventa."
+      "Si la varianza real fuera cinco, la probabilidad de no rechazar es 0,90."
     ],
     [
       249.86,
@@ -315,32 +315,99 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       252.92,
-      "En erre, los límites salen con qnorm o qchisq, y beta con pnorm o pchisq."
+      "En R, los límites salen con qnorm o qchisq, y β con pnorm o pchisq."
     ],
     [
       257.46,
-      "Y como beta es la probabilidad de caer entre dos límites, se calcula como la acumulada en el límite de arriba menos la acumulada en el de abajo."
+      "Y como β es la probabilidad de caer entre dos límites, se calcula como la acumulada en el límite de arriba menos la acumulada en el de abajo."
     ],
     [
       268.09,
-      "En resumen: el error tipo uno es rechazar una hache cero verdadera, con probabilidad alfa."
+      "En resumen: el error tipo uno es rechazar una H₀ verdadera, con probabilidad α."
     ],
     [
       273.71,
-      "El tipo dos es no rechazar una falsa, con probabilidad beta, y la potencia es uno menos beta."
+      "El tipo dos es no rechazar una falsa, con probabilidad β, y la potencia es 1 − β."
     ],
     [
       279.63,
-      "Beta baja con más datos, con un alfa mayor, con una diferencia real más grande y con menos variabilidad."
+      "β baja con más datos, con un α mayor, con una diferencia real más grande y con menos variabilidad."
     ],
     [
       286.11,
-      "Y para calcularlo: límites con hache cero, probabilidad con el valor verdadero."
+      "Y para calcularlo: límites con H₀, probabilidad con el valor verdadero."
     ],
     [
       291.7,
       "Eso fue el módulo siete."
     ]
   ],
-  "huella": "c508561bff69"
+  "huella": "c508561bff69",
+  "frasesHabladas": [
+    "Ahora toca el módulo siete: los errores tipo uno y tipo dos, y la potencia de una prueba.",
+    "Cuando decidimos con datos, podemos equivocarnos de dos maneras.",
+    "Piensa en una alarma de incendio.",
+    "¿Cuáles son los dos errores posibles?",
+    "Que suene sin que haya fuego, una falsa alarma.",
+    "O que haya fuego y no suene.",
+    "En una prueba de hipótesis es igual.",
+    "El error tipo uno es rechazar hache cero cuando es verdadera: la falsa alarma.",
+    "Su probabilidad es alfa.",
+    "El error tipo dos es no rechazar hache cero cuando es falsa: no detectar algo que sí existe.",
+    "Su probabilidad se llama beta.",
+    "Y la potencia es uno menos beta: la probabilidad de detectar un efecto que de verdad está.",
+    "Hay un equilibrio entre los dos.",
+    "Si bajas alfa para tener menos falsas alarmas, la prueba se vuelve más exigente, y aumenta beta: se escapan más efectos reales.",
+    "Cuál importa más depende del contexto.",
+    "En la prueba uno aparecieron dos afirmaciones sobre esto.",
+    "La primera: con alfa igual a cero coma cero uno, a mayor tamaño de muestra, menor probabilidad de error tipo uno.",
+    "Falso: la probabilidad de error tipo uno es alfa, cero coma cero uno, sin importar ene.",
+    "Lo que baja con más datos es beta.",
+    "La segunda: si no rechazo hache cero, puedo estar seguro de que es verdadera.",
+    "También falso: puedo estar cometiendo un error tipo dos.",
+    "Para calcular beta hay un detalle clave.",
+    "Hache uno dice, por ejemplo, que la media no es uno.",
+    "Pero, ¿cuál es entonces?",
+    "Hay que fijar un valor verdadero concreto, por ejemplo uno coma cero cero cinco.",
+    "Sin ese valor, beta no se puede calcular.",
+    "Y mientras más lejos esté el valor verdadero del de hache cero, más fácil es detectarlo, y más chico es beta.",
+    "Beta depende de cuatro cosas.",
+    "Del tamaño de muestra: más datos, menor beta.",
+    "De alfa: si alfa baja, beta sube.",
+    "De la diferencia real con el valor de hache cero: más diferencia, menor beta.",
+    "Y de la variabilidad: más dispersión, mayor beta.",
+    "El ejercicio típico de prueba tiene dos partes.",
+    "Primero: ¿para qué valores de la media muestral se rechaza hache cero?",
+    "Y segundo: si el parámetro verdadero fuera tal valor, ¿cuál es la probabilidad de no rechazar?",
+    "Esa segunda probabilidad es beta.",
+    "El de la ayudantía dos: una máquina que llena bolsas de un kilo, con desviación conocida de cero coma cero dos kilos, y veinte bolsas.",
+    "Hache cero: la media es uno.",
+    "Bilateral, con alfa cinco por ciento.",
+    "Primera parte, los límites.",
+    "El error estándar es cero coma cero dos sobre raíz de veinte, cero coma cero cero cuatro cinco.",
+    "Los límites son uno, más y menos uno coma noventa y seis por ese error estándar.",
+    "Se rechaza si la media muestral es menor que cero coma nueve nueve uno dos, o mayor que uno coma cero cero ocho ocho.",
+    "Ojo con algo: estos límites se calculan siempre con el valor de hache cero, con la media uno.",
+    "Segunda parte.",
+    "Si la media verdadera fuera uno coma cero cero cinco, ¿qué tan probable es no rechazar?",
+    "Es la probabilidad de que la media muestral caiga entre los dos límites, pero ahora calculada con una normal centrada en uno coma cero cero cinco.",
+    "Da cerca de cero coma ochenta.",
+    "O sea, ocho de cada diez veces, la prueba no detectaría que la máquina está llenando de más.",
+    "Es un beta muy alto.",
+    "¿Qué se podría hacer para bajarlo?",
+    "Tomar más bolsas.",
+    "Con ochenta en vez de veinte, beta baja a cero coma treinta y nueve.",
+    "Y lo mismo pasaría si la diferencia real fuera más grande: con una media verdadera de uno coma cero uno, también baja a cero coma treinta y nueve.",
+    "La misma lógica sirve para varianzas.",
+    "En la ayudantía, con diez datos y hache cero, varianza cuatro, se rechaza si la varianza muestral es menor a uno coma dos o mayor a ocho coma cuatro seis.",
+    "Si la varianza real fuera cinco, la probabilidad de no rechazar es cero coma noventa.",
+    "La prueba casi no detecta esa diferencia.",
+    "En erre, los límites salen con qnorm o qchisq, y beta con pnorm o pchisq.",
+    "Y como beta es la probabilidad de caer entre dos límites, se calcula como la acumulada en el límite de arriba menos la acumulada en el de abajo.",
+    "En resumen: el error tipo uno es rechazar una hache cero verdadera, con probabilidad alfa.",
+    "El tipo dos es no rechazar una falsa, con probabilidad beta, y la potencia es uno menos beta.",
+    "Beta baja con más datos, con un alfa mayor, con una diferencia real más grande y con menos variabilidad.",
+    "Y para calcularlo: límites con hache cero, probabilidad con el valor verdadero.",
+    "Eso fue el módulo siete."
+  ]
 });

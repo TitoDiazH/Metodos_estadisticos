@@ -101,7 +101,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo dieciséis: el discriminante cuadrático, Naive Bayes, y cómo evaluar un clasificador."
+      "Ahora toca el módulo 16: el discriminante cuadrático, Naive Bayes, y cómo evaluar un clasificador."
     ],
     [
       7.21,
@@ -137,7 +137,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       50.07,
-      "Si el pe valor es mayor a cero coma cero cinco, no se rechaza, y se usa ele de a."
+      "Si el valor p es mayor a 0,05, no se rechaza, y se usa ele de a."
     ],
     [
       55.04,
@@ -149,7 +149,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       64.41,
-      "En el banco de Ademuz, el test de Box da un chi cuadrado de cero coma ocho, con tres grados de libertad, y pe valor cero coma ochenta y cinco."
+      "En el banco de Ademuz, el test de Box da un chi cuadrado de 0,8, con tres grados de libertad, y valor p 0,85."
     ],
     [
       72.9,
@@ -193,19 +193,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       129.49,
-      "Para el grupo de fallidos: la densidad del patrimonio, cero coma uno dos uno, por la de la deuda, cero coma uno ocho cinco, por el prior, cero coma cinco."
+      "Para el grupo de fallidos: la densidad del patrimonio, 0,121, por la de la deuda, 0,185, por el prior, 0,5."
     ],
     [
       138.74,
-      "Da cero coma cero uno uno dos."
+      "Da 0,0112."
     ],
     [
       140.94,
-      "Para los cumplidores: cero coma uno uno nueve, por cero coma uno nueve cuatro, por cero coma cinco."
+      "Para los cumplidores: 0,119 · 0,194 · 0,5."
     ],
     [
       147.18,
-      "Da cero coma cero uno uno cinco."
+      "Da 0,0115."
     ],
     [
       149.43,
@@ -229,7 +229,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       170.53,
-      "Pero si se sabe que solo el veinte por ciento de las pymes fracasa, el prior cambia la decisión, y pasa a clasificarse como éxito."
+      "Pero si se sabe que solo el 20 % de las pymes fracasa, el prior cambia la decisión, y pasa a clasificarse como éxito."
     ],
     [
       178.36,
@@ -237,7 +237,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       182.81,
-      "En ese mismo ejercicio, dnorm daba valores como dos coma cuatro."
+      "En ese mismo ejercicio, dnorm daba valores como 2,4."
     ],
     [
       186.95,
@@ -261,11 +261,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       218.74,
-      "En la ayudantía, cero de cinco pasaba a ser uno sobre siete."
+      "En la ayudantía, cero de cinco pasaba a ser 1 / 7."
     ],
     [
       222.64,
-      "En erre, naiveBayes con laplace igual a uno."
+      "En R, naiveBayes con laplace igual a uno."
     ],
     [
       226.03,
@@ -297,7 +297,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       267.58,
-      "La exactitud son los aciertos sobre el total: quince de dieciséis."
+      "La exactitud son los aciertos sobre el total: 15 de 16."
     ],
     [
       271.78,
@@ -305,11 +305,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       276.29,
-      "Siete de ocho, ochenta y siete coma cinco por ciento."
+      "Siete de ocho, 87,5 %."
     ],
     [
       279.56,
-      "La especificidad, lo mismo con los negativos: ocho de ocho, cien por ciento."
+      "La especificidad, lo mismo con los negativos: ocho de ocho, 100 %."
     ],
     [
       284.5,
@@ -325,7 +325,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       292.94,
-      "Si el noventa y cinco por ciento de los clientes paga, un modelo que dice siempre «paga» tiene noventa y cinco por ciento de exactitud, y no sirve para nada."
+      "Si el 95 % de los clientes paga, un modelo que dice siempre «paga» tiene 95 % de exactitud, y no sirve para nada."
     ],
     [
       302.07,
@@ -349,19 +349,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       323.83,
-      "La forma más simple de evitarlo es separar: entrenar con el setenta u ochenta por ciento, y probar con el resto."
+      "La forma más simple de evitarlo es separar: entrenar con el 70 u 80 %, y probar con el resto."
     ],
     [
       330.61,
-      "Pero con dieciséis clientes, separar deja muy pocos datos."
+      "Pero con 16 clientes, separar deja muy pocos datos."
     ],
     [
       334.55,
-      "La alternativa es ka fold: dividir en ka partes, entrenar con todas menos una, evaluar con la que quedó, y rotar."
+      "La alternativa es k fold: dividir en k partes, entrenar con todas menos una, evaluar con la que quedó, y rotar."
     ],
     [
       341.46,
-      "Y el caso extremo es dejar uno fuera: ka igual a ene, cada observación es la prueba una vez."
+      "Y el caso extremo es dejar uno fuera: k = n, cada observación es la prueba una vez."
     ],
     [
       347.02,
@@ -369,11 +369,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       349.22,
-      "En erre basta poner ce ve igual a TRUE en lda."
+      "En R basta poner c ve igual a TRUE en lda."
     ],
     [
       352.45,
-      "En Ademuz, la exactitud con dejar uno fuera baja de noventa y tres coma setenta y cinco a ochenta y siete coma cinco por ciento."
+      "En Ademuz, la exactitud con dejar uno fuera baja de 93,75 a 87,5 %."
     ],
     [
       360.37,
@@ -405,8 +405,87 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       398.05,
-      "Eso fue el módulo dieciséis."
+      "Eso fue el módulo 16."
     ]
   ],
-  "huella": "9117fc5f0c64"
+  "huella": "9117fc5f0c64",
+  "frasesHabladas": [
+    "Ahora toca el módulo dieciséis: el discriminante cuadrático, Naive Bayes, y cómo evaluar un clasificador.",
+    "Ele de a suponía que todos los grupos tienen la misma matriz de covarianza, la misma forma y orientación de la nube de puntos.",
+    "Con ese supuesto, la frontera entre grupos es una recta.",
+    "Cu de a deja que cada grupo tenga su propia matriz de covarianza, y entonces la frontera es una curva.",
+    "¿Y por qué no usar siempre cu de a, si es más flexible?",
+    "Porque tiene que estimar muchos más parámetros: una matriz de covarianza completa por grupo.",
+    "Con pocos datos, esas estimaciones son inestables, y el modelo se equivoca más con casos nuevos.",
+    "Para decidir se usa el test de Box.",
+    "La hipótesis nula es que todas las matrices de covarianza son iguales.",
+    "Si el pe valor es mayor a cero coma cero cinco, no se rechaza, y se usa ele de a.",
+    "Si es menor, se usa cu de a.",
+    "Y una regla práctica: con muestras pequeñas, preferir ele de a aunque el test sugiera covarianzas distintas.",
+    "En el banco de Ademuz, el test de Box da un chi cuadrado de cero coma ocho, con tres grados de libertad, y pe valor cero coma ochenta y cinco.",
+    "No se rechaza: corresponde ele de a.",
+    "Y de hecho, cu de a da exactamente la misma matriz de confusión.",
+    "Naive Bayes ataca el problema de otra manera, con probabilidades.",
+    "La pregunta es: dado lo que veo de este cliente, ¿cuál es la probabilidad de que sea de cada grupo?",
+    "Por el teorema de Bayes, esa probabilidad es proporcional a la probabilidad a priori del grupo, multiplicada por la probabilidad de observar cada variable dentro de ese grupo.",
+    "Y aquí está lo ingenuo: se supone que, dentro de cada grupo, las variables son independientes.",
+    "Por eso se pueden multiplicar.",
+    "Si la variable es continua, se usa una normal con la media y la desviación de esa variable en el grupo, y se evalúa con dnorm.",
+    "Si es categórica, se usa la frecuencia relativa dentro del grupo.",
+    "Volvamos al cliente nuevo de Ademuz, patrimonio siete y deuda cuatro, el que ele de a dejaba justo en la frontera.",
+    "Para el grupo de fallidos: la densidad del patrimonio, cero coma uno dos uno, por la de la deuda, cero coma uno ocho cinco, por el prior, cero coma cinco.",
+    "Da cero coma cero uno uno dos.",
+    "Para los cumplidores: cero coma uno uno nueve, por cero coma uno nueve cuatro, por cero coma cinco.",
+    "Da cero coma cero uno uno cinco.",
+    "¿Dónde lo clasifica?",
+    "Como cumplidor, aunque por muy poco.",
+    "La probabilidad posterior se obtiene normalizando: cada puntaje dividido por la suma de los dos.",
+    "El prior pesa bastante.",
+    "En la ayudantía seis había una pyme que, con priors iguales, se clasificaba como fracaso.",
+    "Pero si se sabe que solo el veinte por ciento de las pymes fracasa, el prior cambia la decisión, y pasa a clasificarse como éxito.",
+    "El grupo más frecuente necesita menos evidencia para ganar.",
+    "En ese mismo ejercicio, dnorm daba valores como dos coma cuatro.",
+    "No es un error: es una densidad, no una probabilidad, y puede ser mayor que uno cuando la desviación es chica.",
+    "Hay un problema práctico con las variables categóricas.",
+    "¿Qué pasa si una categoría nunca aparece en un grupo?",
+    "Su frecuencia es cero, y como todo se multiplica, el puntaje de ese grupo queda en cero, sin importar las demás variables.",
+    "La solución es el suavizado de Laplace: sumar uno a cada conteo, y sumar al denominador el número de categorías.",
+    "En la ayudantía, cero de cinco pasaba a ser uno sobre siete.",
+    "En erre, naiveBayes con laplace igual a uno.",
+    "Para ubicar los tres métodos: ele de a es un caso particular de cu de a, con covarianzas iguales.",
+    "Y Naive Bayes es como cu de a, pero con las covarianzas diagonales, sin correlación entre variables.",
+    "Ele de a, con pocos datos y covarianzas parecidas; cu de a, con covarianzas distintas y muchos datos; Naive Bayes, con muchas variables o variables categóricas.",
+    "Para evaluar un clasificador se usa la matriz de confusión, que cruza lo real con lo predicho.",
+    "Primero hay que decir cuál es la clase positiva.",
+    "En Ademuz, tomemos cumplidor.",
+    "Hay siete verdaderos positivos, un falso negativo, cero falsos positivos y ocho verdaderos negativos.",
+    "La exactitud son los aciertos sobre el total: quince de dieciséis.",
+    "La sensibilidad responde: de los positivos reales, ¿cuántos detecté?",
+    "Siete de ocho, ochenta y siete coma cinco por ciento.",
+    "La especificidad, lo mismo con los negativos: ocho de ocho, cien por ciento.",
+    "Y la precisión responde: de los que predije positivos, ¿cuántos lo eran?",
+    "Siete de siete.",
+    "Un cuidado con la exactitud.",
+    "Si el noventa y cinco por ciento de los clientes paga, un modelo que dice siempre «paga» tiene noventa y cinco por ciento de exactitud, y no sirve para nada.",
+    "Con clases desbalanceadas hay que mirar las otras métricas.",
+    "Último tema.",
+    "Evaluar el modelo con los mismos datos con que se entrenó es como estudiar con las respuestas del examen.",
+    "La nota sale demasiado buena.",
+    "El sobreajuste es justamente eso: un modelo que memoriza los datos de entrenamiento y falla con datos nuevos.",
+    "La forma más simple de evitarlo es separar: entrenar con el setenta u ochenta por ciento, y probar con el resto.",
+    "Pero con dieciséis clientes, separar deja muy pocos datos.",
+    "La alternativa es ka fold: dividir en ka partes, entrenar con todas menos una, evaluar con la que quedó, y rotar.",
+    "Y el caso extremo es dejar uno fuera: ka igual a ene, cada observación es la prueba una vez.",
+    "Es ideal con muestras pequeñas.",
+    "En erre basta poner ce ve igual a TRUE en lda.",
+    "En Ademuz, la exactitud con dejar uno fuera baja de noventa y tres coma setenta y cinco a ochenta y siete coma cinco por ciento.",
+    "¿Cuál de las dos cifras describe mejor cómo le irá con clientes nuevos?",
+    "La de dejar uno fuera.",
+    "La de entrenamiento siempre sobreestima.",
+    "En resumen: el test de Box decide entre ele de a y cu de a.",
+    "Naive Bayes multiplica el prior por las verosimilitudes de cada variable, suponiendo independencia, y con frecuencias cero se usa Laplace.",
+    "La matriz de confusión da exactitud, sensibilidad, especificidad y precisión, siempre diciendo cuál es la clase positiva.",
+    "Y el rendimiento se mide con datos que el modelo no vio.",
+    "Eso fue el módulo dieciséis."
+  ]
 });

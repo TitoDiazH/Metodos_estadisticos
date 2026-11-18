@@ -88,7 +88,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       15.25,
-      "Y también queda descrita por dos cosas: un vector de medias, y una matriz de covarianza."
+      "Y también queda descrita por 2 cosas: un vector de medias, y una matriz de covarianza."
     ],
     [
       20.65,
@@ -108,7 +108,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       41.84,
-      "En el ejemplo de la clase, con medias cero, varianzas uno y correlación cero coma siete, la elipse se inclina hacia arriba, porque la correlación es positiva."
+      "En el ejemplo de la clase, con medias cero, varianzas uno y correlación 0,7, la elipse se inclina hacia arriba, porque la correlación es positiva."
     ],
     [
       51.52,
@@ -184,7 +184,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       125.12,
-      "Si equis uno y equis dos son normales conjuntas, ye igual a equis uno más equis dos también es normal."
+      "Si x₁ y x₂ son normales conjuntas, ye igual a x₁ + x₂ también es normal."
     ],
     [
       131.07,
@@ -196,7 +196,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       139.26,
-      "La varianza tiene un truco: es la varianza de equis uno, más la de equis dos, más dos veces la covarianza."
+      "La varianza tiene un truco: es la varianza de x₁, más la de x₂ + 2 veces la covarianza."
     ],
     [
       146.05,
@@ -208,11 +208,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       157.35,
-      "La media de ye: uno más dos, tres."
+      "La media de ye: 1 + 2, 3."
     ],
     [
       159.63,
-      "La varianza: cuatro más tres, más dos por uno."
+      "La varianza: 4 + 3 + 2 · 1."
     ],
     [
       162.67,
@@ -228,15 +228,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       171.74,
-      "Ahora es una normal común: cinco menos tres, dividido en tres, da cero coma sesenta y siete."
+      "Ahora es una normal común: 5 − 3, dividido en tres, da 0,67."
     ],
     [
       177.5,
-      "Y la probabilidad de estar bajo eso es cero coma siete cuatro siete cinco."
+      "Y la probabilidad de estar bajo eso es 0,7475."
     ],
     [
       182.55,
-      "En erre es una línea: pnorm de cinco, con media tres y desviación tres."
+      "En R es una línea: pnorm de cinco, con media tres y desviación tres."
     ],
     [
       187.02,
@@ -268,12 +268,64 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       220.1,
-      "Y la suma de dos normales es normal, con varianza igual a la suma de varianzas más dos veces la covarianza."
+      "Y la suma de dos normales es normal, con varianza igual a la suma de varianzas +2 veces la covarianza."
     ],
     [
       226.99,
       "Eso fue el módulo tres."
     ]
   ],
-  "huella": "52f78566bed7"
+  "huella": "52f78566bed7",
+  "frasesHabladas": [
+    "Ahora toca el módulo tres: la distribución normal multivariada.",
+    "La normal de siempre, la campana de Gauss, describe una sola variable con dos números: la media y la varianza.",
+    "La normal multivariada hace lo mismo con varias variables a la vez.",
+    "Y también queda descrita por dos cosas: un vector de medias, y una matriz de covarianza.",
+    "En la clase lo resumen así: normal multivariada es media más covarianza.",
+    "El vector de medias dice dónde está el centro de la nube de puntos.",
+    "Y la matriz de covarianza dice su forma: qué tan dispersa es en cada dirección, y hacia dónde se inclina.",
+    "Con dos variables, si cortas la campana a cierta altura, el borde que queda es una elipse.",
+    "En el ejemplo de la clase, con medias cero, varianzas uno y correlación cero coma siete, la elipse se inclina hacia arriba, porque la correlación es positiva.",
+    "¿Y cómo se vería si la correlación fuera cero y las dos varianzas iguales?",
+    "Como un círculo.",
+    "Sin inclinación, e igual de ancha en todas las direcciones.",
+    "Un detalle importante: en una normal multivariada, cada variable por separado es normal.",
+    "Pero al revés no basta.",
+    "Que cada variable sea normal por su lado no garantiza que juntas sean normal multivariada.",
+    "En el módulo uno vimos que correlación cero no implica independencia.",
+    "Bueno, la normal es justamente la excepción.",
+    "Si dos variables son normales conjuntas y su correlación es cero, entonces sí son independientes.",
+    "Ordenémoslo.",
+    "Si son independientes, la correlación es cero.",
+    "Eso vale siempre.",
+    "Si la correlación es cero, son independientes: eso solo vale si son normales conjuntas.",
+    "En la prueba uno apareció esta afirmación, y la pauta pedía justificar que es falsa en general.",
+    "La relación puede ser no lineal.",
+    "Solo vale con normalidad conjunta.",
+    "Y una variable puede afectar la varianza de la otra sin cambiar la correlación.",
+    "El ejercicio típico de este tema es con una suma.",
+    "Si equis uno y equis dos son normales conjuntas, ye igual a equis uno más equis dos también es normal.",
+    "Así que solo hay que calcular su media y su varianza, y después usar la normal de siempre.",
+    "La media es fácil: la suma de las medias.",
+    "La varianza tiene un truco: es la varianza de equis uno, más la de equis dos, más dos veces la covarianza.",
+    "El ejemplo de la clase: las medias son uno y dos, y la matriz de covarianza tiene cuatro y tres en la diagonal, y uno fuera.",
+    "Nos piden la probabilidad de que ye sea menor o igual a cinco.",
+    "La media de ye: uno más dos, tres.",
+    "La varianza: cuatro más tres, más dos por uno.",
+    "¿Cuánto da?",
+    "Nueve.",
+    "Así que la desviación estándar es tres.",
+    "Ahora es una normal común: cinco menos tres, dividido en tres, da cero coma sesenta y siete.",
+    "Y la probabilidad de estar bajo eso es cero coma siete cuatro siete cinco.",
+    "En erre es una línea: pnorm de cinco, con media tres y desviación tres.",
+    "Ojo con eso: pnorm pide la desviación estándar, no la varianza.",
+    "Si le pasas nueve, el resultado sale mal.",
+    "El otro error típico es olvidar el dos por la covarianza.",
+    "Sin ese término, la varianza daría siete en vez de nueve, y la probabilidad cambia.",
+    "En resumen: la normal multivariada se describe con un vector de medias y una matriz de covarianza.",
+    "En dos dimensiones, sus contornos son elipses, cuya forma depende de la covarianza.",
+    "Con normalidad conjunta, correlación cero sí implica independencia.",
+    "Y la suma de dos normales es normal, con varianza igual a la suma de varianzas más dos veces la covarianza.",
+    "Eso fue el módulo tres."
+  ]
 });

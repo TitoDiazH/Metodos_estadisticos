@@ -65,11 +65,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       8.42,
-      "Una empresa de retail estudia a cincuenta clientes con cuatro variables: frecuencia de compra, gasto promedio, número de categorías y uso de cupones."
+      "Una empresa de retail estudia a 50 clientes con cuatro variables: frecuencia de compra, gasto promedio, número de categorías y uso de cupones."
     ],
     [
       17.67,
-      "Nos dan la salida de erre: las desviaciones estándar de los cuatro componentes, y la matriz de rotación, que son los loadings."
+      "Nos dan la salida de R: las desviaciones estándar de los cuatro componentes, y la matriz de rotación, que son los loadings."
     ],
     [
       25.13,
@@ -77,7 +77,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       29.39,
-      "El primer paso es la clave de toda la pregunta: erre no muestra los autovalores, muestra desviaciones estándar."
+      "El primer paso es la clave de toda la pregunta: R no muestra los autovalores, muestra desviaciones estándar."
     ],
     [
       36.1,
@@ -93,19 +93,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       45.42,
-      "Uno coma veinticinco al cuadrado es uno coma cinco seis."
+      "1,25² es 1,56."
     ],
     [
       49.25,
-      "Cero coma nueve ocho al cuadrado, cero coma nueve seis."
+      "0,98², 0,96."
     ],
     [
       52.95,
-      "Cero coma nueve al cuadrado, cero coma ocho uno."
+      "0,9², 0,81."
     ],
     [
       56.23,
-      "Y cero coma ocho al cuadrado, cero coma seis cuatro."
+      "Y 0,8², 0,64."
     ],
     [
       60.04,
@@ -121,23 +121,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       69.09,
-      "Para el criterio del ochenta por ciento, divido cada autovalor por la suma, que es tres coma nueve siete."
+      "Para el criterio del 80 %, divido cada autovalor por la suma, que es 3,97."
     ],
     [
       75.34,
-      "El primero explica el treinta y nueve por ciento."
+      "El primero explica el 39 %."
     ],
     [
       78.18,
-      "Con el segundo se llega al sesenta y tres."
+      "Con el segundo se llega al 63."
     ],
     [
       80.74,
-      "Y con el tercero, al ochenta y cuatro."
+      "Y con el tercero, al 84."
     ],
     [
       83.12,
-      "Para superar el ochenta por ciento se necesitan tres componentes."
+      "Para superar el 80 % se necesitan tres componentes."
     ],
     [
       87.69,
@@ -153,7 +153,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       99.21,
-      "PC uno es cero coma seis dos uno por zeta de frecuencia, más cero coma cuatro cinco dos por zeta de gasto, más cero coma cinco tres ocho por zeta de categorías, menos cero coma tres cuatro nueve por zeta de cupones."
+      "PC uno es 0,621 · Z de frecuencia, +0,452 · Z de gasto, +0,538 · Z de categorías, −0,349 · Z de cupones."
     ],
     [
       112.64,
@@ -181,7 +181,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       143.53,
-      "Un cliente nuevo tiene frecuencia diez, gasto cincuenta y ocho mil, cinco categorías y tres cupones."
+      "Un cliente nuevo tiene frecuencia diez, gasto 58000, 5 categorías y tres cupones."
     ],
     [
       149.73,
@@ -197,7 +197,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       160.24,
-      "Primero habría que calcular cada zeta: el valor menos la media de la muestra, dividido por su desviación estándar."
+      "Primero habría que calcular cada Z: el valor menos la media de la muestra, dividido por su desviación estándar."
     ],
     [
       167.22,
@@ -212,5 +212,45 @@ PLATAFORMA.registrar("audio", {
       "En resumen: desviación al cuadrado es autovalor, se aplican los dos criterios, se escribe PC uno con zetas, se interpreta por los signos, y nunca se reemplazan valores originales sin estandarizar."
     ]
   ],
-  "huella": "a55b5ebab84a"
+  "huella": "a55b5ebab84a",
+  "frasesHabladas": [
+    "Vamos a preparar la pregunta adicional de componentes principales con la pregunta tres punto uno de la Prueba uno de este semestre.",
+    "Una empresa de retail estudia a cincuenta clientes con cuatro variables: frecuencia de compra, gasto promedio, número de categorías y uso de cupones.",
+    "Nos dan la salida de erre: las desviaciones estándar de los cuatro componentes, y la matriz de rotación, que son los loadings.",
+    "Las variables están estandarizadas.",
+    "El primer paso es la clave de toda la pregunta: erre no muestra los autovalores, muestra desviaciones estándar.",
+    "¿Cómo paso de una a otra?",
+    "Elevando al cuadrado.",
+    "El autovalor es la varianza del componente.",
+    "Uno coma veinticinco al cuadrado es uno coma cinco seis.",
+    "Cero coma nueve ocho al cuadrado, cero coma nueve seis.",
+    "Cero coma nueve al cuadrado, cero coma ocho uno.",
+    "Y cero coma ocho al cuadrado, cero coma seis cuatro.",
+    "Con el criterio de Kaiser se retienen los componentes con autovalor mayor que uno.",
+    "Solo el primero lo cumple.",
+    "Por Kaiser, un componente.",
+    "Para el criterio del ochenta por ciento, divido cada autovalor por la suma, que es tres coma nueve siete.",
+    "El primero explica el treinta y nueve por ciento.",
+    "Con el segundo se llega al sesenta y tres.",
+    "Y con el tercero, al ochenta y cuatro.",
+    "Para superar el ochenta por ciento se necesitan tres componentes.",
+    "Los criterios no coinciden, y eso está bien.",
+    "Lo que se pide es aplicarlos y justificar.",
+    "La expresión de PC uno sale de la primera columna de la rotación.",
+    "PC uno es cero coma seis dos uno por zeta de frecuencia, más cero coma cuatro cinco dos por zeta de gasto, más cero coma cinco tres ocho por zeta de categorías, menos cero coma tres cuatro nueve por zeta de cupones.",
+    "Fíjate que se escribe con zetas, las variables estandarizadas, no con las variables originales.",
+    "¿Qué mide PC uno?",
+    "Frecuencia, gasto y categorías tienen signo positivo: crecen juntas.",
+    "Cupones tiene signo negativo.",
+    "Entonces PC uno es un índice de intensidad de compra: es alto en clientes que compran seguido, gastan más y llevan más categorías, y es bajo en los que usan más cupones.",
+    "La última parte trae una trampa.",
+    "Un cliente nuevo tiene frecuencia diez, gasto cincuenta y ocho mil, cinco categorías y tres cupones.",
+    "¿Se puede reemplazar directo en la fórmula?",
+    "No.",
+    "La fórmula usa variables estandarizadas.",
+    "Primero habría que calcular cada zeta: el valor menos la media de la muestra, dividido por su desviación estándar.",
+    "Y como el enunciado no da esas medias ni desviaciones, el score no se puede calcular.",
+    "Lo que se pide es explicar el procedimiento.",
+    "En resumen: desviación al cuadrado es autovalor, se aplican los dos criterios, se escribe PC uno con zetas, se interpreta por los signos, y nunca se reemplazan valores originales sin estandarizar."
+  ]
 });

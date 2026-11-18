@@ -109,7 +109,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo trece: ka medias, y cómo elegir el número de clústeres."
+      "Ahora toca el módulo 13: k medias, y cómo elegir el número de clústeres."
     ],
     [
       5.16,
@@ -117,7 +117,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       8.23,
-      "Ka medias hace otra cosa: tú le dices cuántos grupos quieres, ka, y él reparte los datos directamente en esos ka grupos."
+      "k medias hace otra cosa: tú le dices cuántos grupos quieres, k, y él reparte los datos directamente en esos k grupos."
     ],
     [
       15.52,
@@ -145,7 +145,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       41.03,
-      "Se parte eligiendo ka centroides iniciales."
+      "Se parte eligiendo k centroides iniciales."
     ],
     [
       43.95,
@@ -161,7 +161,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       58.23,
-      "Veámoslo con las cinco empresas estandarizadas de la clase, con ka igual a dos."
+      "Veámoslo con las cinco empresas estandarizadas de la clase, con k igual a dos."
     ],
     [
       63.12,
@@ -173,15 +173,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       71.29,
-      "E dos está a cero coma sesenta y cinco del primero, y a dos coma noventa y dos del segundo: va al grupo uno."
+      "E dos está a 0,65 del primero, y a 2,92 del segundo: va al grupo uno."
     ],
     [
       77.75,
-      "E cinco está a uno coma sesenta y cuatro y a dos coma sesenta: también al grupo uno."
+      "E cinco está a 1,64 y a 2,60: también al grupo uno."
     ],
     [
       82.93,
-      "Y E siete, a cero coma cuarenta y dos del segundo: grupo dos."
+      "Y E siete, a 0,42 del segundo: grupo dos."
     ],
     [
       86.68,
@@ -193,15 +193,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       93.89,
-      "El primero es el promedio de las tres empresas del grupo uno: en inversión, menos cero coma setenta y nueve, menos uno coma cero dos, más cero coma ochenta y cinco, todo dividido en tres, menos cero coma treinta y dos."
+      "El primero es el promedio de las tres empresas del grupo uno: en inversión, −0,79 − 1,02 + 0,85, todo dividido en 3 − 0,32."
     ],
     [
       107.01,
-      "Y en ventas, menos uno coma cero nueve."
+      "Y en ventas, −1,09."
     ],
     [
       109.61,
-      "El segundo, el promedio de E siete y E ocho: cero coma noventa y nueve, y uno coma catorce."
+      "El segundo, el promedio de E siete y E ocho: 0,99, y 1,14."
     ],
     [
       115.56,
@@ -229,7 +229,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       136.13,
-      "Un detalle que es pregunta típica: ka medias siempre converge, porque la W S S baja en cada paso y no puede bajar de cero."
+      "Un detalle que es pregunta típica: k medias siempre converge, porque la W S S baja en cada paso y no puede bajar de cero."
     ],
     [
       143.62,
@@ -249,7 +249,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       160.31,
-      "Una solución es ka medias más más: elige el primer centroide al azar, y cada siguiente con probabilidad proporcional a la distancia al cuadrado al centroide más cercano."
+      "Una solución es k medias más más: elige el primer centroide al azar, y cada siguiente con probabilidad proporcional a la distancia al cuadrado al centroide más cercano."
     ],
     [
       170.74,
@@ -261,11 +261,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       179.2,
-      "En erre eso es el argumento nstart: con nstart igual a veinticinco, se corre veinticinco veces y se devuelve la de menor W S S."
+      "En R eso es el argumento nstart: con nstart igual a 25, se corre 25 veces y se devuelve la de menor W S S."
     ],
     [
       188.99,
-      "En erre son tres pasos."
+      "En R son tres pasos."
     ],
     [
       190.84,
@@ -273,7 +273,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       193.19,
-      "Correr kmeans, con centers igual a ka y nstart igual a veinticinco."
+      "Correr kmeans, con centers igual a k y nstart igual a 25."
     ],
     [
       197.5,
@@ -305,7 +305,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       241.0,
-      "Con mínimo cien y máximo doscientos, un centroide de cero coma dos corresponde a ciento veinte."
+      "Con mínimo 100 y máximo 200, un centroide de 0,2 corresponde a 120."
     ],
     [
       248.77,
@@ -313,7 +313,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       251.64,
-      "Si la W S S mide lo compacto que es cada grupo, ¿por qué no elegir el ka con la W S S más baja?"
+      "Si la W S S mide lo compacto que es cada grupo, ¿por qué no elegir el k con la W S S más baja?"
     ],
     [
       261.78,
@@ -329,11 +329,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       273.45,
-      "En el ejemplo de la clase, al pasar de uno a dos grupos la W S S baja de cien a sesenta, una mejora de cuarenta."
+      "En el ejemplo de la clase, al pasar de uno a dos grupos la W S S baja de 100 a 60, una mejora de 40."
     ],
     [
       280.27,
-      "De dos a tres, baja quince."
+      "De dos a tres, baja 15."
     ],
     [
       282.5,
@@ -365,7 +365,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       305.81,
-      "Y be de i: la distancia promedio al grupo vecino más cercano."
+      "Y b de i: la distancia promedio al grupo vecino más cercano."
     ],
     [
       309.76,
@@ -373,11 +373,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       311.28,
-      "La silueta es be menos a, dividido por el mayor de los dos."
+      "La silueta es b menos a, dividido por el mayor de los dos."
     ],
     [
       315.41,
-      "Va de menos uno a uno."
+      "Va de −1 a uno."
     ],
     [
       317.1,
@@ -401,11 +401,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       336.04,
-      "En la ayudantía cinco, con seis clientes y dos grupos, todas las siluetas iban de cero coma ochenta y tres a cero coma noventa y dos."
+      "En la ayudantía cinco, con seis clientes y dos grupos, todas las siluetas iban de 0,83 a 0,92."
     ],
     [
       343.95,
-      "Ninguna cerca de cero, ninguna negativa: ka igual a dos estaba bien."
+      "Ninguna cerca de cero, ninguna negativa: k igual a dos estaba bien."
     ],
     [
       348.28,
@@ -417,7 +417,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       355.71,
-      "En resumen: ka medias reparte en ka grupos alternando asignar y recalcular centroides, y converge a un óptimo local."
+      "En resumen: k medias reparte en k grupos alternando asignar y recalcular centroides, y converge a un óptimo local."
     ],
     [
       362.89,
@@ -425,7 +425,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       365.41,
-      "Para elegir ka, el codo de la W S S, nunca el mínimo."
+      "Para elegir k, el codo de la W S S, nunca el mínimo."
     ],
     [
       368.74,
@@ -433,12 +433,97 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       372.83,
-      "Frente a los jerárquicos, ka medias es rápido y escala a muchos datos, pero hay que darle ka, es sensible a los atípicos, y prefiere grupos redondos y de tamaño parecido."
+      "Frente a los jerárquicos, k medias es rápido y escala a muchos datos, pero hay que darle k, es sensible a los atípicos, y prefiere grupos redondos y de tamaño parecido."
     ],
     [
       383.72,
-      "Eso fue el módulo trece."
+      "Eso fue el módulo 13."
     ]
   ],
-  "huella": "de582cc8cf37"
+  "huella": "de582cc8cf37",
+  "frasesHabladas": [
+    "Ahora toca el módulo trece: ka medias, y cómo elegir el número de clústeres.",
+    "Los métodos jerárquicos construían un árbol entero.",
+    "Ka medias hace otra cosa: tú le dices cuántos grupos quieres, ka, y él reparte los datos directamente en esos ka grupos.",
+    "Cada grupo tiene un centro, el centroide, que es simplemente la media de sus puntos.",
+    "¿Qué busca?",
+    "Que cada grupo sea lo más compacto posible alrededor de su centroide.",
+    "Formalmente, minimiza la suma de las distancias al cuadrado de cada punto a su centroide.",
+    "Esa suma se llama W S S, la suma de cuadrados dentro de los clústeres.",
+    "El algoritmo es un ir y venir entre dos pasos.",
+    "Se parte eligiendo ka centroides iniciales.",
+    "Después, cada punto se asigna al centroide más cercano.",
+    "Luego se recalcula cada centroide como la media de los puntos que le tocaron.",
+    "Y se repite: asignar, recalcular, asignar, recalcular, hasta que las asignaciones dejan de cambiar.",
+    "Veámoslo con las cinco empresas estandarizadas de la clase, con ka igual a dos.",
+    "Los centroides iniciales son E uno y E ocho.",
+    "Primera iteración: a cada empresa se le mide la distancia a los dos centroides.",
+    "E dos está a cero coma sesenta y cinco del primero, y a dos coma noventa y dos del segundo: va al grupo uno.",
+    "E cinco está a uno coma sesenta y cuatro y a dos coma sesenta: también al grupo uno.",
+    "Y E siete, a cero coma cuarenta y dos del segundo: grupo dos.",
+    "Quedan E uno, E dos y E cinco en un grupo, y E siete y E ocho en el otro.",
+    "Ahora se recalculan los centroides.",
+    "El primero es el promedio de las tres empresas del grupo uno: en inversión, menos cero coma setenta y nueve, menos uno coma cero dos, más cero coma ochenta y cinco, todo dividido en tres, menos cero coma treinta y dos.",
+    "Y en ventas, menos uno coma cero nueve.",
+    "El segundo, el promedio de E siete y E ocho: cero coma noventa y nueve, y uno coma catorce.",
+    "Segunda iteración, con los centroides nuevos.",
+    "¿Crees que alguna empresa cambia de grupo?",
+    "Ninguna.",
+    "Las distancias cambian un poco, pero cada empresa sigue más cerca del mismo centroide.",
+    "Y cuando nada cambia, el algoritmo terminó.",
+    "Convergió en dos iteraciones.",
+    "Un detalle que es pregunta típica: ka medias siempre converge, porque la W S S baja en cada paso y no puede bajar de cero.",
+    "Pero converge a un óptimo local, no necesariamente al mejor agrupamiento posible.",
+    "Depende de dónde partieron los centroides.",
+    "Por eso importa cómo se eligen los centroides iniciales.",
+    "Si quedan muy juntos, el resultado puede ser malo.",
+    "Una solución es ka medias más más: elige el primer centroide al azar, y cada siguiente con probabilidad proporcional a la distancia al cuadrado al centroide más cercano.",
+    "Así quedan bien dispersos.",
+    "La otra solución, la que se usa en la clase, es probar muchas inicializaciones y quedarse con la mejor.",
+    "En erre eso es el argumento nstart: con nstart igual a veinticinco, se corre veinticinco veces y se devuelve la de menor W S S.",
+    "En erre son tres pasos.",
+    "Estandarizar siempre, con scale.",
+    "Correr kmeans, con centers igual a ka y nstart igual a veinticinco.",
+    "Y leer tres cosas del resultado: cluster, que es el grupo de cada observación; centers, los centroides; y tot punto withinss, la W S S total.",
+    "Con las ocho empresas y tres grupos, quedan E uno a E cuatro juntas, E cinco con E seis, y E siete con E ocho.",
+    "Los centroides están en unidades estandarizadas: el grupo de las cuatro primeras tiene inversión bajo la media, y los otros dos tienen inversión alta, pero se separan por ventas.",
+    "Y ojo: el número de cada clúster es arbitrario.",
+    "Con otra semilla pueden salir permutados.",
+    "En una pauta de la prueba dos pedían volver a las unidades originales.",
+    "Si se normalizó con min max, se despeja: el valor original es el normalizado, por el rango, más el mínimo.",
+    "Con mínimo cien y máximo doscientos, un centroide de cero coma dos corresponde a ciento veinte.",
+    "Ahora, la gran pregunta: ¿cuántos grupos?",
+    "Si la W S S mide lo compacto que es cada grupo, ¿por qué no elegir el ka con la W S S más baja?",
+    "Porque la W S S siempre baja al agregar grupos.",
+    "Con tantos grupos como datos, llega a cero.",
+    "Lo que se busca es el codo: el punto donde agregar un grupo más deja de mejorar mucho.",
+    "En el ejemplo de la clase, al pasar de uno a dos grupos la W S S baja de cien a sesenta, una mejora de cuarenta.",
+    "De dos a tres, baja quince.",
+    "De tres a cuatro, solo tres.",
+    "Y de cuatro a cinco, uno.",
+    "El codo está en tres: desde ahí, la curva se aplana.",
+    "La otra herramienta es el coeficiente de silueta, que mide qué tan bien está asignada cada observación.",
+    "Se calculan dos cosas.",
+    "A de i: la distancia promedio de la observación a los de su propio grupo.",
+    "Eso es cohesión.",
+    "Y be de i: la distancia promedio al grupo vecino más cercano.",
+    "Eso es separación.",
+    "La silueta es be menos a, dividido por el mayor de los dos.",
+    "Va de menos uno a uno.",
+    "Cerca de uno, la observación está muy bien asignada.",
+    "Cerca de cero, está en el borde entre dos grupos.",
+    "¿Y si sale negativa?",
+    "Quiere decir que está más cerca, en promedio, del grupo vecino que del propio.",
+    "Probablemente quedó mal asignada.",
+    "En la ayudantía cinco, con seis clientes y dos grupos, todas las siluetas iban de cero coma ochenta y tres a cero coma noventa y dos.",
+    "Ninguna cerca de cero, ninguna negativa: ka igual a dos estaba bien.",
+    "La regla práctica es usar el codo y la silueta juntos.",
+    "Si coinciden, hay confianza.",
+    "En resumen: ka medias reparte en ka grupos alternando asignar y recalcular centroides, y converge a un óptimo local.",
+    "Para no depender del inicio, nstart.",
+    "Para elegir ka, el codo de la W S S, nunca el mínimo.",
+    "Y la silueta dice qué tan bien asignada está cada observación.",
+    "Frente a los jerárquicos, ka medias es rápido y escala a muchos datos, pero hay que darle ka, es sensible a los atípicos, y prefiere grupos redondos y de tamaño parecido.",
+    "Eso fue el módulo trece."
+  ]
 });

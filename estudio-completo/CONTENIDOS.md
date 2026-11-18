@@ -35,7 +35,8 @@
 | CMAN | `MANOVA.pdf` | complemento de C7.2 | P2 | 16 págs. | núcleo (ejemplo resuelto); págs. 14–16 («Anexo») casi sin texto |
 | C7.3 | `7.3 Diseño Factorial y en Bloques (DBCA).pptx` | clase | P3 | 38 slides | núcleo; s23/s29 gráficos; datos de s33 en imagen (leídos al renderizar) — **subida 2026-11-03** |
 | C7.4 | `7.4 Diseño Factorial 2^k.pptx` | clase | P3 | 26 slides | núcleo; s13, s14, s21 gráficos — **subida 2026-11-03** |
-| C8.1 | `8.1_Regresion_Lineal.pptx` | clase | P3 | 40 slides | núcleo; **parcial**: fórmulas en imagen (leídas al renderizar) — **subida 2026-11-03** |
+| C8.1 | `8.1_Regresion_Lineal.pptx` | clase | P4 | 40 slides | núcleo; **parcial**: fórmulas en imagen (leídas al renderizar) — **subida 2026-11-03** |
+| C8.2 | `8.2 Superficie de Respuesta (2026-20).pptx` | clase | P4 | 39 slides | núcleo; fórmulas del modelo y del punto estacionario en imagen (contenido equivalente en el texto de s16, s29) — **subida 2026-11-18** |
 
 ### Ayudantías (`ayudantias/`)
 | ID | Archivo | Tipo | Prueba | Tamaño | Estado |
@@ -56,6 +57,16 @@
 | AY5-R | `Ayudantia 5 2026-20 Pauta R(1).R` | pauta R | P2 | 254 l. | complemento; **duplicado exacto** de `scripts/Ayudantia 5 2026-20 Pauta R.R` |
 | AY6-E | `Ayudantía 6 2026-20 Enunciado.pdf` | enunciado | P2 | 4 págs. | complemento |
 | AY6-P | `Ayudantía 6 2026-20 Pauta.pdf` | pauta | P2 | 15 págs. | complemento |
+
+### Material subido el 2026-11-18 (Prueba 4)
+| ID | Archivo | Tipo | Prueba | Tamaño | Estado |
+|---|---|---|---|---|---|
+| S8.2 | `scripts/experimentosuperficie.xlsx` | datos | P4 | 75 corridas | datos del ejemplo 2 de C8.2 (verificados: R reproduce s31) |
+| AY9-E / AY9-R | `Ayudantía 9 2026-20 Enunciado.pdf` / `Ayudantia 9 2026-20 Pauta R.R` (+ Datos/Pauta .xlsx) | ayudantía | P3 | 2 págs. / 96 l. | complemento (2³ con bloque, 2⁴ con LSD) |
+| AY10-E / AY10-P / AY10-PPT | `Ayudantía 10 2026-20 …` | ayudantía | P4 | 4 / 8 / 31 págs. | **núcleo de práctica P4**: regresión simple a mano, completar salida (t, R², R²aj), F y t con región crítica, VIF/step/Shapiro/hat/Cook, polinomio y su máximo |
+| AY-DOE | `DOE Metodos Estadisticos Jose Costa.pptx` | ayudantía | P3 | 31 slides | complemento (glosario DOE, contrastes) |
+| INST-P4 | `pruebas-y-ejercicios/Instructivo para la prueba 4.pdf` | instructivo | P4 | 2 págs. | **temario oficial P4**: regresión lineal múltiple (interpretar, t con $H_0:\beta_i=\alpha_i$, F, R², supuestos, VIF, Cook) y superficie de respuesta (2.º orden, punto estacionario a mano, hessiana). Ejercicios: Walpole 12.36 y 12.1–12.11; Gutiérrez cap. 12 ej. 22–29 |
+| WAL | `libro-guia/Walpole - Probabilidad y estadistica para ingenieria y ciencias - 9ed.pdf` | libro | P4 | 816 págs. | ejercicios recomendados (cap. 12, pp. 450–452 y 471; respuestas pp. 778) |
 
 ### Scripts R (`scripts/`)
 | ID | Archivo | Prueba | Tamaño | Estado |
@@ -375,7 +386,7 @@
 | Ejemplo 2² con bloques (días): `aov(respuesta ~ A * B + bloque)` e interpretación | C7.4 s19–22; S7.4 l.49–65 | sí | `aov`, `interaction.plot`, `plot.design` | **Media** | |
 | Ejercicio 2² viscosidad (prueba 3): efectos por contrastes, ANOVA y gráficos | C7.4 s25–26; PR-P3-Q2 | sí (A=11; B=−6,5; AB=5; F 35,85/12,52/7,41) | – | **Alta** | AB no significativa al 5 % |
 
-#### M26 · Regresión lineal simple, múltiple y polinomial (P3)
+#### M26 · Regresión lineal simple, múltiple y polinomial (P4)
 | Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Supuestos / criterios |
 |---|---|---|---|---|---|
 | Modelo simple Y=β0+β1x+ε; esperanza condicional; error vs residuo | C8.1 s2–8 | – | – | **Media** | E(ε)=0, Var(ε)=σ² |
@@ -391,8 +402,10 @@
 | Variables indicadoras (ℓ−1), categoría de referencia; ejemplo mtcars | C8.1 s35–36 | sí | `lm(mpg ~ wt + factor(cyl))` | **Media** | |
 | Selección de modelos: R² aj, AIC, Cp, PRESS; forward/backward/both con `step` | C8.1 s37–39 | sí (AIC −111,64 → −113,45) | `step` | **Media** | resultado = candidato |
 | Flujo de trabajo en R (ajustar, supuestos, influyentes, VIF, selección) | C8.1 s40 | – | todas | **Alta** — PC3 | |
+| Prueba t con valor hipotético $H_0:\beta_i=\alpha_i$ ($t=(b_i-\alpha_i)/ee$, R solo prueba contra 0) y $\partial y/\partial x_i$ en modelos lineales y polinomiales | INST-P4 §1–2; AY10-P P4c | sí | – | **Alta** — instructivo P4 | cada respuesta: estadístico/valor-p + decisión + conclusión en contexto |
+| Completar una salida de R ($t=b/ee$, $R^2=SCR/STC$, $R^2_{aj}$) y decidir con región crítica (`qt`, `qf`) | AY10-P P1–P3 | sí | `summary`, `qt`, `qf` | **Alta** — ayudantía 10 | |
 
-> **Aún sin clase** (siguen en `observado` de P3): fraccionado 2^(k−p) (M22), superficie de respuesta / Box–Behnken (M23; C8.1 se titula «Regresión lineal y superficie de respuesta» pero las 40 slides solo cubren regresión) y árboles/bosques (M24). Se registran solo como evaluaciones pasadas:
+> **Aún sin clase**: fraccionado 2^(k−p) (M22) y árboles/bosques (M24); no están en el temario oficial de P4 (INST-P4). Se registran solo como evaluaciones pasadas. (M23 superficie de respuesta tiene clase desde 2026-11-18: C8.2.)
 
 #### M22 · Factorial fraccionado 2^(k−p) (P3 / Examen, por confirmar)
 | Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Detalle observado |
@@ -400,11 +413,21 @@
 | Reconocer 2^(4−1), generador D=ABC, relación definitoria I=ABCD, resolución IV y su significado | PR-EX-E Q3.1a; PR-EX-Q3 3.1a | sí | – | **Alta** (examen) | «Efectos principales no confundidos con interacciones de 2 factores; interacciones de 2 factores confundidas entre sí» |
 | Estimar efectos principales como ȳ+ − ȳ− suponiendo interacciones nulas; elegir el mayor \|efecto\| | PR-EX-Q3 3.1b | sí (A=−2,25; B=0,55; C=1,55; D=−0,15) | – | **Alta** | Rúbrica 0,4 por efecto + 0,4 conclusión |
 
-#### M23 · Metodología de superficie de respuesta (Box–Behnken) (Examen, por confirmar)
-| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Detalle observado |
+#### M23 · Metodología de superficie de respuesta (P4)
+| Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Supuestos / criterios |
 |---|---|---|---|---|---|
-| Adecuación del modelo cuadrático (términos significativos, R²=0,9871) | PR-EX-E Q3.2a; PR-EX-Q3 3.2a | sí | salida de `lm` en data frame (no incluida en el enunciado leído) | **Alta** | |
-| Punto estacionario (derivadas parciales, Hessiana definida positiva ⇒ mínimo), conversión de unidades codificadas a reales | PR-EX-Q3 3.2b–c | sí (x*=(−0,445; −0,776; −0,388) ⇒ 133,9 °C; 27,2 %; 861 rpm) | – | **Alta** | Solo términos significativos |
+| Superficie de respuesta: factores continuos; aproximación de 2.º orden en una región acotada; qué puntos medir y cómo analizar | C8.2 s2–3 | – | – | **Media** | |
+| El 2^k como regresión codificada (coeficiente = mitad del efecto, errores estándar iguales); no ve curvatura: hacen falta ≥ 3 niveles | C8.2 s23–24, s28 | sí (2³ resistencia) | `lm(y ~ x1*x2*x3)` | **Alta** — INST-P4, WAL 12.36 | |
+| Codificar o centrar: sin codificar cambian los valores p (la prueba se hace en x = 0); principio de jerarquía | C8.2 s25–26 | sí | – | **Media** | |
+| Diseño central compuesto: 2^k + 2k axiales + centro; α = 1 o (2^k)^(1/4); ejemplo rendimiento (T, C) | C8.2 s4–5, s8, s37 | sí | – | **Alta** — LG 23, 25, 26, 28 | réplicas del centro ⇒ error puro |
+| Box-Behnken: 3 niveles, puntos medios de aristas + centro (15 corridas con k = 3) | C8.2 s4, s38–39 | sí | – | **Alta** — PR-EX-Q3, LG 24, 27 | |
+| Ajustar el modelo de 2.º orden con `lm` (`I(x^2)`, interacciones) o `rsm(y ~ SO())`; leer términos, F, R², falta de ajuste | C8.2 s7, s14–15 | sí (R² = 0,979; LOF p = 0,77) | `lm`, `rsm`, `coded.data` | **Alta** — INST-P4 | |
+| Punto estacionario: derivar, igualar a 0 y resolver; x* = −½B⁻¹b; clasificar con valores propios de B o hessiana H = 2B; volver a unidades reales | C8.2 s16–17, s29; PR-EX-Q3 3.2b–c | sí (x* = (0,626; −0,061) ⇒ 240,7 °C y 19,7 %, máximo 82,8) | `summary(rsm)`, `canonical`, `xs` | **Alta** — INST-P4, examen | |
+| Gráfico de contornos y sensibilidad del óptimo | C8.2 s18 | sí | `contour(modelo_rsm, ~ x1 + x2, image = TRUE)` | **Baja** | |
+| Reducir el modelo: F parcial con `anova(reducido, completo)`, AIC y jerarquía (ejemplo 2, tres factores a tres niveles) | C8.2 s30–32 | sí (F = 0,50; p = 0,61; AIC 483,9 vs 486,7) | `anova`, `AIC` | **Media** | |
+| Si el estacionario no es del tipo buscado o cae fuera de la región, el óptimo está en la frontera (evaluar esquinas/caras) y se confirma con corridas | C8.2 s33–36 | sí (mínimo con x₃* = −1,11 ⇒ esquina 150 °C, 20 bar, 60 min) | `canonical` | **Alta** | |
+| Ejercicio Box-Behnken hojuelas de soya: términos significativos, sin interacción ⇒ xᵢ* = −bᵢ/(2bᵢᵢ), mínimo, unidades reales | C8.2 s19–22; PR-EX-E Q3.2; PR-EX-Q3 3.2 | sí (134 °C; 27 %; 861 rpm; ≈ 21 %) | – | **Alta** — examen | |
+| Ejercicios recomendados: Gutiérrez cap. 12 ej. 22–29 (diseño, modelo, punto estacionario, óptimo) | INST-P4; LG cap. 12 pp. 422–428 | sí | `lm`, `rsm` | **Alta** — instructivo | |
 
 #### M24 · Árboles de regresión y bosques aleatorios (P3, por confirmar)
 | Concepto | Fuentes | Ej. | R | Prioridad — evidencia | Detalle observado |

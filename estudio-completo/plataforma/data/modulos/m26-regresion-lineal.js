@@ -1,5 +1,5 @@
 /* ============================================================================
-   M26 · Regresión lineal simple, múltiple y polinomial (P3)
+   M26 · Regresión lineal simple, múltiple y polinomial (P4)
    Fuentes abiertas para redactar: C8.1 slides 1–40 (renderizadas: casi todas las
    fórmulas están en imagen). Salidas recalculadas en R 4.6.1 (car 3.x).
    ========================================================================== */
@@ -10,7 +10,7 @@ PLATAFORMA.registrar("modulo", {
   descripcion: "Explicar una respuesta cuantitativa con uno o varios regresores: estimar, interpretar, probar, verificar supuestos y elegir el modelo. Es la base de la superficie de respuesta.",
   pruebas: ["P4"],
   prioridad: "alta",
-  fuentes: [{ id: "C8.1", loc: "slides 1–40" }],
+  fuentes: [{ id: "C8.1", loc: "slides 1–40" }, { id: "AY10-P" }, { id: "INST-P4" }],
 
   conceptos: [
     {
@@ -329,6 +329,36 @@ summary(modelo2)`,
         explicacion: "C8.1 s28 y s40."
       },
       fuente: [{ id: "C8.1", loc: "slide 40" }]
+    },
+
+    {
+      id: "m26-c14",
+      titulo: "Lo que pide el Instructivo P4: t contra cualquier valor, ∂y/∂x y respuestas completas",
+      cubre: ["M26.14", "M26.15"],
+      simple: String.raw`<p>La prueba entregará una salida de R y pedirá <strong>leerla bien</strong>. Tres cosas que suelen faltar: (1) R siempre prueba $\beta_i=0$; si preguntan por otro valor ($\beta_i=2$, $\beta_i=1$…) el $t$ se calcula a mano; (2) en un polinomio el efecto de $x$ no es un número fijo sino la derivada $\partial y/\partial x$; (3) cada respuesta lleva <strong>estadístico o valor-p, decisión y conclusión en el contexto</strong>.</p>`,
+      formal: String.raw`<p><strong>Prueba t con valor hipotético:</strong> $H_0:\beta_i=\alpha_i$ vs $H_1:\beta_i\neq\alpha_i$; $t=\dfrac{b_i-\alpha_i}{ee(b_i)}\sim t_{n-k-1}$. Se rechaza si $|t|>t_{0{,}975;n-k-1}$ (R: <code>qt(0.975, gl)</code>) o si $p=2P(t_{gl}>|t|)<\alpha$ (R: <code>2*(1 - pt(abs(t), gl))</code>).</p>
+<p><strong>Derivadas parciales:</strong> lineal $\hat y=b_0+b_1x_1+b_2x_2$ ⇒ $\partial\hat y/\partial x_1=b_1$ (constante: cambio por unidad, con $x_2$ fijo). Polinomio $\hat y=b_0+b_1x+b_2x^2$ ⇒ $\partial\hat y/\partial x=b_1+2b_2x$ (cambia con $x$; se anula en $x^*=-b_1/(2b_2)$). Con interacción $b_{12}x_1x_2$ ⇒ $\partial\hat y/\partial x_1=b_1+b_{12}x_2$.</p>
+<p><strong>Completar una salida:</strong> $t=b/ee$; $SCR=STC-SCE$; $R^2=SCR/STC$; $R^2_{aj}=1-(1-R^2)\dfrac{n-1}{n-k-1}$; $F=\dfrac{SCR/k}{SCE/(n-k-1)}$ contra <code>qf(0.95, k, n-k-1)</code>.</p>`,
+      ejemplo: String.raw`<p>Ayudantía 10, P2 (salto largo, $n=36$, $k=3$): $t_{edad}=0{,}123677/0{,}013504=9{,}159$; $R^2=5{,}36221/6{,}15048=0{,}8718$; $R^2_{aj}=1-(1-0{,}8718)\tfrac{35}{32}=0{,}8598$. Como $|t|=9{,}159>t_{0{,}975;32}=2{,}0369$, se rechaza $H_0:\beta_{edad}=0$: la edad explica la distancia de salto.</p>
+<p>Ayudantía 10, P4 (fertilizante): $\widehat{rend}=3{,}121+0{,}03268\,d-0{,}0001118\,d^2$ ⇒ $\partial\widehat{rend}/\partial d=0{,}03268-0{,}0002236\,d$, que vale 0 en $d^*\approx146$ kg/ha (máximo, porque $b_2<0$); allí $\widehat{rend}\approx5{,}51$ ton/ha.</p>
+<p>Walpole 12.1 (horno): ¿cada unidad de temperatura agrega 2 min? $t=(2{,}0497-2)/0{,}0481=1{,}03<2{,}365$ ⇒ no se rechaza $H_0:\beta_2=2$.</p>`,
+      r: { nota: "Lo que no entrega summary(): t contra un valor distinto de 0 y su valor-p.", codigo: `b <- coef(summary(modelo))["x2", "Estimate"]; ee <- coef(summary(modelo))["x2", "Std. Error"]
+t <- (b - 2) / ee
+gl <- df.residual(modelo)
+2 * (1 - pt(abs(t), gl))   # valor-p bilateral
+qt(0.975, gl)              # valor crítico` },
+      errores: ["Usar el t de la salida de R para H₀: β = 2 (ese t es contra 0).", "Dar un solo número como «efecto de x» en un polinomio.", "Responder solo «se rechaza H₀» sin el estadístico ni la conclusión en el contexto (el instructivo lo exige)."],
+      memoriza: String.raw`<p>$t=(b-\alpha)/ee$ · $\partial\hat y/\partial x=b_1+2b_2x$ · respuesta = estadístico/p + decisión + contexto.</p>`,
+      comprueba: {
+        enunciado: "b₁ = 1,40, ee = 0,58, gl = 7. ¿Cuánto vale t para H₀: β₁ = 1?",
+        opciones: ["0,69", "2,41", "1,40", "−0,69"],
+        correcta: 0,
+        explicacion: "t = (1,40 − 1)/0,58 = 0,69 (no 1,40/0,58, que es contra 0)."
+      },
+      verifica: [{ que: "t edad", js: "0.123677/0.013504", esperado: 9.1585, tol: 1e-3 }, { que: "R2", js: "(6.15048-0.78827)/6.15048", esperado: 0.8718, tol: 1e-4 },
+        { que: "R2aj", js: "1-(1-0.871836)*35/32", esperado: 0.8598, tol: 1e-4 }, { que: "dosis*", js: "-0.03268/(2*-0.0001118)", esperado: 146.15, tol: 0.01 },
+        { que: "rend*", js: "3.121+0.03268*146.15-0.0001118*146.15*146.15", esperado: 5.509, tol: 0.001 }, { que: "t horno", js: "(2.0497-2)/0.0481", esperado: 1.033, tol: 0.001 }],
+      fuente: [{ id: "INST-P4" }, { id: "AY10-P", loc: "P2 y P4" }, { id: "WAL", loc: "ej. 12.1" }]
     }
   ]
 });

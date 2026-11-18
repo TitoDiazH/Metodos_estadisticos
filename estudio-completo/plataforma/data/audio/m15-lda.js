@@ -89,7 +89,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo quince: la clasificación supervisada, y el análisis discriminante lineal, ele de a."
+      "Ahora toca el módulo 15: la clasificación supervisada, y el análisis discriminante lineal, ele de a."
     ],
     [
       7.05,
@@ -109,7 +109,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       23.73,
-      "Hay dieciséis clientes, con dos variables: patrimonio y deuda."
+      "Hay 16 clientes, con dos variables: patrimonio y deuda."
     ],
     [
       27.87,
@@ -137,19 +137,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       49.46,
-      "Con el patrimonio, el corte natural está en el promedio de las dos medias: cinco más nueve, dividido en dos, siete."
+      "Con el patrimonio, el corte natural está en el promedio de las dos medias: 5 + 9, dividido en dos, siete."
     ],
     [
       56.52,
-      "Bajo siete, fallido; sobre siete, cumplidor."
+      "Bajo siete, fallido; sobre 7, cumplidor."
     ],
     [
       59.53,
-      "Con esa regla se acierta en doce de los dieciséis clientes, el setenta y cinco por ciento."
+      "Con esa regla se acierta en 12 de los 16 clientes, el 75 %."
     ],
     [
       65.41,
-      "Con la deuda, el corte es cuatro, y se acierta solo en nueve de dieciséis, el cincuenta y seis por ciento."
+      "Con la deuda, el corte es cuatro, y se acierta solo en nueve de 16, el 56 %."
     ],
     [
       71.85,
@@ -173,7 +173,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       96.82,
-      "La idea de Fisher es combinar las variables en un solo puntaje: de igual a u uno por patrimonio, más u dos por deuda."
+      "La idea de Fisher es combinar las variables en un solo puntaje: de igual a u uno por patrimonio, más u² por deuda."
     ],
     [
       103.81,
@@ -205,11 +205,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       140.16,
-      "En el banco, la diferencia de medias, fallidos menos cumplidores, es menos cuatro en patrimonio y dos en deuda."
+      "En el banco, la diferencia de medias, fallidos menos cumplidores, es −4 en patrimonio y dos en deuda."
     ],
     [
       147.03,
-      "Con la matriz W de la clase, los pesos salen menos cero coma cero setenta y cuatro para el patrimonio, y cero coma cero sesenta y siete para la deuda."
+      "Con la matriz W de la clase, los pesos salen −0,074 para el patrimonio, y 0,067 para la deuda."
     ],
     [
       156.7,
@@ -221,11 +221,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       163.48,
-      "El corte es el promedio de los puntajes medios de cada grupo: menos cero coma cero tres siete para los fallidos, y menos cero coma cuatro seis seis para los cumplidores."
+      "El corte es el promedio de los puntajes medios de cada grupo: −0,037 para los fallidos, y −0,466 para los cumplidores."
     ],
     [
       173.54,
-      "El corte queda en menos cero coma doscientos cincuenta y uno."
+      "El corte queda en −0,251."
     ],
     [
       177.5,
@@ -233,11 +233,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       179.02,
-      "Menos cero coma cero setenta y cuatro por siete, más cero coma cero sesenta y siete por cuatro."
+      "Menos 0,074 · 7 + 0,067 · 4."
     ],
     [
       184.66,
-      "Da menos cero coma doscientos cincuenta y uno: justo en la frontera."
+      "Da −0,251: justo en la frontera."
     ],
     [
       188.87,
@@ -245,11 +245,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       191.49,
-      "Con los dieciséis clientes, la regla de Fisher acierta en quince: noventa y tres coma setenta y cinco por ciento, contra el setenta y cinco de la mejor variable sola."
+      "Con los 16 clientes, la regla de Fisher acierta en 15: 93,75 %, contra el 75 de la mejor variable sola."
     ],
     [
       201.49,
-      "El único error es el cliente trece, un cumplidor con patrimonio seis coma tres y deuda cinco coma dos."
+      "El único error es el cliente 13, un cumplidor con patrimonio 6,3 y deuda 5,2."
     ],
     [
       208.2,
@@ -265,7 +265,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       217.52,
-      "Por eso erre entrega otros coeficientes, menos cero coma cuatro dos dos y cero coma tres ocho, que apuntan en la misma dirección."
+      "Por eso R entrega otros coeficientes, −0,422 y 0,38, que apuntan en la misma dirección."
     ],
     [
       227.17,
@@ -293,11 +293,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       253.71,
-      "Entonces conviene el discriminante cuadrático, cu de a, que es lo que viene en el módulo dieciséis."
+      "Entonces conviene el discriminante cuadrático, cu de a, que es lo que viene en el módulo 16."
     ],
     [
       260.36,
-      "En erre se usa la función lda, del paquete MASS, con la fórmula grupo tilde patrimonio más deuda."
+      "En R se usa la función lda, del paquete MASS, con la fórmula grupo tilde patrimonio más deuda."
     ],
     [
       266.25,
@@ -313,7 +313,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       287.65,
-      "Quince de dieciséis."
+      "15 de 16."
     ],
     [
       291.33,
@@ -329,12 +329,76 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       310.46,
-      "En el banco pasamos de setenta y cinco a casi noventa y cuatro por ciento de aciertos."
+      "En el banco pasamos de 75 a casi 94 % de aciertos."
     ],
     [
       316.02,
-      "Eso fue el módulo quince."
+      "Eso fue el módulo 15."
     ]
   ],
-  "huella": "3262abf0e8be"
+  "huella": "3262abf0e8be",
+  "frasesHabladas": [
+    "Ahora toca el módulo quince: la clasificación supervisada, y el análisis discriminante lineal, ele de a.",
+    "En el clastering no sabíamos cuáles eran los grupos.",
+    "Ahora es al revés.",
+    "Tenemos datos históricos donde sí sabemos a qué grupo pertenece cada observación, y queremos construir una regla para clasificar casos nuevos.",
+    "El ejemplo de la clase es el Banco de Ademuz.",
+    "Hay dieciséis clientes, con dos variables: patrimonio y deuda.",
+    "Ocho de ellos fueron fallidos, no pagaron, y ocho fueron cumplidores.",
+    "Los fallidos tienen, en promedio, patrimonio cinco y deuda cinco.",
+    "Los cumplidores, patrimonio nueve y deuda tres.",
+    "Llega un cliente nuevo, con patrimonio siete y deuda cuatro.",
+    "¿Le prestamos?",
+    "Lo más simple es mirar una sola variable.",
+    "Con el patrimonio, el corte natural está en el promedio de las dos medias: cinco más nueve, dividido en dos, siete.",
+    "Bajo siete, fallido; sobre siete, cumplidor.",
+    "Con esa regla se acierta en doce de los dieciséis clientes, el setenta y cinco por ciento.",
+    "Con la deuda, el corte es cuatro, y se acierta solo en nueve de dieciséis, el cincuenta y seis por ciento.",
+    "Y fíjate en el cliente nuevo: patrimonio siete y deuda cuatro.",
+    "Cae justo en el corte de las dos reglas.",
+    "¿Qué se está perdiendo al mirar las variables por separado?",
+    "La información que hay en la combinación de las dos.",
+    "Un cliente puede tener patrimonio regular y deuda baja, y en conjunto parecerse claramente a un grupo.",
+    "La idea de Fisher es combinar las variables en un solo puntaje: de igual a u uno por patrimonio, más u dos por deuda.",
+    "¿Y cómo se eligen los pesos?",
+    "Buscando que las medias de los grupos queden lo más lejos posible, eso es la señal, y que dentro de cada grupo los datos queden lo más juntos posible, eso es el ruido.",
+    "Formalmente se maximiza un cociente entre la dispersión entre grupos y la dispersión dentro de los grupos.",
+    "Es la misma idea del ANOVA, entre contra dentro, pero con matrices.",
+    "Y con dos grupos, la solución es directa: u es la inversa de la matriz de dispersión dentro, W, por la diferencia de medias.",
+    "La clase dice que esta fórmula no hay que memorizarla.",
+    "Lo que sí hay que entender es qué hace.",
+    "En el banco, la diferencia de medias, fallidos menos cumplidores, es menos cuatro en patrimonio y dos en deuda.",
+    "Con la matriz W de la clase, los pesos salen menos cero coma cero setenta y cuatro para el patrimonio, y cero coma cero sesenta y siete para la deuda.",
+    "Léelo así: más patrimonio baja el puntaje, y más deuda lo sube.",
+    "Puntaje alto, perfil de fallido.",
+    "El corte es el promedio de los puntajes medios de cada grupo: menos cero coma cero tres siete para los fallidos, y menos cero coma cuatro seis seis para los cumplidores.",
+    "El corte queda en menos cero coma doscientos cincuenta y uno.",
+    "¿Y el cliente nuevo?",
+    "Menos cero coma cero setenta y cuatro por siete, más cero coma cero sesenta y siete por cuatro.",
+    "Da menos cero coma doscientos cincuenta y uno: justo en la frontera.",
+    "Es un cliente realmente dudoso.",
+    "Con los dieciséis clientes, la regla de Fisher acierta en quince: noventa y tres coma setenta y cinco por ciento, contra el setenta y cinco de la mejor variable sola.",
+    "El único error es el cliente trece, un cumplidor con patrimonio seis coma tres y deuda cinco coma dos.",
+    "Un detalle importante.",
+    "Solo importa la dirección de los pesos.",
+    "Si se multiplican por cualquier número, incluso negativo, la regla es la misma.",
+    "Por eso erre entrega otros coeficientes, menos cero coma cuatro dos dos y cero coma tres ocho, que apuntan en la misma dirección.",
+    "¿Cuándo funciona bien ele de a?",
+    "Primero, normalidad multivariada dentro de cada grupo, aunque es bastante robusto a desviaciones leves.",
+    "Segundo, que los grupos tengan la misma matriz de covarianza.",
+    "Eso se contrasta con el test de Box.",
+    "Y tercero, observaciones independientes, que depende del diseño del estudio.",
+    "¿Y si el test de Box rechaza que las covarianzas son iguales?",
+    "Entonces conviene el discriminante cuadrático, cu de a, que es lo que viene en el módulo dieciséis.",
+    "En erre se usa la función lda, del paquete MASS, con la fórmula grupo tilde patrimonio más deuda.",
+    "Después, predict entrega tres cosas: class, la clasificación; posterior, las probabilidades de cada grupo; y equis, los puntajes discriminantes.",
+    "La matriz de confusión se arma con table, el real contra el predicho, y la exactitud es la suma de la diagonal sobre el total.",
+    "En el banco: siete cumplidores bien y uno mal, ocho fallidos bien.",
+    "Quince de dieciséis.",
+    "En resumen: en la clasificación supervisada los grupos se conocen, y se busca una regla para casos nuevos.",
+    "Fisher combina las variables en un puntaje que separa las medias y junta los datos de cada grupo, y se clasifica comparando con el punto medio.",
+    "Supone normalidad, covarianzas iguales e independencia.",
+    "En el banco pasamos de setenta y cinco a casi noventa y cuatro por ciento de aciertos.",
+    "Eso fue el módulo quince."
+  ]
 });

@@ -104,11 +104,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       16.52,
-      "Las alturas son ciento sesenta y uno, ciento setenta, ciento ochenta, ciento setenta y cinco, ciento sesenta y cinco, y ciento ochenta y siete centímetros."
+      "Las alturas son 161, 170, 180, 175, 165, y 187 centímetros."
     ],
     [
       25.95,
-      "Y los pesos, cincuenta, sesenta y cinco, setenta y ocho, ochenta y dos, sesenta, y setenta y seis kilos."
+      "Y los pesos, 50, 65, 78, 82, 60, y 76 kilos."
     ],
     [
       32.83,
@@ -128,27 +128,27 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       47.03,
-      "Para calcularla, a cada persona se le resta la media en las dos variables, se multiplican esas dos diferencias, se suman, y se divide por ene menos uno."
+      "Para calcularla, a cada persona se le resta la media en las dos variables, se multiplican esas dos diferencias, se suman, y se divide por n − 1."
     ],
     [
       56.58,
-      "En el ejemplo, la altura media es ciento setenta y tres, y el peso medio, sesenta y ocho coma cinco."
+      "En el ejemplo, la altura media es 173, y el peso medio, 68,5."
     ],
     [
       62.76,
-      "La primera persona mide ciento sesenta y uno: doce bajo la media."
+      "La primera persona mide 161: 12 bajo la media."
     ],
     [
       66.77,
-      "Y pesa cincuenta: dieciocho coma cinco bajo la media."
+      "Y pesa 50: 18,5 bajo la media."
     ],
     [
       70.32,
-      "Menos doce por menos dieciocho coma cinco: doscientos veintidós, positivo."
+      "Menos 12 por menos 18,5: 222, positivo."
     ],
     [
       75.07,
-      "Los demás productos son diez coma cinco, sesenta y seis coma cinco, veintisiete, sesenta y ocho, y ciento cinco."
+      "Los demás productos son 10,5, 66,5, 27, 68, y 105."
     ],
     [
       82.11,
@@ -156,11 +156,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       87.84,
-      "La suma da cuatrocientos noventa y nueve, y dividido en cinco, la covarianza es noventa y nueve coma ocho."
+      "La suma da 499, y dividido en cinco, la covarianza es 99,8."
     ],
     [
       95.07,
-      "Ahora, ¿noventa y nueve coma ocho es mucho o poco?"
+      "Ahora, ¿99,8 es mucho o poco?"
     ],
     [
       101.51,
@@ -168,7 +168,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       103.05,
-      "Si la altura se midiera en metros, la covarianza sería cero coma nueve nueve ocho, y la relación sería exactamente la misma."
+      "Si la altura se midiera en metros, la covarianza sería 0,998, y la relación sería exactamente la misma."
     ],
     [
       110.66,
@@ -196,19 +196,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       134.25,
-      "Así queda siempre entre menos uno y uno."
+      "Así queda siempre entre −1 y uno."
     ],
     [
       136.77,
-      "Y una relación lineal perfecta da uno o menos uno."
+      "Y una relación lineal perfecta da uno o −1."
     ],
     [
       140.39,
-      "En el ejemplo: la desviación de la altura es nueve coma seis cinco, la del peso, doce coma veintinueve."
+      "En el ejemplo: la desviación de la altura es 9,65, la del peso, 12,29."
     ],
     [
       146.86,
-      "Noventa y nueve coma ocho dividido por el producto da cero coma ochenta y cuatro."
+      "99,8 dividido por el producto da 0,84."
     ],
     [
       151.38,
@@ -216,7 +216,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       153.45,
-      "Y si la altura estuviera en metros, seguiría dando cero coma ochenta y cuatro."
+      "Y si la altura estuviera en metros, seguiría dando 0,84."
     ],
     [
       158.45,
@@ -272,7 +272,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       223.08,
-      "Con seis personas, un ere de cero coma ochenta y cuatro podría haber salido por azar."
+      "Con seis personas, un ere de 0,84 podría haber salido por azar."
     ],
     [
       228.18,
@@ -296,43 +296,43 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       246.27,
-      "El estadístico es te igual a ere, por la raíz de ene menos dos, sobre uno menos ere al cuadrado."
+      "El estadístico es t igual a ere, por la raíz de n − 2 / 1 menos ere al cuadrado."
     ],
     [
       252.05,
-      "Con ene menos dos grados de libertad."
+      "Con n − 2 grados de libertad."
     ],
     [
       254.75,
-      "En el ejemplo: cero coma ochenta y cuatro, por la raíz de cuatro sobre uno menos cero coma ochenta y cuatro al cuadrado."
+      "En el ejemplo: 0,84, por la raíz de 4 / 1 − 0,84²."
     ],
     [
       261.78,
-      "Da tres coma once."
+      "Da 3,11."
     ],
     [
       263.42,
-      "El valor crítico, con cuatro grados de libertad y cinco por ciento, es dos coma setenta y ocho."
+      "El valor crítico, con cuatro grados de libertad y 5 %, es 2,78."
     ],
     [
       269.22,
-      "Como tres coma once lo supera, se rechaza: hay evidencia de correlación lineal entre altura y peso."
+      "Como 3,11 lo supera, se rechaza: hay evidencia de correlación lineal entre altura y peso."
     ],
     [
       275.79,
-      "En erre, todo eso lo hace cor punto test."
+      "En R, todo eso lo hace cor punto test."
     ],
     [
       278.29,
-      "Entrega te igual a tres coma uno uno, con cuatro grados de libertad."
+      "Entrega t = 3,11, con cuatro grados de libertad."
     ],
     [
       282.46,
-      "El pe valor, cero coma cero tres seis, menor que cero coma cero cinco."
+      "El valor p, 0,036, menor que 0,05."
     ],
     [
       286.76,
-      "Un intervalo de confianza que va de cero coma cero nueve a cero coma noventa y ocho."
+      "Un intervalo de confianza que va de 0,09 a 0,98."
     ],
     [
       291.54,
@@ -348,7 +348,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       302.76,
-      "En la ayudantía uno había una correlación de apenas cero coma cero seis siete."
+      "En la ayudantía uno había una correlación de apenas 0,067."
     ],
     [
       307.31,
@@ -360,7 +360,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       315.35,
-      "Con cien datos no lo es, pero con mil sí."
+      "Con 100 datos no lo es, pero con 1000 sí."
     ],
     [
       318.02,
@@ -368,7 +368,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       320.63,
-      "El pe valor depende de ene; la fuerza la da el tamaño de ere."
+      "El valor p depende de n; la fuerza la da el tamaño de ere."
     ],
     [
       326.27,
@@ -376,7 +376,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       330.8,
-      "La correlación la estandariza, entre menos uno y uno."
+      "La correlación la estandariza, entre −1 y uno."
     ],
     [
       334.38,
@@ -384,12 +384,89 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       337.42,
-      "Y cor punto test prueba si ro es cero, con te igual a ere por la raíz de ene menos dos sobre uno menos ere al cuadrado."
+      "Y cor punto test prueba si ro es cero, con t igual a ere por la raíz de n − 2 / 1 menos ere al cuadrado."
     ],
     [
       344.96,
       "Eso fue el módulo uno."
     ]
   ],
-  "huella": "4a75827c5a9a"
+  "huella": "4a75827c5a9a",
+  "frasesHabladas": [
+    "Ahora toca el módulo uno: covarianza, correlación, y cómo saber si una correlación es significativa.",
+    "La pregunta de fondo es simple: cuando una variable sube, ¿qué suele pasar con la otra?",
+    "El ejemplo de la clase son seis personas, con su altura y su peso.",
+    "Las alturas son ciento sesenta y uno, ciento setenta, ciento ochenta, ciento setenta y cinco, ciento sesenta y cinco, y ciento ochenta y siete centímetros.",
+    "Y los pesos, cincuenta, sesenta y cinco, setenta y ocho, ochenta y dos, sesenta, y setenta y seis kilos.",
+    "La covarianza mide cómo se mueven juntas.",
+    "Si es positiva, tienden a subir y bajar al mismo tiempo.",
+    "Si es negativa, cuando una sube, la otra tiende a bajar.",
+    "Y si es cercana a cero, no se ve una relación lineal clara.",
+    "Para calcularla, a cada persona se le resta la media en las dos variables, se multiplican esas dos diferencias, se suman, y se divide por ene menos uno.",
+    "En el ejemplo, la altura media es ciento setenta y tres, y el peso medio, sesenta y ocho coma cinco.",
+    "La primera persona mide ciento sesenta y uno: doce bajo la media.",
+    "Y pesa cincuenta: dieciocho coma cinco bajo la media.",
+    "Menos doce por menos dieciocho coma cinco: doscientos veintidós, positivo.",
+    "Los demás productos son diez coma cinco, sesenta y seis coma cinco, veintisiete, sesenta y ocho, y ciento cinco.",
+    "Fíjate que todos son positivos: cada persona está del mismo lado de la media en las dos variables.",
+    "La suma da cuatrocientos noventa y nueve, y dividido en cinco, la covarianza es noventa y nueve coma ocho.",
+    "Ahora, ¿noventa y nueve coma ocho es mucho o poco?",
+    "No se puede saber.",
+    "Si la altura se midiera en metros, la covarianza sería cero coma nueve nueve ocho, y la relación sería exactamente la misma.",
+    "La covarianza depende de las unidades.",
+    "Su signo dice la dirección, pero su tamaño no dice la fuerza.",
+    "Un detalle: la varianza es un caso particular.",
+    "Es la covarianza de una variable consigo misma.",
+    "Para tener una medida que no dependa de las unidades está la correlación.",
+    "Es la covarianza dividida por el producto de las dos desviaciones estándar.",
+    "Así queda siempre entre menos uno y uno.",
+    "Y una relación lineal perfecta da uno o menos uno.",
+    "En el ejemplo: la desviación de la altura es nueve coma seis cinco, la del peso, doce coma veintinueve.",
+    "Noventa y nueve coma ocho dividido por el producto da cero coma ochenta y cuatro.",
+    "Una relación positiva y fuerte.",
+    "Y si la altura estuviera en metros, seguiría dando cero coma ochenta y cuatro.",
+    "Antes de calcular, conviene mirar la nube de puntos: la dirección, qué tan alineados están, y si hay valores atípicos.",
+    "Hay una afirmación que aparece en las pruebas: si la correlación es cero, las variables son independientes.",
+    "¿Verdadero o falso?",
+    "Falso.",
+    "La correlación solo mide relación lineal.",
+    "Dos variables pueden tener una relación en forma de curva, muy fuerte, y correlación cero.",
+    "O una puede cambiar la varianza de la otra sin cambiar su media.",
+    "Lo que sí vale es el otro sentido: si son independientes, la covarianza es cero, y la correlación también.",
+    "La equivalencia completa solo se cumple si las dos tienen distribución normal conjunta.",
+    "Y lo otro que hay que recordar siempre: una correlación alta no prueba causalidad.",
+    "La correlación y la regresión están relacionadas, pero no son lo mismo.",
+    "La regresión representa la relación con una recta, para predecir.",
+    "La correlación mide qué tan fuerte es esa relación lineal.",
+    "Con seis personas, un ere de cero coma ochenta y cuatro podría haber salido por azar.",
+    "¿Cómo sabemos si en la población hay correlación?",
+    "Primero, una distinción.",
+    "Ere es la correlación de la muestra.",
+    "Ro es la de la población, el parámetro que no conocemos.",
+    "Las hipótesis se escriben siempre sobre ro: la nula es que ro es cero, y la alternativa, que es distinto de cero.",
+    "El estadístico es te igual a ere, por la raíz de ene menos dos, sobre uno menos ere al cuadrado.",
+    "Con ene menos dos grados de libertad.",
+    "En el ejemplo: cero coma ochenta y cuatro, por la raíz de cuatro sobre uno menos cero coma ochenta y cuatro al cuadrado.",
+    "Da tres coma once.",
+    "El valor crítico, con cuatro grados de libertad y cinco por ciento, es dos coma setenta y ocho.",
+    "Como tres coma once lo supera, se rechaza: hay evidencia de correlación lineal entre altura y peso.",
+    "En erre, todo eso lo hace cor punto test.",
+    "Entrega te igual a tres coma uno uno, con cuatro grados de libertad.",
+    "El pe valor, cero coma cero tres seis, menor que cero coma cero cinco.",
+    "Un intervalo de confianza que va de cero coma cero nueve a cero coma noventa y ocho.",
+    "No contiene el cero, coherente con rechazar, pero es muy ancho, porque son solo seis datos.",
+    "Y al final, el ere de la muestra.",
+    "Una última idea, que es de las más preguntadas.",
+    "En la ayudantía uno había una correlación de apenas cero coma cero seis siete.",
+    "¿Puede ser significativa?",
+    "Sí, si la muestra es suficientemente grande.",
+    "Con cien datos no lo es, pero con mil sí.",
+    "Significativa no es lo mismo que fuerte.",
+    "El pe valor depende de ene; la fuerza la da el tamaño de ere.",
+    "En resumen: la covarianza da la dirección, pero depende de las unidades.",
+    "La correlación la estandariza, entre menos uno y uno.",
+    "Correlación cero no implica independencia.",
+    "Y cor punto test prueba si ro es cero, con te igual a ere por la raíz de ene menos dos sobre uno menos ere al cuadrado.",
+    "Eso fue el módulo uno."
+  ]
 });

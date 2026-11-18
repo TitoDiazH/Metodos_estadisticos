@@ -104,7 +104,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo once: el análisis de conglomerados, o clastering, y cómo medir qué tan parecidas son dos observaciones."
+      "Ahora toca el módulo 11: el análisis de conglomerados, o clastering, y cómo medir qué tan parecidas son dos observaciones."
     ],
     [
       8.26,
@@ -200,19 +200,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       109.31,
-      "Se elevan a un exponente lambda, se suman, y se saca la raíz lambda."
+      "Se elevan a un exponente λ, se suman, y se saca la raíz λ."
     ],
     [
       114.13,
-      "Si lambda es uno, queda la distancia Manhattan: la suma de las diferencias absolutas, como caminar por las calles de una ciudad."
+      "Si λ es uno, queda la distancia Manhattan: la suma de las diferencias absolutas, como caminar por las calles de una ciudad."
     ],
     [
       122.21,
-      "Si lambda es dos, la euclídea: la línea recta."
+      "Si λ es dos, la euclídea: la línea recta."
     ],
     [
       125.25,
-      "Y si lambda es infinito, Chebyshev: la diferencia más grande en una sola variable."
+      "Y si λ es infinito, Chebyshev: la diferencia más grande en una sola variable."
     ],
     [
       130.83,
@@ -220,11 +220,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       135.2,
-      "La empresa uno tiene dieciséis y diez."
+      "La empresa uno tiene 16 y diez."
     ],
     [
       137.76,
-      "La empresa dos, doce y catorce."
+      "La empresa dos, 12 y 14."
     ],
     [
       140.14,
@@ -236,11 +236,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       149.81,
-      "Ocho: cuatro más cuatro."
+      "Ocho: 4 + 4."
     ],
     [
       151.85,
-      "La euclídea es la raíz de dieciséis más dieciséis, cinco coma sesenta y seis."
+      "La euclídea es la raíz de 16 + 16, 5,66."
     ],
     [
       156.81,
@@ -248,11 +248,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       160.79,
-      "En erre todas salen con la función dist, indicando el método: euclidean, manhattan, o maximum."
+      "En R todas salen con la función dist, indicando el método: euclidean, manhattan, o maximum."
     ],
     [
       166.83,
-      "Ojo con ese último: Chebyshev en erre se llama maximum."
+      "Ojo con ese último: Chebyshev en R se llama maximum."
     ],
     [
       170.87,
@@ -288,11 +288,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       208.61,
-      "Cuando la correlación es menos uno: uno menos menos uno, dos."
+      "Cuando la correlación es −1: uno menos menos 1, 2."
     ],
     [
       212.25,
-      "En erre se calcula como uno menos cor de la traspuesta de los datos."
+      "En R se calcula como uno menos cor de la traspuesta de los datos."
     ],
     [
       216.15,
@@ -312,7 +312,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       235.75,
-      "Be y ce, cuando una tiene uno y la otra cero."
+      "b y c, cuando una tiene uno y la otra cero."
     ],
     [
       238.65,
@@ -328,7 +328,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       251.38,
-      "Si la respuesta es no, se usa Jaccard: be más ce, sobre a más be más ce."
+      "Si la respuesta es no, se usa Jaccard: b más c, sobre a más b más c."
     ],
     [
       255.82,
@@ -336,15 +336,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       260.15,
-      "Si la respuesta es sí, se usa Simpl Matching: be más ce sobre los cuatro conteos."
+      "Si la respuesta es sí, se usa Simpl Matching: b más c sobre los cuatro conteos."
     ],
     [
       265.34,
-      "Y la distancia de Hamming es aún más simple: cuántas variables son distintas, o sea, be más ce."
+      "Y la distancia de Hamming es aún más simple: cuántas variables son distintas, o sea, b más c."
     ],
     [
       271.17,
-      "Con ceros y unos coincide con la Manhattan, y así se calcula en erre."
+      "Con ceros y unos coincide con la Manhattan, y así se calcula en R."
     ],
     [
       275.88,
@@ -352,15 +352,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       277.37,
-      "Si a, be, ce y de valen uno cada una, ¿cuánto da Simpl Matching?"
+      "Si a, b, c y de valen uno cada una, ¿cuánto da Simpl Matching?"
     ],
     [
       285.86,
-      "Cero coma cinco: dos diferencias sobre cuatro variables."
+      "0,5: dos diferencias sobre 4 variables."
     ],
     [
       289.65,
-      "Jaccard, en cambio, deja fuera la doble ausencia y divide por tres: dos tercios."
+      "Jaccard, en cambio, deja fuera la doble ausencia y divide por 3: dos tercios."
     ],
     [
       295.23,
@@ -380,7 +380,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       315.57,
-      "Piensa en empresas con activos, que van de diez a veinte, y trabajadores, que van de cuarenta a trescientos cincuenta."
+      "Piensa en empresas con activos, que van de diez a 20, y trabajadores, que van de 40 a 350."
     ],
     [
       322.49,
@@ -396,7 +396,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       334.11,
-      "La más usada es el puntaje zeta: restar la media y dividir por la desviación estándar."
+      "La más usada es el puntaje Z: restar la media y dividir por la desviación estándar."
     ],
     [
       339.53,
@@ -404,7 +404,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       342.1,
-      "En erre es la función scale."
+      "En R es la función scale."
     ],
     [
       344.12,
@@ -436,7 +436,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       383.76,
-      "Las distancias de Minkowski son Manhattan, euclídea y Chebyshev, según lambda; y la de correlación mira el patrón."
+      "Las distancias de Minkowski son Manhattan, euclídea y Chebyshev, según λ; y la de correlación mira el patrón."
     ],
     [
       390.91,
@@ -448,8 +448,97 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       401.79,
-      "Eso fue el módulo once."
+      "Eso fue el módulo 11."
     ]
   ],
-  "huella": "8e2137b53835"
+  "huella": "8e2137b53835",
+  "frasesHabladas": [
+    "Ahora toca el módulo once: el análisis de conglomerados, o clastering, y cómo medir qué tan parecidas son dos observaciones.",
+    "La idea es agrupar observaciones de modo que las de un mismo grupo se parezcan entre sí, y las de grupos distintos se diferencien.",
+    "Cada grupo se llama clúster.",
+    "Y lo interesante es que nadie nos dice de antemano cuáles son los grupos: salen de los datos.",
+    "Por eso se dice que es aprendizaje no supervisado.",
+    "¿En qué se diferencia de la clasificación, que veremos más adelante?",
+    "En la clasificación los grupos ya se conocen, y lo que se busca es asignar casos nuevos.",
+    "Acá no hay etiquetas: los grupos aparecen solos.",
+    "Lo que se busca, formalmente, es una partición de los datos que cumpla tres cosas.",
+    "Que toda observación quede en algún clúster, que es la cobertura.",
+    "Que ninguna quede en dos clústeres a la vez, la disjuntividad.",
+    "Y que ningún clúster quede vacío.",
+    "El objetivo es que la variabilidad dentro de cada grupo sea mínima, que es la cohesión, y la diferencia entre grupos, máxima, que es la separación.",
+    "El análisis se hace en cinco pasos.",
+    "Primero, preparar los datos: limpiarlos y estandarizarlos.",
+    "Segundo, definir la distancia.",
+    "Tercero, elegir el algoritmo, que puede ser jerárquico o particionado.",
+    "Cuarto, decidir cuántos clústeres, con el codo, la silueta o el dendrograma.",
+    "Y quinto, validar e interpretar.",
+    "Este módulo trata los dos primeros pasos.",
+    "Para agrupar lo parecido, primero hay que medir el parecido.",
+    "Eso se hace con una distancia.",
+    "Las tres distancias más comunes vienen de una misma familia, la de Minkowski.",
+    "Se toman las diferencias entre dos observaciones, variable por variable, en valor absoluto.",
+    "Se elevan a un exponente lambda, se suman, y se saca la raíz lambda.",
+    "Si lambda es uno, queda la distancia Manhattan: la suma de las diferencias absolutas, como caminar por las calles de una ciudad.",
+    "Si lambda es dos, la euclídea: la línea recta.",
+    "Y si lambda es infinito, Chebyshev: la diferencia más grande en una sola variable.",
+    "Veámoslo con las ocho empresas de la clase, que tienen inversión y ventas.",
+    "La empresa uno tiene dieciséis y diez.",
+    "La empresa dos, doce y catorce.",
+    "Difieren en cuatro en inversión y en cuatro en ventas.",
+    "¿Cuánto vale la distancia Manhattan entre ellas?",
+    "Ocho: cuatro más cuatro.",
+    "La euclídea es la raíz de dieciséis más dieciséis, cinco coma sesenta y seis.",
+    "Y Chebyshev es cuatro, la mayor de las dos diferencias.",
+    "En erre todas salen con la función dist, indicando el método: euclidean, manhattan, o maximum.",
+    "Ojo con ese último: Chebyshev en erre se llama maximum.",
+    "Un dato que va a volver más adelante: la euclídea al cuadrado es la que usa el método de Ward, y tiene el efecto de agrandar las distancias grandes.",
+    "Hay otra distancia, distinta en espíritu: la basada en la correlación.",
+    "Sirve cuando interesa el patrón y no el nivel.",
+    "Piensa en dos clientes que suben y bajan su consumo en los mismos meses, aunque uno consuma mucho más que el otro.",
+    "Se calcula como uno menos la correlación entre las dos observaciones.",
+    "Va de cero a dos.",
+    "Cero es correlación perfecta positiva, y uno, sin correlación.",
+    "¿Y cuándo vale dos?",
+    "Cuando la correlación es menos uno: uno menos menos uno, dos.",
+    "En erre se calcula como uno menos cor de la traspuesta de los datos.",
+    "La traspuesta hace falta porque cor correlaciona columnas, y acá queremos correlacionar filas, es decir, observaciones.",
+    "¿Y si las variables son de sí o no, ceros y unos?",
+    "Al comparar dos observaciones, variable por variable, hay cuatro conteos.",
+    "A, cuando las dos tienen un uno.",
+    "Be y ce, cuando una tiene uno y la otra cero.",
+    "Y de, cuando las dos tienen cero.",
+    "La pregunta clave es esta: que dos observaciones compartan un cero, ¿dice algo de su parecido?",
+    "Que dos personas no tengan un yate no las hace parecidas.",
+    "Si la respuesta es no, se usa Jaccard: be más ce, sobre a más be más ce.",
+    "Es decir, las diferencias sobre todo, menos las dobles ausencias.",
+    "Si la respuesta es sí, se usa Simpl Matching: be más ce sobre los cuatro conteos.",
+    "Y la distancia de Hamming es aún más simple: cuántas variables son distintas, o sea, be más ce.",
+    "Con ceros y unos coincide con la Manhattan, y así se calcula en erre.",
+    "Una cuenta rápida.",
+    "Si a, be, ce y de valen uno cada una, ¿cuánto da Simpl Matching?",
+    "Cero coma cinco: dos diferencias sobre cuatro variables.",
+    "Jaccard, en cambio, deja fuera la doble ausencia y divide por tres: dos tercios.",
+    "En la ayudantía cinco aparecía esto con productos.",
+    "El producto uno es uno, cero, uno, uno; el producto tres es cero, uno, cero, cero.",
+    "Difieren en las cuatro variables, así que la distancia de Hamming es cuatro.",
+    "Último tema, y es de los que más se olvidan: estandarizar antes de calcular distancias.",
+    "Piensa en empresas con activos, que van de diez a veinte, y trabajadores, que van de cuarenta a trescientos cincuenta.",
+    "Sin estandarizar, la distancia depende casi solo de los trabajadores, porque sus números son mucho más grandes.",
+    "Los activos casi no cuentan.",
+    "Hay tres formas de corregirlo.",
+    "La más usada es el puntaje zeta: restar la media y dividir por la desviación estándar.",
+    "Queda todo con media cero y desviación uno.",
+    "En erre es la función scale.",
+    "La segunda es dividir por el máximo, que sirve para datos positivos y conserva el cero.",
+    "Y la tercera es min max: restar el mínimo y dividir por el rango, para que todo quede entre cero y uno.",
+    "¿Cuál de las tres crees que sufre más con un valor atípico?",
+    "Min max.",
+    "Un solo valor extremo fija el máximo o el mínimo, y aplasta a todos los demás en un rincón del intervalo.",
+    "Y no estandarizar solo tiene sentido cuando las variables ya están en unidades comparables.",
+    "Entonces: el clastering agrupa sin etiquetas, buscando grupos cohesionados y separados.",
+    "Las distancias de Minkowski son Manhattan, euclídea y Chebyshev, según lambda; y la de correlación mira el patrón.",
+    "Con datos binarios, Jaccard ignora los ceros compartidos y Simpl Matching los cuenta.",
+    "Y antes de todo, estandarizar, para que ninguna variable mande por su escala.",
+    "Eso fue el módulo once."
+  ]
 });

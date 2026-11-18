@@ -118,15 +118,15 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo veintidós: los diseños factoriales dos a la ka, y cómo se bloquean."
+      "Ahora toca el módulo 22: los diseños factoriales dos a la k, y cómo se bloquean."
     ],
     [
       6.07,
-      "Es un caso especial del factorial: todos los factores tienen solo dos niveles, uno bajo, que se anota menos uno, y uno alto, más uno."
+      "Es un caso especial del factorial: todos los factores tienen solo dos niveles, uno bajo, que se anota −1, y uno alto, +1."
     ],
     [
       14.3,
-      "Con tres factores hay dos al cubo, o sea ocho tratamientos."
+      "Con tres factores hay 2³, o sea ocho tratamientos."
     ],
     [
       18.14,
@@ -142,11 +142,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       35.43,
-      "Si están altos a y ce, se llama a ce."
+      "Si están altos a y c, se llama ac."
     ],
     [
       37.91,
-      "Si están todos altos, a be ce."
+      "Si están todos altos, abc."
     ],
     [
       40.27,
@@ -158,7 +158,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       49.34,
-      "Así que los ocho son: uno, a, be, a be, ce, a ce, be ce y a be ce."
+      "Así que los ocho son: uno, a, b, ab, c, ac, bc y abc."
     ],
     [
       55.04,
@@ -170,7 +170,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       62.79,
-      "Lo mismo para be y para ce."
+      "Lo mismo para b y para c."
     ],
     [
       65.21,
@@ -182,15 +182,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       68.67,
-      "El signo de la interacción a be es el signo de a multiplicado por el de be."
+      "El signo de la interacción ab es el signo de a multiplicado por el de b."
     ],
     [
       73.06,
-      "Piensa en el tratamiento a: ahí a está alto y be está bajo."
+      "Piensa en el tratamiento a: ahí a está alto y b está bajo."
     ],
     [
       76.74,
-      "¿Qué signo lleva en la columna a be?"
+      "¿Qué signo lleva en la columna ab?"
     ],
     [
       83.25,
@@ -206,7 +206,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       94.95,
-      "Por ejemplo, el contraste de a es a, más a be, más a ce, más a be ce, menos los otros cuatro."
+      "Por ejemplo, el contraste de a es a, más ab, más ac, más abc, menos los otros cuatro."
     ],
     [
       102.42,
@@ -214,15 +214,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       104.59,
-      "El efecto, dividiendo el contraste por ene por dos elevado a ka menos uno."
+      "El efecto, dividiendo el contraste por n · 2 elevado a k − 1."
     ],
     [
       109.0,
-      "Y la suma de cuadrados, elevando el contraste al cuadrado y dividiendo por ene por dos elevado a ka."
+      "Y la suma de cuadrados, elevando el contraste al cuadrado y dividiendo por n · 2 elevado a k."
     ],
     [
       114.97,
-      "Ene es el número de réplicas."
+      "n es el número de réplicas."
     ],
     [
       117.39,
@@ -238,7 +238,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       131.44,
-      "En un dos al cubo hay siete efectos, y el error tiene ocho por ene menos uno grados de libertad."
+      "En un 2³ hay siete efectos, y el error tiene 8 · n − 1 grados de libertad."
     ],
     [
       137.02,
@@ -246,15 +246,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       143.94,
-      "El ejercicio de la prueba fue un dos al cuadrado con dos réplicas."
+      "El ejercicio de la prueba fue un 2² con dos réplicas."
     ],
     [
       147.84,
-      "El factor a es la concentración del reactivo, quince o veinticinco por ciento."
+      "El factor a es la concentración del reactivo, 15 o 25 %."
     ],
     [
       152.98,
-      "El factor be es la tasa de alimentación, veinte o treinta libras por hora."
+      "El factor b es la tasa de alimentación, 20 o 30 libras por hora."
     ],
     [
       157.44,
@@ -262,23 +262,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       159.92,
-      "Los totales son: uno, doscientos noventa y dos; a, trescientos cuatro; be, doscientos sesenta y nueve; y a be, trescientos uno."
+      "Los totales son: uno, 292; a, 304; b, 269; y ab, 301."
     ],
     [
       168.1,
-      "El contraste de a es a más a be, menos uno, menos be."
+      "El contraste de a es a más ab, −1 − b."
     ],
     [
       171.38,
-      "Eso da cuarenta y cuatro."
+      "Eso da 44."
     ],
     [
       173.13,
-      "Con dos factores y dos réplicas, el efecto se divide por cuatro: once."
+      "Con dos factores y dos réplicas, el efecto se divide por 4: 11."
     ],
     [
       177.57,
-      "Y la suma de cuadrados es cuarenta y cuatro al cuadrado dividido por ocho."
+      "Y la suma de cuadrados es 44² / 8."
     ],
     [
       181.99,
@@ -286,31 +286,31 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       188.38,
-      "Doscientos cuarenta y dos."
+      "242."
     ],
     [
       190.88,
-      "Siguiendo igual, el efecto de be es menos seis coma cinco, con suma de cuadrados ochenta y cuatro coma cinco."
+      "Siguiendo igual, el efecto de b es −6,5, con suma de cuadrados 84,5."
     ],
     [
       197.58,
-      "Y la interacción tiene efecto cinco y suma de cuadrados cincuenta."
+      "Y la interacción tiene efecto cinco y suma de cuadrados 50."
     ],
     [
       201.63,
-      "El total es cuatrocientos tres coma cinco, así que el error, por diferencia, queda en veintisiete, con cuatro grados de libertad."
+      "El total es 403,5, así que el error, por diferencia, queda en 27, con cuatro grados de libertad."
     ],
     [
       209.47,
-      "Su cuadrado medio es seis coma setenta y cinco."
+      "Su cuadrado medio es 6,75."
     ],
     [
       213.16,
-      "Los efe son: treinta y cinco coma ochenta y cinco para a, doce coma cincuenta y dos para be, y siete coma cuarenta y uno para la interacción."
+      "Los F son: 35,85 para a, 12,52 para b, y 7,41 para la interacción."
     ],
     [
       221.83,
-      "El crítico al cinco por ciento, con uno y cuatro grados de libertad, es siete coma setenta y uno."
+      "El crítico al 5 %, con uno y cuatro grados de libertad, es 7,71."
     ],
     [
       228.05,
@@ -318,15 +318,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       234.71,
-      "Siete coma cuarenta y uno no alcanza a siete coma setenta y uno."
+      "7,41 no alcanza a 7,71."
     ],
     [
       238.85,
-      "No es significativa al cinco por ciento, aunque queda muy cerca, con pe valor cero coma cero cincuenta y tres."
+      "No es significativa al 5 %, aunque queda muy cerca, con valor p 0,053."
     ],
     [
       245.77,
-      "Los factores a y be sí son significativos."
+      "Los factores a y b sí son significativos."
     ],
     [
       248.63,
@@ -334,7 +334,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       256.78,
-      "El ejemplo de la clase en erre es la resistencia de un material compuesto."
+      "El ejemplo de la clase en R es la resistencia de un material compuesto."
     ],
     [
       261.03,
@@ -342,11 +342,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       265.31,
-      "Dieciséis corridas."
+      "16 corridas."
     ],
     [
       267.52,
-      "Se crean los tres factores con factor, y se ajusta a o ve con la resistencia, tilde, los tres factores unidos con asteriscos."
+      "Se crean los tres factores con factor, y se ajusta aov con la resistencia, tilde, los tres factores unidos con asteriscos."
     ],
     [
       275.39,
@@ -394,7 +394,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       320.34,
-      "Para la temperatura, más o menos once coma tres."
+      "Para la temperatura, más o −11,3."
     ],
     [
       324.03,
@@ -402,15 +402,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       336.01,
-      "El doble: veintidós coma seis."
+      "El doble: 22,6."
     ],
     [
       338.11,
-      "En un dos a la ka, el número que entrega model tables es la mitad del efecto."
+      "En un dos a la k, el número que entrega model tables es la mitad del efecto."
     ],
     [
       343.18,
-      "Para la presión, el nivel alto queda unos dos coma siete por debajo de la media general."
+      "Para la presión, el nivel alto queda unos 2,7 por debajo de la media general."
     ],
     [
       348.32,
@@ -466,11 +466,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       421.24,
-      "El ejemplo de la clase es un dos al cuadrado, temperatura y presión, corrido en dos días, con una réplica completa por día."
+      "El ejemplo de la clase es un 2², temperatura y presión, corrido en dos días, con una réplica completa por día."
     ],
     [
       428.59,
-      "En erre, el bloque se suma al modelo: la respuesta, tilde, temperatura asterisco presión, más bloque."
+      "En R, el bloque se suma al modelo: la respuesta, tilde, temperatura asterisco presión, más bloque."
     ],
     [
       435.05,
@@ -490,7 +490,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       450.21,
-      "Y el bloque sale significativo, con pe valor cero coma cero cero tres: los días sí eran distintos, y bloquear fue útil."
+      "Y el bloque sale significativo, con valor p 0,003: los días sí eran distintos, y bloquear fue útil."
     ],
     [
       459.46,
@@ -506,7 +506,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       468.88,
-      "El efecto es el contraste dividido por ene por dos elevado a ka menos uno, y la suma de cuadrados es el contraste al cuadrado dividido por ene por dos elevado a ka, con un grado de libertad por efecto."
+      "El efecto es el contraste dividido por n · 2 elevado a k − 1, y la suma de cuadrados es el contraste al cuadrado dividido por n · 2 elevado a k, con un grado de libertad por efecto."
     ],
     [
       480.7,
@@ -518,8 +518,111 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       490.45,
-      "Eso fue el módulo veintidós."
+      "Eso fue el módulo 22."
     ]
   ],
-  "huella": "d0bc1e4ab77d"
+  "huella": "d0bc1e4ab77d",
+  "frasesHabladas": [
+    "Ahora toca el módulo veintidós: los diseños factoriales dos a la ka, y cómo se bloquean.",
+    "Es un caso especial del factorial: todos los factores tienen solo dos niveles, uno bajo, que se anota menos uno, y uno alto, más uno.",
+    "Con tres factores hay dos al cubo, o sea ocho tratamientos.",
+    "Una forma linda de imaginarlos es como los ocho vértices de un cubo, donde cada eje es un factor.",
+    "Para nombrar los tratamientos se usa la notación de Yates: se escriben las letras minúsculas de los factores que están en nivel alto.",
+    "Si solo el factor a está alto, el tratamiento se llama a.",
+    "Si están altos a y ce, se llama a ce.",
+    "Si están todos altos, a be ce.",
+    "¿Y cuando están todos bajos, que no queda ninguna letra?",
+    "Se escribe uno entre paréntesis.",
+    "Así que los ocho son: uno, a, be, a be, ce, a ce, be ce y a be ce.",
+    "Para cada efecto se arma una columna de signos.",
+    "Para el factor a, un más en los tratamientos con a alto y un menos en los demás.",
+    "Lo mismo para be y para ce.",
+    "¿Y para las interacciones?",
+    "No hay que inventar nada.",
+    "El signo de la interacción a be es el signo de a multiplicado por el de be.",
+    "Piensa en el tratamiento a: ahí a está alto y be está bajo.",
+    "¿Qué signo lleva en la columna a be?",
+    "Menos.",
+    "Más por menos da menos.",
+    "Con esas columnas se calcula el contraste de cada efecto: se suman los totales que llevan más y se restan los que llevan menos.",
+    "Por ejemplo, el contraste de a es a, más a be, más a ce, más a be ce, menos los otros cuatro.",
+    "Del contraste salen dos cosas.",
+    "El efecto, dividiendo el contraste por ene por dos elevado a ka menos uno.",
+    "Y la suma de cuadrados, elevando el contraste al cuadrado y dividiendo por ene por dos elevado a ka.",
+    "Ene es el número de réplicas.",
+    "Los divisores se parecen, y por eso se confunden fácil.",
+    "Una forma de recordarlos: la suma de cuadrados divide por el doble que el efecto, y además el contraste va al cuadrado.",
+    "Cada efecto tiene un solo grado de libertad.",
+    "En un dos al cubo hay siete efectos, y el error tiene ocho por ene menos uno grados de libertad.",
+    "Cada efecto se prueba con su cuadrado medio dividido por el cuadrado medio del error.",
+    "El ejercicio de la prueba fue un dos al cuadrado con dos réplicas.",
+    "El factor a es la concentración del reactivo, quince o veinticinco por ciento.",
+    "El factor be es la tasa de alimentación, veinte o treinta libras por hora.",
+    "Y la respuesta es la viscosidad.",
+    "Los totales son: uno, doscientos noventa y dos; a, trescientos cuatro; be, doscientos sesenta y nueve; y a be, trescientos uno.",
+    "El contraste de a es a más a be, menos uno, menos be.",
+    "Eso da cuarenta y cuatro.",
+    "Con dos factores y dos réplicas, el efecto se divide por cuatro: once.",
+    "Y la suma de cuadrados es cuarenta y cuatro al cuadrado dividido por ocho.",
+    "¿Cuánto da?",
+    "Doscientos cuarenta y dos.",
+    "Siguiendo igual, el efecto de be es menos seis coma cinco, con suma de cuadrados ochenta y cuatro coma cinco.",
+    "Y la interacción tiene efecto cinco y suma de cuadrados cincuenta.",
+    "El total es cuatrocientos tres coma cinco, así que el error, por diferencia, queda en veintisiete, con cuatro grados de libertad.",
+    "Su cuadrado medio es seis coma setenta y cinco.",
+    "Los efe son: treinta y cinco coma ochenta y cinco para a, doce coma cincuenta y dos para be, y siete coma cuarenta y uno para la interacción.",
+    "El crítico al cinco por ciento, con uno y cuatro grados de libertad, es siete coma setenta y uno.",
+    "¿Qué pasa entonces con la interacción?",
+    "Siete coma cuarenta y uno no alcanza a siete coma setenta y uno.",
+    "No es significativa al cinco por ciento, aunque queda muy cerca, con pe valor cero coma cero cincuenta y tres.",
+    "Los factores a y be sí son significativos.",
+    "La concentración es el efecto más grande y aumenta la viscosidad; la tasa de alimentación la disminuye.",
+    "El ejemplo de la clase en erre es la resistencia de un material compuesto.",
+    "Tres factores: temperatura, presión y aditivo, con dos réplicas.",
+    "Dieciséis corridas.",
+    "Se crean los tres factores con factor, y se ajusta a o ve con la resistencia, tilde, los tres factores unidos con asteriscos.",
+    "El asterisco genera todo: los tres efectos principales, las tres interacciones dobles y la triple.",
+    "Si solo quisiera los efectos principales, los uniría con signos más.",
+    "¿Qué dice la tabla?",
+    "La temperatura es, por lejos, el efecto más grande.",
+    "La presión también es significativa.",
+    "El aditivo, por sí solo, no.",
+    "Pero la interacción entre temperatura y aditivo sí es muy significativa: el efecto de la temperatura depende de qué aditivo se use.",
+    "El error tiene ocho grados de libertad.",
+    "Para ver los efectos estimados se usa model punto tables, con type igual a effects.",
+    "Hay que tener cuidado con cómo se lee.",
+    "Lo que muestra es cuánto se aleja la media de cada nivel respecto de la media general.",
+    "Para la temperatura, más o menos once coma tres.",
+    "Entonces, si defino el efecto como la media en nivel alto menos la media en nivel bajo, ¿cuánto vale el efecto de la temperatura?",
+    "El doble: veintidós coma seis.",
+    "En un dos a la ka, el número que entrega model tables es la mitad del efecto.",
+    "Para la presión, el nivel alto queda unos dos coma siete por debajo de la media general.",
+    "Es decir, más presión, menos resistencia.",
+    "Las gráficas se hacen con dos funciones.",
+    "Plot punto design muestra la media en cada nivel de cada factor, y ahí se ve que la temperatura tiene el mayor recorrido.",
+    "E interaction punto plot recibe primero el factor del eje horizontal, después el factor que define las líneas, y al final la respuesta.",
+    "En la resistencia, temperatura con presión y presión con aditivo dan líneas casi paralelas.",
+    "Temperatura con aditivo, en cambio, da pendientes muy distintas: con temperatura alta, el aditivo marca una gran diferencia.",
+    "A veces no se pueden correr todos los tratamientos en las mismas condiciones.",
+    "Tal vez no alcanza un solo día, o hay distintos turnos, lotes u operadores.",
+    "Entonces los tratamientos se reparten en bloques.",
+    "La idea es repartirlos sin estropear la estimación de los efectos importantes.",
+    "Y hay una jerarquía: lo que más se cuida son los efectos principales, luego las interacciones dobles, y si hay que sacrificar algo, se sacrifican las triples y las de orden mayor.",
+    "El caso ideal es que cada bloque contenga una réplica completa.",
+    "Así, ningún efecto queda confundido con los bloques.",
+    "El ejemplo de la clase es un dos al cuadrado, temperatura y presión, corrido en dos días, con una réplica completa por día.",
+    "En erre, el bloque se suma al modelo: la respuesta, tilde, temperatura asterisco presión, más bloque.",
+    "El bloque va sumado, sin interacciones con los factores.",
+    "¿Y qué sale?",
+    "La temperatura y la presión son significativas, con la temperatura dominando.",
+    "La interacción no lo es, así que los efectos son aditivos y las líneas se ven paralelas.",
+    "Y el bloque sale significativo, con pe valor cero coma cero cero tres: los días sí eran distintos, y bloquear fue útil.",
+    "Lo esencial de este módulo cabe en pocas frases.",
+    "Los tratamientos se nombran con Yates.",
+    "El signo de una interacción es el producto de los signos de sus factores.",
+    "El efecto es el contraste dividido por ene por dos elevado a ka menos uno, y la suma de cuadrados es el contraste al cuadrado dividido por ene por dos elevado a ka, con un grado de libertad por efecto.",
+    "Model tables entrega la mitad del efecto.",
+    "Y cuando hay que bloquear, el bloque se suma al modelo y se sacrifican primero las interacciones más altas.",
+    "Eso fue el módulo veintidós."
+  ]
 });

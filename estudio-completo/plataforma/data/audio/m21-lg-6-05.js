@@ -67,11 +67,11 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "El ejercicio cinco del capítulo seis es un dos al cubo sin réplicas."
+      "El ejercicio cinco del capítulo seis es un 2³ sin réplicas."
     ],
     [
       4.63,
-      "Nos dan ocho filas con los signos de a, be y ce, y una respuesta."
+      "Nos dan ocho filas con los signos de a, b y c, y una respuesta."
     ],
     [
       8.69,
@@ -91,11 +91,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       25.25,
-      "La primera fila tiene a bajo, be alto y ce bajo: entonces es be."
+      "La primera fila tiene a bajo, b alto y c bajo: entonces es b."
     ],
     [
       29.24,
-      "La segunda tiene todo alto: a be ce."
+      "La segunda tiene todo alto: abc."
     ],
     [
       31.7,
@@ -103,63 +103,63 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       33.71,
-      "Y siguiendo igual: a ce, ce, a be, be ce y a."
+      "Y siguiendo igual: ac, c, ab, bc y a."
     ],
     [
       36.83,
-      "Con eso ya se pueden reordenar mentalmente: uno vale treinta, a diecisiete, be veinticinco, a be catorce, ce diez, a ce diez, be ce treinta y uno, y a be ce doce."
+      "Con eso ya se pueden reordenar mentalmente: uno vale 30, a 17, b 25, ab 14, c diez, ac diez, bc 31, y abc 12."
     ],
     [
       48.49,
-      "El contraste de a suma los tratamientos que tienen la letra a y resta los que no: a, a be, a ce y a be ce, menos uno, be, ce y be ce."
+      "El contraste de a suma los tratamientos que tienen la letra a y resta los que no: a, ab, ac y abc, −1, b, c y bc."
     ],
     [
       56.13,
-      "Diecisiete más catorce más diez más doce son cincuenta y tres."
+      "17 + 14 + 10 + 12 son 53."
     ],
     [
       60.1,
-      "Treinta más veinticinco más diez más treinta y uno son noventa y seis."
+      "30 + 25 + 10 + 31 son 96."
     ],
     [
       64.62,
-      "La diferencia es menos cuarenta y tres."
+      "La diferencia es −43."
     ],
     [
       67.06,
-      "Sin réplicas, el efecto se divide por cuatro: menos diez coma setenta y cinco."
+      "Sin réplicas, el efecto se divide por 4: −10,75."
     ],
     [
       72.58,
-      "Para be se hace lo mismo con la letra be: el contraste da quince, y el efecto, tres coma setenta y cinco."
+      "Para b se hace lo mismo con la letra b: el contraste da 15, y el efecto, 3,75."
     ],
     [
       79.46,
-      "En la gráfica de efectos principales, a baja de veinticuatro a trece coma veinticinco: una pendiente fuerte."
+      "En la gráfica de efectos principales, a baja de 24 a 13,25: una pendiente fuerte."
     ],
     [
       86.49,
-      "Be sube de dieciséis coma setenta y cinco a veinte coma cinco: bastante menos."
+      "b sube de 16,75 a 20,5: bastante menos."
     ],
     [
       93.49,
-      "Para la interacción, el signo de cada tratamiento es el producto de los signos de a y de be."
+      "Para la interacción, el signo de cada tratamiento es el producto de los signos de a y de b."
     ],
     [
       99.21,
-      "Llevan más los que tienen las dos letras o ninguna: uno, a be, ce y a be ce."
+      "Llevan más los que tienen las dos letras o ninguna: uno, ab, c y abc."
     ],
     [
       103.85,
-      "El contraste da menos diecisiete, y el efecto, menos cuatro coma veinticinco."
+      "El contraste da −17, y el efecto, −4,25."
     ],
     [
       109.27,
-      "En la gráfica de interacción, promediando sobre ce: con be bajo, a baja la respuesta de veinte a trece coma cinco."
+      "En la gráfica de interacción, promediando sobre c: con b bajo, a baja la respuesta de 20 a 13,5."
     ],
     [
       116.31,
-      "Con be alto, de veintiocho a trece."
+      "Con b alto, de 28 a 13."
     ],
     [
       118.59,
@@ -195,15 +195,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       157.88,
-      "Con un dos al cubo sin réplicas, se divide el contraste al cuadrado por ocho."
+      "Con un 2³ sin réplicas, se divide el contraste al cuadrado por 8."
     ],
     [
       162.48,
-      "La de a: cuarenta y tres al cuadrado sobre ocho, doscientos treinta y uno coma uno dos cinco."
+      "La de a: 43² / 8, 231,125."
     ],
     [
       168.15,
-      "Y la de a be: diecisiete al cuadrado sobre ocho, treinta y seis coma uno dos cinco."
+      "Y la de ab: 17² / 8, 36,125."
     ],
     [
       173.56,
@@ -214,5 +214,44 @@ PLATAFORMA.registrar("audio", {
       "Con un solo código mal puesto, todos los contrastes salen mal."
     ]
   ],
-  "huella": "1a679187a701"
+  "huella": "1a679187a701",
+  "frasesHabladas": [
+    "El ejercicio cinco del capítulo seis es un dos al cubo sin réplicas.",
+    "Nos dan ocho filas con los signos de a, be y ce, y una respuesta.",
+    "La primera trampa está en el enunciado: «las filas no están en orden estándar».",
+    "Y otra vez se pide contestar sin software.",
+    "Lo primero es ponerle nombre a cada fila.",
+    "La regla de Yates: se escriben las letras de los factores que están en nivel alto.",
+    "La primera fila tiene a bajo, be alto y ce bajo: entonces es be.",
+    "La segunda tiene todo alto: a be ce.",
+    "La tercera, todo bajo: uno.",
+    "Y siguiendo igual: a ce, ce, a be, be ce y a.",
+    "Con eso ya se pueden reordenar mentalmente: uno vale treinta, a diecisiete, be veinticinco, a be catorce, ce diez, a ce diez, be ce treinta y uno, y a be ce doce.",
+    "El contraste de a suma los tratamientos que tienen la letra a y resta los que no: a, a be, a ce y a be ce, menos uno, be, ce y be ce.",
+    "Diecisiete más catorce más diez más doce son cincuenta y tres.",
+    "Treinta más veinticinco más diez más treinta y uno son noventa y seis.",
+    "La diferencia es menos cuarenta y tres.",
+    "Sin réplicas, el efecto se divide por cuatro: menos diez coma setenta y cinco.",
+    "Para be se hace lo mismo con la letra be: el contraste da quince, y el efecto, tres coma setenta y cinco.",
+    "En la gráfica de efectos principales, a baja de veinticuatro a trece coma veinticinco: una pendiente fuerte.",
+    "Be sube de dieciséis coma setenta y cinco a veinte coma cinco: bastante menos.",
+    "Para la interacción, el signo de cada tratamiento es el producto de los signos de a y de be.",
+    "Llevan más los que tienen las dos letras o ninguna: uno, a be, ce y a be ce.",
+    "El contraste da menos diecisiete, y el efecto, menos cuatro coma veinticinco.",
+    "En la gráfica de interacción, promediando sobre ce: con be bajo, a baja la respuesta de veinte a trece coma cinco.",
+    "Con be alto, de veintiocho a trece.",
+    "Las pendientes son distintas, así que hay indicios de interacción.",
+    "El ejercicio pregunta qué haría para saber si estos efectos son significativos.",
+    "¿Qué problema tiene este diseño?",
+    "No tiene réplicas, así que no hay grados de libertad para el error.",
+    "Una salida es graficar los efectos en papel normal: los que se alejan de la recta son los activos.",
+    "Otra, suponer que las interacciones de orden alto son despreciables y usarlas como error.",
+    "Y la más directa: replicar el experimento.",
+    "Por último, las sumas de cuadrados.",
+    "Con un dos al cubo sin réplicas, se divide el contraste al cuadrado por ocho.",
+    "La de a: cuarenta y tres al cuadrado sobre ocho, doscientos treinta y uno coma uno dos cinco.",
+    "Y la de a be: diecisiete al cuadrado sobre ocho, treinta y seis coma uno dos cinco.",
+    "El paso que no hay que saltarse en este ejercicio es el primero: nombrar bien cada tratamiento.",
+    "Con un solo código mal puesto, todos los contrastes salen mal."
+  ]
 });

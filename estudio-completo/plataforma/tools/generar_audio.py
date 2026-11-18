@@ -71,11 +71,14 @@ noventa cien ciento doscientos trescientos cuatrocientos quinientos seiscientos 
 novecientos mil coma medio media""".split())
 # Letras, símbolos y nombres de R dichos con palabras: Whisper los escribe como «R», «W», «*», «.»…
 HABLADAS = set("""erre doble tilde punto asterisco bind elevado cuadrado cubo summary tables
-interaction plot design type effects agricolae""".split())
+interaction plot design type effects agricolae
+equis gorro prima menos mas igual beta betas hache lambda sigma efe raiz delta""".split())
 
 
 # ---------------------------------------------------------------- guion
 MARCA = re.compile(r"\{([a-z0-9][a-z0-9-]*)\}\s*")
+# [[escrito|hablado]]: se lee «hablado»; el subtítulo muestra «escrito» (ver tools/subtitulos.py)
+ESCRITO = re.compile(r"\[\[([^|\]]*)\|([^\]]*)\]\]")
 
 
 def leer_guion(ruta):
@@ -119,7 +122,7 @@ def leer_guion(ruta):
         elif linea.startswith("["):
             sys.exit(f"{ruta.name}:{n}: marca desconocida {linea}")
         else:
-            limpio = MARCA.sub("", linea)
+            limpio = ESCRITO.sub(r"\2", MARCA.sub("", linea))
             raro = SOSPECHOSOS.search(limpio) or re.search(r"[{}]", limpio)
             if raro:
                 sys.exit(f"{ruta.name}:{n}: «{raro.group(0)}» no se puede leer en voz alta; escríbelo con palabras.")
@@ -144,6 +147,16 @@ def separar_marcas(frase):
     texto = (texto + frase[pos:]).strip()
     largo = max(len(texto), 1)
     return texto, [(i, min(c / largo, 1.0)) for i, c in marcas]
+
+
+def subtitulo(texto):
+    """Texto escrito para los subtítulos: [[escrito|hablado]] se respeta; el resto pasa por subtitulos.escribir."""
+    from subtitulos import escribir
+    fijos = []
+    def guardar(m):
+        fijos.append(m.group(1)); return f"⟦{len(fijos) - 1}⟧"
+    t = escribir(ESCRITO.sub(guardar, texto))
+    return re.sub(r"⟦(\d+)⟧", lambda m: fijos[int(m.group(1))], t)
 
 
 def frases(parrafo):
@@ -274,7 +287,7 @@ def frase_audio(texto, voz_id, semilla_base, verificar, avisos, mid):
 def generar(ruta, voz_id, semilla, verificar):
     mid = ruta.stem
     titulo, partes, meta = leer_guion(ruta)
-    pcm, capitulos, avisos, marcas, subtitulos = bytearray(), [], [], {}, []
+    pcm, capitulos, avisos, marcas, subtitulos, habladas = bytearray(), [], [], {}, [], []
     total = sum(len(frases(v)) for t, v in partes if t == "texto")
     hechas, inicio = 0, time.time()
 
@@ -297,12 +310,14 @@ def generar(ruta, voz_id, semilla, verificar):
             lista = frases(valor)
             for j, f in enumerate(lista):
                 texto, internas = separar_marcas(f)
+                hablado = ESCRITO.sub(r"\2", texto)
                 inicio_frase = len(pcm) / 2 / FREC
-                trozo = frase_audio(texto, voz_id, semilla, verificar, avisos, mid)
+                trozo = frase_audio(hablado, voz_id, semilla, verificar, avisos, mid)
                 dur = len(trozo) / 2 / FREC
                 for i, frac in internas:
                     marcas[i] = round(inicio_frase + frac * dur, 2)
-                subtitulos.append([round(inicio_frase, 2), texto])
+                subtitulos.append([round(inicio_frase, 2), subtitulo(texto)])
+                habladas.append(hablado)
                 pcm.extend(trozo)
                 silencio(PAUSA_FRASE if j < len(lista) - 1 else PAUSA_PARRAFO)
                 hechas += 1
@@ -324,7 +339,7 @@ def generar(ruta, voz_id, semilla, verificar):
             datos[clave] = meta[clave]
     if "orden" in meta:
         datos["orden"] = float(meta["orden"])
-    datos.update({"marcas": marcas, "frases": subtitulos, "huella": "pendiente" if avisos else huella(ruta, voz_id)})
+    datos.update({"marcas": marcas, "frases": subtitulos, "frasesHabladas": habladas, "huella": "pendiente" if avisos else huella(ruta, voz_id)})
     salida = RAIZ / "data" / "audio" / f"{mid}.js"
     salida.parent.mkdir(exist_ok=True)
     salida.write_text(

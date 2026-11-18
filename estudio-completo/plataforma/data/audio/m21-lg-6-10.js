@@ -73,23 +73,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       15.15,
-      "Y tres réplicas por combinación: veinticuatro corridas."
+      "Y tres réplicas por combinación: 24 corridas."
     ],
     [
       20.85,
-      "Con tres réplicas, el efecto es el contraste dividido en doce, y la suma de cuadrados, el contraste al cuadrado dividido en veinticuatro."
+      "Con tres réplicas, el efecto es el contraste dividido en 12, y la suma de cuadrados, el contraste al cuadrado dividido en 24."
     ],
     [
       29.49,
-      "El papel tiene el efecto más grande: contraste treinta y cinco coma nueve, efecto dos coma nueve nueve."
+      "El papel tiene el efecto más grande: contraste 35,9, efecto 2,99."
     ],
     [
       35.93,
-      "La dirección: contraste menos veintitrés coma uno, efecto menos uno coma nueve tres."
+      "La dirección: contraste −23,1, efecto −1,93."
     ],
     [
       41.45,
-      "Y la interacción entre papel y dirección: efecto menos uno coma cero ocho."
+      "Y la interacción entre papel y dirección: efecto −1,08."
     ],
     [
       46.02,
@@ -97,7 +97,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       51.36,
-      "La suma de cuadrados total es noventa y nueve coma uno cinco, y el error, dieciséis coma cero seis, con dieciséis grados de libertad."
+      "La suma de cuadrados total es 99,15, y el error, 16,06, con 16 grados de libertad."
     ],
     [
       59.51,
@@ -105,11 +105,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       62.14,
-      "El crítico para todos los efectos es efe con uno y dieciséis grados de libertad: cuatro coma cuarenta y nueve."
+      "El crítico para todos los efectos es F con uno y 16 grados de libertad: 4,49."
     ],
     [
       69.37,
-      "Superan el crítico el papel, con efe cincuenta y tres coma cinco, la dirección, con veintidós, y su interacción, con seis coma nueve."
+      "Superan el crítico el papel, con F 53,5, la dirección, con 22, y su interacción, con 6,9."
     ],
     [
       77.75,
@@ -117,7 +117,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       80.99,
-      "El modelo explica cerca del ochenta y cuatro por ciento de la variabilidad."
+      "El modelo explica cerca del 84 % de la variabilidad."
     ],
     [
       87.1,
@@ -125,7 +125,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       90.29,
-      "Cada coeficiente es la mitad del efecto: la media general, cuatro coma cero siete, más uno coma cinco por el papel, menos cero coma nueve seis por la dirección, menos cero coma cinco cuatro por la interacción."
+      "Cada coeficiente es la mitad del efecto: la media general, 4,07 + 1,5 por el papel, −0,96 por la dirección, −0,54 por la interacción."
     ],
     [
       103.44,
@@ -137,11 +137,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       115.72,
-      "Con esos signos, los tres términos suman a favor, y la predicción da siete coma cero siete."
+      "Con esos signos, los tres términos suman a favor, y la predicción da 7,07."
     ],
     [
       121.34,
-      "La media observada de esa celda es siete coma trece."
+      "La media observada de esa celda es 7,13."
     ],
     [
       124.98,
@@ -153,7 +153,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       131.05,
-      "Shapiro Wilk da pe igual a cero coma veintitrés, así que se acepta la normalidad."
+      "Shapiro Wilk da p = 0,23, así que se acepta la normalidad."
     ],
     [
       136.29,
@@ -164,5 +164,34 @@ PLATAFORMA.registrar("audio", {
       "Lo central de este ejercicio: cuando una interacción está activa, el mejor tratamiento se elige con el modelo completo, mirando los signos de cada término."
     ]
   ],
-  "huella": "79d7c3cc9a9b"
+  "huella": "79d7c3cc9a9b",
+  "frasesHabladas": [
+    "El ejercicio diez del capítulo seis lo propone un fabricante de bolsas de papel.",
+    "Se mide la resistencia al rasgamiento.",
+    "Mayor resistencia es mejor.",
+    "Hay tres factores con dos niveles: el tipo de papel, la humedad y la dirección del rasguño.",
+    "Y tres réplicas por combinación: veinticuatro corridas.",
+    "Con tres réplicas, el efecto es el contraste dividido en doce, y la suma de cuadrados, el contraste al cuadrado dividido en veinticuatro.",
+    "El papel tiene el efecto más grande: contraste treinta y cinco coma nueve, efecto dos coma nueve nueve.",
+    "La dirección: contraste menos veintitrés coma uno, efecto menos uno coma nueve tres.",
+    "Y la interacción entre papel y dirección: efecto menos uno coma cero ocho.",
+    "Todos los efectos que involucran la humedad son casi cero.",
+    "La suma de cuadrados total es noventa y nueve coma uno cinco, y el error, dieciséis coma cero seis, con dieciséis grados de libertad.",
+    "El cuadrado medio del error es uno.",
+    "El crítico para todos los efectos es efe con uno y dieciséis grados de libertad: cuatro coma cuarenta y nueve.",
+    "Superan el crítico el papel, con efe cincuenta y tres coma cinco, la dirección, con veintidós, y su interacción, con seis coma nueve.",
+    "Los efectos de la humedad no se acercan ni de lejos.",
+    "El modelo explica cerca del ochenta y cuatro por ciento de la variabilidad.",
+    "Con los efectos activos se arma un modelo de predicción.",
+    "Cada coeficiente es la mitad del efecto: la media general, cuatro coma cero siete, más uno coma cinco por el papel, menos cero coma nueve seis por la dirección, menos cero coma cinco cuatro por la interacción.",
+    "Para maximizar la resistencia, ¿qué niveles conviene elegir?",
+    "Papel en nivel alto y dirección en nivel bajo: el tratamiento a.",
+    "Con esos signos, los tres términos suman a favor, y la predicción da siete coma cero siete.",
+    "La media observada de esa celda es siete coma trece.",
+    "¿Y la humedad?",
+    "Como no influye, se fija en el nivel más económico.",
+    "Shapiro Wilk da pe igual a cero coma veintitrés, así que se acepta la normalidad.",
+    "Para la varianza constante y la independencia, se miran los residuos contra los predichos y contra el orden de corrida.",
+    "Lo central de este ejercicio: cuando una interacción está activa, el mejor tratamiento se elige con el modelo completo, mirando los signos de cada término."
+  ]
 });

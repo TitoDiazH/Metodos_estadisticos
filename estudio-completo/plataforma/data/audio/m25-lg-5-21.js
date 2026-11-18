@@ -64,11 +64,11 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "El ejercicio veintiuno del capítulo cinco estudia la resistencia del caucho vulcanizado."
+      "El ejercicio 21 del capítulo cinco estudia la resistencia del caucho vulcanizado."
     ],
     [
       6.11,
-      "Los factores son el tiempo de curado, a cuarenta, sesenta y ochenta minutos, y el tipo de acelerante, a, be o ce."
+      "Los factores son el tiempo de curado, a 40, 60 y 80 minutos, y el tipo de acelerante, a, b o c."
     ],
     [
       12.93,
@@ -80,7 +80,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       17.55,
-      "Y hay una pregunta poco común: explicar de forma gráfica cómo se obtiene el pe valor del tiempo."
+      "Y hay una pregunta poco común: explicar de forma gráfica cómo se obtiene el valor p del tiempo."
     ],
     [
       23.75,
@@ -88,7 +88,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       28.85,
-      "Es un factorial tres por tres con dos réplicas, de efectos fijos y completamente al azar: dieciocho corridas."
+      "Es un factorial 3 · 3 con dos réplicas, de efectos fijos y completamente al azar: 18 corridas."
     ],
     [
       36.15,
@@ -100,23 +100,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       49.4,
-      "Los números son grandes porque la resistencia anda cerca de cuatro mil."
+      "Los números son grandes porque la resistencia anda cerca de 4000."
     ],
     [
       53.39,
-      "El error tiene nueve grados de libertad y un cuadrado medio de noventa y un mil ciento once."
+      "El error tiene nueve grados de libertad y un cuadrado medio de 91111."
     ],
     [
       59.23,
-      "El efe del tiempo es cero coma uno dos, con pe valor cero coma ochenta y nueve."
+      "El F del tiempo es 0,12, con valor p 0,89."
     ],
     [
       64.2,
-      "El del acelerante, cero coma seis tres, con pe cero coma cincuenta y seis."
+      "El del acelerante, 0,63, con p 0,56."
     ],
     [
       68.96,
-      "Y el de la interacción, cero coma dos tres, con pe cero coma noventa y dos."
+      "Y el de la interacción, 0,23, con p 0,92."
     ],
     [
       73.82,
@@ -124,15 +124,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       75.52,
-      "Los tres efes están muy por debajo de sus críticos, que rondan entre tres coma seis y cuatro coma tres."
+      "Los tres efes están muy por debajo de sus críticos, que rondan entre 3,6 y 4,3."
     ],
     [
       83.54,
-      "Las medias por tiempo son tres mil ochocientos ochenta y tres, tres mil novecientos treinta y tres, y tres mil ochocientos cincuenta."
+      "Las medias por tiempo son 3883, 3933, y 3850."
     ],
     [
       91.45,
-      "Por acelerante: tres mil ochocientos diecisiete, cuatro mil, y tres mil ochocientos cincuenta."
+      "Por acelerante: 3817, 4000, y 3850."
     ],
     [
       97.88,
@@ -160,23 +160,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       120.41,
-      "Bajo la hipótesis nula, el efe del tiempo sigue una distribución efe con dos y nueve grados de libertad."
+      "Bajo la hipótesis nula, el F del tiempo sigue una distribución F con dos y nueve grados de libertad."
     ],
     [
       126.71,
-      "Se dibuja esa curva, se marca el valor observado, cero coma uno dos, y el pe valor es el área bajo la curva a la derecha de ese punto."
+      "Se dibuja esa curva, se marca el valor observado, 0,12, y el valor p es el área bajo la curva a la derecha de ese punto."
     ],
     [
       134.92,
-      "Como cero coma uno dos está casi al comienzo de la curva, el área a su derecha es enorme: cero coma ochenta y nueve."
+      "Como 0,12 está casi al comienzo de la curva, el área a su derecha es enorme: 0,89."
     ],
     [
       142.22,
-      "En erre, ese número sale con la función pe efe, pidiendo la cola superior."
+      "En R, ese número sale con la función p F, pidiendo la cola superior."
     ],
     [
       148.67,
-      "En los supuestos, la normalidad de los residuos se acepta, con pe cero coma cuarenta y cuatro."
+      "En los supuestos, la normalidad de los residuos se acepta, con p 0,44."
     ],
     [
       154.55,
@@ -203,5 +203,42 @@ PLATAFORMA.registrar("audio", {
       "Este ejercicio muestra que «no hay efecto» también es una conclusión útil: permite elegir el nivel más barato sin perder resistencia."
     ]
   ],
-  "huella": "cb58f60db1df"
+  "huella": "cb58f60db1df",
+  "frasesHabladas": [
+    "El ejercicio veintiuno del capítulo cinco estudia la resistencia del caucho vulcanizado.",
+    "Los factores son el tiempo de curado, a cuarenta, sesenta y ochenta minutos, y el tipo de acelerante, a, be o ce.",
+    "Cada combinación tiene dos réplicas.",
+    "Se busca la mayor resistencia.",
+    "Y hay una pregunta poco común: explicar de forma gráfica cómo se obtiene el pe valor del tiempo.",
+    "¿Cómo se llama el diseño?",
+    "Es un factorial tres por tres con dos réplicas, de efectos fijos y completamente al azar: dieciocho corridas.",
+    "El modelo: media, efecto del tiempo, efecto del acelerante, interacción y error.",
+    "Las hipótesis: el tiempo no influye, el acelerante no influye, y no hay interacción entre ambos.",
+    "Los números son grandes porque la resistencia anda cerca de cuatro mil.",
+    "El error tiene nueve grados de libertad y un cuadrado medio de noventa y un mil ciento once.",
+    "El efe del tiempo es cero coma uno dos, con pe valor cero coma ochenta y nueve.",
+    "El del acelerante, cero coma seis tres, con pe cero coma cincuenta y seis.",
+    "Y el de la interacción, cero coma dos tres, con pe cero coma noventa y dos.",
+    "Nada es significativo.",
+    "Los tres efes están muy por debajo de sus críticos, que rondan entre tres coma seis y cuatro coma tres.",
+    "Las medias por tiempo son tres mil ochocientos ochenta y tres, tres mil novecientos treinta y tres, y tres mil ochocientos cincuenta.",
+    "Por acelerante: tres mil ochocientos diecisiete, cuatro mil, y tres mil ochocientos cincuenta.",
+    "¿Hay un tiempo mejor?",
+    "No: las diferencias son puro azar.",
+    "Y eso, en la práctica, es una buena noticia: se puede usar el tiempo más corto, que es más barato.",
+    "Con el acelerante pasa lo mismo: se puede elegir el más económico.",
+    "Y como la interacción tampoco es significativa, ninguna combinación destaca.",
+    "Ahora la pregunta gráfica.",
+    "Bajo la hipótesis nula, el efe del tiempo sigue una distribución efe con dos y nueve grados de libertad.",
+    "Se dibuja esa curva, se marca el valor observado, cero coma uno dos, y el pe valor es el área bajo la curva a la derecha de ese punto.",
+    "Como cero coma uno dos está casi al comienzo de la curva, el área a su derecha es enorme: cero coma ochenta y nueve.",
+    "En erre, ese número sale con la función pe efe, pidiendo la cola superior.",
+    "En los supuestos, la normalidad de los residuos se acepta, con pe cero coma cuarenta y cuatro.",
+    "Pero la igualdad de varianzas se rechaza.",
+    "El ejercicio pregunta qué significaría eso para el tiempo de cura.",
+    "Si los tiempos tuvieran varianzas distintas, el tiempo estaría afectando la dispersión de la resistencia, aunque no su media.",
+    "Entonces convendría elegir el tiempo con menos variabilidad.",
+    "Y se corrige transformando la respuesta, por ejemplo con un logaritmo o una raíz, y repitiendo el ANOVA.",
+    "Este ejercicio muestra que «no hay efecto» también es una conclusión útil: permite elegir el nivel más barato sin perder resistencia."
+  ]
 });

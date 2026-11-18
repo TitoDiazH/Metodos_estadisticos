@@ -110,7 +110,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Ahora toca el módulo diecinueve: MANOVA, el análisis de varianza multivariado."
+      "Ahora toca el módulo 19: MANOVA, el análisis de varianza multivariado."
     ],
     [
       5.44,
@@ -118,7 +118,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       7.72,
-      "Treinta estudiantes, repartidos al azar en tres metodologías de enseñanza: la tradicional, el aprendizaje basado en problemas y el aprendizaje basado en proyectos."
+      "30 estudiantes, repartidos al azar en tres metodologías de enseñanza: la tradicional, el aprendizaje basado en problemas y el aprendizaje basado en proyectos."
     ],
     [
       17.98,
@@ -130,7 +130,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       24.95,
-      "Si tuviéramos una sola nota, esto sería un ANOVA de un factor, como el del módulo dieciocho."
+      "Si tuviéramos una sola nota, esto sería un ANOVA de un factor, como el del módulo 18."
     ],
     [
       30.62,
@@ -154,7 +154,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       50.56,
-      "Si hago tres, ese riesgo se va acumulando, y el error tipo uno global termina siendo bastante más alto que el cinco por ciento que creía tener."
+      "Si hago tres, ese riesgo se va acumulando, y el error tipo uno global termina siendo bastante más alto que el 5 % que creía tener."
     ],
     [
       59.68,
@@ -246,7 +246,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       176.55,
-      "La matriz be hace lo mismo entre grupos, y es la pariente de la suma de cuadrados de tratamientos."
+      "La matriz b hace lo mismo entre grupos, y es la pariente de la suma de cuadrados de tratamientos."
     ],
     [
       182.24,
@@ -258,11 +258,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       189.46,
-      "Ahí entra la lambda de Wilks."
+      "Ahí entra la λ de Wilks."
     ],
     [
       191.53,
-      "Se calcula como el determinante de doble u dividido por el determinante de la matriz total, o sea, de doble u más be."
+      "Se calcula como el determinante de doble u dividido por el determinante de la matriz total, o sea, de doble u más b."
     ],
     [
       198.73,
@@ -278,11 +278,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       207.39,
-      "La matriz be sería prácticamente cero."
+      "La matriz b sería prácticamente cero."
     ],
     [
       209.95,
-      "¿Cuánto valdría lambda en ese caso?"
+      "¿Cuánto valdría λ en ese caso?"
     ],
     [
       216.62,
@@ -290,15 +290,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       220.86,
-      "Y al revés: si los grupos están muy separados, be crece y lambda se acerca a cero."
+      "Y al revés: si los grupos están muy separados, b crece y λ se acerca a cero."
     ],
     [
       225.8,
-      "Por eso aquí la lógica va al contrario de lo que uno espera: la hipótesis nula se rechaza cuando lambda es pequeña."
+      "Por eso aquí la lógica va al contrario de lo que uno espera: la hipótesis nula se rechaza cuando λ es pequeña."
     ],
     [
       232.66,
-      "Una lambda chica significa grupos bien separados."
+      "Una λ chica significa grupos bien separados."
     ],
     [
       236.3,
@@ -306,7 +306,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       245.11,
-      "Todos salen de los valores propios de la matriz doble u inversa por be; solo cambia la forma de resumirlos."
+      "Todos salen de los valores propios de la matriz doble u inversa por b; solo cambia la forma de resumirlos."
     ],
     [
       253.46,
@@ -314,11 +314,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       255.62,
-      "En erre, el modelo se ajusta con la función manova."
+      "En R, el modelo se ajusta con la función manova."
     ],
     [
       258.7,
-      "A la izquierda de la fórmula van las tres respuestas, unidas con ce bind, y a la derecha va la metodología."
+      "A la izquierda de la fórmula van las tres respuestas, unidas con c bind, y a la derecha va la metodología."
     ],
     [
       265.47,
@@ -326,15 +326,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       269.14,
-      "La lambda da cero coma cero cuarenta y nueve."
+      "La λ da 0,049."
     ],
     [
       271.78,
-      "Una forma de leerla es que apenas un cinco por ciento de la variabilidad multivariada queda sin explicar por la metodología."
+      "Una forma de leerla es que apenas un 5 % de la variabilidad multivariada queda sin explicar por la metodología."
     ],
     [
       279.56,
-      "Erre la transforma en un efe aproximado, que da veintinueve coma tres."
+      "R la transforma en un F aproximado, que da 29,3."
     ],
     [
       284.34,
@@ -342,7 +342,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       286.77,
-      "Son el número de variables por el número de grupos menos uno."
+      "Son el número de variables por el número de grupos −1."
     ],
     [
       290.52,
@@ -350,15 +350,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       298.39,
-      "Seis: tres por dos."
+      "Seis: 3 · 2."
     ],
     [
       300.43,
-      "El denominador tiene cincuenta."
+      "El denominador tiene 50."
     ],
     [
       302.54,
-      "Y el pe valor es del orden de diez elevado a menos quince, prácticamente cero."
+      "Y el valor p es del orden de diez elevado a −15, prácticamente cero."
     ],
     [
       307.2,
@@ -366,7 +366,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       313.42,
-      "Un error típico es poner solo ge menos uno, o sea dos, como si fuera un ANOVA común."
+      "Un error típico es poner solo ge −1, o sea dos, como si fuera un ANOVA común."
     ],
     [
       318.53,
@@ -386,11 +386,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       341.4,
-      "Los grados de libertad del eme de Box salen de pe por pe más uno, dividido por dos, y todo eso por ge menos uno."
+      "Los grados de libertad del eme de Box salen de p · p + 1 / 2, y todo eso por ge −1."
     ],
     [
       348.11,
-      "Con tres variables y tres grupos: tres por cuatro, partido en dos, da seis; y seis por dos, doce."
+      "Con tres variables y tres grupos: 3 · 4, partido en dos, da seis; y 6 · 2, 12."
     ],
     [
       354.51,
@@ -430,7 +430,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       403.74,
-      "Los dos trabajan con las matrices doble u y be."
+      "Los dos trabajan con las matrices doble u y b."
     ],
     [
       407.13,
@@ -446,7 +446,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       415.53,
-      "De hecho, las funciones discriminantes son los vectores propios de doble u inversa por be, y sus valores propios dicen cuánta separación aporta cada una."
+      "De hecho, las funciones discriminantes son los vectores propios de doble u inversa por b, y sus valores propios dicen cuánta separación aporta cada una."
     ],
     [
       425.02,
@@ -462,11 +462,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       436.3,
-      "En las flores iris, por ejemplo, los valores propios son treinta y dos coma diecinueve y cero coma veintinueve."
+      "En las flores iris, por ejemplo, los valores propios son 32,19 coma 29."
     ],
     [
       443.07,
-      "Así que Roy vale treinta y dos coma diecinueve, y Lawley Hotelling, treinta y dos coma cuarenta y ocho."
+      "Así que Roy vale 32,19, y Lawley Hotelling, 32,48."
     ],
     [
       449.86,
@@ -490,23 +490,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       473.23,
-      "En erre, summary punto a o ve, aplicado al modelo, entrega un ANOVA para cada variable."
+      "En R, summary punto aov, aplicado al modelo, entrega un ANOVA para cada variable."
     ],
     [
       478.64,
-      "En las metodologías salen significativas las tres asignaturas: química con un efe cercano a ciento ochenta, física con unos treinta y tres, y biología con unos veintiuno."
+      "En las metodologías salen significativas las tres asignaturas: química con un F cercano a 180, física con unos 33, y biología con unos 21."
     ],
     [
       489.25,
-      "Y si después aplico Tukey sobre química, las tres comparaciones entre metodologías salen significativas: la de proyectos tiene la media más alta, unos ochenta y uno, y la tradicional la más baja, alrededor de sesenta y dos."
+      "Y si después aplico Tukey sobre química, las tres comparaciones entre metodologías salen significativas: la de proyectos tiene la media más alta, unos 81, y la tradicional la más baja, alrededor de 62."
     ],
     [
       503.35,
-      "El otro ejemplo de la clase es iris: ciento cincuenta flores, tres especies y cuatro medidas."
+      "El otro ejemplo de la clase es iris: 150 flores, tres especies y cuatro medidas."
     ],
     [
       509.18,
-      "Ahí la lambda de Wilks da cero coma cero veintitrés, el efe aproximado anda cerca de doscientos, con ocho y doscientos ochenta y ocho grados de libertad, y el pe valor es prácticamente cero."
+      "Ahí la λ de Wilks da 0,023, el F aproximado anda cerca de 200, con ocho y 288 grados de libertad, y el valor p es prácticamente cero."
     ],
     [
       520.66,
@@ -522,11 +522,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       538.41,
-      "La lambda de Wilks es dentro sobre total, y se rechaza cuando es pequeña."
+      "La λ de Wilks es dentro sobre total, y se rechaza cuando es pequeña."
     ],
     [
       542.9,
-      "Los grados de libertad del numerador son pe por ge menos uno."
+      "Los grados de libertad del numerador son p por ge −1."
     ],
     [
       546.33,
@@ -546,8 +546,120 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       570.67,
-      "Eso fue el módulo diecinueve."
+      "Eso fue el módulo 19."
     ]
   ],
-  "huella": "4672035e4a82"
+  "huella": "4672035e4a82",
+  "frasesHabladas": [
+    "Ahora toca el módulo diecinueve: MANOVA, el análisis de varianza multivariado.",
+    "Partamos con una situación concreta.",
+    "Treinta estudiantes, repartidos al azar en tres metodologías de enseñanza: la tradicional, el aprendizaje basado en problemas y el aprendizaje basado en proyectos.",
+    "Diez en cada grupo.",
+    "Y a cada estudiante no le medimos una nota, sino tres: química, física y biología.",
+    "Si tuviéramos una sola nota, esto sería un ANOVA de un factor, como el del módulo dieciocho.",
+    "Pero tenemos tres.",
+    "Entonces la tentación es obvia: hago tres ANOVA, uno por asignatura, y listo.",
+    "¿Qué tendría de malo eso?",
+    "Hay dos problemas.",
+    "El primero es que cada prueba trae su propio riesgo de equivocarme, de rechazar cuando no debía.",
+    "Si hago tres, ese riesgo se va acumulando, y el error tipo uno global termina siendo bastante más alto que el cinco por ciento que creía tener.",
+    "El segundo es más sutil.",
+    "Las tres notas no son independientes entre sí: a un estudiante al que le va bien en química probablemente también le va bien en física.",
+    "Al mirarlas una por una, esa correlación se pierde por completo.",
+    "El MANOVA resuelve las dos cosas de una vez.",
+    "Hace una sola prueba, con todas las variables juntas, así que controla el error global.",
+    "Y como aprovecha la estructura de covarianzas, puede detectar diferencias que ningún ANOVA por separado alcanza a ver.",
+    "Por eso se dice que gana potencia.",
+    "Dicho de otra forma: el MANOVA es un ANOVA donde la respuesta ya no es un número, sino un vector.",
+    "¿Qué estamos contrastando, entonces?",
+    "Cada grupo tiene su vector de medias: una media para química, otra para física y otra para biología.",
+    "La hipótesis nula dice que esos vectores son iguales en las tres metodologías.",
+    "La alternativa, que al menos uno es distinto.",
+    "Fíjate que no comparo tres medias sueltas, sino tres vectores completos.",
+    "Los supuestos te van a sonar si te acuerdas del análisis discriminante lineal.",
+    "Dentro de cada grupo, los datos siguen una normal multivariada.",
+    "Todos los grupos comparten la misma matriz de covarianzas.",
+    "Y las observaciones son independientes.",
+    "Ese detalle de la matriz es fácil de olvidar, así que vale la pena insistir: la homogeneidad que se pide es de la matriz de covarianzas completa, incluidas las covarianzas entre variables, no solo las varianzas de cada una.",
+    "En el ANOVA de un factor, la variabilidad total se partía en dos: la de dentro de los grupos, que es el error, y la de entre grupos, que es el tratamiento.",
+    "El MANOVA hace exactamente lo mismo, pero como hay varias variables, en vez de números aparecen matrices.",
+    "La matriz doble u reúne las sumas de cuadrados y productos dentro de los grupos.",
+    "Es la pariente de la suma de cuadrados del error.",
+    "La matriz be hace lo mismo entre grupos, y es la pariente de la suma de cuadrados de tratamientos.",
+    "Sumadas, dan la matriz total, te.",
+    "Ahora, ¿cómo resumo dos matrices en un solo número para poder decidir?",
+    "Ahí entra la lambda de Wilks.",
+    "Se calcula como el determinante de doble u dividido por el determinante de la matriz total, o sea, de doble u más be.",
+    "Dentro sobre total.",
+    "Hagamos un pequeño experimento mental.",
+    "Imagina que las tres metodologías dan resultados casi idénticos.",
+    "La matriz be sería prácticamente cero.",
+    "¿Cuánto valdría lambda en ese caso?",
+    "Casi uno, porque el total sería prácticamente igual a lo de dentro.",
+    "Y al revés: si los grupos están muy separados, be crece y lambda se acerca a cero.",
+    "Por eso aquí la lógica va al contrario de lo que uno espera: la hipótesis nula se rechaza cuando lambda es pequeña.",
+    "Una lambda chica significa grupos bien separados.",
+    "Además de Wilks, hay otros tres estadísticos que vas a ver en las salidas: la traza de Pillai, la traza de Lawley Hotelling y la raíz mayor de Roy.",
+    "Todos salen de los valores propios de la matriz doble u inversa por be; solo cambia la forma de resumirlos.",
+    "Volvamos a las metodologías.",
+    "En erre, el modelo se ajusta con la función manova.",
+    "A la izquierda de la fórmula van las tres respuestas, unidas con ce bind, y a la derecha va la metodología.",
+    "Después se pide summary, con test igual a Wilks.",
+    "La lambda da cero coma cero cuarenta y nueve.",
+    "Una forma de leerla es que apenas un cinco por ciento de la variabilidad multivariada queda sin explicar por la metodología.",
+    "Erre la transforma en un efe aproximado, que da veintinueve coma tres.",
+    "¿Y los grados de libertad del numerador?",
+    "Son el número de variables por el número de grupos menos uno.",
+    "Con tres asignaturas y tres metodologías, ¿cuánto da?",
+    "Seis: tres por dos.",
+    "El denominador tiene cincuenta.",
+    "Y el pe valor es del orden de diez elevado a menos quince, prácticamente cero.",
+    "Conclusión: la metodología sí afecta el rendimiento conjunto en química, física y biología.",
+    "Un error típico es poner solo ge menos uno, o sea dos, como si fuera un ANOVA común.",
+    "Hay que acordarse de multiplicar por el número de variables.",
+    "Antes de creerle al MANOVA, conviene revisar los supuestos.",
+    "La normalidad multivariada se revisa con el test de Mardia, o con un gráfico cu cu de distancias de Mahalanobis.",
+    "Y la homogeneidad de las matrices de covarianza, con el test eme de Box, el mismo que usamos en el discriminante.",
+    "Los grados de libertad del eme de Box salen de pe por pe más uno, dividido por dos, y todo eso por ge menos uno.",
+    "Con tres variables y tres grupos: tres por cuatro, partido en dos, da seis; y seis por dos, doce.",
+    "En el ejemplo de las metodologías, el eme de Box sale significativo.",
+    "O sea, las matrices de covarianza no son iguales.",
+    "Y aquí aparece una duda que se presta para confusión: ¿eso significa que el MANOVA ya no sirve?",
+    "No necesariamente.",
+    "Cuando los grupos tienen el mismo tamaño, como aquí, diez, diez y diez, el MANOVA es bastante robusto a esa violación.",
+    "Se interpreta con cautela, pero se interpreta.",
+    "Además, si la homogeneidad falla, el estadístico que conviene mirar es Pillai, que es el más robusto de los cuatro.",
+    "Y si lo que falla es la normalidad, la salida es pensar en transformar los datos.",
+    "Hay algo bonito en este tema: el MANOVA y el análisis discriminante son dos caras del mismo problema.",
+    "Los dos trabajan con las matrices doble u y be.",
+    "La diferencia está en la pregunta.",
+    "El MANOVA pregunta si los grupos difieren.",
+    "El discriminante pregunta cómo se separan, en qué dirección.",
+    "De hecho, las funciones discriminantes son los vectores propios de doble u inversa por be, y sus valores propios dicen cuánta separación aporta cada una.",
+    "Esto, de paso, aclara los otros estadísticos.",
+    "La raíz mayor de Roy es simplemente el valor propio más grande de esa matriz, solo ese.",
+    "Y la traza de Lawley Hotelling es la suma de todos.",
+    "En las flores iris, por ejemplo, los valores propios son treinta y dos coma diecinueve y cero coma veintinueve.",
+    "Así que Roy vale treinta y dos coma diecinueve, y Lawley Hotelling, treinta y dos coma cuarenta y ocho.",
+    "El orden natural de trabajo es primero el MANOVA y, si los grupos difieren, después el discriminante, para entender qué combinación de variables los separa.",
+    "Supongamos que el MANOVA rechazó.",
+    "Bien: sé que los grupos difieren, pero todavía no sé en qué variable ni entre qué grupos.",
+    "El MANOVA no lo dice.",
+    "Para eso está el análisis post hoc.",
+    "En erre, summary punto a o ve, aplicado al modelo, entrega un ANOVA para cada variable.",
+    "En las metodologías salen significativas las tres asignaturas: química con un efe cercano a ciento ochenta, física con unos treinta y tres, y biología con unos veintiuno.",
+    "Y si después aplico Tukey sobre química, las tres comparaciones entre metodologías salen significativas: la de proyectos tiene la media más alta, unos ochenta y uno, y la tradicional la más baja, alrededor de sesenta y dos.",
+    "El otro ejemplo de la clase es iris: ciento cincuenta flores, tres especies y cuatro medidas.",
+    "Ahí la lambda de Wilks da cero coma cero veintitrés, el efe aproximado anda cerca de doscientos, con ocho y doscientos ochenta y ocho grados de libertad, y el pe valor es prácticamente cero.",
+    "Las especies difieren muchísimo en su vector de medias.",
+    "Si tuviera que quedarme con pocas ideas de este módulo, serían estas.",
+    "El MANOVA compara vectores de medias con una sola prueba, en lugar de varios ANOVA que inflan el error y desperdician la correlación.",
+    "La lambda de Wilks es dentro sobre total, y se rechaza cuando es pequeña.",
+    "Los grados de libertad del numerador son pe por ge menos uno.",
+    "Mardia revisa la normalidad, eme de Box revisa las covarianzas, y si Box falla, Pillai es el más confiable.",
+    "Y una última para que la pienses tú: si el MANOVA te dice que los grupos difieren, ¿qué haces después?",
+    "Un ANOVA por variable y, si hace falta, Tukey.",
+    "Y si quieres ver en qué dirección se separan los grupos, el discriminante.",
+    "Eso fue el módulo diecinueve."
+  ]
 });

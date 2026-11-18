@@ -126,7 +126,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       24.51,
-      "Y es simétrica: la covarianza de equis uno con equis dos es la misma que la de equis dos con equis uno."
+      "Y es simétrica: la covarianza de x₁ con x₂ es la misma que la de x₂ con x₁."
     ],
     [
       32.71,
@@ -150,7 +150,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       52.72,
-      "Que para cualquier vector zeta, zeta traspuesto por la matriz por zeta es mayor o igual a cero."
+      "Que para cualquier vector Z, Z traspuesto por la matriz por Z es mayor o igual a cero."
     ],
     [
       58.55,
@@ -174,19 +174,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       88.3,
-      "En la ayudantía uno había una matriz de dos por dos: cuatro y tres en la diagonal, y uno fuera."
+      "En la ayudantía uno había una matriz de 2 · 2: cuatro y tres en la diagonal, y uno fuera."
     ],
     [
       94.04,
-      "La forma cuadrática es cuatro zeta uno al cuadrado, más dos zeta uno zeta dos, más tres zeta dos al cuadrado."
+      "La forma cuadrática es cuatro Z 1² + 2 Z 1 Z 2 + 3 Z 2²."
     ],
     [
       100.77,
-      "Reordenando, queda zeta uno más zeta dos al cuadrado, más tres zeta uno al cuadrado, más dos zeta dos al cuadrado."
+      "Reordenando, queda Z 1 + Z 2² + 3 Z 1² + 2 Z 2²."
     ],
     [
       107.94,
-      "Todo son cuadrados, así que solo vale cero si zeta es cero."
+      "Todo son cuadrados, así que solo vale cero si Z es cero."
     ],
     [
       111.7,
@@ -194,11 +194,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       113.4,
-      "Y sus valores propios lo confirman: cuatro coma seis dos y dos coma tres ocho, ambos positivos."
+      "Y sus valores propios lo confirman: 4,62 y 2,38, ambos positivos."
     ],
     [
       119.84,
-      "Si te preguntan por una matriz de correlación, se agregan dos cosas: unos en la diagonal, y todos los valores fuera de la diagonal entre menos uno y uno."
+      "Si te preguntan por una matriz de correlación, se agregan dos cosas: unos en la diagonal, y todos los valores fuera de la diagonal entre −1 y uno."
     ],
     [
       129.09,
@@ -210,7 +210,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       135.91,
-      "En erre, cov aplicado a un data frame entrega la matriz de covarianza, dividiendo por ene menos uno."
+      "En R, cov aplicado a un data frame entrega la matriz de covarianza, dividiendo por n − 1."
     ],
     [
       142.11,
@@ -222,7 +222,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       149.53,
-      "Los valores propios son cuatro coma tres cinco, cero coma cinco tres, cero coma dos ocho y cero coma cero dos."
+      "Los valores propios son 4,35, 0,53, 0,28 y 0,02."
     ],
     [
       156.21,
@@ -230,7 +230,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       159.0,
-      "Y su suma, cinco coma uno ocho, es igual a la suma de las varianzas, la traza de la matriz."
+      "Y su suma, 5,18, es igual a la suma de las varianzas, la traza de la matriz."
     ],
     [
       164.62,
@@ -246,7 +246,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       179.61,
-      "En la ayudantía uno: tiempo, costo y distancia, con varianzas dieciséis, nueve y veinticinco."
+      "En la ayudantía uno: tiempo, costo y distancia, con varianzas 16, 9 y 25."
     ],
     [
       185.6,
@@ -254,15 +254,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       188.44,
-      "La covarianza entre tiempo y costo es seis, y seis dividido por cuatro por tres da cero coma cinco."
+      "La covarianza entre tiempo y costo es seis, y seis dividido por 4 · 3 da 0,5."
     ],
     [
       194.56,
-      "Entre tiempo y distancia, ocho dividido por cuatro por cinco: cero coma cuatro."
+      "Entre tiempo y distancia, ocho dividido por 4 · 5: 0,4."
     ],
     [
       199.69,
-      "Y entre costo y distancia, uno dividido por quince: cero coma cero seis siete."
+      "Y entre costo y distancia, uno dividido por 15: 0,067."
     ],
     [
       204.49,
@@ -270,11 +270,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       210.22,
-      "Tiempo con costo, cero coma cinco: positiva y moderada."
+      "Tiempo con costo, 0,5: positiva y moderada."
     ],
     [
       213.86,
-      "En erre, cor de los datos, o cov dos cor si solo tienes la matriz de covarianza."
+      "En R, cor de los datos, o cov dos cor si solo tienes la matriz de covarianza."
     ],
     [
       220.87,
@@ -306,11 +306,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       247.83,
-      "El estadístico es menos, entre paréntesis, ene menos uno menos dos pe más cinco sobre seis, por el logaritmo del determinante de la matriz de correlación."
+      "El estadístico es menos, entre paréntesis, n − 1 − 2 p + 5 / 6, por el logaritmo del determinante de la matriz de correlación."
     ],
     [
       257.42,
-      "Se compara con una chi cuadrado de pe por pe menos uno, sobre dos grados de libertad."
+      "Se compara con una chi cuadrado de p · p − 1 / 2 grados de libertad."
     ],
     [
       263.0,
@@ -326,19 +326,19 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       279.77,
-      "En la ayudantía, con diez datos y tres variables: el determinante de la matriz de correlación es cero coma seis uno, y su logaritmo, menos cero coma cuatro nueve."
+      "En la ayudantía, con diez datos y tres variables: el determinante de la matriz de correlación es 0,61, y su logaritmo, −0,49."
     ],
     [
       289.87,
-      "El coeficiente es nueve menos once sextos: siete coma uno siete."
+      "El coeficiente es 9 − 11 sextos: 7,17."
     ],
     [
       293.98,
-      "El estadístico: siete coma uno siete por cero coma cuatro nueve, tres coma cincuenta y dos, con tres grados de libertad."
+      "El estadístico: 7,17 · 0,49, 3,52, con tres grados de libertad."
     ],
     [
       301.44,
-      "El valor crítico es siete coma ochenta y uno."
+      "El valor crítico es 7,81."
     ],
     [
       304.15,
@@ -350,7 +350,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       309.48,
-      "Tres coma cinco no llega a siete coma ocho."
+      "3,5 no llega a 7,8."
     ],
     [
       312.12,
@@ -370,7 +370,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       329.03,
-      "En cambio, en el ejemplo de la clase, con cuatro variables muy correlacionadas, el estadístico da veintiséis coma nueve, con pe valor cero coma cero cero cero uno."
+      "En cambio, en el ejemplo de la clase, con cuatro variables muy correlacionadas, el estadístico da 26,9, con valor p 0,0001."
     ],
     [
       338.99,
@@ -378,11 +378,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       343.59,
-      "En erre, se puede calcular a mano con det y log, o con cortest punto bartlett, del paquete psych."
+      "En R, se puede calcular a mano con det y log, o con cortest punto bartlett, del paquete psych."
     ],
     [
       349.53,
-      "Y ahí hay que pasarle ene, el número de observaciones."
+      "Y ahí hay que pasarle n, el número de observaciones."
     ],
     [
       352.98,
@@ -409,5 +409,84 @@ PLATAFORMA.registrar("audio", {
       "Eso fue el módulo dos."
     ]
   ],
-  "huella": "72d3c52e3296"
+  "huella": "72d3c52e3296",
+  "frasesHabladas": [
+    "Ahora toca el módulo dos: la matriz de covarianza, la matriz de correlación, y el test de Bartlett.",
+    "Con dos variables había una sola covarianza.",
+    "Pero con cuatro, cinco o diez variables, hay una covarianza por cada par.",
+    "La matriz de covarianza las ordena todas en una tabla cuadrada.",
+    "En la diagonal van las varianzas de cada variable.",
+    "Fuera de la diagonal, la covarianza de cada par.",
+    "Y es simétrica: la covarianza de equis uno con equis dos es la misma que la de equis dos con equis uno.",
+    "En las pruebas aparece mucho una pregunta: te dan una matriz, y preguntan si puede ser una matriz de covarianza.",
+    "Primero, tiene que ser simétrica.",
+    "Segundo, la diagonal no puede tener negativos, porque son varianzas.",
+    "Y tercero, la que más se olvida: tiene que ser semidefinida positiva.",
+    "¿Qué significa eso?",
+    "Que para cualquier vector zeta, zeta traspuesto por la matriz por zeta es mayor o igual a cero.",
+    "La intuición es que esa expresión es la varianza de una combinación de las variables, y una varianza nunca puede ser negativa.",
+    "En la práctica se revisa con los valores propios: todos tienen que ser mayores o iguales a cero.",
+    "Entonces, si una matriz simétrica tiene un valor propio negativo, ¿qué concluyes?",
+    "Que no puede ser una matriz de covarianza.",
+    "Habría una combinación de las variables con varianza negativa, y eso es imposible.",
+    "En la ayudantía uno había una matriz de dos por dos: cuatro y tres en la diagonal, y uno fuera.",
+    "La forma cuadrática es cuatro zeta uno al cuadrado, más dos zeta uno zeta dos, más tres zeta dos al cuadrado.",
+    "Reordenando, queda zeta uno más zeta dos al cuadrado, más tres zeta uno al cuadrado, más dos zeta dos al cuadrado.",
+    "Todo son cuadrados, así que solo vale cero si zeta es cero.",
+    "Es definida positiva.",
+    "Y sus valores propios lo confirman: cuatro coma seis dos y dos coma tres ocho, ambos positivos.",
+    "Si te preguntan por una matriz de correlación, se agregan dos cosas: unos en la diagonal, y todos los valores fuera de la diagonal entre menos uno y uno.",
+    "Pero ojo: eso tampoco basta.",
+    "También tiene que ser semidefinida positiva.",
+    "En erre, cov aplicado a un data frame entrega la matriz de covarianza, dividiendo por ene menos uno.",
+    "Y eigen la descompone en valores propios y vectores propios.",
+    "En la clase hay diez observaciones de cuatro variables.",
+    "Los valores propios son cuatro coma tres cinco, cero coma cinco tres, cero coma dos ocho y cero coma cero dos.",
+    "El primero concentra casi toda la variación.",
+    "Y su suma, cinco coma uno ocho, es igual a la suma de las varianzas, la traza de la matriz.",
+    "Esto es justamente la base de componentes principales, en el módulo nueve.",
+    "La matriz de correlación es la de covarianza, pero sin unidades.",
+    "Cada covarianza se divide por la raíz del producto de las dos varianzas.",
+    "En la ayudantía uno: tiempo, costo y distancia, con varianzas dieciséis, nueve y veinticinco.",
+    "Las desviaciones son cuatro, tres y cinco.",
+    "La covarianza entre tiempo y costo es seis, y seis dividido por cuatro por tres da cero coma cinco.",
+    "Entre tiempo y distancia, ocho dividido por cuatro por cinco: cero coma cuatro.",
+    "Y entre costo y distancia, uno dividido por quince: cero coma cero seis siete.",
+    "¿Cuál es la relación más fuerte?",
+    "Tiempo con costo, cero coma cinco: positiva y moderada.",
+    "En erre, cor de los datos, o cov dos cor si solo tienes la matriz de covarianza.",
+    "Y ahora el test de Bartlett, que aparece siempre antes de componentes principales o de análisis factorial.",
+    "La pregunta es: ¿las variables están correlacionadas entre sí?",
+    "Porque si no lo están, no hay nada que resumir.",
+    "Cada variable va por su lado.",
+    "La hipótesis nula es que la matriz de correlación es la identidad: unos en la diagonal, ceros afuera.",
+    "La alternativa, que no lo es.",
+    "Y el test supone normalidad multivariada.",
+    "El estadístico es menos, entre paréntesis, ene menos uno menos dos pe más cinco sobre seis, por el logaritmo del determinante de la matriz de correlación.",
+    "Se compara con una chi cuadrado de pe por pe menos uno, sobre dos grados de libertad.",
+    "La intuición está en el determinante.",
+    "Si las variables no están correlacionadas, la matriz es la identidad, su determinante es uno, el logaritmo es cero, y el estadístico es cero.",
+    "Mientras más correlacionadas, más chico el determinante, y más grande el estadístico.",
+    "En la ayudantía, con diez datos y tres variables: el determinante de la matriz de correlación es cero coma seis uno, y su logaritmo, menos cero coma cuatro nueve.",
+    "El coeficiente es nueve menos once sextos: siete coma uno siete.",
+    "El estadístico: siete coma uno siete por cero coma cuatro nueve, tres coma cincuenta y dos, con tres grados de libertad.",
+    "El valor crítico es siete coma ochenta y uno.",
+    "¿Se rechaza?",
+    "No.",
+    "Tres coma cinco no llega a siete coma ocho.",
+    "Con diez datos, no hay evidencia de que las variables estén correlacionadas.",
+    "Y ojo con cómo se dice eso.",
+    "No se rechaza no significa que no haya correlación: significa que la evidencia no alcanza.",
+    "Con diez datos, puede ser simplemente falta de muestra.",
+    "En cambio, en el ejemplo de la clase, con cuatro variables muy correlacionadas, el estadístico da veintiséis coma nueve, con pe valor cero coma cero cero cero uno.",
+    "Se rechaza, y tiene sentido aplicar componentes principales.",
+    "En erre, se puede calcular a mano con det y log, o con cortest punto bartlett, del paquete psych.",
+    "Y ahí hay que pasarle ene, el número de observaciones.",
+    "Si no, la función no sabe con cuántos datos se calculó la matriz.",
+    "En resumen: la matriz de covarianza tiene varianzas en la diagonal, es simétrica y semidefinida positiva, con valores propios mayores o iguales a cero.",
+    "La de correlación es la misma sin unidades, con unos en la diagonal.",
+    "Y Bartlett prueba si la matriz de correlación es la identidad.",
+    "Si se rechaza, hay correlación que vale la pena resumir.",
+    "Eso fue el módulo dos."
+  ]
 });

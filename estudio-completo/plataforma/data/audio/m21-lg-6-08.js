@@ -70,7 +70,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       12.65,
-      "Se corre un dos al cubo con dos réplicas: dieciséis corridas."
+      "Se corre un 2³ con dos réplicas: 16 corridas."
     ],
     [
       16.7,
@@ -78,7 +78,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       21.02,
-      "Con tres factores hay siete efectos: a, be, ce, las tres interacciones dobles y la triple."
+      "Con tres factores hay siete efectos: a, b, c, las tres interacciones dobles y la triple."
     ],
     [
       26.62,
@@ -86,27 +86,27 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       28.94,
-      "Los totales de los ocho tratamientos van de veintisiete coma dos, en uno, a treinta y ocho coma uno, en a be ce."
+      "Los totales de los ocho tratamientos van de 27,2, en uno, a 38,1, en abc."
     ],
     [
       36.1,
-      "Con dos réplicas, el efecto es el contraste dividido en ocho, y la suma de cuadrados es el contraste al cuadrado dividido en dieciséis."
+      "Con dos réplicas, el efecto es el contraste dividido en ocho, y la suma de cuadrados es el contraste al cuadrado dividido en 16."
     ],
     [
       44.85,
-      "El efecto más grande es el de ce: dos coma ocho nueve."
+      "El efecto más grande es el de c: 2,89."
     ],
     [
       48.16,
-      "Le siguen la interacción triple, con uno coma dos seis, y be, con uno coma uno nueve."
+      "Le siguen la interacción triple, con 1,26, y b, con 1,19."
     ],
     [
       53.39,
-      "Después vienen be ce, con cero coma setenta y nueve, y a be, con cero coma cincuenta y uno."
+      "Después vienen bc, con 0,79, y ab, con 0,51."
     ],
     [
       58.96,
-      "Los más chicos son a y a ce, casi cero."
+      "Los más chicos son a y ac, casi cero."
     ],
     [
       61.92,
@@ -114,35 +114,35 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       68.17,
-      "La suma de cuadrados total es cuarenta y nueve coma cuatro ocho."
+      "La suma de cuadrados total es 49,48."
     ],
     [
       72.07,
-      "Restando los siete efectos, el error queda en cero coma cinco, con ocho grados de libertad, que salen de dos al cubo por ene menos uno."
+      "Restando los siete efectos, el error queda en 0,5, con ocho grados de libertad, que salen de 2³ · n − 1."
     ],
     [
       80.68,
-      "Cada efecto tiene un grado de libertad, así que todos se comparan con el mismo crítico: efe con uno y ocho grados de libertad, cinco coma treinta y dos."
+      "Cada efecto tiene un grado de libertad, así que todos se comparan con el mismo crítico: F con uno y ocho grados de libertad, 5,32."
     ],
     [
       90.33,
-      "Superan ese valor be, a be, ce, be ce y a be ce."
+      "Superan ese valor b, ab, c, bc y abc."
     ],
     [
       93.3,
-      "No lo superan a ni a ce."
+      "No lo superan a ni ac."
     ],
     [
       95.08,
-      "El modelo explica el noventa y nueve por ciento de la variabilidad."
+      "El modelo explica el 99 % de la variabilidad."
     ],
     [
       100.91,
-      "Ce es el que más mueve la viscosidad: al pasar de bajo a alto, la sube casi tres unidades."
+      "C es el que más mueve la viscosidad: al pasar de bajo a alto, la sube casi tres unidades."
     ],
     [
       106.48,
-      "Be también la sube."
+      "b también la sube."
     ],
     [
       108.01,
@@ -166,7 +166,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       135.01,
-      "El modelo predice trece coma seis cuatro, y la media observada de esa celda es trece coma seis."
+      "El modelo predice 13,64, y la media observada de esa celda es 13,6."
     ],
     [
       140.68,
@@ -174,16 +174,49 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       144.1,
-      "En los residuos, Shapiro Wilk da pe igual a cero coma cero tres, así que se rechaza la normalidad."
+      "En los residuos, Shapiro Wilk da p = 0,03, así que se rechaza la normalidad."
     ],
     [
       150.05,
-      "Conviene revisar los gráficos de residuos antes de confiar del todo en los pe valores."
+      "Conviene revisar los gráficos de residuos antes de confiar del todo en los p valores."
     ],
     [
       155.75,
-      "El método general de un dos a la ka: tabla de signos, contrastes, efectos, sumas de cuadrados con un grado de libertad cada una, y el error por diferencia."
+      "El método general de un dos a la k: tabla de signos, contrastes, efectos, sumas de cuadrados con un grado de libertad cada una, y el error por diferencia."
     ]
   ],
-  "huella": "964b8a43c3f7"
+  "huella": "964b8a43c3f7",
+  "frasesHabladas": [
+    "El ejercicio ocho del capítulo seis viene de una empresa lechera con problemas de viscosidad en su bebida de chocolate.",
+    "Se cree que tres ingredientes, que se agregan en pequeñas cantidades, pueden resolverlo.",
+    "Se corre un dos al cubo con dos réplicas: dieciséis corridas.",
+    "Y se desea minimizar la viscosidad.",
+    "Con tres factores hay siete efectos: a, be, ce, las tres interacciones dobles y la triple.",
+    "Cada uno tiene su columna de signos.",
+    "Los totales de los ocho tratamientos van de veintisiete coma dos, en uno, a treinta y ocho coma uno, en a be ce.",
+    "Con dos réplicas, el efecto es el contraste dividido en ocho, y la suma de cuadrados es el contraste al cuadrado dividido en dieciséis.",
+    "El efecto más grande es el de ce: dos coma ocho nueve.",
+    "Le siguen la interacción triple, con uno coma dos seis, y be, con uno coma uno nueve.",
+    "Después vienen be ce, con cero coma setenta y nueve, y a be, con cero coma cincuenta y uno.",
+    "Los más chicos son a y a ce, casi cero.",
+    "Ordenados de mayor a menor, forman el diagrama de Pareto de efectos.",
+    "La suma de cuadrados total es cuarenta y nueve coma cuatro ocho.",
+    "Restando los siete efectos, el error queda en cero coma cinco, con ocho grados de libertad, que salen de dos al cubo por ene menos uno.",
+    "Cada efecto tiene un grado de libertad, así que todos se comparan con el mismo crítico: efe con uno y ocho grados de libertad, cinco coma treinta y dos.",
+    "Superan ese valor be, a be, ce, be ce y a be ce.",
+    "No lo superan a ni a ce.",
+    "El modelo explica el noventa y nueve por ciento de la variabilidad.",
+    "Ce es el que más mueve la viscosidad: al pasar de bajo a alto, la sube casi tres unidades.",
+    "Be también la sube.",
+    "Y las interacciones activas dicen que esos efectos dependen de los otros ingredientes.",
+    "Un detalle: aunque a no es significativo por sí solo, se deja en el modelo porque participa en interacciones activas.",
+    "Eso se llama respetar la jerarquía.",
+    "¿Hay un tratamiento ganador para minimizar?",
+    "Sí: el tratamiento uno, con los tres ingredientes en nivel bajo.",
+    "El modelo predice trece coma seis cuatro, y la media observada de esa celda es trece coma seis.",
+    "Es la viscosidad más baja de todo el experimento.",
+    "En los residuos, Shapiro Wilk da pe igual a cero coma cero tres, así que se rechaza la normalidad.",
+    "Conviene revisar los gráficos de residuos antes de confiar del todo en los pe valores.",
+    "El método general de un dos a la ka: tabla de signos, contrastes, efectos, sumas de cuadrados con un grado de libertad cada una, y el error por diferencia."
+  ]
 });

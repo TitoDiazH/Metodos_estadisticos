@@ -57,7 +57,7 @@ PLATAFORMA.registrar("audio", {
   "frases": [
     [
       0.0,
-      "Este ejercicio es la base de todo el análisis de componentes principales: hacerlo a mano con una matriz de dos por dos."
+      "Este ejercicio es la base de todo el análisis de componentes principales: hacerlo a mano con una matriz de 2 · 2."
     ],
     [
       7.62,
@@ -73,23 +73,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       25.58,
-      "Los autovalores salen de la ecuación característica: el determinante de ese menos lambda por la identidad, igualado a cero."
+      "Los autovalores salen de la ecuación característica: el determinante de ese menos λ por la identidad, igualado a cero."
     ],
     [
       33.51,
-      "Con una matriz de dos por dos, el determinante es fácil."
+      "Con una matriz de 2 · 2, el determinante es fácil."
     ],
     [
       37.16,
-      "Cinco menos lambda, por dos menos lambda, menos dos al cuadrado, igual a cero."
+      "5 − λ · 2 − λ − 2², igual a cero."
     ],
     [
       42.52,
-      "Si desarrollo, queda lambda al cuadrado, menos siete lambda, más seis, igual a cero."
+      "Si desarrollo, queda λ² − 7 λ + 6, igual a cero."
     ],
     [
       48.4,
-      "Con la fórmula de la ecuación cuadrática: siete más o menos la raíz de cuarenta y nueve menos veinticuatro, que es cinco, todo dividido en dos."
+      "Con la fórmula de la ecuación cuadrática: siete más o menos la raíz de 49 − 24, que es cinco, todo dividido en dos."
     ],
     [
       57.32,
@@ -105,11 +105,11 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       68.26,
-      "La suma de los autovalores es la traza, cinco más dos, siete."
+      "La suma de los autovalores es la traza, 5 + 2, 7."
     ],
     [
       72.18,
-      "Y el producto es el determinante, cinco por dos menos cuatro, seis."
+      "Y el producto es el determinante, 5 · 2 − 4, 6."
     ],
     [
       76.48,
@@ -121,23 +121,23 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       82.47,
-      "El primer componente explica seis de siete: ochenta y cinco coma siete por ciento."
+      "El primer componente explica seis de siete: 85,7 %."
     ],
     [
       87.57,
-      "El segundo, el resto: catorce coma tres por ciento."
+      "El segundo, el resto: 14,3 %."
     ],
     [
       90.82,
-      "Con un solo componente ya se supera el ochenta por ciento."
+      "Con un solo componente ya se supera el 80 %."
     ],
     [
       96.7,
-      "Para el autovector del primer componente, se resuelve ese menos seis por la identidad, por v, igual a cero."
+      "Para el autovector del primer componente, se resuelve ese −6 por la identidad, por v, igual a cero."
     ],
     [
       103.5,
-      "Con la primera fila: cinco menos seis, por v uno, más dos por v dos, igual a cero."
+      "Con la primera fila: 5 − 6, por v 1 + 2 por v dos, igual a cero."
     ],
     [
       108.51,
@@ -145,7 +145,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       111.55,
-      "Entonces el vector es proporcional a dos coma uno."
+      "Entonces el vector es proporcional a 2,1."
     ],
     [
       115.12,
@@ -153,15 +153,15 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       118.31,
-      "La norma es la raíz de cuatro más uno, raíz de cinco, dos coma dos tres."
+      "La norma es la raíz de 4 + 1, raíz de cinco, 2,23."
     ],
     [
       122.74,
-      "Dividiendo, quedan cero coma ocho nueve cuatro y cero coma cuatro cuatro siete."
+      "Dividiendo, quedan 0,894 y 0,447."
     ],
     [
       129.67,
-      "Entonces PC uno es cero coma ocho nueve por ventas, más cero coma cuatro cinco por utilidad, con las variables centradas."
+      "Entonces PC uno es 0,89 por ventas, +0,45 por utilidad, con las variables centradas."
     ],
     [
       137.22,
@@ -177,12 +177,46 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       152.03,
-      "Si erre te lo entrega con los dos signos negativos, es el mismo componente."
+      "Si R te lo entrega con los dos signos negativos, es el mismo componente."
     ],
     [
       157.08,
       "El esquema para una pregunta así: ecuación característica, raíces, chequeo con traza y determinante, porcentajes, autovector normalizado, e interpretación por los signos."
     ]
   ],
-  "huella": "29778d59b753"
+  "huella": "29778d59b753",
+  "frasesHabladas": [
+    "Este ejercicio es la base de todo el análisis de componentes principales: hacerlo a mano con una matriz de dos por dos.",
+    "Se estudian dos variables de un grupo de empresas: ventas y utilidad.",
+    "Nos dan su matriz de covarianza: cinco y dos en la diagonal, y dos fuera de la diagonal.",
+    "Y nos piden los autovalores, el porcentaje de varianza de cada componente, y el autovector del primero.",
+    "Los autovalores salen de la ecuación característica: el determinante de ese menos lambda por la identidad, igualado a cero.",
+    "Con una matriz de dos por dos, el determinante es fácil.",
+    "Cinco menos lambda, por dos menos lambda, menos dos al cuadrado, igual a cero.",
+    "Si desarrollo, queda lambda al cuadrado, menos siete lambda, más seis, igual a cero.",
+    "Con la fórmula de la ecuación cuadrática: siete más o menos la raíz de cuarenta y nueve menos veinticuatro, que es cinco, todo dividido en dos.",
+    "¿Cuáles son los dos autovalores?",
+    "Seis y uno.",
+    "Hay un chequeo rápido que conviene hacer siempre.",
+    "La suma de los autovalores es la traza, cinco más dos, siete.",
+    "Y el producto es el determinante, cinco por dos menos cuatro, seis.",
+    "Las dos cosas calzan.",
+    "La varianza total es la traza, siete.",
+    "El primer componente explica seis de siete: ochenta y cinco coma siete por ciento.",
+    "El segundo, el resto: catorce coma tres por ciento.",
+    "Con un solo componente ya se supera el ochenta por ciento.",
+    "Para el autovector del primer componente, se resuelve ese menos seis por la identidad, por v, igual a cero.",
+    "Con la primera fila: cinco menos seis, por v uno, más dos por v dos, igual a cero.",
+    "O sea, v uno es igual a dos veces v dos.",
+    "Entonces el vector es proporcional a dos coma uno.",
+    "Falta normalizarlo, para que su largo sea uno.",
+    "La norma es la raíz de cuatro más uno, raíz de cinco, dos coma dos tres.",
+    "Dividiendo, quedan cero coma ocho nueve cuatro y cero coma cuatro cuatro siete.",
+    "Entonces PC uno es cero coma ocho nueve por ventas, más cero coma cuatro cinco por utilidad, con las variables centradas.",
+    "Los dos loadings tienen el mismo signo, así que PC uno es un índice de tamaño: crece cuando crecen ventas y utilidad.",
+    "Y pesa más ventas, porque es la variable con más varianza.",
+    "Un detalle: el signo del autovector es arbitrario.",
+    "Si erre te lo entrega con los dos signos negativos, es el mismo componente.",
+    "El esquema para una pregunta así: ecuación característica, raíces, chequeo con traza y determinante, porcentajes, autovector normalizado, e interpretación por los signos."
+  ]
 });
