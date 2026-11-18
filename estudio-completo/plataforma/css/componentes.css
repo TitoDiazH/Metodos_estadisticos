@@ -307,6 +307,7 @@ pre.salida { background: var(--salida-fondo); color: var(--tinta); border: 1px s
 .audio-fila { display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 8px 12px; margin: 6px 0; background: var(--superficie); border: 1px solid var(--borde); border-radius: 8px; }
 .audio-fila .chk { flex: 1; }
 .audio-fila.sin-audio { display: block; background: none; border-style: dashed; color: var(--tenue); }
+.audio-fila.audio-cab { display: block; background: none; border: none; padding: 14px 4px 2px; margin-bottom: 0; }
 
 @media (max-width: 560px) {
   .audio-controles .btn, .audio-capitulos .btn { width: auto; }

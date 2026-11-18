@@ -279,7 +279,10 @@
       h += '<ul class="lista-limpia audio-lista">' + mods.map(function (m) {
         var lista = P.audiosDe(m.id), num = '<span class="mod-num">M' + (m.orden < 10 ? "0" : "") + m.orden + "</span> ";
         if (!lista.length) return '<li class="audio-fila sin-audio">' + num + U.esc(m.titulo) + ' <small class="tenue">sin audio todavía</small></li>';
-        return lista.map(function (a) {
+        /* Módulo sin clase propia (solo ejercicios): un encabezado para que sus ejercicios no parezcan del módulo anterior. */
+        var cab = lista.some(function (a) { return !a.ejercicio; }) ? "" :
+          '<li class="audio-fila audio-cab">' + num + "<strong>" + U.esc(m.titulo) + "</strong></li>";
+        return cab + lista.map(function (a) {
           return a.ejercicio ? filaClase(a, sel, true) : filaClase(a, sel, false).replace("<span>", "<span>" + num);
         }).join("");
       }).join("") + "</ul>";
