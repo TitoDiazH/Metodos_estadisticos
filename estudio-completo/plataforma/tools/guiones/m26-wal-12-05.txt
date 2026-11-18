@@ -1,0 +1,47 @@
+# Ejercicio 12.5: energía de una planta química
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.5
+@pregunta m26-d014
+@orden 5
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto cinco: el consumo de energía de una planta.
+
+{enun} Se tienen doce meses de datos. {clave1} La respuesta es el consumo eléctrico mensual. {clave2} Y hay cuatro regresores: temperatura, días del mes, pureza del producto y toneladas fabricadas. {clave3} Se pide el modelo y predecir un mes con setenta y cinco grados, veinticuatro días, noventa por ciento de pureza y noventa y ocho toneladas.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Ye gorro igual a menos ciento dos coma siete, más cero coma seis por la temperatura, más ocho coma nueve por los días, más uno coma cuatro por la pureza, más cero coma cero uno por las toneladas. Igual que el libro.
+
+{interp} Interpretación. {i1} Cada grado más sube el consumo en cero coma seis unidades, con todo lo demás fijo. {i2} Cada día más del mes, ocho coma nueve. {i3} Cada punto de pureza, uno coma cuatro. {i4} Y cada tonelada, apenas cero coma cero uno. {i5} El intercepto no se interpreta: cero grados, cero días y cero toneladas no tienen sentido.
+
+## Pruebas te
+
+{pt} Aquí viene lo interesante. Doce datos menos cinco parámetros: siete grados de libertad.
+
+{t1} Temperatura: te uno coma seis cuatro, pe cero coma uno cuatro: no se rechaza. {t2} Días: te uno coma seis ocho, pe cero coma uno tres: no se rechaza. {t3} Pureza: pe cero coma cinco siete. {t4} Toneladas: pe cero coma nueve nueve. Ninguna variable es significativa por separado.
+
+## Efe y erre cuadrado
+
+{f} ¿Y el modelo completo? {fcalc} Efe igual a cinco coma uno, contra un crítico de cuatro coma uno dos, pe cero coma cero tres. Se rechaza: el modelo en conjunto sí explica el consumo.
+
+¿Cómo puede ser? El efe dice que las cuatro juntas explican algo, pero con solo doce meses no hay información suficiente para separar el aporte de cada una. Cada te pregunta si una variable aporta algo extra cuando ya están las otras tres.
+
+{rcuad} Erre cuadrado cero coma siete cuatro. {r2aj} Pero el ajustado cae a cero coma seis. Esa caída grande es la señal de que hay parámetros que sobran.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Los residuos no muestran forma clara. {sw} Shapiro da cero coma tres nueve: no se rechaza la normalidad.
+
+{vif} ¿Será multicolinealidad? {vifv} Los ve i efe van de uno a dos coma tres: no. El problema aquí no es la correlación entre variables, sino tener pocos datos para tantos parámetros.
+
+{hat} El corte de apalancamiento es alto, cero coma ocho tres, porque hay muchos parámetros para pocos datos; el mes dos lo supera apenas. {cook} Ninguna distancia de Cook pasa de uno.
+
+## Predicción
+
+{pred} La predicción que pide el libro. {predcalc} Reemplazando, da doscientos ochenta y siete coma seis, igual que la respuesta del libro. {predint} Pero mira el intervalo de predicción: de doscientos cuarenta y cuatro a trescientos treinta y uno. Es muy ancho, coherente con un modelo de pocos datos.
+
+## Cierre
+
+{fin} La lección de este ejercicio: un efe significativo con todos los te no significativos es posible. Puede ser multicolinealidad, que se revisa con el ve i efe, o simplemente muy pocos datos para tantos parámetros, como aquí. La salida razonable es un modelo más simple, que es lo que hace la segunda variante en Desarrollo.
