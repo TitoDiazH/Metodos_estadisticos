@@ -1,0 +1,45 @@
+# Ejercicio 12.3: calificación en química
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.3
+@pregunta m26-d008
+@orden 3
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto tres de Walpole: calificaciones de química.
+
+{enun} Hay doce estudiantes. {clave1} La respuesta es la nota de química. {clave2} Los regresores son el puntaje en un examen de inteligencia, equis uno, y el número de clases perdidas, equis dos. {clave3} Además se pide estimar la nota de alguien que sacó sesenta en el examen y perdió cuatro clases.
+
+## El modelo ajustado
+
+{sal} La salida de erre. {ecuacion} El modelo: ye gorro igual a veintisiete coma cinco cinco, más cero coma nueve dos por el examen, más cero coma dos ocho por las clases perdidas. Igual que la respuesta del libro.
+
+{interp} Interpretación. {i1} Cada punto más en el examen sube la nota de química en cero coma nueve dos puntos en promedio, con las clases perdidas fijas. {i2} Y cada clase perdida sube la nota en cero coma dos ocho. ¿Te suena raro? Debería: perder clases no debería mejorar la nota. Guárdalo, porque la prueba te lo explica. {i3} El intercepto sería la nota de alguien con cero en el examen y cero clases perdidas. Nadie sacó menos de cincuenta en el examen, así que no se interpreta.
+
+## Pruebas te
+
+{pt} Hay nueve grados de libertad y el crítico es dos coma dos seis dos.
+
+{t1} Examen: te cuatro coma nueve seis, pe cero coma cero cero cero ocho. Se rechaza: la nota del examen explica la nota de química. {t2} Clases perdidas: te cero coma tres ocho, pe cero coma siete dos. No se rechaza. No hay evidencia de que las clases perdidas influyan, una vez considerado el examen. Por eso el signo raro no preocupa: ese coeficiente no se distingue de cero.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Trece coma tres cuatro, contra un crítico de cuatro coma dos seis, pe cero coma cero cero dos. Se rechaza: el modelo sirve.
+
+{rcuad} Erre cuadrado: cero coma siete cinco, explica el setenta y cinco por ciento. {r2aj} El ajustado, cero coma seis nueve. La diferencia se nota porque una de las dos variables no aporta: el ajustado castiga ese parámetro inútil.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Los residuos no muestran forma. {sw} Shapiro Wilk da cero coma cuatro siete: no se rechaza la normalidad.
+
+{vif} Ve i efe: {vifv} uno coma uno cuatro para ambas. Sin multicolinealidad.
+
+{hat} El corte de apalancamiento es cero coma cinco; el estudiante once lo pasa con cero coma cinco ocho, porque combina el examen más bajo con muy pocas clases perdidas. {cook} Pero ninguna distancia de Cook pasa de uno: no hay datos influyentes.
+
+## Predicción
+
+{pred} Ahora la predicción. {predcalc} Reemplazamos: veintisiete coma cinco cinco, más cero coma nueve dos por sesenta, más cero coma dos ocho por cuatro. Da ochenta y cuatro. {predint} Si queremos la nota promedio de todos los estudiantes con ese perfil, el intervalo de confianza va de ochenta y uno a ochenta y siete. Si queremos la nota de un estudiante en particular, el intervalo de predicción es mucho más ancho: de setenta y tres a noventa y cinco, porque suma la variabilidad propia de una persona. Un examen de sesenta y cuatro clases perdidas están dentro del rango de los datos, así que la predicción es confiable.
+
+## Cierre
+
+{fin} Lo importante de este ejercicio: un signo raro en un coeficiente no significativo no se interpreta, el erre cuadrado ajustado castiga las variables que no aportan, y el intervalo de predicción siempre es más ancho que el de la media.
