@@ -1,0 +1,45 @@
+# Ejercicio 12.10: un modelo cúbico
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.10
+@pregunta m26-d029
+@orden 10
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto diez: un modelo cúbico.
+
+{enun} Hay siete puntos, con equis de cero a seis. {clave1} Se pide ajustar el cúbico: be cero, más be uno equis, más be dos equis cuadrado, más be tres equis al cubo. {clave2} En erre, cada potencia va con su i mayúscula. {clave3} Y predecir ye en equis igual a dos.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Ye gorro igual a uno coma cero siete, más cuatro coma seis por equis, menos uno coma ocho cinco por equis al cuadrado, más cero coma uno nueve cuatro por equis al cubo.
+
+{interp} Interpretación. {i1} Con un cúbico, la curva sube, baja y vuelve a subir. {i2} Ningún coeficiente es un efecto por sí solo. {i3} El intercepto sí está en el rango: en equis igual a cero, ye gorro vale uno coma cero siete.
+
+{deriv} La derivada ahora tiene tres términos: cuatro coma seis, menos dos por uno coma ocho cinco por equis, más tres por cero coma uno nueve cuatro por equis al cuadrado. {tang1} En equis igual a uno vale uno coma cinco: sube. {tang2} En cinco vale cero coma siete tres: vuelve a subir, después de haber bajado entre medio. Igualando la derivada a cero salen dos puntos: un máximo cerca de uno coma siete y un mínimo cerca de cuatro coma seis.
+
+## Pruebas te
+
+{pt} Siete datos y cuatro parámetros: solo tres grados de libertad. El crítico es tres coma uno ocho. {t1} Lineal, te cuatro coma cinco, se rechaza. {t2} Cuadrático, te menos cuatro coma cuatro, se rechaza. {t3} Cúbico, te cuatro coma dos cinco, pe cero coma cero dos cuatro, se rechaza: el término cúbico es necesario.
+
+## Efe y erre cuadrado
+
+{f} Y aquí una sorpresa. {fcalc} La efe global es siete, pero el crítico con tres y tres grados de libertad es nueve coma dos ocho. Pe cero coma cero siete: no se rechaza. Cada término es significativo, pero el modelo en conjunto no alcanza.
+
+¿Por qué? Con tres grados de libertad en el error, el crítico de efe es enorme. Hay muy poca información para estimar la varianza.
+
+{rcuad} Erre cuadrado cero coma ocho siete cinco. {r2aj} Ajustado cero coma siete cinco.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin forma. {sw} Shapiro: cero coma tres seis, no se rechaza.
+
+{hat} Con cuatro parámetros y siete datos, el corte de apalancamiento supera uno, así que no marca nada. {cook} Pero el último dato tiene Cook seis coma nueve: muy influyente. Con tan pocos puntos, un dato del borde decide la forma de la curva.
+
+## Predicción
+
+{pred} Predicción en equis igual a dos. {predcalc} Uno coma cero siete, más cuatro coma seis por dos, menos uno coma ocho cinco por cuatro, más cero coma uno nueve cuatro por ocho. Da cuatro coma cuatro cinco. {predint} El intervalo para la media va de tres a cinco coma nueve: ancho, por los pocos grados de libertad.
+
+## Cierre
+
+{fin} Con polinomios de grado alto y pocos datos, cuidado: cada término puede salir significativo y el efe no, un solo punto puede ser muy influyente, y los intervalos son anchos.
