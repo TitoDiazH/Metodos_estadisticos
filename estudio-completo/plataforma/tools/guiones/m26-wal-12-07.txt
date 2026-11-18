@@ -1,0 +1,41 @@
+# Ejercicio 12.7: flujo sanguíneo cerebral
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.7
+@pregunta m26-d020
+@orden 7
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto siete: el flujo sanguíneo cerebral.
+
+{enun} Participaron quince pacientes. {clave1} La respuesta es el flujo sanguíneo. {clave2} El regresor es la tensión arterial del oxígeno, en milímetros de mercurio. {clave3} Y el modelo pedido es cuadrático.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Ye gorro igual a ciento cuarenta y uno coma seis, menos cero coma dos ocho dos por equis, más cero coma cero cero cero tres uno por equis al cuadrado. Igual que el libro.
+
+{interp} Interpretemos con derivadas. {i1} El término lineal es negativo y el cuadrático positivo. {i2} Un cuadrático positivo significa una parábola hacia arriba, con un mínimo. {i3} El intercepto, ciento cuarenta y uno, correspondería a tensión cero: muy fuera del rango, no se interpreta.
+
+{deriv} La derivada es menos cero coma dos ocho dos más dos por cero coma cero cero cero tres uno por equis. {tang1} En cuatrocientos vale menos cero coma cero tres cinco: ahí, más tensión baja levemente el flujo. {tang2} En quinientos cincuenta vale más cero coma cero cinco ocho: ahí, más tensión lo sube. {vert} El cambio ocurre en el vértice, igualando la derivada a cero: cuatrocientos cincuenta y seis milímetros, dentro del rango. Ese es el mínimo del flujo predicho.
+
+## Pruebas te
+
+{pt} Doce grados de libertad, crítico dos coma uno siete nueve.
+
+{t1} Término lineal: te menos dos coma siete ocho, pe cero coma cero uno siete: se rechaza. {t2} Cuadrático: te dos coma ocho seis, pe cero coma cero uno cinco: se rechaza. Hay curvatura: la relación no es una recta.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Cuatro coma cinco, contra un crítico de tres coma ocho nueve, pe cero coma cero tres cinco. Se rechaza, pero sin holgura.
+
+{rcuad} Erre cuadrado cero coma cuatro tres: explica menos de la mitad. {r2aj} Ajustado cero coma tres tres. Que el modelo sea significativo no significa que prediga bien: hay mucha variación entre pacientes que la tensión no explica.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin forma clara. {sw} Shapiro: cero coma nueve nueve cinco. No se rechaza la normalidad.
+
+{hat} El corte de apalancamiento es cero coma cuatro; el paciente catorce, con la tensión más baja, lo supera. {cook} Pero ninguna distancia de Cook pasa de uno.
+
+## Cierre
+
+{fin} La idea: significativo no es lo mismo que buen ajuste. El efe y los te dicen que hay relación y curvatura; el erre cuadrado dice que esa relación explica solo una parte del flujo.
