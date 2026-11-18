@@ -1,0 +1,40 @@
+# Consejos para la pregunta de componentes principales
+@modulo m09-pca
+@ejercicio Consejos para la prueba · Componentes principales
+@orden 0
+
+## La pregunta adicional
+
+{inicio} Este resumen es para la pregunta adicional de la prueba cuatro sobre componentes principales, la que se promedia con la prueba uno.
+
+{tipo} En la prueba uno de este semestre la pregunta entregaba la salida de summary de prcomp, con las desviaciones estándar, y la matriz rotation con los loadings. Lo que se pide es leer eso: cuántos componentes, qué significan, y cómo se calcularía el puntaje de alguien.
+
+## Paso uno: estandarizar
+
+{est} Primero: ¿se estandarizó? Si las variables están en unidades distintas, como pesos y número de compras, hay que usar scale punto igual a true. Si no, la variable con números más grandes domina el primer componente solo por su escala. {estr} Con variables estandarizadas, cada una aporta varianza uno, y la suma de los autovalores es igual al número de variables.
+
+## Paso dos: autovalores y varianza
+
+{sd} Ojo con esta trampa: summary entrega la desviación estándar de cada componente, no el autovalor. {lam} El autovalor es la desviación estándar al cuadrado. Una desviación de uno coma dos cinco es un autovalor de uno coma cinco seis.
+
+{prop} La proporción de varianza de cada componente es su autovalor dividido en la suma de todos. {acum} Y la acumulada se va sumando.
+
+## Paso tres: cuántos componentes
+
+{crit} Tres criterios del curso. {c1} Kaiser: quedarse con los autovalores mayores que uno, con datos estandarizados. Ojo, sobre el autovalor, no sobre la desviación estándar, aunque aquí da lo mismo porque uno al cuadrado es uno. {c2} Ochenta por ciento de varianza acumulada. {c3} Y el codo del gráfico de sedimentación. {cdif} Pueden no coincidir. Si no coinciden, dilo y justifica cuál usas.
+
+## Paso cuatro: interpretar
+
+{load} Para interpretar un componente, mira los loadings grandes en valor absoluto, de cero coma cuatro para arriba. {sig} Y mira los signos: las variables con el mismo signo se mueven juntas en ese componente, y las de signo opuesto, en sentido contrario. {nombre} Después ponle un nombre: por ejemplo, intensidad de compra, si frecuencia, gasto y categorías tienen loadings positivos grandes y los cupones uno negativo.
+
+## Paso cinco: el puntaje
+
+{score} El puntaje de una persona en un componente es la suma de cada loading por su variable estandarizada. {z} Estandarizada: el valor menos la media, dividido en la desviación estándar de la muestra. {zno} El error típico de la prueba es reemplazar los valores originales directamente en la fórmula. Si no te dan medias y desviaciones, no se puede calcular el número: se explica el procedimiento.
+
+## Errores típicos
+
+{err} Resumen de errores. {e1} Usar la desviación estándar como si fuera el autovalor. {e2} Olvidar estandarizar. {e3} Interpretar loadings chicos. {e4} Y decir que componentes principales elimina variables: cada componente usa todas las variables.
+
+## Cierre
+
+{fin} Estandarizar, autovalor igual a desviación al cuadrado, proporción y acumulada, Kaiser, ochenta por ciento y codo, interpretar con loadings grandes y signos, y el puntaje siempre con variables estandarizadas. En la sección de clases tienes resuelta la pregunta tres punto uno de la prueba uno y un ejercicio a mano.
