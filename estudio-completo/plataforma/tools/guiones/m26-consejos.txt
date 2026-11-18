@@ -1,0 +1,58 @@
+# Consejos para la pregunta de regresión lineal
+@modulo m26-regresion-lineal
+@ejercicio Consejos para la prueba · Regresión lineal
+@orden 0
+
+## Qué te van a preguntar
+
+{inicio} Este video es un resumen práctico para la pregunta de regresión de la prueba cuatro: qué te van a pedir y cómo responder paso a paso.
+
+{inst} El instructivo dice que la prueba entrega un contexto, salidas de erre, gráficos y pruebas. O sea, no vas a ajustar modelos: vas a leerlos. {temas} Seis temas: interpretar el modelo, contrastar hipótesis sobre los coeficientes, la efe global, el erre cuadrado y el ajustado, los supuestos, y los problemas del modelo: multicolinealidad y observaciones influyentes.
+
+## La plantilla de cada respuesta
+
+{plant} Lo más importante del instructivo es esto: no basta con decir se rechaza. Cada respuesta lleva tres partes. {p1} Uno: el estadístico o el pe valor. {p2} Dos: la decisión. {p3} Tres: la conclusión en el contexto del problema.
+
+{ejemplo} Por ejemplo: te igual a cuatro coma nueve seis, pe igual a cero coma cero cero cero ocho, menor que cero coma cero cinco. Se rechaza la hipótesis nula. La nota del examen influye significativamente en la nota de química. Si te falta cualquiera de las tres partes, pierdes puntaje.
+
+## Paso uno: interpretar
+
+{interp} Cada coeficiente es el cambio promedio en ye cuando esa equis sube una unidad, manteniendo constantes las demás. Esa frase final no es decoración: es lo que distingue la regresión múltiple. {unidades} Siempre con unidades: no digas aumenta en dos coma siete, di aumenta en dos coma siete minutos por cada centímetro.
+
+{icpt} El intercepto solo se interpreta si equis igual a cero tiene sentido y está dentro del rango de los datos. Casi nunca pasa.
+
+{deriv} El instructivo pide la derivada parcial. En un modelo lineal es el coeficiente, un número fijo. {derivp} En un polinomio, cambia con equis: be uno más dos be dos equis. Evalúala en algún valor y di qué significa ahí. {derivi} Y con una interacción, la derivada respecto de equis uno depende de equis dos.
+
+{indic} Si hay una variable indicadora, como calzado común contra clavos, su coeficiente es la diferencia promedio con la categoría de referencia, con todo lo demás igual.
+
+## Paso dos: pruebas te
+
+{tt} La prueba te para un coeficiente: te igual a la estimación dividida por su error estándar, con ene menos ka menos uno grados de libertad. Ene son los datos, ka las variables sin contar el intercepto.
+
+{ta} Ojo con la hipótesis de beta igual a un valor distinto de cero, como beta igual a dos. La salida de erre no sirve: hay que restar el dos antes de dividir. Y el pe valor sale de la te de Student: dos por uno menos pe te del valor absoluto.
+
+{rc} Puedes decidir con el pe valor o con la región crítica. Si te dan el valor de cu te, compara el valor absoluto de te con ese crítico. Usa lo que te entreguen.
+
+## Paso tres: efe y erre cuadrado
+
+{f} La efe global prueba que todos los betas son cero a la vez. Si se rechaza, al menos una variable sirve. {fs} Recuerda la descomposición: la total es la de regresión más la del error. Y efe es la de regresión sobre ka, dividida por la del error sobre ene menos ka menos uno.
+
+{r2} Erre cuadrado: la de regresión sobre la total, porcentaje de la variabilidad explicada. {r2a} Erre cuadrado ajustado: uno menos uno menos erre cuadrado, por ene menos uno sobre ene menos ka menos uno. Sirve para comparar modelos con distinto número de variables, porque castiga cada parámetro. {compl} Si te piden completar una salida con huecos, casi siempre es esto: te igual a estimación sobre error estándar, erre cuadrado y el ajustado.
+
+## Paso cuatro: supuestos
+
+{sup} Cuatro supuestos, y cómo se ven. {sl} Linealidad: residuos contra ajustados sin curva. Una forma de u significa que falta un término cuadrático. {sh} Varianza constante: sin forma de embudo. {sn} Normalidad: el cuantil cuantil sobre la diagonal y Shapiro Wilk con pe mayor que cero coma cero cinco. Ojo, la nula de Shapiro es que los residuos son normales: un pe alto es lo que quieres. {si} Independencia: sin rachas en el orden de las corridas.
+
+## Paso cinco: problemas del modelo
+
+{vif} Ve i efe: mayor que cinco moderado, mayor que diez severo. La pista típica de la prueba: efe enorme y casi ningún te significativo, o un coeficiente con un signo absurdo. La solución, sacar una de las variables redundantes.
+
+{hat} Apalancamiento: mayor que dos por ka más uno, sobre ene. Son datos con equis raras. {cook} Distancia de Cook mayor que uno: el dato cambia el modelo si lo sacas. Nunca digas que se elimina automáticamente: se revisa y se informa.
+
+## Errores típicos
+
+{err} Los errores que más se repiten. {e1} Interpretar un coeficiente que no es significativo. {e2} Decir que se acepta la hipótesis nula: se dice que no se rechaza. {e3} Extrapolar fuera del rango de los datos, sobre todo con polinomios. {e4} Olvidar el con todo lo demás constante. {e5} Y confundir el intervalo de confianza de la media con el de predicción, que siempre es más ancho.
+
+## Cierre
+
+{fin} El orden para cualquier pregunta: modelo e interpretación, pruebas te, efe y erre cuadrado, supuestos, y ve i efe, apalancamiento y Cook. Y en cada respuesta, estadístico, decisión y contexto. Los doce ejercicios de Walpole en Desarrollo tienen este mismo esquema, cada uno con su video.
