@@ -1,0 +1,91 @@
+# Regresión lineal simple, múltiple y polinomial
+
+## La idea
+
+{inicio} Ahora toca el módulo veintitrés: la regresión lineal. Es la mitad de la prueba cuatro, y además es la base de la superficie de respuesta, así que vale la pena entenderla bien.
+
+{idea} La pregunta es siempre la misma: tengo una respuesta cuantitativa, y, y quiero explicarla con una o varias variables, las equis. Por ejemplo, cuánto óxido nitroso emite un camión según la humedad, la temperatura y la presión del aire.
+
+{modelo} El modelo más simple dice que, en promedio, ye sigue una recta en equis, más un ruido: ye igual a beta cero, más beta uno por equis, más épsilon. {modelo-p} Beta cero es el intercepto, beta uno es la pendiente, y épsilon es el error aleatorio, con media cero y varianza sigma cuadrado.
+
+{error} Hay una distinción que se pregunta mucho. {error-e} El error, épsilon, se mide respecto de la recta verdadera, que nadie conoce, así que no se observa. {error-r} El residuo, e i, es la diferencia entre el dato y la recta estimada: ye i menos ye gorro i. Ese sí se calcula.
+
+## Mínimos cuadrados y R cuadrado
+
+{mc} ¿Cómo se elige la recta? Se busca la que hace lo más pequeña posible la suma de los residuos al cuadrado. Por eso se llama mínimos cuadrados. {mc-f} De ahí salen las fórmulas: la pendiente, be uno, es la suma de productos cruzados dividida por la suma de cuadrados de equis, y el intercepto es ye barra menos be uno por equis barra.
+
+{r2} Para medir qué tan bien ajusta, se usa el erre cuadrado. {r2-sc} La variación total de ye se separa en dos partes: la que explica el modelo y la que queda en los residuos. {r2-f} Erre cuadrado es la parte explicada dividida por la total, o sea, uno menos la suma de cuadrados residual sobre la total. {r2-l} Va de cero a uno, y se lee como la fracción de la variación de ye que explica el modelo.
+
+## Regresión múltiple
+
+{mult} Con varias equis la idea es la misma, pero en vez de una recta se ajusta un plano, o un hiperplano. {mat} Escrito con matrices, el modelo es ye igual a equis por beta, más épsilon, {mat-b} y la solución de mínimos cuadrados es [[β̂ = (X'X)⁻¹ X'Y|beta gorro igual a equis prima equis, inversa, por equis prima ye]].
+
+{sup} Los supuestos son cuatro: {sup-1} que la relación sea lineal, {sup-2} que los errores tengan media cero y varianza constante, {sup-3} que sean independientes, {sup-4} y, para las pruebas, que sean normales. Además, ninguna equis puede ser combinación exacta de las otras.
+
+{s2} La varianza del error se estima con ese cuadrado: la suma de cuadrados residual dividida por ene menos ka menos uno. Ka es el número de regresores, y ene menos ka menos uno son los grados de libertad del error, que aparecen en todas las pruebas.
+
+## El ejemplo del óxido nitroso
+
+{ox} El ejemplo de la clase son veinte camiones diésel. La respuesta es el óxido nitroso, en partes por millón, y los regresores son la humedad, la temperatura y la presión. En erre se ajusta con lm, y se mira con summary.
+
+{oxsal} La salida trae una fila por coeficiente: la estimación, su error estándar, el valor te y el pe valor. {ec} Con las estimaciones, el modelo queda: ye gorro igual a menos tres coma cinco uno, menos cero coma cero cero dos seis tres por humedad, más cero coma cero cero cero ocho por temperatura, más cero coma uno cinco cuatro por presión.
+
+{hum} ¿Cómo se lee el coeficiente de la humedad? Por cada punto más de humedad, la emisión baja en promedio cero coma cero cero dos seis partes por millón, {fijos} manteniendo fijas la temperatura y la presión. Esa última parte es la que más se olvida, y es lo que distingue a la regresión múltiple: cada coeficiente es el efecto de su variable con las demás constantes. {deriv} Dicho de otra forma, el coeficiente es la derivada parcial de ye gorro respecto de esa equis.
+
+{b0} El intercepto sería la emisión con humedad, temperatura y presión iguales a cero. Eso está muy fuera del rango de los datos, así que aquí no se interpreta.
+
+## Pruebas te
+
+{t} Para saber si una variable aporta, se prueba la hipótesis nula de que su beta vale cero. El estadístico es te igual a be dividido por su error estándar, con ene menos ka menos uno grados de libertad.
+
+{thum} Para la humedad: menos cero coma cero cero dos seis dos cinco, dividido por cero coma cero cero cero seis cinco cinco, da te igual a menos cuatro coma cero uno, con pe valor cero coma cero cero uno. {thum-c} Como el pe valor es menor que cero coma cero cinco, se rechaza la hipótesis nula: la humedad sí explica la emisión de óxido nitroso.
+
+{tno} En cambio, la temperatura tiene pe valor cero coma siete cero y la presión cero coma uno cinco. Ninguna de las dos es significativa al cinco por ciento.
+
+{alfa} Ahora, algo que el instructivo pide explícitamente. Erre siempre prueba beta igual a cero. Pero a veces la pregunta es otra: ¿cada grado agrega dos minutos? ¿la pendiente vale uno? {alfa-f} Entonces la hipótesis nula es beta igual a alfa, y el te se calcula a mano: be menos alfa, dividido por el error estándar. {alfa-ej} Por ejemplo, en el ejercicio doce punto uno de Walpole, be dos es dos coma cero cuatro nueve siete, con error estándar cero coma cero cuatro ocho uno. Para la hipótesis de que vale dos, te es cero coma cero cuatro nueve siete sobre cero coma cero cuatro ocho uno, o sea uno coma cero tres. {alfa-dec} Eso es menor que el valor crítico, dos coma tres seis cinco, así que no se rechaza: los datos son compatibles con dos minutos por unidad.
+
+## La prueba efe global y el erre cuadrado ajustado
+
+{f} La prueba efe global pregunta si el modelo sirve en su conjunto. La hipótesis nula es que todas las pendientes valen cero; la alternativa, que al menos una no. {fv} En el ejemplo, efe vale veintiuno coma cuatro, con tres y dieciséis grados de libertad, y el pe valor es del orden de diez a la menos seis. Se rechaza: al menos una variable explica la emisión.
+
+{r2v} El erre cuadrado es cero coma ocho cero: el modelo explica el ochenta por ciento de la variación del óxido nitroso.
+
+{r2aj} Pero el erre cuadrado siempre sube al agregar variables, aunque no sirvan. Por eso existe el erre cuadrado ajustado, que castiga cada regresor: uno menos, uno menos erre cuadrado, por ene menos uno sobre ene menos ka menos uno. {r2aj-v} Aquí da cero coma siete seis tres. Es el que se usa para comparar modelos con distinto número de variables.
+
+{comp} En la prueba puede venir una salida con huecos. Todo se completa con estas relaciones: {comp-1} te es be sobre el error estándar, {comp-2} erre cuadrado es la suma de cuadrados de la regresión sobre la total, {comp-3} y efe es el cuadrado medio de la regresión sobre el cuadrado medio del error.
+
+## Regresión polinomial y derivadas
+
+{poli} La regresión es lineal en los parámetros, no necesariamente en las variables. Equis y equis al cuadrado pueden entrar como dos regresores distintos, y así se ajustan curvas. {poli-r} En erre se escribe I de equis elevado a dos. Sin la I, erre no agrega el cuadrado.
+
+{pend} Con un término cuadrático, be uno ya no es la pendiente. {pend-f} La pendiente es la derivada: [[b₁ + 2b₂x|be uno, más dos be dos por equis]], y cambia según dónde estemos. {pend-0} Se hace cero en equis igual a menos be uno sobre dos be dos. Si be dos es negativo, ahí hay un máximo.
+
+{fert} El ejemplo de la ayudantía diez es un fertilizante. El rendimiento estimado es tres coma uno dos uno, más cero coma cero tres dos seis ocho por la dosis, menos cero coma cero cero cero uno uno uno ocho por la dosis al cuadrado. {fert-d} La derivada es cero coma cero tres dos seis ocho, menos cero coma cero cero cero dos dos tres seis por la dosis. {fert-0} Se anula cerca de ciento cuarenta y seis kilos por hectárea, y como el cuadrático es negativo, es un máximo, con un rendimiento de cinco coma cinco toneladas por hectárea.
+
+{inter} Con una interacción pasa algo parecido: si el modelo tiene be uno dos por equis uno por equis dos, el efecto de equis uno es be uno, más be uno dos por equis dos. Depende del nivel de la otra variable.
+
+## Supuestos y diagnóstico
+
+{diag} Los supuestos son sobre los errores, que no vemos. Por eso se revisan con los residuos. En erre, plot del modelo entrega cuatro gráficos de una vez.
+
+{rva} El más importante es el de residuos contra valores ajustados. {rva-ok} Lo que se quiere ver es una nube sin forma, centrada en cero, de ancho parejo. {rva-u} Si aparece una curva, una U, falta un término, por ejemplo un equis al cuadrado. {rva-emb} Si aparece un embudo, la varianza no es constante, y se puede transformar ye, por ejemplo con logaritmo.
+
+{qq} Para la normalidad está el gráfico cuantil cuantil: los puntos deberían caer sobre la diagonal. {sw} Y la prueba formal es Shapiro-Wilk, con hipótesis nula de normalidad. En el ejemplo da pe valor cero coma uno nueve cinco, así que no se rechaza la normalidad.
+
+## Puntos influyentes y multicolinealidad
+
+{infl} Un punto es influyente si al sacarlo el modelo cambia mucho. Hay dos medidas. {hat} La primera es el apalancamiento, que mide qué tan raras son sus equis. Se considera alto si supera dos veces ka más uno, sobre ene. {hat-v} Con ka igual a tres y ene igual a veinte, el corte es cero coma cuatro. El máximo del ejemplo es cero coma tres cinco cuatro, en la observación diecinueve, así que ninguno es alto.
+
+{cook} La segunda es la distancia de Cook, que combina el apalancamiento con el tamaño del residuo. Se preocupa uno si pasa de uno. {cook-v} Aquí el máximo es cero coma siete uno, en la observación cinco. Tampoco hay problema. {noelim} Y aunque hubiera uno, no se borra automáticamente: primero se revisa si es un error de registro o un caso real.
+
+{vif} Por último, la multicolinealidad. Si dos regresores están muy correlacionados, el modelo no logra separar sus efectos: los errores estándar se inflan y los coeficientes se vuelven inestables. {vif-f} Se mide con el factor de inflación de la varianza: uno sobre uno menos erre jota cuadrado, donde erre jota cuadrado viene de explicar esa equis con las demás. {vif-c} Si pasa de cinco, o de diez según el criterio, es preocupante. {vif-v} En el ejemplo los valores son dos coma cuatro, uno coma cero siete y dos coma tres tres. Todos bajo cinco: sin problema serio.
+
+## Cerrar una respuesta
+
+{resp} El instructivo es claro con esto: cada respuesta lleva tres cosas. {resp-1} El estadístico o el pe valor, {resp-2} la decisión, {resp-3} y la conclusión en el contexto del problema. No basta con decir se rechaza hache cero.
+
+## Para cerrar
+
+{cierre} Lo esencial de este módulo. {c1} Cada coeficiente es el cambio esperado en ye por unidad de su equis, con las demás fijas. {c2} La prueba te es be sobre su error estándar, y si la hipótesis es otro valor, se resta ese valor. {c3} La efe global prueba el modelo completo, y el erre cuadrado ajustado compara modelos. {c4} En un polinomio el efecto es la derivada, y cambia con equis. {c5} Y se revisan residuos, apalancamiento, Cook y ve i efe.
+
+{fin} Eso fue el módulo veintitrés.
