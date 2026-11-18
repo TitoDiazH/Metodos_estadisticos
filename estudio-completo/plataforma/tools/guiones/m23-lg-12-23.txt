@@ -1,0 +1,57 @@
+# Ejercicio 12.23: tiempo de filtración y el punto estacionario a mano
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 23 (punto estacionario explicado)
+@pregunta m23-d004
+@orden 2
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veintitrés del capítulo doce. Aquí aparece por primera vez el modelo de segundo orden y el punto estacionario, así que lo vamos a hacer paso a paso.
+
+{enun} Un ingeniero químico midió el tiempo de filtración. {clave1} Los factores son temperatura y presión, ya codificados. {clave2} Hay trece corridas. {clave3} Se pide decir qué diseño es, ajustar un modelo de segundo orden, ver qué superficie describe y encontrar el mejor punto de operación. Como es un tiempo de filtración, suponemos que conviene minimizarlo.
+
+## El diseño
+
+{dis} Es un diseño central compuesto. Las cuatro esquinas del factorial dos por dos. Cuatro puntos axiales, sobre los ejes, a uno coma cuatro uno cuatro del centro. Y cinco réplicas del centro. {cod} Los datos ya vienen codificados.
+
+¿Por qué uno coma cuatro uno cuatro? Es la raíz cuarta de cuatro, y hace que todos los puntos externos queden a la misma distancia del centro: el diseño es rotable, la precisión de la predicción depende solo de la distancia al centro. Y ahora cada factor tiene cinco niveles, así que sí se puede estimar curvatura.
+
+## El modelo de segundo orden
+
+{sal} El modelo de segundo orden se ajusta con regresión múltiple, con una columna por término. {ecuacion} Queda: cuarenta y uno coma dos, menos uno coma nueve siete equis uno, más uno coma cuatro seis equis dos, más tres coma siete uno equis uno al cuadrado, más dos coma cuatro seis equis dos al cuadrado, más seis equis uno equis dos.
+
+Tres tipos de términos. {lin} Los lineales, que inclinan la superficie. {cuad} Los cuadráticos, que la curvan: si son positivos, curva hacia arriba; si son negativos, hacia abajo. {inter} Y la interacción, que tuerce la superficie: el efecto de un factor depende del otro.
+
+{sig} ¿Cuáles son significativos? Solo la interacción, con pe cero coma cero tres ocho. El cuadrático de equis uno queda en cero coma cero siete seis, cerca pero no.
+
+## ¿Es adecuado el modelo?
+
+{f} La efe global. {fcalc} Dos coma ocho seis, pe cero coma uno cero. No se rechaza: el modelo en conjunto no es significativo. {rcuad} El erre cuadrado es cero coma seis siete, y el ajustado cae a cero coma cuatro cuatro. {lof} Y la falta de ajuste es significativa, pe cero coma cero uno siete: las réplicas del centro varían poco, y el modelo no logra seguir los datos.
+
+Conclusión honesta: este modelo no es bueno. Aun así, el libro pide caracterizarlo, y es el ejemplo perfecto para practicar el procedimiento.
+
+## El punto estacionario, paso a paso
+
+{deriv} En la cima de una loma, o en el fondo de un valle, el terreno es plano: la pendiente vale cero en todas las direcciones. Por eso se deriva respecto de cada variable y se iguala a cero.
+
+{d1} Derivando respecto de equis uno: el término lineal deja menos uno coma nueve siete. El cuadrático, tres coma siete uno equis uno al cuadrado, deja dos por tres coma siete uno equis uno: siete coma cuatro tres equis uno. Y la interacción, seis equis uno equis dos, deja seis equis dos. Todo eso igual a cero.
+
+{d2} Respecto de equis dos: uno coma cuatro seis, más seis equis uno, más dos por dos coma cuatro seis, o sea, cuatro coma nueve dos equis dos. Igual a cero.
+
+{sist} Es un sistema lineal de dos por dos. En forma de matrices: be más dos be mayúscula por equis igual a cero, y la solución es menos un medio de be mayúscula inversa por be. La matriz be mayúscula lleva los cuadráticos en la diagonal, y la mitad de la interacción fuera de ella: tres en vez de seis.
+
+{sol} Resolviendo, equis uno da treinta y dos coma seis, y equis dos menos cuarenta. {real} Muy, muy lejos de la región, que va de menos uno coma cuatro a uno coma cuatro.
+
+## ¿Máximo, mínimo o silla?
+
+{hes} Para clasificarlo, la hessiana: la matriz de segundas derivadas, que es dos veces be mayúscula. {det} Con dos variables basta el determinante: siete coma cuatro tres por cuatro coma nueve dos, menos seis al cuadrado. Da cero coma cinco seis, positivo. Y el primer elemento es positivo. Hessiana definida positiva: es un mínimo.
+
+{ev} Lo mismo se ve con los valores propios de be: seis coma uno cinco y cero coma cero dos tres. {clas} Los dos positivos: mínimo. Pero uno es casi cero: en esa dirección la superficie es casi plana. Es un valle muy alargado, casi una canaleta. Por eso el punto estacionario se dispara tan lejos.
+
+## El mejor punto de operación
+
+{opt} Queremos minimizar, y el punto estacionario es un mínimo, pero está fuera de la región. No se puede recomendar: sería extrapolar. Cuando pasa esto, el óptimo está en la frontera de la región estudiada. {mejor} Evaluando el modelo en la región del factorial, el menor tiempo de filtración se obtiene en la esquina equis uno igual a uno, equis dos igual a menos uno: temperatura alta y presión baja, con unos treinta y ocho minutos predichos. Coincide con la corrida de menor tiempo observado, treinta y dos.
+
+## Cierre
+
+{fin} El procedimiento del punto estacionario: derivar respecto de cada variable, igualar a cero, resolver el sistema, clasificar con la hessiana o con los valores propios, y revisar si cae dentro de la región y si es del tipo que buscas. Si no, el óptimo está en el borde.
