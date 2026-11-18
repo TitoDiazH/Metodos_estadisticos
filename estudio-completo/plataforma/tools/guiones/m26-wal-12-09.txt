@@ -1,0 +1,41 @@
+# Ejercicio 12.9: producto de una reacción
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.9
+@pregunta m26-d026
+@orden 9
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto nueve: el producto de una reacción química.
+
+{enun} Se usan los datos del ejemplo once punto ocho: cuatro temperaturas con tres observaciones cada una. {clave1} La respuesta es el producto, en porcentaje. {clave2} El modelo pedido es cuadrático en la temperatura. {clave3} Y estimar el producto a doscientos veinticinco grados.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Ye gorro igual a cincuenta y seis coma cuatro seis, más cero coma uno cinco dos por equis, menos cero coma cero cero cero cero ocho por equis al cuadrado. Igual que el libro.
+
+{interp} Interpretación. {i1} El cuadrático es negativo, pero diminuto. {i2} Fíjate en la derivada antes de concluir. {i3} El intercepto, a cero grados, está fuera del rango.
+
+{deriv} La derivada es cero coma uno cinco dos menos cero coma cero cero cero uno seis por equis. {tang1} A doscientos grados vale cero coma uno dos. {tang2} A doscientos setenta y cinco vale cero coma uno uno. Casi lo mismo: la pendiente prácticamente no cambia. La curva es casi una recta. {vert} El vértice quedaría en novecientos cincuenta y tres grados, muy lejos de los datos.
+
+## Pruebas te
+
+{pt} Nueve grados de libertad, crítico dos coma dos seis dos. {t1} Lineal: te cuatro coma siete seis, se rechaza. {t2} Cuadrático: te menos uno coma uno tres, pe cero coma dos nueve. No se rechaza: no hay evidencia de curvatura. Bastaría la recta, que es justo lo que concluye el ejemplo once punto ocho.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Seiscientos setenta y siete: el modelo explica el producto. {rcuad} Erre cuadrado cero coma nueve nueve tres. {r2aj} Ajustado cero coma nueve nueve dos.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin forma. {sw} Shapiro: cero coma siete tres, no se rechaza.
+
+{hat} Nadie supera el corte de cero coma cinco. {cook} Ningún Cook pasa de uno.
+
+## Predicción
+
+{pred} Producto a doscientos veinticinco grados. {predcalc} Reemplazando, ochenta y seis coma siete por ciento, igual al libro. {predint} El intervalo para la media va de ochenta y seis coma uno a ochenta y siete coma cuatro; para una corrida individual, de ochenta y cinco coma dos a ochenta y ocho coma tres.
+
+## Cierre
+
+{fin} Un término cuadrático no significativo, con una derivada que casi no cambia, dice que la recta basta. Y la predicción dentro del rango es confiable con cualquiera de los dos modelos.
