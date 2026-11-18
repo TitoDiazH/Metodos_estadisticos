@@ -1,0 +1,41 @@
+# Ejercicio 12.36: el factorial dos al cubo como regresión
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.36
+@pregunta m26-d035
+@orden 12
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto treinta y seis. Conecta la regresión con los diseños factoriales, y prepara la superficie de respuesta.
+
+{enun} Se hicieron ocho corridas. {clave1} La respuesta es el producto. {clave2} Los tres factores, temperatura, tiempo y concentración, están codificados en menos uno y más uno. {clave3} Se pide el modelo y dividir la suma de cuadrados de la regresión en tres partes, una por variable.
+
+## El modelo ajustado
+
+{sal} La salida. Fíjate en algo: los tres errores estándar son idénticos, cero coma dos cero siete. Eso pasa porque el diseño es ortogonal. {ecuacion} El modelo: nueve coma nueve, más cero coma cinco siete cinco equis uno, más cero coma cinco cinco equis dos, más uno coma uno cinco equis tres.
+
+{interp} Interpretación con variables codificadas. {i1} Be uno, cero coma cinco siete cinco: subir la temperatura una unidad codificada sube el producto en eso. {i2} Pero de nivel bajo a nivel alto hay dos unidades, así que el efecto del factorial es el doble: uno coma uno cinco. Cada coeficiente es la mitad del efecto. {i3} Y el intercepto ahora sí se interpreta: el cero codificado es el centro del diseño, y nueve coma nueve es el promedio de las ocho corridas.
+
+## Pruebas te
+
+{pt} Cuatro grados de libertad, crítico dos coma siete siete seis. {t1} Temperatura: te dos coma siete siete, pe cero coma cero cinco cero uno. Justo en el borde: por una milésima, no se rechaza al cinco por ciento. {t2} Tiempo: pe cero coma cero cinco siete, no se rechaza. {t3} Concentración: te cinco coma cinco, pe cero coma cero cero cinco: se rechaza.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Quince coma uno siete, pe cero coma cero uno dos: el modelo sirve. {rcuad} Erre cuadrado cero coma nueve dos. {r2aj} Ajustado cero coma ocho seis.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin forma. {sw} Shapiro: cero coma tres nueve.
+
+{vif} Ve i efe: {vifv} exactamente uno los tres. Diseño ortogonal: las columnas no están correlacionadas.
+
+{hat} Todas las corridas tienen el mismo apalancamiento, como corresponde a un factorial. {cook} El Cook más alto queda bajo uno.
+
+## La suma de cuadrados por partes
+
+{scr} Lo último que pide el libro. Como las columnas son ortogonales, la suma de cuadrados de la regresión se reparte limpiamente: una parte por variable, cada una con un grado de libertad, y el orden en que se entran no cambia nada. {scrcalc} Cada parte dividida por el cuadrado medio del error da un efe, que es exactamente el te al cuadrado. Por eso las conclusiones son las mismas: la concentración es significativa, y temperatura y tiempo quedan justo al borde.
+
+## Cierre
+
+{fin} Un factorial dos a la ka es una regresión con variables codificadas: coeficiente igual a la mitad del efecto, errores estándar iguales y ve i efe igual a uno. Esa misma idea, con más niveles, es la superficie de respuesta.
