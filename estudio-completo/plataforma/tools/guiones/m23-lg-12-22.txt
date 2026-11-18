@@ -1,0 +1,57 @@
+# Ejercicio 12.22: anodizado, la puerta de entrada a la superficie de respuesta
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 22 (con la materia explicada)
+@pregunta m23-d001
+@orden 1
+
+## Qué pide el ejercicio
+
+{inicio} Este es el primer ejercicio de superficie de respuesta, el veintidós del capítulo doce del libro guía. Lo vamos a usar para entender la materia desde el principio.
+
+{enun} Una empresa anodiza ollas de aluminio, y el anodizado está quedando muy delgado. {clave1} Se quiere estudiar cómo el pH y la temperatura afectan el espesor. {clave2} Hay diez corridas: cuatro combinaciones de pH y temperatura, cada una dos veces, y dos corridas en el centro. {clave3} El libro pregunta qué diseño es, qué se gana con el centro, cuál es el mejor modelo, y hacia dónde moverse para aumentar el espesor.
+
+## La idea de superficie de respuesta
+
+{idea} Hasta ahora, en los factoriales, los factores tenían niveles fijos, como bajo y alto. Pero el pH y la temperatura pueden tomar cualquier valor. {sup} Entonces el espesor no es una tabla de medias: es una superficie sobre el plano pH temperatura. {formas} La superficie real puede ser complicada, pero en una zona acotada casi siempre se parece a una de tres formas: una loma, un valle, o una silla de montar. El objetivo es encontrar dónde está lo mejor.
+
+## Codificar
+
+{cod} Primero, codificar. Se resta el centro y se divide por el semirrango. {codph} El pH va de uno coma dos a uno coma ocho: centro uno coma cinco, semirrango cero coma tres. Así uno coma ocho queda en más uno, y uno coma dos en menos uno. {codt} La temperatura va de menos ocho a ocho: centro cero, semirrango ocho. {codpq} ¿Para qué? Para que los dos factores queden en la misma escala, de menos uno a uno, y sus coeficientes se puedan comparar directamente.
+
+## El diseño
+
+{dis} En el plano codificado, el diseño se ve así: {esq} las cuatro esquinas de un factorial dos por dos, cada una con dos réplicas, {cen} y un punto central repetido dos veces. Es un factorial dos al cuadrado con puntos al centro.
+
+{limite} Con solo dos niveles por factor, el modelo solo puede tener rectas e interacciones. Por dos puntos pasa una sola recta, pero infinitas curvas: un dos a la ka no puede ver curvatura. Ahí entra el centro.
+
+## Primer modelo: un plano
+
+{m1} Ajustamos primero un modelo de primer orden: un plano. {m1ec} Ye gorro igual a trece, más tres coma tres siete cinco por equis uno, más dos coma uno dos cinco por equis dos.
+
+{b1} ¿Cómo se lee con variables codificadas? Be uno, tres coma tres siete cinco, es lo que sube el espesor por cada unidad codificada de pH. {mitad} Pero de pH bajo a pH alto hay dos unidades, de menos uno a más uno, así que el efecto del factorial es el doble: seis coma siete cinco. El coeficiente es la mitad del efecto. {comp} Como están en la misma escala, comparamos: el pH pesa más que la temperatura. {b0} Y be cero, trece, es el espesor predicho en el centro del diseño.
+
+## Lo que aporta el centro
+
+{centro} Ahora, ¿para qué el centro? Para dos cosas.
+
+{puro} La primera: las réplicas dan el error puro. Las dos corridas al centro dieron catorce y trece, y cada esquina también se repitió. Esa variación entre réplicas no depende de ningún modelo: es el ruido del proceso.
+
+{curv} La segunda: detectar curvatura. Si la superficie fuera un plano, la media en el centro sería igual a la media de las esquinas. {medias} Aquí el centro promedia trece coma cinco, y las esquinas doce coma ocho ocho.
+
+{lof} Con el error puro se hace la prueba de falta de ajuste: compara lo que el plano no explica, contra el ruido puro. {lofv} Da efe igual a seis coma siete dos, con pe cero coma cero tres ocho. Se rechaza: el plano se queda corto. Algo le falta.
+
+## Segundo modelo: con interacción
+
+{m2} Agregamos la interacción entre pH y temperatura. {m2ec} Ahora ye gorro es trece, más tres coma tres siete cinco equis uno, más dos coma uno dos cinco equis dos, más uno coma uno dos cinco equis uno equis dos. {m2t} La interacción tiene te tres coma seis dos y pe cero coma cero uno uno: es significativa. {m2r} El erre cuadrado sube de cero coma ocho nueve seis a cero coma nueve seis siete, y la falta de ajuste desaparece: pe cero coma cuatro dos. Este es el mejor modelo.
+
+{dint} ¿Qué significa la interacción? Derivemos respecto del pH: tres coma tres siete cinco más uno coma uno dos cinco por equis dos. {dintv} Con temperatura baja, equis dos igual a menos uno, el pH sube el espesor en dos coma dos cinco por unidad. Con temperatura alta, en cuatro coma cinco. El efecto del pH depende de la temperatura: eso es una interacción.
+
+## Hacia dónde moverse
+
+{asc} La última pregunta del libro es la dirección de máximo ascenso. Esto no está en la clase, pero es corto. {grad} En un plano, la dirección en que la respuesta sube más rápido es la de los coeficientes: tres coma tres siete cinco en pH y dos coma uno dos cinco en temperatura. {paso} Se avanza en el factor más influyente, el pH, con un paso de cero coma tres, que es una unidad codificada. Y la temperatura avanza en proporción: dos coma uno dos cinco dividido en tres coma tres siete cinco, cero coma seis tres unidades, o sea, cinco grados. {puntos} Cinco puntos: pH uno coma ocho y cinco grados, pH dos coma uno y diez grados, y así hasta pH tres y veinticinco grados.
+
+{despues} ¿Y después? Se corre el proceso en esos puntos hasta que el espesor deje de subir. Alrededor del mejor se monta un diseño con más niveles, un central compuesto, para ajustar un modelo de segundo orden y encontrar el óptimo. Eso es lo que hacemos en el ejercicio veintitrés.
+
+## Cierre
+
+{fin} Resumiendo: codificar para comparar, el coeficiente codificado es la mitad del efecto, el centro da error puro y detecta curvatura, la falta de ajuste dice si el modelo se queda corto, y una interacción significa que la derivada respecto de un factor depende del otro.
