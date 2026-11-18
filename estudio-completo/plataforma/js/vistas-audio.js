@@ -27,7 +27,7 @@
   function repintar() {
     if (!enVista()) return;
     var marco = document.getElementById("pzMarco");
-    if (marco && document.fullscreenElement === marco) {
+    if (marco && (document.fullscreenElement === marco || marco.classList.contains("pz-full"))) {
       var a = pista(), sonando = el && !el.paused;
       Array.prototype.forEach.call(document.querySelectorAll('[data-accion="alternar"].pz-btn, .audio-play'), function (b) {
         b.textContent = b.classList.contains("pz-btn") ? (sonando ? "⏸" : "▶") : (sonando ? "⏸ Pausar" : "▶ Reproducir");
@@ -335,16 +335,37 @@
       pantallaCompleta: function () {
         var m = document.getElementById("pzMarco");
         if (!m) return;
-        if (document.fullscreenElement) document.exitFullscreen();
-        else if (m.requestFullscreen) m.requestFullscreen();
-        else if (m.webkitRequestFullscreen) m.webkitRequestFullscreen();
+        /* Salir (nativa o propia) */
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document); return;
+        }
+        if (m.classList.contains("pz-full")) { pseudoCompleta(m, false); return; }
+        /* En celulares (sin hover) o sin API: pantalla completa propia, que en vertical gira la pizarra.
+           En el resto, la nativa; si el navegador la rechaza, la propia. */
+        var tactil = window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        var pedir = m.requestFullscreen || m.webkitRequestFullscreen;
+        if (tactil || !pedir) { pseudoCompleta(m, true); return; }
+        try {
+          var r = pedir.call(m);
+          if (r && r.catch) r.catch(function () { pseudoCompleta(m, true); });
+        } catch (e) { pseudoCompleta(m, true); }
       }
     }
   };
 
+  /* Pantalla completa propia: la pizarra cubre la ventana (sirve en iPhone, donde solo los <video> pueden ir a pantalla completa). */
+  function pseudoCompleta(m, si) {
+    m.classList.toggle("pz-full", si);
+    document.documentElement.classList.toggle("pz-sin-scroll", si);
+    var b = m.querySelector('[data-accion="pantallaCompleta"]');
+    if (b) b.textContent = si ? "✕" : "⤢";
+    if (pizarra && el) pizarra.actualizar(el.currentTime, false);
+  }
   /* Espacio = reproducir/pausar mientras la pizarra está a pantalla completa. */
   document.addEventListener("keydown", function (e) {
-    if (!document.fullscreenElement || !el) return;
+    var full = document.querySelector(".pz-marco.pz-full");
+    if (full && e.key === "Escape") { pseudoCompleta(full, false); return; }
+    if (!(document.fullscreenElement || full) || !el) return;
     if (e.key === " ") { e.preventDefault(); if (el.paused) tocar(); else el.pause(); }
     else if (e.key === "ArrowLeft") saltar(-5);
     else if (e.key === "ArrowRight") saltar(5);
