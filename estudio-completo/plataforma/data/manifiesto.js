@@ -128,6 +128,7 @@ PLATAFORMA.manifiesto = {
     "data/escenas/m25-lg-5-21.js",
     "data/escenas/m25-lg-5-22.js",
     "data/escenas/m26-wal-12-01.js",
+    "data/escenas/m26-wal-12-02.js",
     "data/memorizar/m01-covarianza-correlacion.js",
     "data/memorizar/m02-matrices-bartlett.js",
     "data/memorizar/m03-normal-multivariada.js",
