@@ -1,0 +1,40 @@
+# Consejos para la pregunta de análisis factorial
+@modulo m10-analisis-factorial
+@ejercicio Consejos para la prueba · Análisis factorial
+@orden 0
+
+## La pregunta adicional
+
+{inicio} Resumen práctico para la parte de análisis factorial de la pregunta adicional de la prueba cuatro.
+
+{idea} Recuerda la idea: hay factores latentes, que no se observan, que explican por qué las variables están correlacionadas. Componentes principales analiza toda la varianza; el análisis factorial, solo la varianza común.
+
+## Paso uno: ¿sirven los datos?
+
+{adec} Antes de extraer factores, dos pruebas. {bart} Bartlett: la hipótesis nula es que la matriz de correlaciones es la identidad, o sea, que las variables no están correlacionadas. Queremos rechazarla: pe menor que cero coma cero cinco. {kmo} K M O: mide si las correlaciones parciales son chicas. Mayor o igual a cero coma siete cinco es bueno, mayor o igual a cero coma cinco aceptable, menor que cero coma cinco inaceptable. Y mira también el de cada variable: una con K M O bajo es candidata a salir.
+
+## Paso dos: cuántos factores
+
+{nf} Los criterios: Kaiser, autovalores mayores que uno; el porcentaje de varianza; el codo; y el análisis paralelo, que compara con datos simulados. {lim} Y un límite: el número de factores no puede pasar de pe menos uno, dividido en dos, con pe el número de variables.
+
+## Paso tres: leer la salida
+
+{sal} En la salida de fa o de principal, cada variable tiene sus cargas en cada factor, y dos columnas clave. {h2} Hache dos es la comunalidad: la parte de la varianza de la variable que explican los factores. Se calcula sumando las cargas al cuadrado. {u2} U dos es la unicidad: uno menos la comunalidad.
+
+{ej} Ejemplo: una variable con cargas cero coma ocho y cero coma tres tiene comunalidad cero coma seis cuatro más cero coma cero nueve, cero coma siete tres. Su unicidad es cero coma dos siete.
+
+{trampa} Ojo: la pauta de la prueba uno de este semestre confundió las dos columnas en una pregunta. La variable peor representada es la de menor hache dos, no la de menor u dos.
+
+## Paso cuatro: rotar e interpretar
+
+{rot} La rotación, por ejemplo varimax, gira los factores para que cada variable cargue fuerte en uno solo y sea más fácil interpretar. {rotno} Lo que no cambia al rotar: las comunalidades, las unicidades y la varianza total explicada. Lo que cambia es cómo se reparte entre factores.
+
+{interp} Para nombrar un factor, mira las cargas mayores que cero coma cuatro o cero coma cinco en valor absoluto y qué tienen en común esas variables.
+
+## Errores típicos
+
+{err} Los errores más comunes. {e1} Confundir hache dos con u dos. {e2} Olvidar revisar Bartlett y K M O antes de interpretar. {e3} Interpretar las cargas sin rotar cuando te dan las rotadas. {e4} Y decir que la rotación cambia la varianza explicada total: no la cambia.
+
+## Cierre
+
+{fin} El orden: Bartlett y K M O, cuántos factores, comunalidad igual a suma de cargas al cuadrado y unicidad uno menos eso, rotar e interpretar con las cargas grandes. En la sección de clases está resuelta la pregunta tres punto dos de la prueba uno, paso a paso.

@@ -288,7 +288,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       208.61,
-      "Cuando la correlación es −1: uno menos menos 1, 2."
+      "Cuando la correlación es −1: uno menos menos uno, 2."
     ],
     [
       212.25,

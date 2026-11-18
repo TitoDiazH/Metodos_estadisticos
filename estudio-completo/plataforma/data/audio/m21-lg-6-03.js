@@ -146,7 +146,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       100.91,
-      "El de b: b más ab, menos a, −1."
+      "El de b: b más ab, menos a, menos uno."
     ],
     [
       103.26,

@@ -168,7 +168,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       139.28,
-      "El nivel aceptable de color es a lo más 4,8."
+      "El nivel aceptable de color es a lo más cuatro,8."
     ],
     [
       142.81,

@@ -158,12 +158,14 @@ def escribir(texto):
                 res[-1] = prev.rstrip(",")
                 res.append(OPS[w.rstrip(",")])
                 j = k; continue
-            if w in ("menos", "más") and k < len(toks) and toks[k]["num"] and res[-1].lower() not in ("al", "lo", "por", "mucho", "poco", "un", "algo", "nada", "cada", "más", "menos"):
+            if w in ("menos", "más") and k < len(toks) and toks[k]["num"] and res[-1].lower() not in ("al", "lo", "por", "mucho", "poco", "un", "algo", "nada", "cada", "más", "menos") and not (res[-1].endswith(",") and not toks[k]["dec"] and not es_math(res[-1].rstrip(","))):
                 res.append(("−" if w == "menos" else "+") + toks[k]["t"]); j = k + 1; continue
         res.append(x["t"])
         j += 1
     s = " ".join(res)
     s = re.sub(r"(\d) %", r"\1 %", s)
+    pal = {str(v): w for w, v in UNI.items() if w in ("cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez")}
+    s = re.sub(r"(?<![\wáéíóú])(menos|más) (10|[0-9])(?=[ ,.;:]|$)(?! *[+−·=/])", lambda m: m.group(1) + " " + pal[m.group(2)], s)
     if s and not es_math(s.split()[0]):
         s = s[:1].upper() + s[1:]
     return s

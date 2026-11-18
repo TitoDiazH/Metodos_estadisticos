@@ -111,7 +111,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       48.49,
-      "El contraste de a suma los tratamientos que tienen la letra a y resta los que no: a, ab, ac y abc, −1, b, c y bc."
+      "El contraste de a suma los tratamientos que tienen la letra a y resta los que no: a, ab, ac y abc, menos uno, b, c y bc."
     ],
     [
       56.13,

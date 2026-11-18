@@ -122,7 +122,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       6.07,
-      "Es un caso especial del factorial: todos los factores tienen solo dos niveles, uno bajo, que se anota −1, y uno alto, +1."
+      "Es un caso especial del factorial: todos los factores tienen solo dos niveles, uno bajo, que se anota −1, y uno alto, más uno."
     ],
     [
       14.3,
@@ -266,7 +266,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       168.1,
-      "El contraste de a es a más ab, −1 − b."
+      "El contraste de a es a más ab, menos 1 − b."
     ],
     [
       171.38,

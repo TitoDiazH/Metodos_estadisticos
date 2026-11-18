@@ -233,7 +233,7 @@ PLATAFORMA.registrar("audio", {
     ],
     [
       150.49,
-      "Diez datos, −2 variables, −1 por el intercepto: siete."
+      "Diez datos, menos dos variables, menos uno por el intercepto: siete."
     ],
     [
       154.95,

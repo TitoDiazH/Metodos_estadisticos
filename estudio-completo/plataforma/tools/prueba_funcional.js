@@ -209,11 +209,11 @@ const hashJs = () => {
       await clic("[data-accion=marcarTodas]");
       await clic("[data-accion=reproducirSeleccion]");
       ok(await esperar("!!document.querySelector('#audioAhora') && /Pausar/.test(document.querySelector('.audio-play').textContent)"), "reproduce la selección");
-      ok(await esperar("!/^0:00 /.test(document.querySelector('#audioTiempo').textContent)", 6000), "el tiempo avanza mientras suena");
+      ok(await esperar("!/^0:00 /.test(document.querySelector('.audio-tiempo').textContent)", 6000), "el tiempo avanza mientras suena");
       const caps = await js("document.querySelectorAll('[data-accion=capitulo]').length");
       if (caps > 1) {
         await clic("[data-accion=capitulo][data-capitulo='1']");
-        ok(await esperar("document.querySelector('[data-capitulo=\"1\"]').getAttribute('aria-pressed') === 'true' && document.querySelector('#audioBarra').value > 0"), "salta al capítulo elegido");
+        ok(await esperar("document.querySelector('[data-capitulo=\"1\"]').getAttribute('aria-pressed') === 'true' && document.querySelector('.audio-barra').value > 0"), "salta al capítulo elegido");
       }
       await captura("02b-audio");
       await ir("inicio"); await ir("audio");
@@ -223,7 +223,7 @@ const hashJs = () => {
       const guardado = await js("PLATAFORMA.store.pref('audioEstado')");
       ok(guardado && guardado.cola.length === nAudios && guardado.t > 0, "recuerda la cola y la posición", guardado);
       await cargar(); await ir("audio");
-      ok(await esperar("!!document.querySelector('#audioAhora') && !/^0:00 /.test(document.querySelector('#audioTiempo').textContent)"), "al volver a abrir, retoma donde quedó");
+      ok(await esperar("!!document.querySelector('#audioAhora') && !/^0:00 /.test(document.querySelector('.audio-tiempo').textContent)"), "al volver a abrir, retoma donde quedó");
       await js("PLATAFORMA.store.pref('audioEstado', null); PLATAFORMA.store.pref('audioSel', [])");
       await cargar();
     }
@@ -243,7 +243,7 @@ const hashJs = () => {
     await clic('#selectorPrueba [data-prueba="P3"]'); await dormir(80);
     const t3 = await titulos();
     ok(/MANOVA/.test(t3) && /bloques/.test(t3) && !/K-medias/.test(t3) && !/Covarianza/.test(t3), "P3 muestra MANOVA y los módulos nuevos, sin el resto de P1/P2", t3);
-    ok((await js("PLATAFORMA.preguntas({prueba:'P3'}).every(q => /^m(19|2[0-5])-/.test(q.modulo))")), "el banco de P3 solo trae preguntas de M19–M26");
+    ok((await js("PLATAFORMA.preguntas({prueba:'P3'}).every(q => /^m(18|19|2[0-5])-/.test(q.modulo) && q.modulo !== 'm23-superficie-respuesta')")), "el banco de P3 solo trae preguntas de sus módulos (M18–M21, M25)");
     await ir("examen");
     ok((await js("!!document.querySelector('[data-accion=empezarExamen]')")), "P3: deja armar un examen con su banco");
     await cargar();
