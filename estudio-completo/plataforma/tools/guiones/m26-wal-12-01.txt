@@ -1,0 +1,97 @@
+# Ejercicio 12.1: el horno, regresión múltiple de principio a fin
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.1 (con la materia explicada)
+@pregunta m26-d002
+@orden 1
+
+## Qué pide el ejercicio
+
+{inicio} Este es el primer ejercicio de regresión para la prueba cuatro, así que lo vamos a resolver con calma, explicando de dónde sale cada cosa. Es el doce punto uno del libro de Walpole.
+
+{enun} Se hicieron diez ensayos con un horno. {clave1} Se midió el tiempo de cocción, que es la respuesta, ye. {clave2} Y dos variables que podrían explicarlo: el ancho del horno, equis uno, y la temperatura, equis dos. {clave3} El libro pide estimar la ecuación de regresión lineal múltiple. Nosotros vamos a hacer además todo lo que pide el instructivo de la prueba: interpretar, probar hipótesis, revisar el ajuste, los supuestos y los problemas del modelo.
+
+## La idea del modelo
+
+{idea} Con una sola variable, la regresión es una recta. Con dos variables, es un plano. {modelo} El modelo dice que el tiempo de cocción es be cero, más be uno por el ancho, más be dos por la temperatura, más un error aleatorio. Los betas son los parámetros verdaderos, que no conocemos. Lo que hacemos es estimarlos con los datos.
+
+{mc} ¿Cómo se eligen las estimaciones? Con mínimos cuadrados: se busca el plano que hace lo más chica posible la suma de los residuos al cuadrado. {residuo} El residuo de cada ensayo es lo observado menos lo que predice el plano. Se elevan al cuadrado para que los positivos y los negativos no se cancelen. {matriz} En forma de matrices la solución es equis prima equis, inversa, por equis prima ye. Eso no se hace a mano en la prueba: lo hace la función ele eme de erre.
+
+## Leer la salida de R
+
+{sal} Esta es la tabla de coeficientes de summary. Tiene cuatro columnas, y conviene saber exactamente qué es cada una.
+
+{est} La primera, Estimate, son las estimaciones. {ecuacion} Con ellas, el modelo ajustado queda: ye gorro igual a cero coma cinco ocho, más dos coma siete uno por equis uno, más dos coma cero cinco por equis dos. Es lo mismo que da el libro en sus respuestas.
+
+{se} La segunda columna es el error estándar: cuánto variaría esa estimación si repitiéramos el experimento con otros diez ensayos.
+
+{tval} La tercera es el te, y sale de dividir la primera columna por la segunda. {tcalc} Para el ancho: dos coma siete uno dividido en cero coma dos cero dos da trece coma cuatro. ¿Qué significa ese trece?
+
+[pausa 2]
+
+{tsig} Que la estimación está a trece errores estándar de cero. Si el ancho no tuviera ningún efecto, lo normal sería ver un te cerca de cero, digamos entre menos dos y dos. Trece es muchísimo.
+
+{gl} Ese te se compara con una te de Student con ene menos ka menos uno grados de libertad. Diez datos, menos dos variables, menos uno por el intercepto: siete. Se pierde un grado de libertad por cada parámetro que estimamos. {tcrit} Con siete grados de libertad y cinco por ciento, el valor crítico es dos coma tres seis cinco.
+
+{pval} La cuarta columna es el pe valor: la probabilidad de ver un te tan extremo si la hipótesis nula fuera cierta.
+
+## Pruebas te, con las tres partes de la respuesta
+
+{h0} Para cada coeficiente, la hipótesis nula es que el beta vale cero, o sea, que esa variable no aporta, y la alternativa es que es distinto de cero.
+
+{tres} El instructivo es muy claro en algo: no basta con decir se rechaza. Cada respuesta tiene que traer tres cosas. El estadístico o el pe valor. La decisión. Y una conclusión en el contexto del problema.
+
+{r1} Para el ancho: te igual a trece coma cuatro, pe valor menor que cero coma cero cero cero uno. Se rechaza la hipótesis nula. El ancho del horno influye significativamente en el tiempo de cocción.
+
+{r2} Para la temperatura: te igual a cuarenta y dos coma seis, y lo mismo: se rechaza. La temperatura también influye.
+
+{r0} El intercepto tiene te cero coma nueve seis y pe cero coma tres siete: no es distinto de cero.
+
+{alfa} Ahora, una pregunta que el instructivo pone explícitamente: probar que un beta es igual a un valor que no es cero. Por ejemplo, ¿cada unidad de temperatura agrega exactamente dos minutos? La hipótesis nula sería beta dos igual a dos.
+
+{ojo} Ojo con esto: el te de la salida de erre siempre compara con cero. Para comparar con dos hay que calcularlo a mano. {alfacalc} Se le resta el dos a la estimación: dos coma cero cuatro nueve siete menos dos, dividido en el error estándar, cero coma cero cuatro ocho uno. Da uno coma cero tres.
+
+{alfadec} Uno coma cero tres es menor que dos coma tres seis cinco, y el pe valor es cero coma tres cuatro. No se rechaza. Los datos son compatibles con que cada unidad de temperatura agregue dos minutos de cocción.
+
+## Interpretar los coeficientes
+
+{interp} Ahora, qué significa cada número. {b1} Be uno, dos coma siete uno: por cada unidad adicional de ancho, el tiempo de cocción aumenta en promedio dos coma siete minutos, manteniendo constante la temperatura. {ceteris} Esa última frase es la clave de la regresión múltiple. Es el efecto del ancho con la temperatura fija.
+
+{deriv} Dicho como derivada: la derivada parcial de ye gorro respecto de equis uno es be uno. En un modelo lineal es un número fijo, no depende de dónde estés. Cuando veamos polinomios, eso va a cambiar.
+
+{b2} Be dos, dos coma cero cinco: cada unidad más de temperatura agrega en promedio dos minutos, con el ancho fijo.
+
+{b0} ¿Y el intercepto? Sería el tiempo con ancho cero y temperatura cero. Ningún horno tiene ancho cero, está fuera del rango de los datos, así que no tiene interpretación práctica. Solo ajusta la altura del plano.
+
+## ¿Sirve el modelo? La prueba efe y el erre cuadrado
+
+{f} La prueba efe global se pregunta si el modelo, en conjunto, explica algo. La hipótesis nula es que todos los betas, salvo el intercepto, valen cero.
+
+{desc} Para entenderla hay que ver cómo se reparte la variabilidad. La variación total de los tiempos, la suma de cuadrados total, se divide en dos: lo que el modelo explica, la suma de cuadrados de la regresión, y lo que no explica, la del error. {scs} Aquí la total es diez mil novecientos cincuenta y seis, y casi todo es explicado: diez mil novecientos cincuenta y tres. El error es apenas tres.
+
+{fcalc} El efe divide lo explicado por cada variable, entre lo no explicado por cada grado de libertad: diez mil novecientos cincuenta y tres dividido en dos, sobre tres dividido en siete. {fres} Da más de doce mil seiscientos. El crítico con dos y siete grados de libertad es cuatro coma siete. Se rechaza: el modelo sirve, al menos una variable explica el tiempo de cocción.
+
+{rcuad} El erre cuadrado es lo explicado sobre el total: cero coma nueve nueve nueve siete. El modelo explica prácticamente el cien por ciento de la variabilidad.
+
+{r2aj} Y el erre cuadrado ajustado, cero coma nueve nueve nueve seis. ¿Por qué existe? Porque el erre cuadrado sube siempre que agregas una variable, aunque sea basura. El ajustado multiplica por ene menos uno sobre ene menos ka menos uno, y así penaliza cada parámetro. Si al agregar una variable el ajustado baja, esa variable no se ganó su lugar. Aquí están casi iguales: los dos regresores aportan de verdad.
+
+## Supuestos
+
+{sup} Los supuestos se revisan con los residuos, porque los errores verdaderos no se observan.
+
+{lin} Linealidad y varianza constante: en el gráfico de residuos contra valores ajustados no debería haber forma. Ni curva, que indicaría que falta un término, ni embudo, que indicaría varianza creciente. Aquí se ve una nube sin patrón claro.
+
+{qq} Normalidad: en el gráfico cuantil cuantil los puntos deberían seguir la diagonal. {sw} Y la prueba de Shapiro Wilk, con hipótesis nula de normalidad, da pe igual a cero coma nueve cuatro. No se rechaza: no hay evidencia contra la normalidad.
+
+{indep} La independencia se mira con los residuos en el orden en que se hicieron los ensayos: sin rachas largas del mismo signo.
+
+## Problemas del modelo
+
+{vif} Ahora, multicolinealidad. El ve i efe de cada variable mide cuánto se infla la varianza de su coeficiente por estar correlacionada con las demás. {viff} Es uno sobre uno menos el erre cuadrado de esa variable explicada por las otras. {vifv} Aquí los dos valen ocho coma dos siete. Con dos variables eso corresponde a una correlación de cero coma nueve cuatro entre ancho y temperatura: los hornos más anchos se usaron a más temperatura. {vifd} Entre cinco y diez es multicolinealidad moderada: no arruina el modelo, porque los te igual salieron enormes, pero hay que decirlo.
+
+{hat} El apalancamiento mide qué tan lejos está un ensayo del resto en las equis. El corte es dos por ka más uno sobre ene: dos por tres, dividido en diez, cero coma seis. {hatv} El ensayo ocho tiene cero coma seis cero ocho, apenas sobre el corte.
+
+{cook} La distancia de Cook mide cuánto cambiarían los coeficientes si sacáramos ese dato. Se considera influyente si pasa de uno. {cookv} El ensayo diez tiene uno coma siete dos: es influyente. {cookq} Si se saca, be uno baja de dos coma siete uno a dos coma cinco cinco. {cookn} ¿Se elimina? No automáticamente. Primero se revisa si fue un error de registro. Si el dato es real, se informa.
+
+## Cierre
+
+{fin} Resumiendo el camino: escribir el modelo ajustado, interpretar cada coeficiente con las demás variables fijas, probar cada beta con te, estadístico, decisión y contexto, la efe global, el erre cuadrado y el ajustado, los supuestos con residuos y Shapiro, y por último ve i efe, apalancamiento y Cook. Ese orden te sirve para cualquier pregunta de regresión de la prueba.
