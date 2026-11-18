@@ -1,0 +1,43 @@
+# Ejercicio 12.25: producción de un colorante natural
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 25
+@pregunta m23-d010
+@orden 4
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veinticinco: un colorante natural. Este es el caso de libro, con un máximo bien definido.
+
+{enun} Se busca maximizar la producción. {clave1} Los factores son la concentración de carbono y la temperatura. {clave2} Y esta vez vienen en unidades reales. {clave3} Se pide el diseño, un modelo de segundo orden, si describe bien los datos, y las condiciones que maximizan la producción.
+
+## El diseño
+
+{dis} Carbono en nueve y trece, temperatura en diecisiete y veinticinco: las cuatro esquinas. Los axiales, ocho coma uno siete y trece coma ocho para el carbono, quince coma tres cuatro y veintiséis coma seis seis para la temperatura. Y cuatro centros en once y veintiuno. Es un central compuesto. {cod} Para codificar: el carbono menos once, dividido en dos; la temperatura menos veintiuno, dividido en cuatro. Así los axiales quedan en más y menos uno coma cuatro uno cuatro: es rotable.
+
+## El modelo
+
+{sal} El modelo en codificado. {ecuacion} Intercepto siete mil quinientos cincuenta y cuatro. {lin} Lineales, {cuad} cuadráticos, {inter} interacción.
+
+{sig} Significativos: la temperatura lineal, con un coeficiente grande y negativo, y los dos cuadráticos, ambos negativos. Dos cuadráticos negativos: la superficie curva hacia abajo en las dos direcciones. Huele a máximo.
+
+## ¿Es adecuado?
+
+{f} {fcalc} Efe ciento cuarenta y ocho, con pe minúsculo. {rcuad} Erre cuadrado cero coma nueve nueve dos. {lof} La falta de ajuste es significativa, de nuevo porque las réplicas del centro son muy parejas; con un erre cuadrado de noventa y nueve por ciento, el modelo describe muy bien la producción.
+
+## Punto estacionario
+
+{deriv} Derivamos. {d1} Respecto del carbono: ciento treinta y nueve, menos dos por setecientos treinta y tres equis uno, menos ciento cuarenta y cuatro equis dos, igual a cero. {d2} Respecto de la temperatura: menos mil quinientos cincuenta y cinco, menos ciento cuarenta y cuatro equis uno, menos dos por dos mil trescientos treinta y nueve equis dos, igual a cero. {sist} Se resuelve el sistema. {sol} Equis uno igual a cero coma uno tres, equis dos igual a menos cero coma tres cuatro. Producción predicha: siete mil ochocientos veinticuatro.
+
+{real} En unidades reales: carbono igual a once más dos por cero coma uno tres, once coma dos seis. Temperatura igual a veintiuno más cuatro por menos cero coma tres cuatro, diecinueve coma seis cinco grados.
+
+## Clasificar
+
+{hes} La hessiana. {det} El determinante es positivo y el primer elemento negativo: hessiana definida negativa. {ev} Los valores propios, menos setecientos treinta y menos dos mil trescientos cuarenta y tres. {clas} Los dos negativos: máximo.
+
+## El óptimo
+
+{opt} Queremos maximizar, el punto es un máximo y está dentro de la región. Esta vez sí es el óptimo: carbono once coma tres y diecinueve coma siete grados, con unas siete mil ochocientas unidades. El último paso es confirmarlo con corridas reales en ese punto.
+
+## Cierre
+
+{fin} Cuando los dos cuadráticos son negativos, la hessiana es definida negativa y el punto cae dentro, el punto estacionario es el óptimo. Y siempre se reporta en unidades reales: centro más equis por semirrango.
