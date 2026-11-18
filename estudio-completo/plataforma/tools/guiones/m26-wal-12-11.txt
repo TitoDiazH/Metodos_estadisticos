@@ -1,0 +1,39 @@
+# Ejercicio 12.11: calamares y multicolinealidad
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.11
+@pregunta m26-d032
+@orden 11
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto once: el peso de los calamares. Es el mejor ejemplo de multicolinealidad de la lista.
+
+{enun} Se midieron veintidós calamares. {clave1} La respuesta es el peso, en libras. {clave2} Y hay cinco regresores, todos medidas de la boca: largo del rostral, de la aleta, del rostral a la cola, de la cola a la aleta, y el ancho. {clave3} Se pide la ecuación de regresión con las cinco.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Los coeficientes: uno coma siete siete para equis uno, menos tres coma seis seis para equis dos, dos coma cuatro uno, cinco coma cuatro, y catorce coma seis para el ancho. El apéndice del libro da números algo distintos; con los datos impresos, esto es lo que entrega erre.
+
+{interp} Interpretación. {i1} Cada coeficiente sería el cambio de peso por pulgada de esa medida, con las otras cuatro fijas. {i2} Pero mira el de la aleta: menos tres coma seis. ¿Un calamar con aleta más larga pesa menos? {i3} Y pensemos qué significa «con las otras cuatro fijas»: ¿existe un calamar con la aleta más larga pero el mismo rostral, la misma cola y el mismo ancho? Casi no. Todas las medidas crecen juntas.
+
+## Pruebas te
+
+{pt} Dieciséis grados de libertad, crítico dos coma uno dos. {t1} Rostral: pe cero coma cuatro nueve, no se rechaza. {t2} Aleta: pe cero coma dos uno, no se rechaza. {t3} Rostral cola: pe cero coma siete uno. {t4} Cola aleta: pe cero coma uno cinco. {t5} Solo el ancho es significativo, con pe cero coma cero cero ocho.
+
+## Efe y erre cuadrado
+
+{f} Y ahora el contraste. {fcalc} La efe global es ochenta y tres coma seis, con un pe minúsculo. Se rechaza de lejos: el modelo explica el peso. {rcuad} Erre cuadrado cero coma nueve seis. {r2aj} Ajustado cero coma nueve cinco.
+
+Un modelo que explica el noventa y seis por ciento, pero en el que casi ninguna variable es significativa. Esa contradicción es la huella típica de la multicolinealidad.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin patrón fuerte. {sw} Shapiro: cero coma uno cuatro, no se rechaza.
+
+{vif} Ahora sí, el ve i efe. {vifv} Todos entre veintidós y treinta y cuatro. Muy por encima de diez: multicolinealidad severa. Un ve i efe de treinta y cuatro significa que la varianza de ese coeficiente se multiplica por treinta y cuatro, o sea, su error estándar por casi seis. Por eso los te salen chicos, y por eso los signos no son confiables.
+
+{hat} Tres calamares superan el corte de apalancamiento. {cook} Pero ningún Cook pasa de uno.
+
+## Cierre
+
+{fin} Cuando el efe es enorme y los te no, revisa el ve i efe. Si pasa de diez, las variables están midiendo casi lo mismo: los coeficientes individuales no se interpretan y conviene quedarse con menos variables. En Desarrollo, la segunda variante ajusta solo aleta y ancho, y explica casi lo mismo.
