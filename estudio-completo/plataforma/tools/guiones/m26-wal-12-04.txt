@@ -1,0 +1,47 @@
+# Ejercicio 12.4: peso final de un animal
+@modulo m26-regresion-lineal
+@ejercicio Walpole · Ej. 12.4
+@pregunta m26-d011
+@orden 4
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio doce punto cuatro: el peso de un animal.
+
+{enun} Se quiere predecir el peso final de diez animales. {clave1} La respuesta es el peso final, en kilos. {clave2} Los regresores, el peso inicial y la cantidad de alimento consumido. {clave3} Y se pide predecir el peso de un animal que parte con treinta y cinco kilos y come doscientos cincuenta.
+
+## El modelo ajustado
+
+{sal} La salida. {ecuacion} Ye gorro igual a menos veintitrés, más uno coma cuatro por el peso inicial, más cero coma dos dos por el alimento.
+
+{interp} Interpretación. {i1} Por cada kilo más de peso inicial, el peso final sube en promedio uno coma cuatro kilos, con el alimento fijo. {i2} Por cada kilo más de alimento, el peso final sube cero coma dos dos kilos, con el peso inicial fijo. {i3} El intercepto, menos veintitrés, sería un animal que parte pesando cero y no come. No tiene sentido físico.
+
+## Pruebas te
+
+{pt} Siete grados de libertad, crítico dos coma tres seis cinco.
+
+{t1} Peso inicial: te dos coma cuatro, pe cero coma cero cuatro ocho. Se rechaza, justo bajo el cinco por ciento: el peso inicial influye. {t2} Alimento: te tres coma siete seis, pe cero coma cero cero siete. Se rechaza: el alimento influye.
+
+{alfa} Una pregunta tipo instructivo: ¿cada kilo inicial se traduce en exactamente un kilo final? Eso es beta uno igual a uno, y el te de erre no sirve porque compara con cero. {alfacalc} A mano: uno coma tres nueve seis menos uno, dividido en cero coma cinco ocho dos cinco. Da cero coma seis ocho. {alfadec} Muy lejos del crítico, pe cero coma cinco dos: no se rechaza. Es compatible con que cada kilo inicial dé un kilo final.
+
+## Efe y erre cuadrado
+
+{f} Efe global. {fcalc} Veinticuatro, contra un crítico de cuatro coma siete cuatro, pe cero coma cero cero cero siete. Se rechaza: el modelo sirve.
+
+{rcuad} Erre cuadrado cero coma ocho siete. {r2aj} Ajustado cero coma ocho cuatro.
+
+## Supuestos y problemas
+
+{sup} Supuestos. {lin} Residuos sin forma. {sw} Shapiro da cero coma nueve nueve nueve: los residuos son perfectamente compatibles con la normal.
+
+{vif} Ve i efe, {vifv} uno coma cinco siete. Sin problema.
+
+{hat} Nadie pasa el corte de apalancamiento de cero coma seis. {cook} Y la mayor distancia de Cook es la del animal siete, cero coma nueve, cerca de uno pero bajo el corte. Conviene mirarlo: es el que pesó solo cincuenta kilos.
+
+## Predicción
+
+{pred} Predicción para treinta y cinco kilos iniciales y doscientos cincuenta de alimento. {predcalc} Menos veintitrés, más uno coma cuatro por treinta y cinco, más cero coma dos dos por doscientos cincuenta. Da ochenta coma tres kilos. {predint} El peso medio de animales así está entre setenta y tres coma siete y ochenta y seis coma ocho. Para un animal individual, entre sesenta y cuatro coma cinco y noventa y seis.
+
+## Cierre
+
+{fin} Lo nuevo aquí fue la prueba contra un valor distinto de cero: se resta el valor de la hipótesis antes de dividir por el error estándar. Ese cálculo no aparece en la salida de erre, y es justo lo que puede pedir la prueba.
