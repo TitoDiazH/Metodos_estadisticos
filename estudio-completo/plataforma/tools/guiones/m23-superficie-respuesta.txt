@@ -1,0 +1,81 @@
+# Metodología de superficie de respuesta
+
+## La idea
+
+{inicio} Ahora toca el módulo veinticuatro: la metodología de superficie de respuesta. Es la otra mitad de la prueba cuatro, y se apoya completamente en la regresión del módulo anterior.
+
+{idea} Hasta ahora, en los diseños factoriales, cada factor tenía unos pocos niveles fijos. Pero la temperatura de un reactor o la concentración de un reactivo pueden tomar cualquier valor dentro de un rango. {idea-s} Entonces la respuesta, por ejemplo el rendimiento, deja de ser una tabla de medias y pasa a ser una superficie sobre el plano de los factores. Lo que queremos es encontrar la mejor zona de esa superficie.
+
+{formas} La superficie real puede ser complicada, pero en una zona acotada casi siempre se parece a una de tres formas: {loma} una loma, que tiene un máximo, {valle} un valle, que tiene un mínimo, {silla} o una silla de montar, que sube en una dirección y baja en otra.
+
+{preg} Desde el diseño de experimentos hay dos preguntas. {preg-1} ¿En qué puntos mido? {preg-2} ¿Y cómo analizo los datos? La respuesta a la segunda ya la conocen: con una regresión múltiple.
+
+## Del factorial a la superficie
+
+{cod} El primer paso es siempre codificar. Cada factor se lleva a una escala de menos uno a más uno: equis es el valor real menos el centro, dividido por el semirrango. {cod-v} Así el cero es el centro del diseño, y todos los factores quedan en la misma escala, de modo que sus coeficientes se pueden comparar.
+
+{dosk} Un factorial dos a la ka, con los niveles codificados, ya es una regresión. {mitad} Cada coeficiente es la mitad del efecto, porque ir de menos uno a más uno son dos unidades. En el ejemplo de la clase, be uno vale ocho coma siete, así que subir la temperatura de su nivel bajo al alto aumenta la resistencia en unos diecisiete coma cuatro.
+
+{lim} Pero el dos a la ka tiene un límite. Con dos niveles, por dos puntos pasa una sola recta, y no se puede ver si la respuesta se curva. {tres} Para estimar un término al cuadrado hacen falta al menos tres niveles por factor.
+
+{centro} La forma más barata de detectar curvatura es agregar puntos al centro, repetidos. {puro} Las réplicas del centro dan el error puro, que no depende de ningún modelo. {lof} Con él se hace la prueba de falta de ajuste: compara lo que el modelo no explica con la variación entre réplicas. {lof-h} La hipótesis nula es que el modelo es adecuado. Ojo con esto: aquí lo deseado es un pe valor alto. Si la falta de ajuste es significativa, el modelo se queda corto.
+
+## Los diseños de segundo orden
+
+{ccd} El diseño más usado es el central compuesto. {ccd-1} Parte de las esquinas del dos a la ka, {ccd-2} agrega puntos axiales sobre cada eje, a una distancia alfa del centro, {ccd-3} y un punto central repetido varias veces. {ccd-n} En total son dos a la ka, más dos ka, más los centros. Cada factor queda con cinco niveles, y la curvatura se puede estimar.
+
+{rot} El valor de alfa más común es la raíz cuarta de dos a la ka. Así el diseño es rotable: la precisión de la predicción depende solo de la distancia al centro. Con dos factores, alfa es uno coma cuatro uno cuatro.
+
+{ej} El ejemplo de la clase es el rendimiento de un proceso químico. La temperatura va de doscientos a doscientos cincuenta grados, y la concentración de quince a veinticinco por ciento. {ej-c} La codificación es equis uno igual a temperatura menos doscientos veinticinco, sobre veinticinco, y equis dos igual a concentración menos veinte, sobre cinco. {ej-n} Son doce corridas: cuatro esquinas, cuatro axiales y cuatro réplicas del centro.
+
+{bb} La alternativa es el diseño de Box-Behnken, que usa solo tres niveles y nunca pone todos los factores en un extremo a la vez. Sus puntos están en el medio de las aristas del cubo. Sirve cuando las esquinas son caras o peligrosas.
+
+## El modelo de segundo orden
+
+{mod} El modelo tiene tres tipos de términos. {mod-l} Los lineales, que dan la inclinación. {mod-c} Los cuadráticos, que dan la curvatura en cada dirección. {mod-i} Y las interacciones, que dicen que el efecto de un factor depende del nivel del otro. {mod-n} Con dos factores son seis coeficientes; con tres, diez.
+
+{mod-r} Como es lineal en los parámetros, es una regresión múltiple más. En erre se ajusta con lm, usando I de equis al cuadrado, o con el paquete rsm, escribiendo [[SO(x1, x2)|SO de equis uno, equis dos]]. SO significa segundo orden.
+
+{sal} En el ejemplo, todos los términos son significativos. {sal-c} Los dos cuadráticos son negativos y significativos: hay curvatura, y la superficie se dobla hacia abajo. {sal-i} La interacción también es significativa. {sal-f} La efe global es cincuenta y seis coma seis, con pe valor muy pequeño, y el erre cuadrado ajustado es cero coma nueve seis dos. {sal-lof} Y la falta de ajuste da efe igual a cero coma tres nueve, con pe valor cero coma siete siete: no se rechaza, así que el modelo de segundo orden es adecuado.
+
+{comp} Como los factores están codificados, los coeficientes se comparan directo: el de la temperatura, diez coma dos, es más del doble que el de la concentración, cuatro coma dos. La temperatura pesa más.
+
+## El punto estacionario a mano
+
+{pe} Ahora, lo que el instructivo pide hacer a mano. En la cima de una loma el terreno es plano: la pendiente vale cero en todas las direcciones. {pe-c} Así que se hace lo mismo que en cálculo: derivar, igualar a cero y resolver.
+
+{d1} La derivada respecto de equis uno es: [[b₁ + 2b₁₁x₁ + b₁₂x₂|be uno, más dos be uno uno por equis uno, más be uno dos por equis dos]]. {d1-ojo} Fíjense en el dos: viene de derivar equis uno al cuadrado. Y equis dos aparece porque la derivada de equis uno por equis dos, respecto de equis uno, es equis dos. {d2} La derivada respecto de equis dos es análoga.
+
+{sist} Con los números del ejemplo queda un sistema de dos ecuaciones. {sist-1} Diez coma uno ocho, menos diecisiete coma cero cero por equis uno, menos siete coma siete cinco por equis dos, igual a cero. {sist-2} Y cuatro coma dos dos, menos siete coma siete cinco por equis uno, menos diez coma cinco cero por equis dos, igual a cero.
+
+{sol} Resolviendo, equis uno vale cero coma seis dos seis, y equis dos vale menos cero coma cero seis uno.
+
+{mat} En forma matricial es lo mismo: el punto estacionario es [[x_s = −½ B⁻¹ b|menos un medio, por be mayúscula inversa, por be]]. {mat-bm} Be mayúscula tiene los cuadráticos en la diagonal, y la mitad de la interacción fuera de ella.
+
+## ¿Máximo, mínimo o silla?
+
+{hes} Encontrar el punto no basta: hay que clasificarlo. Para eso está la matriz hessiana, que tiene las segundas derivadas. {hes-f} En la diagonal van dos be uno uno y dos be dos dos, y fuera, be uno dos. Es el doble de be mayúscula.
+
+{reg} Con dos factores la regla es simple. {reg-max} Si el determinante es positivo y el primer elemento es negativo, es un máximo. {reg-min} Si el determinante es positivo y el primer elemento es positivo, es un mínimo. {reg-silla} Y si el determinante es negativo, es un punto silla.
+
+{det} En el ejemplo, el determinante es menos diecisiete por menos diez coma cinco, menos siete coma siete cinco al cuadrado: ciento dieciocho coma cinco, positivo. {det-c} Y el primer elemento es negativo. Es un máximo.
+
+{ev} Erre lo dice de otra forma, con los valores propios de be mayúscula: menos dos coma seis siete y menos once coma cero ocho. Todos negativos, máximo. Si fueran todos positivos, mínimo, y con signos mezclados, silla.
+
+## Volver a la realidad
+
+{real} El punto está en unidades codificadas, pero la respuesta tiene que ser en condiciones de operación. Se despeja: valor real igual a centro más equis por semirrango. {real-t} La temperatura óptima es doscientos veinticinco más veinticinco por cero coma seis dos seis: doscientos cuarenta coma siete grados. {real-c} La concentración es veinte más cinco por menos cero coma cero seis uno: diecinueve coma siete por ciento.
+
+{yest} Reemplazando en el modelo, el rendimiento máximo predicho es ochenta y dos coma ocho.
+
+{dentro} Y la última revisión: ¿está dentro de la región estudiada? Sí, las dos coordenadas están entre menos uno coma cuatro uno cuatro y más uno coma cuatro uno cuatro. Además es del tipo buscado, un máximo. Entonces es el óptimo.
+
+{cont} El gráfico de contornos muestra lo mismo desde arriba: curvas de igual rendimiento. Elipses cerradas alrededor del punto indican un máximo o un mínimo; hipérbolas, una silla.
+
+{front} ¿Y si algo falla? Si el punto es del tipo equivocado, por ejemplo un mínimo cuando queremos maximizar, o si cae fuera de la región, {front-b} el mejor punto que podemos recomendar está en el borde de la región: se evalúa el modelo en las esquinas y los bordes, y se elige el mejor. {front-n} Nunca se extrapola fuera de lo medido, y siempre se confirma con corridas reales.
+
+## Para cerrar
+
+{cierre} Lo esencial de este módulo. {c1} Se codifica de menos uno a más uno, y el centro repetido da el error puro y la falta de ajuste, donde lo deseado es un pe valor alto. {c2} El central compuesto agrega puntos axiales para estimar la curvatura. {c3} El modelo de segundo orden es una regresión con lineales, cuadráticos e interacciones. {c4} El punto estacionario se encuentra derivando e igualando a cero, y se clasifica con la hessiana. {c5} Y al final se pasa a unidades reales y se revisa que sea del tipo buscado y esté dentro de la región.
+
+{fin} Eso fue el módulo veinticuatro.
