@@ -1,0 +1,41 @@
+# Ejercicio 12.28: fuerza de arrastre de una soldadura
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 28
+@pregunta m23-d019
+@orden 7
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veintiocho: la soldadura de un poste a un tablero electrónico.
+
+{enun} Se quiere maximizar la fuerza de arrastre. {clave1} Los factores son tiempo, potencia y fuerza aplicada. {clave2} Primero se corrió un factorial dos al cubo con dos centros, todo con dos réplicas. Al detectar curvatura, se agregaron puntos axiales a uno coma dos ocho. {clave3} Se analizan las treinta y dos corridas. Una nota: en la tabla del libro hay una fuerza que dice ochenta, pero por la codificación es ochocientos.
+
+## El diseño
+
+{dis} El factorial con centro sirve para el error puro y para detectar curvatura. Al agregar los seis axiales queda un central compuesto ortogonal. No se usó el rotable, que pediría axiales a uno coma seis ocho, porque el equipo no permite abrir tanto los niveles. {cod} Codificación: tiempo menos cinco sobre dos, potencia menos cuatro coma tres sobre uno coma tres, fuerza menos setecientos cincuenta sobre cincuenta.
+
+## El modelo
+
+{sal} El modelo de segundo orden completo. {ecuacion} La ecuación. {lin} Lineales, {cuad} cuadráticos, {inter} interacciones.
+
+{sig} Significativos: la potencia lineal y los tres cuadráticos, todos negativos. Tres curvaturas hacia abajo: todo apunta a un máximo. Ninguna interacción es significativa.
+
+## ¿Es adecuado?
+
+{f} {fcalc} Efe nueve coma siete, pe cero coma cero cero cero cero ocho. {rcuad} Erre cuadrado cero coma ocho, ajustado cero coma siete dos. {lof} Sin falta de ajuste, pe cero coma tres tres.
+
+## Punto estacionario
+
+{deriv} Derivamos respecto de los tres factores. {d1} Tiempo. {d2} Potencia. {d3} Fuerza. {sist} Resolvemos el sistema. {sol} Cero coma cero dos, cero coma tres siete, y cero coma uno: todos dentro de la región. {real} En unidades reales: tiempo cinco coma cero cuatro milisegundos, potencia cuatro coma ocho watts, fuerza setecientos cincuenta y cinco gramos. Fuerza de arrastre predicha: mil ochocientos dos.
+
+## Clasificar
+
+{hes} Los valores propios. {ev} Menos ciento diez, menos ciento ochenta y uno, menos trescientos cuarenta. {clas} Los tres negativos: máximo.
+
+## El óptimo
+
+{opt} Se busca maximizar, es un máximo y está dentro. Es la condición óptima: unos cinco milisegundos, cuatro coma ocho watts y setecientos cincuenta y cinco gramos. Comparado con la operación anterior, seis milisegundos, cinco watts y ochocientos cincuenta gramos, se recomienda bajar la fuerza y un poco la potencia. Falta revisar los residuos, que se ven razonables, y confirmar con corridas.
+
+## Cierre
+
+{fin} Cuando todos los cuadráticos son negativos y los valores propios también, y el punto cae dentro, el punto estacionario es el máximo. Con tres factores la clasificación se hace con los valores propios.
