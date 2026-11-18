@@ -1,0 +1,41 @@
+# Ejercicio 12.24: solubilidad de la harina de amaranto, Box-Behnken
+@modulo m23-superficie-respuesta
+@ejercicio Libro guía · Cap. 12, ej. 24
+@pregunta m23-d007
+@orden 3
+
+## Qué pide el ejercicio
+
+{inicio} Ejercicio veinticuatro del capítulo doce: harina instantánea de amaranto.
+
+{enun} En la extrusión interesa minimizar el índice de solubilidad en agua. {clave1} Los factores son temperatura, humedad y velocidad del tornillo, codificados. {clave2} El diseño es un Box Behnken de quince corridas. {clave3} Se pide nombrar el diseño, ajustar un modelo de segundo orden, ver qué superficie describe y encontrar el mejor punto dentro de la región.
+
+## El diseño
+
+{dis} El Box Behnken usa tres niveles por factor. Sus puntos están en la mitad de las aristas del cubo: un factorial dos por dos para cada par de factores, con el tercero en cero. Más tres centros. Doce más tres, quince corridas. Nunca pone los tres factores en un extremo al mismo tiempo, por eso se recomienda cuando las esquinas son caras o riesgosas. {cod} Los datos ya vienen codificados.
+
+## El modelo
+
+{sal} Con tres factores, el modelo de segundo orden tiene diez coeficientes. {ecuacion} Ahí está la ecuación ajustada. {lin} Tres lineales, {cuad} tres cuadráticos, {inter} y tres interacciones.
+
+{sig} Significativos: temperatura y velocidad en lo lineal, y los cuadráticos de temperatura y humedad. Fíjate en los signos de esos cuadráticos: el de temperatura es negativo y el de humedad positivo. Curvan en direcciones opuestas: eso anuncia una silla. Ninguna interacción es significativa.
+
+## ¿Es adecuado?
+
+{f} {fcalc} La efe global es siete coma dos, pe cero coma cero dos uno: el modelo es significativo. {rcuad} Erre cuadrado cero coma nueve tres, ajustado cero coma ocho. {lof} La falta de ajuste sí es significativa, pero ojo por qué: los tres centros dieron casi lo mismo, trece coma ocho cinco, trece coma nueve tres y trece coma siete siete. Con un error puro tan chico, cualquier desvío del modelo se vuelve significativo. Aun así el modelo explica el noventa y tres por ciento.
+
+## Punto estacionario
+
+{deriv} Derivamos respecto de cada factor e igualamos a cero. {d1} Respecto de temperatura. {d2} De humedad. {d3} Y de velocidad. Ahora es un sistema de tres por tres. {sist} En forma matricial, menos un medio de be mayúscula inversa por be. {sol} La solución: menos cero coma siete, casi cero, y menos uno coma seis cinco. {real} La velocidad queda en menos uno coma seis cinco: fuera de la región.
+
+## Clasificar
+
+{hes} Con tres factores se usan los valores propios. {ev} Uno coma cinco nueve, menos cero coma tres dos, y menos uno coma dos cinco. {clas} Signos mezclados: es un punto silla. Sube en una dirección y baja en otra.
+
+## El mejor punto
+
+{opt} Queremos minimizar. El punto estacionario es una silla y además está fuera: no sirve. El mínimo dentro de la región está en la frontera. {mejor} Evaluando el modelo en el cubo, el menor índice se obtiene con temperatura alta, humedad media y velocidad alta: equis uno igual a uno, equis dos igual a cero, equis tres igual a uno, con un índice predicho de diez coma siete. Coincide con la corrida de menor índice observado, diez coma dos siete.
+
+## Cierre
+
+{fin} Box Behnken: tres niveles, aristas más centro. Cuadráticos con signos opuestos anuncian una silla. Con una silla, o un punto fuera de la región, el óptimo se busca en la frontera.
