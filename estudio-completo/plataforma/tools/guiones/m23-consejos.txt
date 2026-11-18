@@ -1,0 +1,50 @@
+# Consejos para la pregunta de superficie de respuesta
+@modulo m23-superficie-respuesta
+@ejercicio Consejos para la prueba · Superficie de respuesta
+@orden 0
+
+## Qué te van a preguntar
+
+{inicio} Resumen práctico para la pregunta de superficie de respuesta de la prueba cuatro.
+
+{inst} El instructivo pide tres cosas. {i1} Interpretar un modelo de segundo orden: términos lineales, cuadráticos e interacciones, y si hay curvatura e interacción. {i2} Analizar la salida de erre: valores pe, términos significativos, efe global, erre cuadrado y si el modelo es adecuado. {i3} Y encontrar el punto estacionario a mano, y clasificarlo con la hessiana. Los datos saldrán de los ejercicios veintidós a veintinueve del capítulo doce.
+
+## Reconocer el diseño
+
+{dis} Primero, reconoce el diseño. {d1} Esquinas con más y menos uno y un centro repetido: un factorial dos a la ka con puntos centrales. Sirve para explorar, pero no estima curvatura. {d2} Esquinas, puntos axiales sobre los ejes y centro: central compuesto. Si los axiales están a uno coma cuatro uno cuatro con dos factores, es rotable. {d3} Puntos en el medio de las aristas, con un factor en cero, y centro: Box Behnken.
+
+{cod} Codificar: equis igual a valor menos centro, dividido en el semirrango. Decodificar: centro más equis por semirrango. La respuesta final siempre en unidades reales.
+
+## Leer la salida
+
+{sal} En la salida, clasifica los términos. {s1} Un cuadrático significativo significa curvatura. Su signo dice hacia dónde: negativo curva hacia abajo, positivo hacia arriba. {s2} Una interacción significativa significa que el efecto de un factor depende del otro. {s3} Después, la efe global, el erre cuadrado y el ajustado. {s4} Y si hay réplicas del centro, la falta de ajuste: un pe alto es lo que quieres. Como siempre: estadístico, decisión y contexto.
+
+{pista} Una pista útil: si los cuadráticos tienen todos el mismo signo, sospecha un máximo o un mínimo; si tienen signos opuestos, una silla.
+
+## El punto estacionario
+
+{pe} El procedimiento a mano. {pe1} Deriva respecto de cada equis. El término lineal deja su coeficiente. El cuadrático, be i i equis cuadrado, deja dos be i i equis: no olvides el dos. Y la interacción, be uno dos equis uno equis dos, deja be uno dos por la otra variable. {pe2} Iguala cada derivada a cero. {pe3} Resuelve el sistema.
+
+{cramer} Con dos factores hay una fórmula directa. El denominador es cuatro be uno uno be dos dos, menos be uno dos al cuadrado, que es justo el determinante de la hessiana. {cr1} Equis uno es be uno dos be dos, menos dos be dos dos be uno, sobre ese determinante. {cr2} Equis dos es be uno dos be uno, menos dos be uno uno be dos, sobre el mismo determinante.
+
+{sinint} Si no hay interacción, es aún más simple: cada equis es menos be i dividido en dos be i i.
+
+{yest} Para el valor predicho en el punto, reemplaza en el modelo. Un atajo: be cero más un medio de la suma de cada equis por su coeficiente lineal.
+
+## Clasificar
+
+{hes} La hessiana es la matriz de segundas derivadas: dos be i i en la diagonal, y be i j fuera de ella. {h2} Con dos factores: si el determinante es positivo y el primer elemento negativo, máximo. Determinante positivo y primer elemento positivo, mínimo. Determinante negativo, silla. {h3} Con tres factores, se usan los valores propios que entrega erre: todos negativos, máximo; todos positivos, mínimo; mezclados, silla.
+
+{ojob} Ojo con una confusión: la matriz be mayúscula lleva be i j partido en dos fuera de la diagonal, y la hessiana es dos veces be mayúscula, así que lleva be i j completo.
+
+## ¿Es el óptimo?
+
+{opt} Antes de recomendar el punto, dos preguntas. {o1} ¿Es del tipo que busco? Si quiero maximizar, tiene que ser un máximo. {o2} ¿Está dentro de la región experimental? Si cualquiera de las dos falla, el óptimo está en la frontera: se evalúan las esquinas y bordes, sin extrapolar. {o3} Y siempre se recomienda confirmar con corridas reales.
+
+## Errores típicos
+
+{err} Los más comunes. {e1} Olvidar el dos al derivar los cuadrados. {e2} Dar el punto en unidades codificadas cuando piden condiciones de operación. {e3} Recomendar un punto silla o un punto fuera de la región. {e4} Y decir que el modelo es malo porque un término lineal no es significativo: con jerarquía, se mantiene.
+
+## Cierre
+
+{fin} Diseño y codificación, términos y su significancia, efe y erre cuadrado, derivar, igualar a cero, resolver, hessiana, unidades reales, y la pregunta final: ¿es del tipo buscado y está dentro? Los ocho ejercicios del capítulo doce siguen exactamente este orden.
